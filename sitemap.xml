@@ -448,13 +448,13 @@
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>http://example.org/devzen_note/</loc>
     <lastmod>2019-01-19T18:32:02+04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/devzen_note/</loc>
+    <loc>http://example.org/</loc>
     <lastmod>2019-01-19T18:32:02+04:00</lastmod>
     <priority>0</priority>
   </url>
