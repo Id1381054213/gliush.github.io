@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0192 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0192</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="bgp-атака-на-route53-чтобы-перехватывать-dns-траффик">BGP атака на Route53, чтобы перехватывать DNS траффик</h1>
+
+<p><a href="https://www.internetsociety.org/blog/2018/04/amazons-route-53-bgp-hijack/">https://www.internetsociety.org/blog/2018/04/amazons-route-53-bgp-hijack/</a></p>
+
+<ul>
+<li>24 Апреля атака: 4 сети /23 адресов Амазона-Route53 (AS16509 - автономная система), их анонсировать стал eNet (AS10297), сильно распространять стал Hurricane Electric (AS6939), который соединен с большим количеством других сетей.</li>
+<li>Как результат - большое распространение этой BGP подмены.</li>
+<li>Любой DNS-сервер, находящийся в этих подсетях начал работать, спрашивая про Route53 адреса с некорректного адреса где-то в Equinix Chicago IBX (“это не наш сервак, это один из серверов наших кастомеров в нашем датацентре”)</li>
+<li>В результате они могли подменять все DNS-запросы, и подставлять любые свои ответы.</li>
+<li>плюсы HTTPS трафика: показывал некорректный TLS-сертификат</li>
+<li>Продолжалось 2 часа.</li>
+<li>Могло иметь большую площадь распространения, если бы соседи не поддерживали правильные правила фильтрации (prefix filter)</li>
+<li>Решение - участвовать в Mutually Agreed Norms for Routing Security (MANRS):
+
+<ul>
+<li>filtering, which prevents the propagation of incorrect routing information.</li>
+<li>anti-spoofing</li>
+<li>address validation</li>
+<li>global coordination</li>
+</ul></li>
+</ul>
+
+<h1 id="взломать-монитор-dell-u24">Взломать монитор Dell U24</h1>
+
+<p><a href="https://github.com/RedBalloonShenanigans/MonitorDarkly">https://github.com/RedBalloonShenanigans/MonitorDarkly</a></p>
+
+<ul>
+<li>Ребята сделали реверс инжениринг протокола работы по USB, работы микроконтроллера (??? - можно так называть) в мониторе, поняли как именно воспроизводить картинки на мониторе.</li>
+<li>Подключение либо по дополнительному USB, либо через I2C: (every HDMI and most DVI and VGA connectors carry DDC2 data over I²C. )</li>
+<li>Практическая цель: заменять куски изображений. К примеру, TLS-сертификат в браузере.</li>
+</ul>
+
+<h1 id="протокол-git-v2">Протокол git v2</h1>
+
+<p><a href="https://www.opennet.ru/opennews/art.shtml?num=48622">https://www.opennet.ru/opennews/art.shtml?num=48622</a></p>
+
+<ul>
+<li>Разработчики из гугл уже представили v2 версию протокола:
+
+<ul>
+<li>эффективность при обмене данными</li>
+<li>оптимизация работы поверх HTTP</li>
+<li>расширяемость</li>
+</ul></li>
+<li>Протокол уже принят, появится в git-2.18.</li>
+<li>Ключевые изменения:
+
+<ul>
+<li>Фильтрация ссылок (веток и тэгов) на стороне сервера, а не клиента</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0191/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0194/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.717956 &#43;0400 &#43;04 m=&#43;0.078474754">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

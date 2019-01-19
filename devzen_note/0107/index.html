@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0107 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0107</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="tcp-puzzlers">TCP puzzlers</h1>
+
+<p><a href="http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/">http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/</a></p>
+
+<ul>
+<li>happy path</li>
+<li>server power restart -&gt; client believes it listen the socket. Send -&gt; ECONNRESET.</li>
+<li>server power shut down -&gt; client listen the socket. Send -&gt; ok, in 5 min -&gt; ETIMEDOUT (no ack for 5 min)</li>
+<li>server doesn&rsquo;t send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&rsquo;t close it</li>
+<li>Two separate state machines</li>
+<li>A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&gt; 60K висящих time_wait за минуту</li>
+<li>Упираемся в доступные порты достаточно быстро (20к по дефолту?)</li>
+</ul>
+
+<h1 id="kubernetes-namespace">Kubernetes Namespace</h1>
+
+<p><a href="http://blog.kubernetes.io/2016/08/kubernetes-namespaces-use-cases-insights.html">http://blog.kubernetes.io/2016/08/kubernetes-namespaces-use-cases-insights.html</a></p>
+
+<ul>
+<li>Use-case #1: Roles and Responsibilities (admin + designer/architect)</li>
+<li>Use-case #2: Using Namespaces to partition development landscapes. DevOps move dev -&gt; qa -&gt; prod. Fully isolated: services, pods, all the resources.</li>
+<li>Use-case #3: Partitioning of your Customers</li>
+<li>Not to use: not fully isolated to read</li>
+<li>problems: no templates (Borg paper), no ttl</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0106/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0108/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.730374 &#43;0400 &#43;04 m=&#43;0.090892483">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

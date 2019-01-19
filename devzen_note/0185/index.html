@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0185 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0185</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="hdmi-udp-mpeg-ts">HDMI -&gt; UDP (MPEG TS)</h1>
+
+<p><a href="https://www.youtube.com/watch?v=SAvGylthpkU">https://www.youtube.com/watch?v=SAvGylthpkU</a></p>
+
+<ul>
+<li>one sender -&gt; switch -&gt; several receivers</li>
+<li>HDCP</li>
+<li>VLC</li>
+<li>sound</li>
+<li>1.6s latency -&gt; 0.2s latency</li>
+<li>Some 0-length UDP packets, not standard, may not work with some players</li>
+<li>ffmpeg doesn’t work, workaround: filter empty udp packets</li>
+<li>capture via vlc</li>
+<li>1440p -&gt; 720p by default. Upgrade позволяет обойти</li>
+<li>chromecast - doesn’t work</li>
+<li>HDMI splitter remove DRM signature (??)</li>
+</ul>
+
+<h1 id="performance-under-load">Performance Under Load</h1>
+
+<p><a href="https://medium.com/@NetflixTechBlog/performance-under-load-3e6fa9a60581">https://medium.com/@NetflixTechBlog/performance-under-load-3e6fa9a60581</a></p>
+
+<ul>
+<li>Есть проблема определения максимального concurrency у любого компонента</li>
+<li>concurrency = rate * latency (среднее)</li>
+<li>Все, что выше - встает в очередь (увеличивая latency)
+<figure>
+    <img src="/images/0185_1.png"/> 
+</figure>
+
+￼</li>
+<li>найти статические лимиты легко (тесты), но невозможно поддерживать актуальными</li>
+<li>Решение - действовать как в tcp: TCP congestion control algorithm
+<figure>
+    <img src="/images/0185_2.png"/> 
+</figure>
+
+￼</li>
+<li><code>gradient=(RTTnoload/RTTactual)</code>     (как определять RTTnoload???)</li>
+<li><code>newLimit = currentLimit × gradient + queueSize</code></li>
+<li><code>queueSize ~ sqrt(currentLimit)</code></li>
+<li>limits are enforced on the server side</li>
+<li>no coordination between servers -&gt; different values</li>
+<li>LB is on client, retries most likely helps.</li>
+<li>No retries storm, as the excessive traffic will be shedded (in milliseconds)</li>
+<li>Критика: ничего нового, статья 2013, обсуждалась в том числе с Netflix (спорно: полно народу в Netflix)</li>
+<li>GH: QoS live is ok, batch - blocked. or 50% is for ‘write’ traffic.</li>
+<li>GH: integration: GRPC</li>
+<li>IMHO: разные типы запросов очень сложно разделить, а они дают совершенно разную latency</li>
+<li>IMHO: как определить RTTnoload?</li>
+</ul>
+
+<h1 id="solomon-hykes-founder-leaves-docker">Solomon Hykes (Founder) leaves Docker</h1>
+
+<p><a href="https://techcrunch.com/2018/03/28/solomon-hykes-leaves-docker-the-company-he-founded/">https://techcrunch.com/2018/03/28/solomon-hykes-leaves-docker-the-company-he-founded/</a></p>
+
+<ul>
+<li>Founded Docker in 2010, hired CEO, and was CTO until 2017, Sep.</li>
+<li>in 2017, Sep, he became Chief Architect and vice chairman of its board of directors</li>
+<li>Company is good, I’m not needed.</li>
+<li>Company needs new CTO, I’ll find him</li>
+<li>Qs: ведь никак нельзя определить, из-за чего он ушел? Может, докеру конец, и он просто раньше всех линяет? Или не поделили что-то с CEO, и не вынес конфликта?</li>
+<li>Человек на такой позиции не может говорить всю правду.</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0184/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0186/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.718762 &#43;0400 &#43;04 m=&#43;0.079280019">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

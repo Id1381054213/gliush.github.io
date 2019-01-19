@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0097 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0097</div>
+        <div class="post-line"></div>
+
+		
+
+		<p>Bitsquatting
+<a href="https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf">https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf</a>
+- Проблемы железа. Sun UltraSparc II CPU - во время изготовления получали примеси, которые являются эмиттером альфа частиц в SRAM. Кэш получал битовые ошибки - крэш сервера. Нет проверки корректности.
+- memtest86 не просто так добавляют на Ubuntu LiveCD - DRAM тоже очень подвержен
+- Температура
+- Радиация (высокоэнергичные частицы из космоса) - основной источник ошибок в DRAM. На высоте километра - в 5 раз выше, чем на уровне моря
+- Тесты DRAM: до 1 ошибки в 1.4 года на Мегабит DRAM ~ ошибка раз в несколько минут
+- Чексуммы - очень эффективны. Но не используются (ECC - мало где)
+- NIC, keyboard, DiskDrives - все используют DRAM, чаще всего без ECC
+- В 2003 показали, как можно выбраться из песочницы JVM - заполняя всю память ссылками на статичный объект, со временем битовая ошибка приводит к изменению ссылки, и можно писать куда-то еще. Нагревали лампой!
+- Аналогично - атака на smartcards
+- bitsquatting - перенаправление в интернете
+- В 2010 с самой лучшей памятью (1 ошибка в 950 лет на мегабит) - 600К ошибок в час
+- Зарегистрировали кучу (~30) доменов, слушали трафик (отвечали 404) в течение полугода (2010)
+- Слушали DNS и HTTP запросы
+- 52К запросов с 12К уникальных адресов (удалены crawlers, web spiders, etc)
+- 3 всплеска на графике
+- один из всплесков - скорее всего ошибка на DNS сервере.
+- 2 типа ошибки: на этапе DNS или на этапе выкачивания данных. Определяется по совпадению запроса полю HOST.  Если совпадает - значит DNS вернул неправильные данные
+- Mitigation: pre-registration, CRC - checks, ECC memory</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0096/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0098/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.731759 &#43;0400 &#43;04 m=&#43;0.092277618">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

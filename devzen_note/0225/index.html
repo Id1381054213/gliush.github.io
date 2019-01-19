@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0225 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0225</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="elixir-v1-8-release-notes">Elixir v1.8 Release Notes</h1>
+
+<p><a href="https://elixir-lang.org/blog/2019/01/14/elixir-v1-8-0-released/">https://elixir-lang.org/blog/2019/01/14/elixir-v1-8-0-released/</a></p>
+
+<ul>
+<li>Custom struct inspections</li>
+</ul>
+
+<pre><code>defmodule User do
+  @derive {Inspect, only: [:id, :name, :age]}
+  defstruct [:id, :name, :age, :email, :encrypted_password]
+end
+</code></pre>
+
+<ul>
+<li><code>Calendar.TimeZoneDatabase</code> behaviour, <code>Date.day_of_year/1</code>, <code>quoter_of_year/1</code>, etc</li>
+<li>Faster compilation, more efficient code in some cases</li>
+<li>Improved instrumentation and ownership with <code>$callers</code></li>
+</ul>
+
+<pre><code>[your code] -- calls --&gt; [supervisor] ---- spawns --&gt; [task]
+
+[your code]              [supervisor] &lt;-- ancestor -- [task]
+     ^                                                  |
+     |--------------------- caller ---------------------|
+</code></pre>
+
+<ul>
+<li>Started working on <code>mix release</code></li>
+</ul>
+
+<h1 id="on-infrastructure-at-scale-a-cascading-failure-of-distributed-systems">On Infrastructure at Scale: A Cascading Failure of Distributed Systems</h1>
+
+<p><a href="https://medium.com/@daniel.p.woods/on-infrastructure-at-scale-a-cascading-failure-of-distributed-systems-7cff2a3cd2df">https://medium.com/@daniel.p.woods/on-infrastructure-at-scale-a-cascading-failure-of-distributed-systems-7cff2a3cd2df</a></p>
+
+<ul>
+<li>Target Application Platform (TAP) - a toolchain to manage hosting/deployment/capacity/&hellip;</li>
+<li>Many core services - centralized systems for the entire enterprise (db, elk, messaging)</li>
+<li>They heavily leverage Kafka, including logs and metrics (via TAP). Kafka in OpenStack in the DC</li>
+<li>A lot of K8s clusters under TAP + large k8s cluster for dev envs</li>
+<li>sidecars: logs, metrics + consul agent</li>
+<li>Outage:
+
+<ul>
+<li>OpenStack network upgrade -&gt; several hours outage -&gt; Kafka is not available</li>
+<li>When Kafka is online again, all logs from all the dev envs woke up and send logs -&gt; cpu spike</li>
+<li>High CPU spike of docker daemon -&gt; k8s nodes &ldquo;are unhealthy&rdquo;</li>
+<li>k8s scheduler moved load from &ldquo;unhealthy&rdquo; to healthy nodes</li>
+<li>some new nodes could withstand the load, but some couldn&rsquo;t -&gt; &ldquo;unhealthy&rdquo; -&gt; move load to the &ldquo;healthy&rdquo; -&gt; cycle</li>
+<li>new pods are up -&gt; consul agent registers in gossip -&gt; high consul load</li>
+<li>41k new k8s pods during this event -&gt; high Consul latency (gossip mesh + high cpu load)</li>
+<li>gossip mesh increased the cpu load on all the consul agent -&gt; higher cpu load</li>
+<li>Consul is &ldquo;down&rdquo; (too slow) -&gt; Vault couldn&rsquo;t work, TAP LB generation couldn&rsquo;t work</li>
+<li>After DAYS of research they fixed the Consul+Vault by &ldquo;gossip encryption&rdquo; -&gt; previous gossip messages were rejected</li>
+</ul></li>
+<li>Their Conclusions:
+
+<ul>
+<li>Several small k8s clusters is better than one large</li>
+<li>Shared Docker daemon is a failure point</li>
+</ul></li>
+</ul>
+
+<p>IMHO:</p>
+
+<ul>
+<li>What is the &ldquo;gossip poisoning&rdquo;:
+
+<ul>
+<li>why after fixing k8s, when real nodes were not restarted it didn&rsquo;t calm down???</li>
+</ul></li>
+<li>Why loggers could overload the &ldquo;docker&rdquo; so that nodes became &ldquo;unhealthy&rdquo;? Incorrect configuration -&gt; cause of the outage, imho</li>
+<li>Good example of system that looked well-configured, but nevertheless had broken.</li>
+<li>When building such complex systems, try to predict the unknowns, though it is very difficult</li>
+<li>DaemonSets are better? They won&rsquo;t rise CPU load? In any case, sidecar shouldn&rsquo;t break the main container</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0222/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.709665 &#43;0400 &#43;04 m=&#43;0.070182895">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

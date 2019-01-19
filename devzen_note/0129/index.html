@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0129 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0129</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="rethinkdb-присоединяется-к-linux-foundation">RethinkDB присоединяется к Linux Foundation</h1>
+
+<p><a href="https://www.rethinkdb.com/blog/rethinkdb-joins-linux-foundation/">https://www.rethinkdb.com/blog/rethinkdb-joins-linux-foundation/</a></p>
+
+<ul>
+<li>Cloud Native Computing Foundation (cncf.io) покупает права на rethinkdb source code, и отдает в Linux Foundation с лицензией ASLv2 (Apache)</li>
+<li>Все остается как раньше, сайты, github исходники, продолжают работать</li>
+<li>Временная команда управления работает с сообществом, чтобы установить официальное руководство проекта</li>
+<li>Много разработчиков - ушло в Stripe (оно спонсировало проект на $25k)</li>
+<li>Сообщество уже вкладывается - выход 2.4 не за горами. 2.5 - улучшения в производительности.</li>
+<li>Есть какой-то импульс от сообщества для развития  Horizon - Node.js бэкенд для разрабокти web-приложений</li>
+<li>Почему долго? Компания развалилась - кредиторы владели именем, но хотелось не форкать, а просто сделать более доступную лицензию.</li>
+</ul>
+
+<h1 id="google-ai-crypto-mountain-view">Google AI Crypto (Mountain View)</h1>
+
+<p><a href="https://arstechnica.co.uk/information-technology/2016/10/google-ai-neural-network-cryptography/">https://arstechnica.co.uk/information-technology/2016/10/google-ai-neural-network-cryptography/</a></p>
+
+<ul>
+<li>3 AI (Alice, Bob, Eva) - эксперимент по разработке своего криптоалгоритма</li>
+<li>Каждый имел свою оценочную функцию:
+
+<ul>
+<li>Eve: дистанция между ее предположением и реально переданным сообщением - loss</li>
+<li>Alice: Если предположение Евы - лучше, чем случайное предположение - loss</li>
+<li>Bob: Если расстояние между реальным сообщением и его угадыванием было слишком далеко - loss</li>
+</ul></li>
+<li>Alice и Bob имели общий ключ</li>
+<li>Не было сказано, как и что кодировать</li>
+<li>Каждый AI использовал “mix and transform neural network architecture”</li>
+<li>Для Alice: ключ и текст - на вход первого слоя. Для Bob - текст и закодированное сообщение. Для Eve: только закодированное</li>
+<li>Первый слой - полносвязный, далее несколько слоев</li>
+<li>Результат: смешанный. Некоторые запуски провалились, Боб не смог восстановить</li>
+<li>Чаще всего, Alice и Bob смогли сделать систему, когда они без ошибок передавали текст.</li>
+<li>Иногда Eve могла о чем-то догадаться, но после этого Alice и Bob улучшали технику, что не давало Eve шанса</li>
+<li>В качестве вывода: AI смогут зашифровать данные, если получат такую цель. И при этом без каких-то начальных знаний.</li>
+</ul>
+
+<h1 id="pyston-0-6-1-последний-релиз-спонсируемые-dropbox">Pyston-0.6.1 - последний релиз, спонсируемые Dropbox</h1>
+
+<p><a href="https://blog.pyston.org/2017/01/31/pyston-0-6-1-released-and-future-plans/">https://blog.pyston.org/2017/01/31/pyston-0-6-1-released-and-future-plans/</a></p>
+
+<ul>
+<li>Новая версия, еще более быстрая</li>
+<li>Это последний релиз, который спонсирует Dropbox</li>
+<li>Гораздо больше времени потрачено на вопросы совместимости, чем планировалось.</li>
+<li>Аналогично - много усилий на управление памятью. Оказалось, что это важно (!)</li>
+<li>Dropbox стал больше писать на других языках (Go)</li>
+<li>Суммарно: цена стала выше, а профита - меньше</li>
+<li>Мы молодцы, много сделали</li>
+<li>Оба (?) автора уходят заниматься другими вещами, придумывают, кому бы и как отдать свои наработки</li>
+<li>Код остается в Opensource, возможно что-то используют в CPython, все равно на их коде изначально работал.</li>
+</ul>
+
+<h1 id="scaling-git">Scaling git</h1>
+
+<p><a href="https://blogs.msdn.microsoft.com/bharry/2017/02/03/scaling-git-and-some-back-story/">https://blogs.msdn.microsoft.com/bharry/2017/02/03/scaling-git-and-some-back-story/</a></p>
+
+<ul>
+<li>Не было консенсуса - кто-то принял решение</li>
+<li>Очень много кода, много разработчиков, много проектов</li>
+<li>Первый вопрос - один репо всего - или миллион проектов на каждый чих</li>
+<li>Разбить проект на несколько - очень сложно + риск очень большой. Тяжело вносить изменения сразу в несколько реп.</li>
+<li>Решение: “правильное кол-во реп, основываясь на знании кода”</li>
+<li>Пример Бинга - который сейчас возвращается назад от многих пакетов и версионности</li>
+<li>Windows - должен быть в одном репо</li>
+<li>Начали скалировать Git - две неудачные попытки</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0128/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0130/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.726459 &#43;0400 &#43;04 m=&#43;0.086977317">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

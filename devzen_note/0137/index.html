@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0137 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0137</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="kubernetes-1-6">Kubernetes-1.6</h1>
+
+<p><a href="http://blog.kubernetes.io/2017/03/kubernetes-1.6-multi-user-multi-workloads-at-scale.html">http://blog.kubernetes.io/2017/03/kubernetes-1.6-multi-user-multi-workloads-at-scale.html</a></p>
+
+<ul>
+<li>Focus: scale + automation. 5K nodes cluster is supported (150K pods)</li>
+<li>etcd v3</li>
+<li>Federation for more nodes &amp; multi-cluster (kubefed - becomes beta)</li>
+<li>RBAC is beta (is used by default). Allows to give users/service accounts access to specific resourses on a per-namespace basis</li>
+<li>kubeadm tool - is beta (create a secure cluster, RBAC is supported)</li>
+<li>Node affinity/anti-affinity is in beta (assign to nodes based on node labels).</li>
+<li>Taints and tolerations is in beta (exclude pods from particular nodes).</li>
+<li>Pod affinity and anti-affinity is in beta (hard and soft requirements for spreading and packing pods relative to one another within arbitrary topologies).</li>
+<li>Multiple schedulers in beta</li>
+<li>StorageClass is stable (aws, azure, gcp, openstack, vmware vsphere)</li>
+<li>Dynamic volume provisioning is stable (create / delete storage on demand, no need to pre-provision)</li>
+<li>information in pod at creation time (including secrets, volumes, volume mounts, env vars <a href="https://kubernetes.io/docs/user-guide/pod-preset/">https://kubernetes.io/docs/user-guide/pod-preset/</a></li>
+</ul>
+
+<h1 id="chronix-long-term-storage-and-retrieval-technology-for-anomaly-detection-in-operational-data">Chronix: Long term storage and retrieval technology for anomaly detection in operational data</h1>
+
+<p><a href="https://blog.acolyer.org/2017/03/10/chronix-long-term-storage-and-retrieval-technology-for-anomaly-detection-in-operational-data/">https://blog.acolyer.org/2017/03/10/chronix-long-term-storage-and-retrieval-technology-for-anomaly-detection-in-operational-data/</a></p>
+
+<ul>
+<li>time series DB optimized to support anomaly detection</li>
+<li>схема  “Date-Delta-Compaction” (DDC) + компрессия.</li>
+<li>Это позволяет сократить 20-68% storage space, 80-92% data retrieval time, 73-97% runtime of analyzing functions</li>
+<li>Time series requirements for anomaly detection (Chronix supports all!):
+
+<ul>
+<li>generic data model that allows exploratory analysis</li>
+<li>built-in analysis functions (+ complex ones: sax, dynamic time warping)</li>
+<li>time and space efficient lossless storage</li>
+</ul></li>
+<li>Chronix хранит упорядоченные блоки информации (ts + value pair) для произвольных типов в blobs. Тип информации - влияет на список доступных функций для обработки. Каждый блоб (“запись”) - хранит также ts начала и конца + мета-информацию о записи (включая атрибуты, заданные пользователем)</li>
+<li>functional-lossless storage (можно потерять данные, которые не влияют на предсказательную способность)</li>
+<li>Pipeline (для импорта - сверху вниз, для query - снизу вверх)
+
+<ul>
+<li>optional transformation</li>
+<li>Группировка по блокам + формирование аттрибутов</li>
+<li>Компрессия блоков</li>
+<li>Сохранение</li>
+</ul></li>
+<li>Компрессия:
+
+<ul>
+<li>Значения компрессуются, т.к. чаще всего изменения между соседними точками очень маленькое</li>
+<li>Ts (timestamp) тоже компрессируются</li>
+<li>Затем получившиеся бинарные данные можно сжать стандартными bzip2/gzip/lz4/snappy/xz</li>
+<li>Первые две - более простые вариации того, что у Facebook есть в Gorilla (open source: Beringei <a href="https://github.com/facebookincubator/beringei">https://github.com/facebookincubator/beringei</a>)</li>
+</ul></li>
+<li>Chronix выбросит ts если он почти точно может их воспроизвести (с точностью до указанного процента). Он также хранит накапливаемую ошибку и может в дальнейшем использовать (если она будет слишком большой)</li>
+<li>Установка и конфигурация - три значения: DDC threshold (for ts), chunk size, compression algorithm. DDC threshold: график inacuracy rates vs threshold. Default DDC threshold is 200ms</li>
+<li>Chunk size and compression - in tandem. First: minimal chunk size (plot vs compression rate). Then: chunksize vs compression alg (plot vs access time im ms)</li>
+<li>Сравнение с InfluxDB, OpenTSB, KairosDB. 108GB (2 real world apps). Chronix needs 8.7GB,  чтобы хранить 108.2GB. Для базовых функций проигрывает InfluxDB, но для более сложных - значительный выигрыш</li>
+<li>С графитом не сравнивали, т.к. авторы не считают его подходящим для долгосрочного хранения</li>
+</ul>
+
+<h1 id="digitalocean-introduce-monitoring">DigitalOcean Introduce Monitoring</h1>
+
+<p><a href="https://www.digitalocean.com/company/blog/introducing-monitoring/">https://www.digitalocean.com/company/blog/introducing-monitoring/</a></p>
+
+<ul>
+<li>Free for all droplets</li>
+<li>Alert when problem occurs</li>
+<li>Продолжение системы open-source агента, который рассказывал про здоровье каждого дроплета</li>
+<li>1m- интервалы</li>
+<li>хранится за месяц</li>
+<li>CPU, Disk I/O, Memory, Disk Usage, Bandwidth, process list  (ordered by CPU)</li>
+<li>Alert Policy (CPU - is above - 70 - 5min)</li>
+<li>Alerts -&gt; Slack, Email</li>
+<li>Next: API, monitor block storage,</li>
+</ul>
+
+<h1 id="baidu-launches-swiftscribe-transcribes-audio-with-ai">Baidu launches SwiftScribe (transcribes audio with AI)</h1>
+
+<p><a href="https://venturebeat.com/2017/03/13/baidu-launches-swiftscribe-an-app-that-transcribes-audio-with-ai/">https://venturebeat.com/2017/03/13/baidu-launches-swiftscribe-an-app-that-transcribes-audio-with-ai/</a></p>
+
+<ul>
+<li>Several years working on Speech Recognition software</li>
+<li>DeepSpeech, TalkType (Android keyboard),</li>
+<li>hour - 20min to subscribe. Change (capitalizing, punctuation, change spelling of cerain words)</li>
+</ul>
+
+<h1 id="data-stacks-у-гигантов-facebook-netflix-airbnb-pinterest">Data Stacks у гигантов: Facebook, Netflix, Airbnb, Pinterest</h1>
+
+<p><a href="https://blog.keen.io/architecture-of-giants-data-stacks-at-facebook-netflix-airbnb-and-pinterest-9b7cd881af54">https://blog.keen.io/architecture-of-giants-data-stacks-at-facebook-netflix-airbnb-and-pinterest-9b7cd881af54</a></p>
+
+<ul>
+<li>Netflix:
+
+<ul>
+<li>1.3PB per day, at peaks: 8M events per sec. 100 data engineers</li>
+<li>Kafka, Elastic Search, S3, Spark, Hadoop</li>
+</ul></li>
+<li>Facebook:
+
+<ul>
+<li>1B active users, largest warehouse.</li>
+<li>Presto (distributed SQL query engine for ad-hoc analysis)</li>
+<li>Data stores: Hive, HBase, Scribe</li>
+</ul></li>
+<li>Airbnb:
+
+<ul>
+<li>100M users browsing, 2M listings</li>
+<li>data team: 30+ engineers,</li>
+<li>Hive, Spark, expanded Presto</li>
+</ul></li>
+<li>Pinterest
+
+<ul>
+<li>10B+ pageviews per month, data team ~ 250 engineers</li>
+<li>Kafka, Storm, Hadoop, HBase, Redshift</li>
+</ul></li>
+<li>Twitter/Crashlytics
+
+<ul>
+<li>Kafka, Storm, S3, Hadoop, Cassandra</li>
+</ul></li>
+<li>Статья - просто набор ссылок + пиар, смысла читать - нет</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0134/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0138/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.72537 &#43;0400 &#43;04 m=&#43;0.085888690">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

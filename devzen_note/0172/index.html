@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0172 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0172</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="kubernetes-1-9">Kubernetes -1.9</h1>
+
+<p><a href="http://blog.kubernetes.io/2017/12/kubernetes-19-workloads-expanded-ecosystem.html">http://blog.kubernetes.io/2017/12/kubernetes-19-workloads-expanded-ecosystem.html</a></p>
+
+<ul>
+<li>4 релиз за год</li>
+<li>Workloads API GA (general availability). apps/v1 вместо extensions/v1beta1, api/v1beta1, api/v1beta2. Включает Deployment, DaemonSet, ReplicaSet, StatefulSet. Показано, как надо мигрировать, есть тулы, для обратной совместимости еще поддержат. Интересно почитать, как развивалось API между версиями: Immutable Selectors</li>
+<li>Windows Support (beta)</li>
+<li>Storage Enhancements: k8s-1.9 добавили (alpha) поддержку Container Storage Interface (CSI). Упрощает работу с Volume, третесторонние провайдеры подобных систем.</li>
+<li>Custom Resource Definition (CRD) validation -&gt; beta. Работает по-умолчанию (в отличие от alpha), проверяет</li>
+<li>Каждая SIG (Special Interest Group) готовит свои изменения для релиза, смотреть список</li>
+</ul>
+
+<h1 id="the-case-for-learned-index-structures">The Case for Learned Index Structures</h1>
+
+<p><a href="https://www.arxiv-vanity.com/papers/1712.01208v1/">https://www.arxiv-vanity.com/papers/1712.01208v1/</a></p>
+
+<ul>
+<li>Индексы - модели:
+
+<ul>
+<li>B-Tree-Index -&gt; map[key: position in sorted array].</li>
+<li>Hash-Index -&gt; map[key: position in unsorted array].</li>
+<li>BitMap-Index -&gt; data exists or not</li>
+</ul></li>
+<li>другие модели с этим интерфейсом тоже возможны</li>
+<li>обычные индексы - general purpose, хотя и оптимизируются</li>
+<li>зная структуру ключей - можно сильно оптимизировать. Скажем, если ключи - range(1,10M) - можно не хранить индекс, и доступ будет через val[idx] за O(1), что значительно быстрее, чем B-Tree. Аналогично для других вариантов</li>
+<li>Тяжело делать индивидуальные решения. Легко, если оно делается само (machine learning)</li>
+<li>Проблема: надежность. ML имеет вероятностную модель Ключи уже - предсказательные модели. Да, отличия будут, но их можно учесть</li>
+<li>Проблема: производительность Нейронной Сети.  GPU/TPU будут наращивать производительность: к 2025 увеличат производительность в 1000раз Однотипные операции гораздо проще скалировать -&gt; вскоре Нейронные Сети будут выгоднее генеральных решений</li>
+<li>для эффективности, часто не индексируют каждый ключ, но только каждый n-ый, т.е. первый ключ страницы. Т.е. B-Tree это модель, которая гарантирует, что ключ будет найден в области от вернутой позиции до конца страницы</li>
+<li>При добавлении данных - перебалансировка B-Tree (переучивание Нейронной Сети)</li>
+<li>пример с range() в качестве набора данных</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0171/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0173/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.720526 &#43;0400 &#43;04 m=&#43;0.081044236">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

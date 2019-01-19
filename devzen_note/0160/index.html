@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0160 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0160</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="hijacking-bitcoin-routing-attacks-on-cryptocurrencies">Hijacking Bitcoin: Routing Attacks on Cryptocurrencies</h1>
+
+<p><a href="http://hackingdistributed.com/2017/05/01/bgp-attacks-on-btc/">http://hackingdistributed.com/2017/05/01/bgp-attacks-on-btc/</a></p>
+
+<ul>
+<li>биткоин кажется защищенным.</li>
+<li>атака направленная на “распространение данных”, использующая “Internet routing infra”</li>
+<li>Большие Internet service providers (ISPs) уже сидят в центре передачи, через них идет большой поток траффика. Он plaintext, им очень просто ее подменять, блокировать, или генерировать свой</li>
+<li>Вопрос - насколько bitcoin подвержен?</li>
+<li>Выпускаем paper <a href="https://btc-hijack.ethz.ch/files/btc_hijack.pdf">https://btc-hijack.ethz.ch/files/btc_hijack.pdf</a></li>
+<li>Биткоин очень централизован. 20% биткоин нод расположены на 100 IP prefixes. (сейчас всего около 600K IP prefixes). Некоторые ISP видят большую часть трафика. Поэтому атака может получиться
+<figure>
+    <img src="/images/0160.png"/> 
+</figure>
+</li>
+<li>Изоляция 50% узлов требует небольших усилий, на порядки меньше текущих атак. Любой зловредный ISP с доступом к routing infra может проводить атаку которая станет эффективной уже спустя минуты после начала</li>
+<li>ISP должен задерживать пропагацию блоков (до 20мин)</li>
+<li>Они утверждают, что уже сейчас наблюдают подобные атаки</li>
+<li>Partitioning attacks: разделить Bitcoin сеть на 2+ несвязные части. Уязвимости в Border Gateway Protocol (BGP), который не проверяет источник объявления маршрута (BGP Hijacks). Это очень эффективно, поскольку небольшое кол-во IP префиксов нужно “исправлять”. 50% сети - с помощью изменений в маршрутах для 39 префиксов.</li>
+<li>В некоторых случаях могут образоваться связи (в тех участках сети, которые не разделялись) между “разорванными” сетями, но как в бумаге показывается, атакующие могут уменьшать размер “оторванной части”. Т.е. это сложнее, но выполнимо.</li>
+<li>Цель разделения - чтобы транзакции в мЕньшей половине отверглись сетью. Особенно полезно, если есть есть конфликтующие записи (в одни и те же биткоины)</li>
+<li>Delay attacks: задерживать трафик до 20 мин (потом его источник будет перепосылать другим маршрутом)</li>
+<li>Как избежать?
+
+<ul>
+<li>Максимизация разных соединений</li>
+<li>Ноды должны мониторить поведение коннектов</li>
+<li>e2e encryption, хотя это не поможет для partition attack</li>
+</ul></li>
+<li>Цель исследования - поднять интерес сообщества к необходимости защищаться от атак.</li>
+</ul>
+
+<h1 id="s3-on-digital-ocean">S3 on Digital Ocean</h1>
+
+<p><a href="https://blog.digitalocean.com/introducing-spaces-object-storage/">https://blog.digitalocean.com/introducing-spaces-object-storage/</a></p>
+
+<ul>
+<li>$5 per month: 250GB of storage + 1TB outbound bandwidth</li>
+<li>additional storage: $0.01 per GB transferred and $0.02 per GB stored</li>
+<li>Spaces - scales automatically, NYC3 today, AMS3 before EOY, all others - in 2018</li>
+<li>Files stored in Spaces: encrypted with 256-bit AES-XTS full disk enc</li>
+</ul>
+
+<h1 id="end-to-end-arguments-in-system-design">End-To-End Arguments in System Design</h1>
+
+<p><a href="https://github.com/papers-we-love/papers-we-love/blob/master/distributed_systems/end-to-end-arguments-in-system-design.pdf">https://github.com/papers-we-love/papers-we-love/blob/master/distributed_systems/end-to-end-arguments-in-system-design.pdf</a></p>
+
+<ul>
+<li>Статья рассказывает про принципы дизайна, которые помогают в правильном месте расположить определённую функциональность в распределенной системе.</li>
+<li>Основная деятельность дизайнера - правильно продумать систему</li>
+<li>Нет ничего нового, просто многие используют эти правила без осознания, и данная статья просто артикулирует эти правила.</li>
+<li>Многие функции могут быть реализованы на разных уровнях: коммуникационная подсистема, клиентом, или везде.</li>
+<li>Полностью написать функциональность можно только если она будет работать при поддержке приложения (знания + абстракции), поэтому невозможно это сделать на уровне коммуникационной подсистемы</li>
+<li>Этот аргумент они называют “end-to-end argument”, и в дальнейшем используют по всей статье.</li>
+<li>Пример “передача файла”</li>
+<li>Разбили на стадии, показали список проблем (hardware, ошибка при чтении, при передаче, …)</li>
+<li>1 подход - каждую стадию сделать полностью “правильной” (уменьшая вероятность ошибки на каждом шагу). Проблема - стадии не полностью изолированные, ошибки при копировании, космические лучи и т.д., поэтому на уровне выше все равно надо делать проверку. Проверки при чтении файлов (+checksum), проверка при пересылке на каждом пакете и т.д.</li>
+<li>2 подход - end-to-end проверка и повтор. Если проблемы редки - ок. При этом дополнительные проверки на каждой стадии - лишь лишняя трата ресурсов.</li>
+<li>Пример из MIT: Была сеть с хорошей проверкой каждой пересылки между hop-ами, программисты понадеялись на нее, не делали доп проверок. Однако в железе были проблемы, которые проявлялись один раз из 1M пересылок. ПРишлось исправлять.</li>
+<li>Проверка на коммуникационном уровне улучшает производительность. Вероятность ошибки - экспоненциально увеличивается с размером файла, время пересылки файла экспоненциально уменьшается. Поэтому проверка каждого пакета нужна.</li>
+<li>Поэтому баланс (tradeoff) - на производительности, но нет проблем с корректностью. Если ненадежная пересылка - будет много проблем и часты пересылки. Если слишком много проверок на низком уровне - будет уменьшение производительности потока. И иметь ввиду, что у нас все равно будут проверки на уровне приложения (пример про передачу голоса, когда небольшие ошибки лучше, чем небольшая задержка)</li>
+<li>Иногда лучшая производительность может быть достигнута если проверки на верхнем уровне: нижний уровень шарится между несколькими приложениями (а не всем нужен полный набор проверок), нижняя система может не иметь некоторой информации, которая необходима для оптимизации</li>
+<li>Проверку можно сделать и на верхнем уровне: систематически делать чексумму переданного, и сверятся на источнике.</li>
+<li>Аналогичные примеры:
+
+<ul>
+<li>Delivery Guarantees (важно сообщать доставлено или нет. Иногда нужно сообщать “обработано или нет”, иногда надо сообщать результат обработки)</li>
+<li>Secure transmission of data (управление ключами, доставление до криптования и после разкприптования,</li>
+<li>Duplicate message suppression</li>
+<li>Гарантия FIFO message delivery</li>
+<li>Transaction management</li>
+</ul></li>
+<li>Все примеры из реальной жизни, суммирования опыта из разных статей.</li>
+<li>Многие проблемы, обсуждаемые о распределенных системах - это end-to-end argument</li>
+</ul>
+
+<p>IMHO: База, которую нужно знать про распределенные системы, и многообразие trade-off, которые могут встречаться. Не самый легкий язык, длинные предложения, сложные примеры. Но когда втянешься - ок.</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0156/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0161/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.723024 &#43;0400 &#43;04 m=&#43;0.083542273">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

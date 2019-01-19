@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0184 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0184</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="tcp-tracepoints">TCP Tracepoints</h1>
+
+<p><a href="http://www.brendangregg.com/blog/2018-03-22/tcp-tracepoints.html">http://www.brendangregg.com/blog/2018-03-22/tcp-tracepoints.html</a></p>
+
+<ul>
+<li>TCP Tracepoints have arrived in Linux. Linux-4.15 added 5 of them, 4.16 will add 2 more</li>
+<li>Versatile sock:inet_sock_set_state. It can be used to track when kernel changes the state of a TCP session (e.g. TCP_SYN_SENT -&gt; TCP_ESTABLISHED)</li>
+<li>tcplife tool in the open-source “bcc” collection.
+
+<ul>
+<li>Used “kprobe” (kernel dynamic tracing) of the “tcp_set_state()” kernel function. Relies on kernel implementation, need to change from version to version</li>
+</ul></li>
+<li>Tracepoints are considered as “stable” and “shouldn’t change” (not “set in stone”)</li>
+<li>“trace” tool in the bcc: </li>
+</ul>
+
+<pre><code># trace -t 't:sock:inet_sock_set_state &quot;%llx: %d -&gt; %d&quot;, args-&gt;skaddr, args-&gt;oldstate, args-&gt;newstate'
+       TIME     PID     TID     COMM            FUNC             -
+       1.690191 17308   17308   curl            inet_sock_set_state ffff9fd7db589800: 7 -&gt; 2
+       1.690798 0       0       swapper/24      inet_sock_set_state ffff9fd7db589800: 2 -&gt; 1
+</code></pre>
+
+<ul>
+<li>7-&gt;2, 2-&gt;1 - state changes (ENUM)</li>
+<li>tcpstate does the same + translate to the well-known names: </li>
+</ul>
+
+<pre><code># tcpstates
+SKADDR           C-PID C-COMM     LADDR           LPORT RADDR         RPORT OLDSTATE    -&gt; NEWSTATE    MS
+ffff9fd7e8192000 22384 curl       100.66.100.185  0     52.33.159.26  80    CLOSE       -&gt; SYN_SENT    0.000
+ffff9fd7e8192000 0     swapper/5  100.66.100.185  63446 52.33.159.26  80    SYN_SENT    -&gt; ESTABLISHED 1.373
+</code></pre>
+
+<ul>
+<li>tcp:tcp_retransmit_skb traces retransmits, useful to understand network issues, including congestioon</li>
+<li>tcp:tcp_retransmit_synack traces syn and syn/ack restransmits</li>
+<li>tcp:tcp_destroy_sock traces: session has ended, sock address is about to be reused</li>
+<li>tcp:tcp_send_reset traces RST send during a valid socket</li>
+<li>tcp:tcp_receive_reset traces RST receive</li>
+<li>tcp:tcp_probe : for TCP congestion window tracing (TCP окно перегрузки)</li>
+<li>sock:inet_sock_set_state.</li>
+<li>Tracepoints are preferred over libpcap: lower overhead + show kernel internal state</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0180/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0185/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.718828 &#43;0400 &#43;04 m=&#43;0.079346638">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

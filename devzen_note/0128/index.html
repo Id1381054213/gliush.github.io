@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0128 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0128</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="a-million-requests-per-second-with-python">A million requests per second with Python</h1>
+
+<p><a href="https://medium.freecodecamp.com/million-requests-per-second-with-python-95c137af319#.orernkeye">https://medium.freecodecamp.com/million-requests-per-second-with-python-95c137af319#.orernkeye</a></p>
+
+<ul>
+<li>Japronto</li>
+<li>c4.2xlarge with magnetic disks</li>
+<li>all contestants: single-worker process</li>
+<li>wrk 1 thread, 100 connections, 24 pipelined requests per connection</li>
+<li>if elb -&gt; one connection, all requests in this connection</li>
+<li>Nagle algorithm -&gt; many small requests in one TCP packet</li>
+<li>japronto glues response and write it back in one system call</li>
+<li>Written in C. Parser, protocol, connection reaper, router, request and response objects - C Extensions</li>
+<li>elb support connection reuse <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html">http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html</a></li>
+<li>pipelined is not supported for back-end connections: <a href="http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html">http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html</a></li>
+</ul>
+
+<h1 id="query-optimizers">Query optimizers</h1>
+
+<p><a href="https://blog.acolyer.org/2017/01/30/how-good-are-query-optimizers-really/">https://blog.acolyer.org/2017/01/30/how-good-are-query-optimizers-really/</a>
+- Fencing off Go: Liveness and safety for channel-based programming <a href="https://blog.acolyer.org/2017/02/02/fencing-off-go-liveness-and-safety-for-channel-based-programming/">https://blog.acolyer.org/2017/02/02/fencing-off-go-liveness-and-safety-for-channel-based-programming/</a>
+- Julien Lange <a href="https://www.doc.ic.ac.uk/~jlange/">https://www.doc.ic.ac.uk/~jlange/</a>
+- Static verification framework for liveness and safety in Go programs:
+    - communication errors
+    - partial deadlocks
+    - (with dynamic channel creation, unbounded thread creation, recursion)
+- tool chain is also available <a href="http://mrg.doc.ic.ac.uk/tools/gong/">http://mrg.doc.ic.ac.uk/tools/gong/</a>
+- Go uses channels and goroutines for concurrency
+- no callback-hell
+- But: Communication mismatch and deadlocks
+- Go runtime has a global deadlock detector (???)
+- But no partial deadlock detectors
+- GoInfer extracts concurrent behavioural types from a Go program
+- Gong perform analysis on those types
+- Static Single Assignment (SSA) package: IR -&gt; system of type equations
+- Language MiGo (mini-Go), which models the concurrency passing features of Go
+- Given MiniGo, authors define an operational semantics and behavioural typing system for it (<a href="https://arxiv.org/abs/1206.1687:">https://arxiv.org/abs/1206.1687:</a> Behavioural Types for Actor Systems)
+- type of channel carries type of objects it can send and receive
+- Gong is written in Haskell!!!
+- Gong check that all types are “fenced” (ограничены?), and if so - check all of them
+- Fenced: we know that it will consist of a finite number of communication patterns (even infinite number of processes)
+- Liveness is shown for 3 classes of programm</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0126/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0129/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.726694 &#43;0400 &#43;04 m=&#43;0.087212586">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

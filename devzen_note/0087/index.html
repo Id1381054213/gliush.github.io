@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0087 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0087</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="containers-are-not-vms">Containers are not VMs</h1>
+
+<p><a href="https://blog.docker.com/2016/03/containers-are-not-vms/">https://blog.docker.com/2016/03/containers-are-not-vms/</a></p>
+
+<ul>
+<li>containers - квартиры</li>
+<li>vms - полноценные дома</li>
+<li>Все понимают, а потом начинают спрашивать вопросы:
+
+<ul>
+<li>как мне бэкапить приложения</li>
+<li>а где они на самом деле работают (какой Host)</li>
+<li>patch management strategy (upgrading application inside the container)</li>
+</ul></li>
+<li>на самом деле, контейнеры - это способ доставки сервисов, которые составляют приложение</li>
+<li>сервисы проще обновлять поотдельности, декларативно определяя, как они составляют приложения</li>
+</ul>
+
+<h1 id="erlang-19-0-gc">Erlang 19.0 GC</h1>
+
+<p><a href="https://www.erlang-solutions.com/blog/erlang-19-0-garbage-collector.html?utm_source=Reddit&amp;utm_medium=Erlang&amp;utm_campaign=BlogGarbageCollector">https://www.erlang-solutions.com/blog/erlang-19-0-garbage-collector.html?utm_source=Reddit&amp;utm_medium=Erlang&amp;utm_campaign=BlogGarbageCollector</a></p>
+
+<ul>
+<li>copying semi-space garbage collector</li>
+<li>+ generational garbage collection</li>
+<li>магия с young heap</li>
+<li>все литералы не копируются при работе GC</li>
+<li>на 64-битных системах, где позволяется маппирование unreserved virtual memory (not-Windows), 1GB is mapped и туда кладутся все литералы. Проверка is_literal - просто посмотреть, где расположен pointer. Page is not touched - no space occupy</li>
+<li>32-bit systems 1GB - too much. 256KB literal regions are created by demand</li>
+<li>bit-array is used to determine if it’s a literal-region pointer</li>
+<li>64-bit without unreserved virtual memory mapping - each term has the field if is literal or not.</li>
+<li>binary heap - for any binary terms &gt; 64 bytes. Reference counted. Pointer - in the process heap</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0086/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0088/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.735056 &#43;0400 &#43;04 m=&#43;0.095574911">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

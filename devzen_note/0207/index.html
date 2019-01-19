@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0207 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0207</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="github-opensource-loadbalancer">GitHub OpenSource LoadBalancer</h1>
+
+<p><a href="https://githubengineering.com/glb-director-open-source-load-balancer/">https://githubengineering.com/glb-director-open-source-load-balancer/</a></p>
+
+<ul>
+<li>Layer4 (Transport Layer) LB</li>
+<li>-&gt; Взять один IP address -&gt; обрабатывать входящие коннекты на разных машинах</li>
+<li>нужно скейлить также и LB-сервера</li>
+<li>Простейшая схема (client - …. router - … backend)</li>
+<li>Несколько путей - Equal-Cost-Multi-Path (ECMP) routing:
+
+<ul>
+<li>пускать пакеты по нескольким путям (consistent hash). Пути могут изменяться, но это не важно, до конца дойдут все пакеты</li>
+<li>пускать пакеты к разным серверам: BGP (Border Gateway Protocol) анонсируют, что они один и тот же IP, пакеты идут к разным серверам, даже не зная, что это разные машины Сервера изменились - коннекты могут отломиться, т.к. все сервера выглядят одинаково, на роутерах нет state-а</li>
+</ul></li>
+<li>Решение - выделить роль director у load balancer
+
+<ul>
+<li>Директор сохраняет информацию о маршрутах</li>
+<li>Проблема: добавление директора - он не знает информацию о маршрутах</li>
+<li>Решение: синхронизация маршрутов</li>
+</ul></li>
+<li>GLB:
+<figure>
+    <img src="/images/0207_1.png"/> 
+</figure>
+</li>
+<li>incoming connection -&gt; hash -&gt; primary and secondary server</li>
+<li>packet arrives to primary server and “isn’t valid” (??) -&gt; seconday</li>
+<li>hashing сохраняется в lookup table</li>
+<li>новый proxy -&gt; для 1/N коннектов становится мастером, слейвом - предыдущий -&gt; старые коннекты продолжат работать</li>
+<li>GDB-directory - stateless, основная функция - выбирать primary &amp; secondary proxy</li>
+<li>Таблица маршрутизации (65к строк, в каждой primary proxy + secondary proxy) -&gt; 512kb</li>
+<li>Таблица одинаковая для всех директоров (?????)</li>
+<li>Инварианты:
+
+<ul>
+<li>в каждой строке - один сервер</li>
+<li>каждый сервер - примерно в одинаковом числе строк</li>
+<li>порядок серверов вычисляется только на основе списка серверов (+seed)</li>
+<li>изменяются сервера - строки с другими серверами не изменяются</li>
+<li>=&gt; rendezvous hashing алгоритм <a href="https://en.wikipedia.org/wiki/Rendezvous_hashing">https://en.wikipedia.org/wiki/Rendezvous_hashing</a></li>
+</ul></li>
+<li>Состояния: Filling -&gt; Active -&gt; Drilling
+
+<ul>
+<li>Если Drilling - сервер переставляется с Primary -&gt; Secondary, тогда все коннекты постепенно уходят на новый Primary</li>
+</ul></li>
+<li>Проблема: закодировать Secondary чтобы Primary знал, куда дальше слать пакет</li>
+<li>Решение: Generic UDP Encapsulation (GUE)</li>
+<li>Обратно пакеты идут мимо директора, напрямую клиенту (“Direct Server Return”). Очень полезно для небольшого потока Inbound, и большого потока Outbound
+<figure>
+    <img src="/images/0207_2.png"/> 
+</figure>
+</li>
+<li>glb-director написан на DPDK (OpenSource, very fast packet processing from Userland)</li>
+</ul>
+
+<h1 id="how-i-gained-commit-access-to-homebrew-in-30-minutes">How I gained commit access to Homebrew in 30 minutes</h1>
+
+<p><a href="https://medium.com/@vesirin/how-i-gained-commit-access-to-homebrew-in-30-minutes-2ae314df03ab">https://medium.com/@vesirin/how-i-gained-commit-access-to-homebrew-in-30-minutes-2ae314df03ab</a></p>
+
+<ul>
+<li>31 июня, автор решил попробовать взломать Homebrew GitHub репозиторий, через 30 минут ему это удалось</li>
+<li>1 попытка - использовать gitrob. Тулза, которая скачивает все публичные репки организации, и ищет важные данные в файлах</li>
+<li>2. Посмотрел предыдущие проблемы на <a href="https://hackerone.com/Homebrew">https://hackerone.com/Homebrew</a>
+
+<ul>
+<li>Jenkins на публичном адресе</li>
+<li>bottle (бинарный пакет) собираются и пушаются c аунтентификацией в GitHub</li>
+<li>открытый jenkins - данные доступны. Credentials - в переменных окружения, доступны для всех</li>
+</ul></li>
+<li>=&gt; возможность записать в репу (сделал коммит)</li>
+<li>написал письмо в Homebrew</li>
+<li>Сотни тысяч людей пользуются Homebrew, включая сотрудников ключевых компаний</li>
+<li>Наиболее часто установленный пакет (-30d) - openssl (500k раз)</li>
+<li>Нет защищенной ветки master, он мог сделать коммит в мастер, и кто-то сразу бы поставил пакет с уязвимостью</li>
+<li>Он смог войти за 30 минут, что сможет сделать отдельное “национальное государство”? Компы сотрудников топовых компаний можно было бы сломать</li>
+<li>Пакетные менеджеры и утечка credentials - очень большая проблема, системная проблема индустрии</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0206/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0208/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.715657 &#43;0400 &#43;04 m=&#43;0.076175644">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

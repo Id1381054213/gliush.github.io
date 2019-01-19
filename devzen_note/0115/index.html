@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0115 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0115</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="chaos-monkey-2-0">Chaos Monkey 2.0</h1>
+
+<p><a href="http://techblog.netflix.com/2016/10/netflix-chaos-monkey-upgraded.html">http://techblog.netflix.com/2016/10/netflix-chaos-monkey-upgraded.html</a></p>
+
+<ul>
+<li>Они не заставляют придерживаться каким-то шаблонам архитектуры, вместо этого используют Chaos Monkey</li>
+<li>ChaosMonkey-2.0 интегрирован с Spinnaker (CD система)</li>
+<li>Указываешь флаги для ChaosMonkey - и сам Spinnaker уже убивает все, и знает, что где находится.</li>
+<li>Несколько облачных провайдеров(как и spinnaker)</li>
+<li>Периодически, Chaos Monkey убивает и себя! :)</li>
+<li>Ранее было много разных вариантов проверок (birn CPU, take disks offline, etc), теперь только убивание</li>
+</ul>
+
+<h1 id="testing-random-valid-sql-in-cockroachdb">Testing Random, Valid SQL in CockroachDB</h1>
+
+<p><a href="https://www.cockroachlabs.com/blog/testing-random-valid-sql-in-cockroachdb/">https://www.cockroachlabs.com/blog/testing-random-valid-sql-in-cockroachdb/</a></p>
+
+<ul>
+<li>Задача: протестировать сервер на неожидаемые задачи.</li>
+<li>Fuzzy тестирование не подошло (слишком много невалидных запросов)</li>
+<li>Есть несколько генераторов валидных SQL, но они слишком широкие. И пришлось бы их вручную сокращать до текущей функциональности CockroachDB</li>
+<li>ссылка на статью - генерация изображений из YACC грамматики</li>
+<li>Имея YACC грамматику, они создают AST</li>
+<li>Берешь случайный top-level элемент, и рекурсивно опускаешься в нем сквозь все не-терминальные символы, заменяя их случайными из списка.</li>
+<li>grant_stmt -&gt; элементы на замену “privileges”, “privilege_target”, “grantee_list”</li>
+<li>Результат:
+
+<ul>
+<li>более 10 уникальных паник (=&gt; рефакторинг движка =&gt; еще ошибки =&gt; переделка),</li>
+<li>запуск большого числа нашел race conditions</li>
+<li>расширение грамматики =&gt; автоматически новые тесты</li>
+<li>стали запускать каждую ночь</li>
+</ul></li>
+</ul>
+
+<h1 id="conversational-speech-recognition">Conversational Speech Recognition</h1>
+
+<p><a href="https://arxiv.org/abs/1610.05256">https://arxiv.org/abs/1610.05256</a></p>
+
+<ul>
+<li>Swiitchboard (двое незнакомых - обсуждают заданную им тему)</li>
+<li>CallHome (друзья и семья говорят по телефону)</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0112/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0116/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.729235 &#43;0400 &#43;04 m=&#43;0.089753871">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

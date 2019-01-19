@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0177 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0177</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="comparison-of-the-open-source-olap-systems-for-big-data-clickhouse-druid-and-pinot">Comparison of the Open Source OLAP Systems for Big Data: ClickHouse, Druid and Pinot</h1>
+
+<p><a href="https://medium.com/@leventov/comparison-of-the-open-source-olap-systems-for-big-data-clickhouse-druid-and-pinot-8e042a5ed1c7">https://medium.com/@leventov/comparison-of-the-open-source-olap-systems-for-big-data-clickhouse-druid-and-pinot-8e042a5ed1c7</a></p>
+
+<ul>
+<li>Similarities:</li>
+<li>Store data and do query processing on the same node.</li>
+<li>Have their own format for storing data with indexes + integrated with query processing engines.</li>
+<li>Have data distributed quite statically between the nodes. Flip side: they don’t support queries that require movement of flare amounts of data between the nodes, e.g. joins between two large tables</li>
+<li>No point updates and deletes -&gt; more efficient columnar compression and more aggressive indexes.</li>
+<li>Druid and Pinot support Lambda-style streaming and batch ingestion. ClickHouse supports batch inserts directly.</li>
+<li>Immature (a lot of bugs).</li>
+<li>Performance Comparison and Choice of the System</li>
+<li>Usually everybody ingest part of real data, do some benchmark -&gt; choose. Incorrect!</li>
+<li>You should compare how fast your org could make those systems to move in the direction of being more optimal for your use case.</li>
+<li>Druid’s dev process is similar to Apache model: several large contributors-companies. (Less risky?)</li>
+<li>ClickHouse is developed by Yandex</li>
+<li>Pinot - by LinkedIn</li>
+<li>Druid commits to support “Developer API”, that allows to contribute custom column types, aggregation, “deep storage” options, etc. and maintain them separate from the core codebase. (Still fails often)</li>
+<li>According to GitHub, Pinot has the most people who work on it, 10 man-years for the last year. 6 - for ClickHouse, 7 for Druid.</li>
+<li>Differences between ClickHouse and Druid/Pinot</li>
+<li>Druid + Pinot: all data in each “table” is partitioned to N parts. By the time duration, the data is divided with some interval. Then these “parts” are “sealed” individually into self-contained ‘segments’. Each segment includes table metadata, compressed columnar data and indexes.</li>
+<li>Segments are persisted in the “deep storage” (HDFS). Nodes are not responsible for durability of segments -&gt; could be replaced</li>
+<li>Segments could be loaded on any node.</li>
+<li>Some “master” server is responsible for assigning segments to nodes and moving them between nodes if needed</li>
+<li>Metadata is stored elsewhere (ZK in Druid, “Helix” framework in Pinot)</li>
+<li>Data management in ClickHouse</li>
+<li>Partitioned tables. Each node with the table has full table metadata + info about other nodes: 40% goes to A, 30% to B, 30% to C (different amount is needed to fill new node with data)</li>
+<li>Data management: comparison</li>
+<li>Clickhouse model is simpler: no deep storage, no master-node. It becomes a problem when all nodes are full of data</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0176/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0178/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.719807 &#43;0400 &#43;04 m=&#43;0.080325233">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

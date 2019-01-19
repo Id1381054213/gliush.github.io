@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0191 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0191</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="the-hitchhiker-s-guide-to-the-unexpected">The Hitchhiker&rsquo;s Guide to the Unexpected</h1>
+
+<p><a href="https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html">https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html</a></p>
+
+<ul>
+<li>He is system architect, and always explain system design in OTP terms (even if he’s talking not about Erlang/Elixir)</li>
+<li>Where bugs come from: ￼from “unknown”: spectre/meltdown, thundering herd.
+<figure>
+    <img src="/images/0191_1.png"/> 
+</figure>
+</li>
+<li>Main target: move bugs from “unknown” to the “known” space. How?
+
+<ul>
+<li>Difficult: Increase knowledge of developers.</li>
+<li>Simple: Hire more seniors (temptation: send seniors alone to the difficult parts. They’ll leave some day). Culture of teaching, mentorship, training, knowledge sharing.</li>
+<li>Have more diverse team. The same background -&gt; the same “known circle”. If you hire a team of people who love bitcoin -&gt; they’ll come up with a solution that includes a blockchain, no matter what the problem was.</li>
+</ul></li>
+<li>Effective approach: exploratory testing. Pros: will discover plenty of bugs. Cons: difficult to find the tester
+
+<ul>
+<li>Fuzzing. AFL (American Fuzzy Lop), назван в честь кролика</li>
+<li>In Erlang/Elixir world, Property based testing - is a must have. To find corner cases.</li>
+</ul></li>
+<li>When your team prove itself wrong - they hopefully reduce the gap between “you think you know” and “you know”</li>
+<li>Next general approach - do not go to the “unknown” area, put safeguards to prevent we do odd or unpredictable things:
+
+<ul>
+<li>write less code</li>
+<li>formal methods (TLA+, exhaustive model checking, automated proof). Everything in your system is proven to work.</li>
+<li>strict assertions, type signatures, type analysis</li>
+<li>For erlang/elixir:
+
+<ul>
+<li>use dialyzer to prevent unexpected type errors and invalid states.</li>
+<li>use code formatters</li>
+<li>let it crash. do not try to massage unusable data into acceptable data.</li>
+</ul></li>
+<li>If things go wrong, they won’t go wrong in the places you planned (no logging, few metrics -&gt; 0 knowledge). So learn how to introspect the VM, how to use tracing, dig information (Erlang in Anger)</li>
+</ul></li>
+<li>Make “unknown” irrelevant: Group bugs and handle them the same way
+
+<ul>
+<li>Redundancy: one node breaks, send traffic to another nodes. No matter what the bug is -&gt; overcome it.</li>
+<li>Supervisors theory: types, how they start their children (depth-first)</li>
+<li>how system works - is an easy stuff. how do you want the system to fail?</li>
+<li>Supervisors theory: how to restart/fail</li>
+</ul></li>
+<li>Return error, let those, who has context, to decide.</li>
+<li>Drop messages, if you can’t handle them or use dead letter queue. (new message type, that is not handled yet, …)</li>
+<li>how can you know your supervision tree is right?
+
+<ul>
+<li>Chaos Eng</li>
+<li>= property-based testing suite
+<figure>
+    <img src="/images/0191_2.png"/> 
+</figure>
+
+￼</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0186/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0192/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.718055 &#43;0400 &#43;04 m=&#43;0.078573610">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

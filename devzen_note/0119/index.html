@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0119 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0119</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="dropbox-pops">DropBox &amp; PoPs</h1>
+
+<p><a href="https://blogs.dropbox.com/tech/2016/11/infrastructure-update-pushing-the-edges-of-our-global-performance/">https://blogs.dropbox.com/tech/2016/11/infrastructure-update-pushing-the-edges-of-our-global-performance/</a></p>
+
+<ul>
+<li>180ms for the light to traverse Pacific Ocean</li>
+<li>90ms to traverse Atlantic Ocean</li>
+<li>TCP slows down everything (установить соединение)</li>
+<li>Proxy in CA, Texas, NewYork, Washington, UK, Netherlands, Germany, Japan, Singapore, HongKong</li>
+<li>User connects to these proxy (TLS, TCP handshake)</li>
+<li>Backbone links PoP &lt;-&gt; Datacenter to min average Round Trip Time per HTTPS request (Магистральная “опорная” сеть?)</li>
+<li>Open Peering: Major ISPs (Internet Service Provider) route Dropbox traffic through their network (400 ISPs)</li>
+<li>Своя собственная магистральная сеть??? Сколько стоит?</li>
+</ul>
+
+<h1 id="helm-2-0">HELM-2.0</h1>
+
+<p><a href="https://deis.com/blog/2016/helm-is-now-stable/">https://deis.com/blog/2016/helm-is-now-stable/</a></p>
+
+<ul>
+<li>Helm-classical was inspired by homebrew(!) github.com/helm/helm</li>
+<li>Jan 2016: Deis core team joined Google, Skippbox, Bitnami -&gt; next Helm</li>
+<li>github.com/kubernetes/helm</li>
+<li>packages = charts</li>
+<li>stable (MariaDB, RedMine, Jenkins)</li>
+<li>incubator (cutting-edge Kubernetes features). May not work on all clusters.</li>
+<li>Future:
+
+<ul>
+<li>Helm plugins</li>
+<li>starter packs</li>
+<li>chart verification tests</li>
+<li>security</li>
+<li>more authentication options</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0118/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0120/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.728478 &#43;0400 &#43;04 m=&#43;0.088996243">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0208 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0208</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="introducing-thanos-prometheus-at-scale">Introducing Thanos: Prometheus at scale</h1>
+
+<p><a href="https://improbable.io/games/blog/thanos-prometheus-at-scale">https://improbable.io/games/blog/thanos-prometheus-at-scale</a></p>
+
+<ul>
+<li>Prometheus: simple and reliable</li>
+<li>Problem: can’t scale: Petabytes of historic data,</li>
+<li>Default solution: <a href="https://github.com/prometheus/prometheus/blob/master/docs/federation.md#hierarchical-federation">Hierarchical Federation</a>
+<figure>
+    <img src="/images/0208_1.png"/> 
+</figure>
+
+
+<ul>
+<li>Leaf-prometheus servers, one meta-Prometheus server</li>
+<li>Problems:
+
+<ul>
+<li>Configuration</li>
+<li>Add  one more single point of failure</li>
+<li>Complex rules to expose only certain data on the federated endpoint</li>
+<li>Not all data is available from a single query API</li>
+</ul></li>
+</ul></li>
+<li>Another solution: HA pairs of Prometheus servers
+
+<ul>
+<li>independently collect data -&gt; problem with deduplication</li>
+</ul></li>
+<li>Prometheus 2.0: total number of time series doesn’t impact server performance</li>
+<li>Downsampling: reduce sampling rate (to see the big picture)</li>
+<li>Thanos:
+<figure>
+    <img src="/images/0208_2.png"/> 
+</figure>
+
+
+<ul>
+<li>Prometheus Sidecar to store and query data</li>
+<li>Querier: request data from all the sidecars, then run PromQL query agains the data (deduplication from HA pairs)</li>
+<li>Object storage to store historic data in cloud storage. Align data (how?)</li>
+<li>Immutable data: you can always write blocks to storage
+<figure>
+    <img src="/images/0208_3.png"/> 
+</figure>
+</li>
+<li>Store component. Gossip -&gt; are treated like Sidecar, used to cache and handle data in Storages
+<figure>
+    <img src="/images/0208_4.png"/> 
+</figure>
+</li>
+<li>Files are large, slow to download =&gt; Store Gateway caches index parts of files, smart query planner =&gt; minimize requests to storage (get part of a file). 4-6 orders of magnitude faster than naive implementation.</li>
+<li>=&gt; hard to distinguish object storage requests from local ssd requests</li>
+<li>Compactor: apply Prometheus local compaction (downsampling) to the Object Storage.</li>
+<li>Ruler: evaluates rules and alerts against Thanos Queriers. Then they are backed up to the Object Stores.</li>
+<li>How to migrate from Prometheus (sequence of steps)
+<figure>
+    <img src="/images/0208_5.png"/> 
+</figure>
+
+￼</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0207/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0209/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.716467 &#43;0400 &#43;04 m=&#43;0.076985460">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

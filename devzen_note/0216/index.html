@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0216 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0216</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="maelstrom-mitigating-datacenter-level-disasters-by-draining-interdependent-traffic-safely-and-efficiently">Maelstrom: mitigating datacenter-level disasters by draining interdependent traffic safely and efficiently</h1>
+
+<p><a href="https://blog.acolyer.org/2018/10/24/maelstrom-mitigating-datacenter-level-disasters-by-draining-interdependent-traffic-safely-and-efficiently/amp/">https://blog.acolyer.org/2018/10/24/maelstrom-mitigating-datacenter-level-disasters-by-draining-interdependent-traffic-safely-and-efficiently/amp/</a></p>
+
+<ul>
+<li>4+ year of experience dealing with datacenter outages at Facebook</li>
+<li>Maelstrom = system FB use in prod to mitigate and recover from DC-level disasters</li>
+<li>Idea: drain traffic away from the failed DC, move it to another DC</li>
+<li>4+ years, 100+ disasters =&gt; 1 disaster per 2 weeks!! (DC-wide incident)</li>
+<li>3 valuable contributions:
+
+<ul>
+<li>The description of the Maelstrom</li>
+<li>An explanation of drain tests as they are practiced at FB</li>
+<li>Hard-won wisdom and expectation settings for rolling out similar capabilities in your own organization</li>
+</ul></li>
+<li>Traffic types:
+<figure>
+    <img src="/images/0216_1.png"/> 
+</figure>
+</li>
+<li>Maelstrom is used to execute recovery runbooks:
+
+<ul>
+<li>to drain traffic out of the datacenter</li>
+<li>to restore traffic back</li>
+</ul></li>
+<li>Runbooks are made of tasks. Dependencies between tasks.
+<figure>
+    <img src="/images/0216_2.png"/> 
+</figure>
+</li>
+<li>Every service maintains its own service-specific runbook</li>
+<li>If an entire datacenter is down - datacenter evacuation runbook is used. Such a runbook aggregates a collection of service-specific runbooks.</li>
+<li>Collection of task templates</li>
+<li>Task has health metrics, pre-conditions, post-conditions and dependencies</li>
+<li>Library for common operations (LB to alter traffic, migrate shards, etc)</li>
+<li>Maelstrom Runtime: Scheduler (correct order of tasks) + Executor (execute tasks + validate results)</li>
+<li>Maelstrom compares the duration of each task to 75th percentile (stuck? -&gt; alert)</li>
+<li>Feedback loop to pace the speed of traffic drains based on monitoring</li>
+<li>Drain Testing</li>
+<li>Runbook should be changed if the system is changed -&gt; stale</li>
+<li>Drain test - is to verify and build trust in the runbook</li>
+<li></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0215/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0217/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.711666 &#43;0400 &#43;04 m=&#43;0.072184627">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

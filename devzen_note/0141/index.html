@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0141 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0141</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="vcorfu-a-cloud-scale-object-store-on-a-shared-log">vCorfu: A cloud-scale object store on a shared log</h1>
+
+<p><a href="https://blog.acolyer.org/2017/05/03/vcorfu-a-cloud-scale-object-store-on-a-shared-log/">https://blog.acolyer.org/2017/05/03/vcorfu-a-cloud-scale-object-store-on-a-shared-log/</a></p>
+
+<ul>
+<li>distributed shared log (CORFU)</li>
+<li>vCorfu combines a distributed shared log as in CORFU with materialized streams that store replicas of ojbect-specific subsets of the log data (one stream per object)</li>
+<li>=&gt; vCorfu uses state machine replication to reconstruct the state of an object by replaying the log.</li>
+<li>With materialized stream we don’t store the whole log: just the updates</li>
+<li>but we still have full log</li>
+<li>Like Corfu. vCorfu uses a sequencer to issue log address tokens</li>
+<li>Like Corfu, vCorfu uses a client-side mapping (layouts) how offsets in the global log or in a given materialize stream map to replicas</li>
+<li>Like Corfu, vCorfu moves from one configuration (layout) to another using epochs, sealing, Paxos-based protocol to ensure all replicas agree on the current layout.</li>
+<li>!!!Recovery: vCorfu can tolerate failures as long as a log replica and stream relpica do not fail simultaneously. Log -&gt; stream or stream -&gt; log</li>
+<li>4 roundtrips to write an update</li>
+<li>Client runtime</li>
+<li>local object view - remote object view</li>
+<li>Composable state machine replication (hash map of hash maps)</li>
+</ul>
+
+<p>IMHO:
+- Сложная логика записи (4 раундтрипа для записи)
+- «Уникальная форма устойчивости к падениям» (упадут все stream replicas -&gt; можно восстановить из логов)
+- client runtime, что сложно
+- client-side state machine
+- аннотации в программе для</p>
+
+<h1 id="efficient-memory-disaggregation-with-infiniswap">Efficient memory disaggregation with Infiniswap</h1>
+
+<p><a href="https://blog.acolyer.org/2017/05/05/efficient-memory-disaggregation-with-infiniswap/">https://blog.acolyer.org/2017/05/05/efficient-memory-disaggregation-with-infiniswap/</a></p>
+
+<ul>
+<li>Why</li>
+<li>Быстрая сеть</li>
+<li>Использовать память удаленной машины вместо локального диска</li>
+<li>RDMA: remote direct memory access: CPU удаленной машины не используется</li>
+<li>Для OS - virtual block device, поэтому не надо изменять приложения и OS</li>
+<li>Надо иметь несбалансированные ноды (Google, Facebook: 70% машин кластеров несбалансированы)</li>
+<li>Использование памяти на каждой ноде должно быть стабильным (изменение &lt; 10% по памяти за след. 10секунд : P = 0.74)</li>
+<li>Выигрыш может быть очень большим 99%-ile latency increase by 71.5x и 21.5x для VoltDB и Memcached</li>
+<li>Практика:
+
+<ul>
+<li>56Gbps, 32-nodes RDMA cluster with infiniswap</li>
+<li>VoltDB, Memcached, PowerGraph, GraphX, Apache Spark</li>
+<li>throughput: 4x-15.4x</li>
+<li>tail latency: 5.4x - 61x</li>
+<li>1.47x cluster memory utilization</li>
+</ul></li>
+<li>How it works</li>
+<li>Two components: block device (kernel module) and daemon</li>
+<li>Block device divides the address space into slabs and maps them across many machines’ remote memory. Paging happens at page granualrity via RDMA</li>
+<li>page-outs - written to remote memory with RDMA and async to disk</li>
+<li>page-in - read from memory (if mapped) or from local disk</li>
+<li>if a remote machine fails - infiniswap relies on the remaining remote memory and the local backup disk.</li>
+<li>No coordinator -&gt; no single point of failure</li>
+<li>Exponential Moving average of page activity: 20 per second -&gt; hot -&gt; mark for remote mapping</li>
+<li>Two choices (one of machines that have slab of this block device - and one of that don’t). Who has the lowest memory usage - will be used.</li>
+</ul>
+
+<h1 id="google-federated-learning">Google Federated Learning</h1>
+
+<p><a href="http://muratbuffalo.blogspot.ru/2017/04/paper-summary-federated-learning.html">http://muratbuffalo.blogspot.ru/2017/04/paper-summary-federated-learning.html</a>
+<a href="https://research.googleblog.com/2017/04/federated-learning-collaborative.html">https://research.googleblog.com/2017/04/federated-learning-collaborative.html</a></p>
+
+<ul>
+<li>Распределенное? - автономное? обучение</li>
+<li>Все устройства учатся распределенно, не отправляя в гугл личные данные</li>
+<li>Загружает текущую модель, локально ее модифицирует - и отправляет патч обратно.</li>
+<li>Пришлось придумать, как это должно работать, когда устройства часто не в сети, имеют маленькую пропускную способность и большие latency.</li>
+<li>Сделали paper «Federated Average Algorithm» (<a href="https://arxiv.org/abs/1602.05629">https://arxiv.org/abs/1602.05629</a>), который требует 10-100x меньше коммуникаций, по сравнению с наивной версией fedrated «Стохастического Градиентного Спуска» (<a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">https://en.wikipedia.org/wiki/Stochastic_gradient_descent</a>)</li>
+<li>Общая идея - телефоны достаточно мощные, чтобы пересылать не простые градиентные шаги, больше шагов локально - меньше объем передачи.</li>
+<li>Загрузка долгая - компактизация результатов (100x)</li>
+<li>Применяется как для обучения deep networks, так и для других задач</li>
+<li>Запуск на миллионах устройств - тоже сложная задача. По сути, на каждом устройстве запускается локальная версия TensorFlow. работа осуществляется, когда подключено к питанию и бесплатной (?) сети.</li>
+<li>Secure Aggregation Protocol (<a href="http://eprint.iacr.org/2017/281">http://eprint.iacr.org/2017/281</a>), который позволяет произвести расшифровку данных, только одновременно для 100s-1000s пользовательских телефонов, но не для индивидуальных данных с одного телефона</li>
+<li>Итого, гугл получает два плюса (учится на пользовательских данных + использует чужие CPU), пользователь -только один (его данные не используются, но в целом система улучшается)</li>
+</ul>
+
+<h1 id="paper-communication-efficient-learning-of-deep-networks-from-decentralized-data">Paper &ldquo;Communication-Efficient Learning of Deep Networks from Decentralized Data&rdquo;</h1>
+
+<p><a href="https://arxiv.org/pdf/1602.05629.pdf">https://arxiv.org/pdf/1602.05629.pdf</a></p>
+
+<ul>
+<li>Узкое место смартфонов - передача данных. Передать все данные в облако - не получится, можно провести первичную обработку и послать результаты</li>
+<li>upload rate = <sup>1</sup>&frasl;<sub>3</sub> of download rate - нужно максимально компактизировать данные при отправке</li>
+<li>применяется для приложений:
+
+<ul>
+<li>классификация изображений: предсказание, какие скорее всего будут посмотрены и пошарены</li>
+<li>моделирование языка: улучшение распознавания голоса и введение текста на клавиатурах телефонов</li>
+<li>Гугл уже применяет распределенное обучение для GBoard клавиатуры для андроида для улучшения введения текстов</li>
+</ul></li>
+<li>Алгоритм:
+
+<ul>
+<li>Sync update scheme in rounds of communications</li>
+<li>Set of K clients (with local datasets)</li>
+<li>At the beginning of each round, peek C of workers</li>
+<li>global alg state is sent to C workers (actually, model parameters)</li>
+<li>each worker perform local computation based on the global state and its local dataset, and sends an update to the server.</li>
+<li>Server applies updates to the global state (by averaging) and repeat the round</li>
+</ul></li>
+<li>Alg is the same as usual, differences:
+
+<ul>
+<li>subset of workers</li>
+<li>workers work on local dataset, may do multiple iterations on the local-model-update</li>
+<li>the model, not the gradients is transmitted back</li>
+</ul></li>
+<li>Alg parameters:
+
+<ul>
+<li>C, workers number</li>
+<li>E, number of training passes each worker makes over its local dataset</li>
+<li>B, local minibatch size (B== infinity -&gt; full local dataset is used)</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0138/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0142/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.724615 &#43;0400 &#43;04 m=&#43;0.085133597">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

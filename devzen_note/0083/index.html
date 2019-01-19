@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0083 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0083</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="rebar3">rebar3</h1>
+
+<p><a href="http://lists.basho.com/pipermail/rebar_lists.basho.com/2016-March/002342.html">http://lists.basho.com/pipermail/rebar_lists.basho.com/2016-March/002342.html</a></p>
+
+<ul>
+<li>in github.com/erlang !</li>
+<li><code>rebar3 shell</code>: code paths, boots up applications.</li>
+<li>rebar agent as r3 with a name: r3:do(compile) r3:do(dialyse)</li>
+<li>r3 name can be used for IDE tooling</li>
+<li>plugins for rebar3 agent: rebar3_auto recompiles  modified files</li>
+<li>rebar3 shell detect release configurations, so boot the system the way release would</li>
+<li><code>rebar3 tree</code> to see the deps tree (first wins deps resolution strategy)</li>
+<li><code>overrides</code> feature. allow replace or add configuration for an app at a lower level (deps)</li>
+<li><code>profiles</code> feature to manage env and options</li>
+<li>test profile - use neck, eunit_opts, etc</li>
+<li>release profile - to add erts</li>
+<li><code>dependency tracking</code> feature</li>
+<li>each time it runs <code>compile</code> it’ll verify deps</li>
+<li>hex packages are cached</li>
+<li><code>rm -rf deps</code> is not needed anymore</li>
+<li>tradeoff between repeatability and efficiency for developer</li>
+<li>deps are never rebuilt even if sources are changed by hands</li>
+<li><code>checkout dependencies</code> feature with <code>_checkout</code> directory that is used at first place</li>
+<li>if sources for deps are changed in <code>_checkout</code>, they’re recompiled and used</li>
+</ul>
+
+<h1 id="paper-borg-omega-kubernetes">Paper &ldquo;Borg, Omega, Kubernetes&rdquo;</h1>
+
+<p><a href="http://queue.acm.org/detail.cfm?id=2898444">http://queue.acm.org/detail.cfm?id=2898444</a></p>
+
+<ul>
+<li><strong>Borg</strong> - run long lived processes + batch jobs</li>
+<li><strong>Omega</strong> - offspring of Borg. Stored the state of the cluster in a centralised Paxos-based transaction-oriented store, that was accessed by different parts of the cluster control plane (schedulers). Optimistic concurrency control. Instead of Borgmaster - several peers</li>
+<li><strong>Kubernetes</strong> - open sourced. Also shared persistent store, with components watching for changes to relevant objects. Store is access through REST API. Focus on the experience of developers writing complex distributed systems, also benefits from improved utiziation.</li>
+<li><strong>Containers</strong>. FreeBSD jails -&gt; Linux cgroups. Resource isolation + image.</li>
+<li><strong>Application-oriented Infrastructure</strong>. Containerization transforms the data center from being machine oriented to being application oriented:
+
+<ul>
+<li>Container abstracted away many details of machine and OS from developer.</li>
+<li>container + container image -&gt; for one application =&gt; managing containers means managing apps, not machines.</li>
+<li>the same deployment environment in both development and production</li>
+<li>improves deployment reliability</li>
+<li>speeds up development by reducing inconsistencies and friction.</li>
+<li>isolation is not complete: /proc is not fully supported. All hopes are for the OpenContainer initiative</li>
+<li>Borg showed problems with updating base OS image (tar, libc, etc), though, all applications are statically linked</li>
+<li>Docker and ACI images are more <em>hermetic</em>,</li>
+</ul></li>
+<li><strong>Containers as the unit of management.</strong>
+
+<ul>
+<li>application developers don’t worry about OS or machine details</li>
+<li>easy hardware update and OS update</li>
+<li>ties telemetry to the application rather than machine, improves monitoring and introspection</li>
+<li>provide convenient points to register geenric APIs (health for container, etc)</li>
+<li>logs are collected by applications, not machines</li>
+</ul></li>
+<li><strong>Orchestration is the beginning, not the end</strong>
+
+<ul>
+<li>Consistency is achieved with: higher level services all share the same common basic building blocks. Autoscaling +  replica controller.</li>
+<li>Consistency is also achieved though common design patterns for different k8s components. Reconciliation controller loop: compare a desired state against the observed state =&gt; takes actions. Fail -&gt; repeat.</li>
+<li>Choreography - achieving the desired behaviour by combining the effects of separate, autonomous entities that collaborate. Contrast - Orchestration - centralized one, more simple at first, but more difficult to support.</li>
+</ul></li>
+<li><strong>Things to avoid</strong>
+
+<ul>
+<li>Don&rsquo;t Make the Container System Manage Port Numbers</li>
+<li>Don&rsquo;t Just Number Containers: Give Them Labels</li>
+<li>Be Careful with Ownership Borg: job -&gt; task.  Kubernetes: replication controller uses label selector. Remove label -&gt; start new container, while the old is available for debug.</li>
+<li>Don&rsquo;t Expose Raw State</li>
+</ul></li>
+<li>Some Open, Hard Problems
+
+<ul>
+<li>Configuration. set of values supplied to applications, rather than hard-coded into them.</li>
+<li>Dependency Management</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0079/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0082/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.736458 &#43;0400 &#43;04 m=&#43;0.096976761">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

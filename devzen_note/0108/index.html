@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0108 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0108</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="wisdom-about-erlang-beam-and-vm">Wisdom about Erlang BEAM  and VM</h1>
+
+<p><a href="http://beam-wisdoms.clau.se/">http://beam-wisdoms.clau.se/</a></p>
+
+<ul>
+<li>Explain like I&rsquo;m 5 (ELI5)</li>
+<li>More detailed material</li>
+</ul>
+
+<h1 id="keystroke-recognition-using-wifi-signals">Keystroke Recognition Using WiFi Signals</h1>
+
+<p><a href="https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf">https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf</a></p>
+
+<ul>
+<li>TP-Link + Lenovo X200</li>
+<li>Распознавание напечатанного по анализу сигнала wifi</li>
+<li>Значение - результат трех эффектов: затухание, multi-paths and Doppler shift</li>
+<li>Три сложности:
+
+<ul>
+<li>распознать начало и окончание нажатия (алгоритм предложили для приблизительного выяснения)</li>
+<li>выделение свойств каждого сигнала для того, чтобы распознавать 37 знаков (10 цифр, 26 букв и пробел). Много сэмплов -&gt; Дискретное Вейвлет Преобразование. Результат - как свойства</li>
+<li>сравнение “shape features” для разных нажатий. Начало и конец всегда неточные, поэтому даже середину сложно выделить. Также отличаются длительности нажатий клавиш. Плюс, даже нажатия одной клавиши может сильно отличаться -&gt; Используют “Алгоритм динамической трансформации временно́й шкалы” (Dynamic time Warping”)</li>
+</ul></li>
+<li>93,5% - точность распознавания одного символа в непрерывной последовательности символов.</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0107/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0109/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.729899 &#43;0400 &#43;04 m=&#43;0.090417818">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

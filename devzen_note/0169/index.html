@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0169 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0169</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="paper-shedding-too-much-light-on-a-microcontroller-s-firmware-protection">Paper &ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&rdquo;</h1>
+
+<p><a href="https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf">https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf</a></p>
+
+<ul>
+<li>Every microcontroller has firmware readout protection</li>
+<li>Checked only STM32F0 family (entry-level microcontroller)</li>
+<li>Paper:
+
+<ul>
+<li>analysis of 3 security core components</li>
+<li>detection of 3 weknesses + 3 ideas for their exploitation
+
+<ul>
+<li>Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1</li>
+<li>Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting</li>
+<li>Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1</li>
+</ul></li>
+<li>Proof of Concept for each weakness =&gt; vulnerabilities</li>
+<li>discussion of impact</li>
+</ul></li>
+<li>STM32 Security Concept</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0168/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0171/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.72077 &#43;0400 &#43;04 m=&#43;0.081288054">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

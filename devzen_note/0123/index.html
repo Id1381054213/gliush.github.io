@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0123 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0123</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="kubernetes-1-5-0">Kubernetes-1.5.0</h1>
+
+<p><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.5.md#v150">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.5.md#v150</a></p>
+
+<ul>
+<li>StatefuleSets for: stable network id, persistent storage, ordered deployment and termination</li>
+<li>Federation: DaemonSets, Deployments, ConfigMaps</li>
+<li>OpenAPI spec is beta for APIServer, python client</li>
+<li>Выпустили 1.5.1 - надо пропускать 1.5.0</li>
+<li>&ndash;anonymous-auth=  true by default</li>
+</ul>
+
+<h1 id="three-states-and-a-plan-the-a-i-of-f-e-a-r">Three States and a Plan: The A.I. of F.E.A.R.</h1>
+
+<p><a href="http://alumni.media.mit.edu/~jorkin/gdc2006_orkin_jeff_fear.pdf">http://alumni.media.mit.edu/~jorkin/gdc2006_orkin_jeff_fear.pdf</a></p>
+
+<ul>
+<li>Two state: Animate and Goto</li>
+<li>not FSM for satte</li>
+<li>FSM: how to behave in every situation. Procedural</li>
+<li>Planning system: set goals and actions and AI decide how to sequence actions to satisfy goals. Declarative</li>
+<li>STRIPS planning (STanford Research Institute Problem Solver). Actions: [preconditions] -&gt; [effects]</li>
+<li>Goal: eliminate thread:
+
+<ul>
+<li>Fire gun? Load it first</li>
+<li>Melee atack? Move close</li>
+</ul></li>
+<li>GameDesign: Edit scene: add goal for any scene</li>
+<li>Soldier, Assasin, Rat - the same goal, different ActionSets</li>
+<li>Benefit1: decoupling goals and actions</li>
+<li>Benefit2: Layering behaviours:
+
+<ul>
+<li>KillEnemy</li>
+<li>Dodge goal</li>
+<li>AtackMelee action</li>
+<li>GoToNode (cover) -&gt; then KillEnemy (no general plan, switch goals)</li>
+<li>KillEnemyFromCover action</li>
+<li>BlindFireFromCover action</li>
+<li>Ambush goal (change position to a safer place)</li>
+</ul></li>
+<li>Benefit3: Dinamic Problem Solving</li>
+<li>Differences from STRIP:
+
+<ul>
+<li>1. Cost per action. -&gt; Graph of actions from current state to goal, A* to find optimal actions</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0122/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0126/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.726748 &#43;0400 &#43;04 m=&#43;0.087266350">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

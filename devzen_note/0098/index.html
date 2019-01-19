@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0098 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0098</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="docker-1-12">Docker-1.12</h1>
+
+<p><a href="https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/">https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/</a></p>
+
+<ul>
+<li>built-in orchestration. One binary (git style?)</li>
+<li>docker swarm init - creates a Raft with one node. Adding nodes either worker (default) or managers</li>
+<li>PR: docker design is based on 4 principles</li>
+<li>resilience: restart container on another node if a node fails</li>
+<li>Security: TLS, certificate rotation 30min,</li>
+<li>Bundles: image + network + network of containers interaction</li>
+<li>gRPC for inter-node communication (HTTP/2 multiplexing and header compression)</li>
+<li>protobufs</li>
+</ul>
+
+<h1 id="erlang-19-0">Erlang-19.0</h1>
+
+<p><a href="http://erlang.org/download/otp_src_19.0.readme">http://erlang.org/download/otp_src_19.0.readme</a></p>
+
+<ul>
+<li>erts: trace improved, microstate accounting</li>
+<li>compiler: ?FUNCTION_NAME, ?FUNCTION_ARITY</li>
+<li>stdlib: gen_fsm -&gt; gen_statem (“not quite experimental”)</li>
+<li>process_info(message_queue_data)</li>
+<li>Unix Domain Sockets (read code, no docs)</li>
+<li>parser doesn’t insert “undefined” value to records</li>
+<li>TADAM: compiler no long put compilation date into BEAM!!! (md5 - comparison if beam is the same as in memory)</li>
+</ul>
+
+<h1 id="property-based-testing-basics">Property based testing basics</h1>
+
+<p><a href="http://ferd.ca/property-based-testing-basics.html">http://ferd.ca/property-based-testing-basics.html</a></p>
+
+<ul>
+<li>To write property testing is hard. You should understand the property</li>
+<li>Writing a model (duplicating code?)</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0097/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0100/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.733012 &#43;0400 &#43;04 m=&#43;0.093530786">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

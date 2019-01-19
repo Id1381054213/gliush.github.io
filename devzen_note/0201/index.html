@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0201 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0201</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="xars-an-efficient-system-for-self-contained-executables">XARs: An efficient system for self-contained executables</h1>
+
+<p><a href="https://code.fb.com/data-infrastructure/xars-a-more-efficient-open-source-system-for-self-contained-executables/">https://code.fb.com/data-infrastructure/xars-a-more-efficient-open-source-system-for-self-contained-executables/</a></p>
+
+<ul>
+<li>XAR: eXecutable ARchive to distribute software</li>
+<li>Alternative: PEX = self-contained Python virtual environments</li>
+<li>1 file</li>
+<li>highly compressed</li>
+<li>all deps included</li>
+<li>can be run from anywhere in the system</li>
+<li>Python, Lua applications, Node.js applications, C++ exe and data files</li>
+<li>Initially: PAR (Python Archive), that decompress to tmp folder, run in folder</li>
+<li>Problems: decompressing each time, cleanup</li>
+<li>Alternative: PEX: decompress once, reuse it</li>
+<li>XAR uses squashfs files (mount before use, unmount after idle timeout)</li>
+<li>“nearly zero overhead” in prod</li>
+<li>Benchmark:
+<figure>
+    <img src="/images/0201_1.png"/> 
+</figure>
+</li>
+<li>XAR:
+
+<ul>
+<li>4kb preamble = shebang pointing to a helper executable</li>
+<li>helper tool xarexec_fuse that knows how to read optionally mount, and execute content</li>
+<li>FUSE filesystem squashfs with zstd compression</li>
+</ul></li>
+</ul>
+
+<h1 id="11-ways-not-to-get-hacked-in-k8s">11 Ways (Not) to Get Hacked in k8s</h1>
+
+<p><a href="https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/">https://kubernetes.io/blog/2018/07/18/11-ways-not-to-get-hacked/</a></p>
+
+<ul>
+<li>CONTROL PLAN
+
+<ul>
+<li>1. TLS Everywhere (between every component on the master, between Kubelet and API server)
+<figure>
+    <img src="/images/0201_2.png"/> 
+</figure>
+</li>
+<li>Autoscaling: we should scale k8s instances, but shouldn’t include tls key into the image</li>
+<li>Kubelet TLS bootstrapping documentation (didn’t read): add low-permissions keys to generate a proper key, auto-approve.
+<figure>
+    <img src="/images/0201_3.png"/> 
+</figure>
+</li>
+<li>2. Enable RBAC with least privilege, disable ABAC, monitor logs</li>
+<li>3. Use Third-party Auth for API Server: Google, Github, Dex (OpenID Connect Identity), … Single point to add/remove members, add/revoke permissions, 2FA, etc.</li>
+<li>4. Separate and Firewall your etcd Cluster Ability to write to etcd = have root on entire cluster. etcd should be on separate nodes, TLS certificates to work with it, firewall rules to allow access from API server only</li>
+<li>5. Rotate Encryption Keys. Some keys are rotated automatically (kubelet certs), but not all</li>
+</ul></li>
+<li>WORKLOADS
+
+<ul>
+<li>6. Use Linux Security Features (SELinux, AppArmor, seccomp-bpf, …) and PodSecurityPolicies PodSecurityPolicy = cluster-level resource, that controls security aspects of pod spec.</li>
+<li>7. Statically Analyze YAML (kubesec <a href="https://kubesec.io">https://kubesec.io</a>), run unit tests for k8s configs (<a href="https://github.com/garethr/kubetest) Shift">https://github.com/garethr/kubetest) Shift</a> left testing concept <a href="https://en.wikipedia.org/wiki/Shift_left_testing">https://en.wikipedia.org/wiki/Shift_left_testing</a></li>
+<li>8. Run containers as a Non-Root User.  Run as a Root in the container =&gt; you have root permissions on host. Container breakouts is needed, but risk is higher.</li>
+<li>9. Use Network Policies (restrict all pod-to-pod traffic)</li>
+<li>10. Scan Images and Run IDS (Intrusion Detection Systems). Admission controller gates - to check the Deployment/Pod/… Check content, mutate content. A lot of open-source scanners that prevent releasing containers with known vulnerabilities <a href="https://github.com/coreos/clair https://github.com/aquasecurity/microscanner Zero-day">https://github.com/coreos/clair https://github.com/aquasecurity/microscanner Zero-day</a> vulnerabilities - will alway exists, IDS should be added. Detects unusual behaviours in a container, pause or kills it: <a href="https://sysdig.com/product/secure/">https://sysdig.com/product/secure/</a></li>
+</ul></li>
+<li>FUTURE
+
+<ul>
+<li>11. Run a Service Mesh</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0200/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0206/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.716769 &#43;0400 &#43;04 m=&#43;0.077287363">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

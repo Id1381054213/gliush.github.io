@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0079 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0079</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="rust-for-web">Rust for Web</h1>
+
+<p><a href="https://medium.com/@eugeniyoz/restful-api-in-rust-impressions-63250d611d15#.8p6pzohow">https://medium.com/@eugeniyoz/restful-api-in-rust-impressions-63250d611d15#.8p6pzohow</a></p>
+
+<ul>
+<li>Разработчик переходил на Rust с PHP, опыта в Rust было 0</li>
+<li>Кратко про ownership, говорит, что очень, очень помогает.</li>
+<li>Компилятор: враг -&gt; союзник; debugging более дорогой, чем написание кода</li>
+<li>cargo - супер штука</li>
+<li>IDE: IntelliJ IDEA</li>
+<li>syntax: недоволен, но готов мириться ради функциональности</li>
+<li>JSON: pain</li>
+</ul>
+
+<h1 id="paper-time-is-illusion">Paper &ldquo;Time is illusion&rdquo;</h1>
+
+<p><a href="http://queue.acm.org/detail.cfm?ref=rss&amp;id=2878574">http://queue.acm.org/detail.cfm?ref=rss&amp;id=2878574</a></p>
+
+<ul>
+<li>Мало кто читал “Time, Clocks и порядок событий в распределенной системе”</li>
+<li>чуть больше воспринимает всерьез эту проблему.</li>
+<li>Любое обсуждение: synchronisation and syntonization</li>
+<li>Синхронизация: когда два компьютера “одновременно”, что время, скажем, 22:30. min/sec/ms/qs</li>
+<li>Syntonization - это качество единицы измерения. При нагреве - кварц увеличивает частоту.</li>
+<li>Более дорогие кристаллы - точнее, поэтому полно плохих кристаллов. За часы - на минуты может уйти.</li>
+<li>В ОС есть набор программ для регуляции этих изменений (как??). Но изнутри системы это сложно сделать.</li>
+<li>Покупать более дорогие машины - не вариант</li>
+<li>$1k за PCI-внешний генератор.</li>
+<li>API:
+
+<ul>
+<li>tradeoff: speed vs accuracy</li>
+<li>gettimeofday()</li>
+<li>BSD: clock_gettime + clock_getres(): PRECISE, FAST</li>
+<li>Linux: clock_gettime()</li>
+<li>CPU: rdtsc - single instruction to get On-Chip Time Stamp Counter: to measure function call</li>
+</ul></li>
+<li>Network Time Protocol(NTP)
+
+<ul>
+<li>stratum0 - caesium or rubidium</li>
+<li>stratum1 - connected to stratum0 via direct cable</li>
+<li>…</li>
+<li>stratum15</li>
+</ul></li>
+<li>Datacenter Time
+
+<ul>
+<li>PTP: Precision Time Protocol - (submicrosecond) от заводов, станков и сотовой связи приходит в наши сети.</li>
+<li>Используется в HFT (High Frequency Trading)</li>
+<li>Многие сетевухи научились воспринимать PTP пакеты.</li>
+<li>Мультикаст, PTP мастер и сейвы. Нет роутеров.</li>
+<li>Delay_request/delay_response - для определения one-way-delay.</li>
+<li>Предполагается, что нет Jitter (дрожания) времени передачи</li>
+</ul></li>
+<li>Future
+
+<ul>
+<li>Переключение на 10Gbps, 25-, 40, 100-Gbps сети потребует наносекунд, чтобы определять очередность прихода пакетов на разные хосты.</li>
+<li>10Гб сеть - пакеты могут приходить 67 нс задержкой.,</li>
+</ul></li>
+</ul>
+
+<h1 id="docker-1-10">Docker-1.10</h1>
+
+<p><a href="https://blog.docker.com/2016/02/docker-1-10/">https://blog.docker.com/2016/02/docker-1-10/</a></p>
+
+<ul>
+<li>Upgrade to docker-engine 1.10 takes time, to prevent downtime, read the upgrade doc</li>
+<li><a href="https://docs.docker.com/engine/migration/">https://docs.docker.com/engine/migration/</a></li>
+<li>DNS in container:</li>
+<li><a href="https://github.com/docker/libnetwork/issues/767">https://github.com/docker/libnetwork/issues/767</a></li>
+<li>Content addressable image IDs</li>
+<li>Live update container resource constraints</li>
+<li>Temporary filesystems: “—tmpfs” flag to “docker run”</li>
+<li>Constraints on disk I/O read/write bps/iops</li>
+<li>Swarm-1.1</li>
+<li>reschedule containers when a node fails</li>
+<li>Better node management: If Swarm fails to connect to a node, it will now retry instead of just giving up.</li>
+<li>Docker-machine-0.6</li>
+<li>new provision command</li>
+<li>Registry-2.3</li>
+<li>Performance + security</li>
+<li>layers are shared between different images (improve push performance)</li>
+</ul>
+
+<h1 id="rkt-1-0">rkt-1.0</h1>
+
+<p><a href="https://coreos.com/blog/rkt-hits-1.0.html">https://coreos.com/blog/rkt-hits-1.0.html</a></p>
+
+<ul>
+<li>15 months, 3000 commits, &gt;100 contributors</li>
+<li>stable interface and on-disk format</li>
+<li>advanced security capabilities (KVM-based container isolation, image signature validation, privilege separation)
+
+<ul>
+<li>image discovery and retrieval - without root. Execution - with root</li>
+<li>cgroups by default, Intel Clear Containers (KVM-based), and rkt fly</li>
+</ul></li>
+<li>run existing Docker images and standards-based App Container Images</li>
+<li>community: Arch, CoreOS, Ubuntu,Fedora, NixOS, etc</li>
+<li>open container initiative</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0078/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0083/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.736835 &#43;0400 &#43;04 m=&#43;0.097353748">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

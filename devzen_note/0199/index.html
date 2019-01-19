@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0199 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0199</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="kubernetes-1-11">Kubernetes-1.11</h1>
+
+<p><a href="https://habr.com/company/flant/blog/415349">https://habr.com/company/flant/blog/415349</a> + <a href="https://kubernetes.io/blog/2018/06/27/kubernetes-1.11-release-announcement">https://kubernetes.io/blog/2018/06/27/kubernetes-1.11-release-announcement</a></p>
+
+<ul>
+<li>сети: IPVS для внутри-кластерного балансирования нагрузки -&gt; stable. Не default по умолчанию. Лучше, чем iptables с точки зрения производительности и latency.</li>
+<li>CoreDNS - дефолт при установке через kubeadm^</li>
+<li>Beta: Динамическая конфигурация kubelet, можно менять настройку k8s инстансов -&gt; менять кластер на лету. До этого только через command line.</li>
+<li>Beta: возможность указывать sysctl настройки для отдельно взятого пода</li>
+<li><code>kubectl wait</code> для ожидания изменений по ресурса (удалены)</li>
+</ul>
+
+<h1 id="python-3-7">Python-3.7</h1>
+
+<p><a href="http://www.opennet.ru/opennews/art.shtml?num=48859">http://www.opennet.ru/opennews/art.shtml?num=48859</a> + <a href="https://docs.python.org/3/whatsnew/3.7.html">https://docs.python.org/3/whatsnew/3.7.html</a></p>
+
+<ul>
+<li>Отложенная оценка аннотаций</li>
+<li>async + await - зарезервированные ключевые слова (обратно несовместимо, может сломать код)</li>
+<li>библиотека contextvars для контекстных переменных (TLS = thread-local-storage), корректно работающий с асинхронным кодом. Модули asyncio и decimal поправлены, чтобы тоже корректно работать с контекстными переменными.</li>
+<li>библиотека dataclass, для работы с data classes.</li>
+<li>breakbpoin() функция (pdb по умолчанию, либо можно переопределить)</li>
+<li>улучшения в .pyc файлах: раньше определялось по ts + size сравнению .py и .pyc. Проблема: ts не всегда достаточно. + повторяемость не работает (сборка в другое время поменяет .pyc). Теперь с помощью кэша файла исходников</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0194/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0200/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.717148 &#43;0400 &#43;04 m=&#43;0.077666075">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

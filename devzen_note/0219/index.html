@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0219 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0219</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="slow-software">Slow Software</h1>
+
+<p><a href="https://www.inkandswitch.com/slow-software.html">https://www.inkandswitch.com/slow-software.html</a></p>
+
+<ul>
+<li>Что знает “медленное” для пользователей?</li>
+<li>“Latency”, а не “пропускная способность”</li>
+<li>Проще всего это проверять на тач-интерфейсах. Дают пользователям две разных программы 1ms vs 70ms и просят сравнить. 70 - однозначно медленно, 1ms - очень быстро, где граница?</li>
+<li>Перетаскивание</li>
+<li>Когда перетаскивают что-то по экрану, пользователи чувствуют, когда latency увеличивается больше 2ms (зависит от человека)</li>
+<li>Рисование</li>
+<li>В Литературе можно найти данные, что приемлимый уровень задержек при рисовании “ручкой” - от 20 до 80мс. По факту, лучше не уходить от 20мс</li>
+<li>Нажатие кнопок</li>
+<li>Уровень чувствительности ~ 70мс</li>
+<li>Понятное дело, ни одна ОС не пытается минимизировать отклик до 1-2мс.</li>
+<li>Печатание</li>
+<li>Уровень чувствительности ~70ms</li>
+<li>Таблица с разными устройствами и задержка печати.
+
+<ul>
+<li>Apple IIe 30ms</li>
+<li>Macbook Pro 2014 100ms</li>
+<li>Samsung S3 150ms</li>
+</ul></li>
+<li>Работа с мышью</li>
+<li>Уровень чувствительности ~34ms</li>
+<li>Большой разброс, от единиц ms (хорошее hardware + аккуратное программирование), до &gt;100ms при плохом hw + неправильной работе с буферами io</li>
+<li>Приложения</li>
+<li>Какой правильный ответ про “отзывчивость приложений”?</li>
+<li>Один ответ - типичные “70ms” -&gt; вы будете замечать задержку между нажатием и изменением приложения.</li>
+<li>Сильно зависит от ожиданий пользователей. Никто не ждет, что вы нажмете кнопку, и страница откроется &lt; 70ms</li>
+<li>Google RAIL модель, “<100ms -> immediate result”</li>
+<li>Самая быстрая реакция человека ~220ms, но он еще должен успеть “подумать”</li>
+<li>Авторы думают, что ~100ms - это ок</li>
+<li>Real-world apps</li>
+<li>1000ms Google поиск - намного быстрее, чем большинство сайтов, но это все равно долго.</li>
+<li>Большинство “встроенных” в ОС приложений &lt; 100ms</li>
+<li>Куча приложений, которые намного хуже 100ms: Slack (о да!)</li>
+<li>Откуда идут задержки</li>
+<li>Устройства ввода</li>
+<li>Клавиатуры
+
+<ul>
+<li>Apple magic 15ms</li>
+<li>Kinesis Freestyle2 30ms</li>
+<li>Logitech mk360  60ms</li>
+</ul></li>
+<li>Мыши
+
+<ul>
+<li>от 1мс(!)</li>
+</ul></li>
+<li>“Sample rates” - сканирование входного канала. 60hz -&gt; 17ms
+
+<ul>
+<li>iphone 6-8 60hz</li>
+<li>iphone x 120hz</li>
+<li>ipad air2, mini4 60hz</li>
+<li>ipad pro 120hz</li>
+<li>ipad pro for stylus 240hz</li>
+</ul></li>
+<li>USB Scanning 125hz -&gt; 1000hz</li>
+<li>Displays
+
+<ul>
+<li>frame rate 60hz -&gt; 120hz -&gt; 144hz -&gt; 240hz</li>
+<li>физическое обновление цвета пикселя единицы - десятки ms</li>
+</ul></li>
+<li>GPU - частота работы + синхронизация с кодом приложения</li>
+<li>Суммироваться может с наложением проблем
+<figure>
+    <img src="/images/0219_1.png"/> 
+</figure>
+
+приложение 15ms, суммарно - 47ms</li>
+<li>Runtime overhead
+
+<ul>
+<li>Garbage collection. 10ms - Java / JS, но это весь бюджет отзывчиваости для перетаскивания объектов на touch screen.</li>
+<li>Scheduling - приложение может не исполняться в этот момент</li>
+</ul></li>
+<li>Latency by design
+
+<ul>
+<li>Концепция “долгого нажатия”</li>
+<li>Ждать какое-то время, чтобы отсечь “double-tap zoom” (safari)</li>
+</ul></li>
+<li>Враждебная пользователю задержка - подгрузка рекламы и пр.</li>
+<li>Код приложения - очевидная всем задержка</li>
+<li>Проссумировать все вместе - получается много даже если каждый элемент мал.</li>
+</ul>
+
+<h1 id="rebar-3-7-0">Rebar-3.7.0</h1>
+
+<p><a href="https://github.com/erlang/rebar3/releases/tag/3.7.0">https://github.com/erlang/rebar3/releases/tag/3.7.0</a></p>
+
+<ul>
+<li>Большой релиз</li>
+<li>Полная переработка работы с Hex пакетами, поддержка нового протокола hex v2, поддержка их новой концепции “private organization”, поддержка локальных зеркал и self-hosted индексов (!)
+
+<ul>
+<li>Hex позволяет приватные организации, надо платить деньги!!</li>
+</ul></li>
+<li>большая переработка системы плагинов вокруг кастомных компиляторов и провайдеров ресурсов</li>
+<li>собирать elixir приложения как зависимости внутри rebar3</li>
+<li>возможность собирать только зависимости (docker images)</li>
+<li>возможность поставить в тест брейкпоинт, чтобы получить repl консоль в точке</li>
+<li>внезапно понял, что большую часть этого релиза делал мой коллега, с которым мы следующий проект будем пилить</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0218/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0221/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.710439 &#43;0400 &#43;04 m=&#43;0.070956924">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

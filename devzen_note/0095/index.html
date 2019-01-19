@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0095 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0095</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="hypernetes-bringing-security-and-multi-tenancy-to-kubernetes">Hypernetes: Bringing Security and Multi-tenancy to Kubernetes</h1>
+
+<p><a href="https://kubernetes.io/blog/2016/05/hypernetes-security-and-multi-tenancy-in-kubernetes/">https://kubernetes.io/blog/2016/05/hypernetes-security-and-multi-tenancy-in-kubernetes/</a></p>
+
+<ul>
+<li>HyperContainer - hypervisor-based container, allows you to launch Docker images with KVM, XEN, etc</li>
+<li>OCI support</li>
+<li>HyperKernel - minimal Linux kernel inside a pod</li>
+<li>Pod = VM + docker image FS</li>
+<li>use OpenStack components</li>
+<li>Keystone project to manage different tenants (which has network isolation): manifest for Network, tenantID,</li>
+<li>Network for Namespace</li>
+</ul>
+
+<h1 id="advanced-testing-with-go">Advanced Testing with Go</h1>
+
+<p><a href="https://speakerdeck.com/mitchellh/advanced-testing-with-go">https://speakerdeck.com/mitchellh/advanced-testing-with-go</a></p>
+
+<ul>
+<li>Table Driven Tests</li>
+<li>Test Fixtures (read data from files located in prepared place)</li>
+<li>Golden Files (compare with “correct version”, “—update” if needed)</li>
+<li>Split into packages/functions. Test only exported ones</li>
+<li>To test network - make a real network connection (!), don’t mock</li>
+<li>Mock subprocesses</li>
+<li>Interfaces are mocking points</li>
+<li>We don’t use ‘fake time’ (haven’t found an effective way)</li>
+<li>Don’t use</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0094/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0096/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.733086 &#43;0400 &#43;04 m=&#43;0.093604577">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

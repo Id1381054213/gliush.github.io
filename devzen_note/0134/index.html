@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0134 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0134</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="fs-redundancy">FS redundancy</h1>
+
+<p><a href="https://blog.acolyer.org/2017/03/08/redundancy-does-not-imply-fault-tolerance-analysis-of-distributed-storage-reactions-to-single-errors-and-corruptions/">https://blog.acolyer.org/2017/03/08/redundancy-does-not-imply-fault-tolerance-analysis-of-distributed-storage-reactions-to-single-errors-and-corruptions/</a></p>
+
+<ul>
+<li>File system problems</li>
+<li>3 contributions: CORDS, study of 8 systems, observations</li>
+<li>FS: media -&gt; firmware -&gt; driver. Problems in any layer</li>
+<li>Block errors and block corruptions</li>
+<li>Ext4 returns error or corrupted data. Btrfs, zfs transform corruption to error.</li>
+<li>Observations:
+
+<ul>
+<li>systems employ diverse data integrity strategies. checksums (ZK, MongoDB, CockroachDB) vs trust lower system to check integrity problems (RethinkDB + Redis). Inappropriate checksum algorithms (Adler32 for ZK &lt;- a lot of collisions for short strings)</li>
+<li>Faults are undetected very often. When detected -&gt; crash. Redis spread error of aof of the leader. Cassandra. RethinkDB,</li>
+<li>Redundancy is underutilized, single fault can have large cluster-wide effect. Mongo + LogCabin recover from some corruptions by using replicas’ data</li>
+<li>Crush and corruption handling are entangled. Usually crash = corruption in the handling code. RethinkDB find corruption -&gt; rollback last transaction (even if it is not crash, but a ‘read corruption’). Kafka truncate and loses all further data (not fix one corruption). Mongo try to fix corruption but re-applying all the log entries from other hosts (not only 1 corrupted entry)</li>
+<li>Nuances in commonly used distributed protocols can spread corruption or data loss. Kafka node remove all log entries after corrupted entry, and after that might become a leader! When data is corrupted on leader, it is not detected, and is spread on followers.</li>
+</ul></li>
+<li>btrfs and zfs use checksums, error instead of corrupted read.</li>
+</ul>
+
+<p>IMHO:</p>
+
+<ul>
+<li>интересно разграничивают crash vs corruption.</li>
+<li>неправильное чтение - отдельный тест, который показывал интересные результаты (RethinkDB rollback)</li>
+</ul>
+
+<h1 id="паралич-функционального-программиста">Паралич Функционального Программиста</h1>
+
+<p><a href="https://medium.com/@rulexec/functional-programming-considered-harmful-21485826ad4#.efq3yriu9">https://medium.com/@rulexec/functional-programming-considered-harmful-21485826ad4#.efq3yriu9</a></p>
+
+<ul>
+<li>JavaScript - в функциональном стиле</li>
+<li>Путь - генератор имен файлов по пути</li>
+<li>Файл - дескриптор в JS (число). Файлы не подвержены сборщику мусора,</li>
+<li>Закрытие файла (ресурса) - Препятствие попыткам использовать освобожденный ресурс.</li>
+<li>close -&gt; ресурсу сообщение и возвращает “ошибку”. Ресурс после попытки закрытия асинхронно - отвечает об успехе и об “ошибке”</li>
+</ul>
+
+<p>IMHO:</p>
+
+<ul>
+<li>потекла абстракция JS:
+
+<ul>
+<li>попытка сделать GC для открытых файлов</li>
+<li>попытка написать менеджер ресурсов</li>
+</ul></li>
+<li>выводы (сложность написать чтение из файла в функциональном стиле) никак не связана с реальностью, те же проблемы были бы при работе в императивном стиле</li>
+<li>вывод “при работе в функциональном стиле ее сложность возрастает на порядок” взят с потолка (нет в тексте доказательств этого тезиса)</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0132/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0137/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.725306 &#43;0400 &#43;04 m=&#43;0.085824360">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

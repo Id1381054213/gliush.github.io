@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0092 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0092</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="visualization-of-a-paxos-based-distributed-state-machine">Visualization of a Paxos-based distributed state machine</h1>
+
+<p><a href="http://rystsov.info/2016/05/01/paxos.html">http://rystsov.info/2016/05/01/paxos.html</a></p>
+
+<ul>
+<li>“Paxos made simple” paper (2001) - algorithm how to transform any FSM into a fault-tolerant distributed system:
+
+<ul>
+<li>Build linearizable distributed write-once register (based on his Sinod protocol)</li>
+<li>Build linearizable distributed append-only log (sequence of write-once regs)</li>
+<li>Use distributed append-only log to store the sequence of all events leading a system to the current state instead of storing the state itself</li>
+</ul></li>
+<li>logs - is natural, but need GC or snapshots. Something else to model FSM?
+
+<ul>
+<li>TreodeDB used Synod-based distributed rewritable register</li>
+<li>riak_ensemble (?)</li>
+<li>proved FSM over distributed variable</li>
+</ul></li>
+<li>Log-based solutions are more popular because they had the advantage of time. Until Vertical Paxos (2009), log replication was the only consensus protocol capable of cluster membership change -&gt; the only solution.</li>
+<li>Raft’s joint consensus membership change</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0089/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0093/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.73427 &#43;0400 &#43;04 m=&#43;0.094789334">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

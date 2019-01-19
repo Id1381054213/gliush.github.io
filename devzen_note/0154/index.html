@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0154 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0154</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="if-your-software-should-be-cross-platform-and-accessible-forget-about-qt">If your software should be cross platform and accessible, forget about Qt</h1>
+
+<p><a href="https://blind.guru/qta11y.html">https://blind.guru/qta11y.html</a></p>
+
+<p>“Ограниченные возможности”
+- What toolkit to choose to create a UI on most platform?
+    - Java/Swing (Win, Linux, Mac)
+    - C++? Qt. 10yr ago it didn’t work (4.x on Linux). Everybody hates Qt on Win
+- Email to QT -&gt; answer “Works everywhere, if you find problem - we’ll fix it”
+- Проблема: основной (платный) продукт для чтения текста с экрана не видит текст в “text entry widgets” -&gt; bug in Qt tracker
+- Answer (in a year): Will be fixed after rewrite, that has no deadline.
+- Free Software is NOT about Accessibility or equality
+Вполне предсказуемо: люди пилят это в свободное время, мало кто заинтересован в Accessibility, потому оно и не чинится</p>
+
+<h1 id="reverse-engineering-a-433mhz-motorised-blind-rf-protocol">Reverse Engineering a 433MHz Motorised Blind RF Protocol</h1>
+
+<p><a href="https://nickwhyte.com/post/2017/reversing-433mhz-raex-motorised-rf-blinds/">https://nickwhyte.com/post/2017/reversing-433mhz-raex-motorised-rf-blinds/</a></p>
+
+<ul>
+<li>купили штороподниматели, чтобы пользоваться - нужно купить дополнительно пульты (платно)</li>
+<li>Неудобно иметь в каждой комнате по пульту, т.к. не используются все каналы, и просто теряются деньги</li>
+<li>Удобнее купить еще одну железяку, и тогда можно управлять со смартфона. Но медленно, и глючит</li>
+<li>Удобнее управлять в Apple Homekit. Но нужно подцепить, поэтому придется реверс - инженерить протокол либо до их пультов, либо до железяки</li>
+<li>Никто по емейлу не ответил про протоколы (по разным причинам)</li>
+<li>Купил трансмиттер - ресивер на ардуино</li>
+<li>Нашел несколько вариантов, чтобы на ардуино записывать сигнал. Записал, начал анализировать, и не был уверен, что там вообще есть данные (в записях)</li>
+<li>нашел вариант записывать через микрофонный порт компа, и анализировать в Audacity</li>
+<li>Надо преобразовать в цифровой сигнал, несколько вариантов -&gt; Manchester Encoding</li>
+<li>Анализ кода (записал кучу сэмплов)</li>
+<li>Анализ checksum</li>
+<li>Тест своих функций</li>
+<li>Куча подробностей</li>
+</ul>
+
+<h1 id="детектор-транслятора-на-433mhz">Детектор транслятора на 433MHz</h1>
+
+<p><a href="http://andrewmohawk.com/2017/02/14/remote-jamming-detector-on-the-cheap/">http://andrewmohawk.com/2017/02/14/remote-jamming-detector-on-the-cheap/</a></p>
+
+<ul>
+<li>Если кто-то транслирует на частоте, машина не воспримет сигнал, и не закроется</li>
+<li>Можно сделать железяку, которая будет гореть светодиодом, если есть трансляция</li>
+</ul>
+
+<h1 id="детектор-звуковой-сигнал-горячо-холодно-транслятора-на-433mhz">Детектор (звуковой сигнал “горячо-холодно”) транслятора на 433MHz</h1>
+
+<p><a href="https://mikeh69.wordpress.com/2017/07/13/detecting-car-keyfob-jamming-using-a-raspberry-pi-and-a-dvb-t-dongle/">https://mikeh69.wordpress.com/2017/07/13/detecting-car-keyfob-jamming-using-a-raspberry-pi-and-a-dvb-t-dongle/</a></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0147/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0155/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.723122 &#43;0400 &#43;04 m=&#43;0.083640815">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0100 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0100</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="etcd3">etcd3</h1>
+
+<p><a href="https://coreos.com/blog/etcd3-a-new-etcd.html">https://coreos.com/blog/etcd3-a-new-etcd.html</a></p>
+
+<ul>
+<li>already integrated into Kubernetes</li>
+<li>a lot of features: distributed locks, elections, STM</li>
+<li>originally - for CoreOS updates. Now - for different purposes, not always good</li>
+<li>gprc for efficiency (protobuf). JSON is through a gRPC gateway. HTTP2 to multiplex streams over single TCP.</li>
+<li>key TTL (request + connection to refresh each key + consensus proposal to update the key)&gt; lightweight streaming lease keepalive model (lease per several keys)</li>
+<li>watchers -&gt; multiplexer watches on a single connection (several keys)</li>
+<li>data model with reliable events. etcd2: older version of values are discarded (no way to reconstruct prev state). etcd3: mvcc (discard old values on a timer)</li>
+<li>key hierarchies  -&gt; flat binary key space with search queries  (by prefixes)</li>
+<li>single conditional mini-transaction (sevaral checks + list of operations to apply)</li>
+</ul>
+
+<h1 id="kubernetes-1-3">Kubernetes 1.3</h1>
+
+<p><a href="http://blog.kubernetes.io/2016/07/kubernetes-1.3-bridging-cloud-native-and-enterprise-workloads.html">http://blog.kubernetes.io/2016/07/kubernetes-1.3-bridging-cloud-native-and-enterprise-workloads.html</a></p>
+
+<ul>
+<li>increased scale. 2x max number of hosts in cluster</li>
+<li>Simplified autoscale (custom metrics: queries per sec)</li>
+<li>Cross-cluster federated services (AWS/GCE  DNS) = Ubernetes-lite???</li>
+<li>Stateful apps:
+
+<ul>
+<li>PetSet (alpha): permanent hostnames, automatically provisioned persistent disk, unique identities in a group (for clustering and leader election),</li>
+<li>one-time init setup for stateful containers (alpha)</li>
+</ul></li>
+<li>Minikube - Ease of use for local development</li>
+<li>Support for rkt and conatiner standards OCI (open container initiative) &amp; CNI (container network interface)</li>
+<li>updated dashboard UI</li>
+<li>Authorization
+
+<ul>
+<li>RBAC  authorization API group (alpha)</li>
+<li>Webhook Token Authenticator</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0098/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0106/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.731568 &#43;0400 &#43;04 m=&#43;0.092086729">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

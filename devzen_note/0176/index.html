@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0176 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0176</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="joel-отказался-от-fb-и-tw">Joel отказался от fb и tw</h1>
+
+<p><a href="https://www.joelonsoftware.com/2018/01/12/birdcage-liners/">https://www.joelonsoftware.com/2018/01/12/birdcage-liners/</a></p>
+
+<ul>
+<li>Stream is always full of conflict and stress. Gave up, stopped using them.</li>
+<li>As he designs social software for a living, he should have a professional opinion why Tw and Fb made him unhappy</li>
+<li>Tw: I care about friends, I keep in touch with them.</li>
+<li>Everybody don’t use twitter to share happy news, only for some flame wars.</li>
+<li>140 symbols is not enough: You start with complicated thought, then shorten it, the result - is very trivial idea without nuances</li>
+<li>Then it is incorrectly comprehended, then the reply is incorrectly read. Then you’re accused of smth non-related.</li>
+<li>The problem of Tw: we have problems of explaining emotion in text, and in Tw we shorten the text. That’s the second level.</li>
+<li>Outrage and indignation - what makes it work. Not original idea -&gt; selection. Very attractive. 140 - is weird but work well.</li>
+<li>Fb: copied Tw idea of “feed” to keep you coming back compulsively.</li>
+<li>Added ML: we are not going to show everybody every post. We will choose what is important (to come you back)</li>
+<li>The only thing ML was told to care - addiction (“engagement”)</li>
+<li>Dog addiction: dog is not always given the treat. Only sometimes. To obey even without treat.</li>
+<li>FB doesn’t always show smth important. A lot of junk I don’t need.</li>
+<li>But I need to come back to get important sometimes.</li>
+<li>Both Tw and Fb’s selfish algorithm are optimized to increase the number of hours we spend there.</li>
+<li>Researcher discovered that algorithms served to divide the world into smaller groups. United by some interest.</li>
+<li>Political party. You’ll get news you agree with or agree on blaming.</li>
+<li>You ‘LIKED’ or ‘RETWEETED’ and feel like you had done smth important. But you hadn’t.</li>
+<li>Lesson: when you design software - you create the future.</li>
+<li>Decision to limit length or to use ML to maximize engagement  - will have social impact that is difficult to predict.</li>
+<li>We should make the world better. Or not worth than before. If invention spins out of control - we have to fix it.</li>
+<li>Good news: Facebook announced that they change the direction. Will want the feed to leave people feeling “more connected and less lonely”</li>
+<li>“sacrifice engagement”: reduce the time spent on Facebook, but the time will be more valuable.</li>
+<li>Facebook has grown up?</li>
+</ul>
+
+<h1 id="патчи-против-meltdown-spectre-в-linux-полный-мусор">Патчи против Meltdown &amp; Spectre  в Linux - полный мусор</h1>
+
+<p><a href="https://habrahabr.ru/company/cloud4y/blog/347418/">https://habrahabr.ru/company/cloud4y/blog/347418/</a></p>
+
+<ul>
+<li>Интел предупреждает, что не надо устанавливать обновления CVE-2017-5715,  пока интел не разработает “нормальное” решение</li>
+<li>Предполагается, что пользователи будут во время загрузки выбирать: производительность против безопасности (кнопку нажать?)</li>
+<li>Три новых аппаратных патча (для микрокода CPU):
+
+<ul>
+<li>Indirect Branch Restricted Speculation (IBRS)</li>
+<li>Indirect Branch Prediction Barriers (IBPB)</li>
+<li>Page Table Isolation (PTI)</li>
+</ul></li>
+<li>Linus about patches
+
+<ul>
+<li><a href="https://lkml.org/lkml/2018/1/21/192">https://lkml.org/lkml/2018/1/21/192</a></li>
+<li>As usual: BULLSHIT. COMPLETE AND UTTER GARBAGE.  WHAT THE F*CK IS GOING ON?</li>
+</ul></li>
+</ul>
+
+<h1 id="scaling-kubernetes-to-2500-nodes">Scaling Kubernetes to 2500 Nodes</h1>
+
+<p>Из тем слушателей
+<a href="https://blog.openai.com/scaling-kubernetes-to-2500-nodes/">https://blog.openai.com/scaling-kubernetes-to-2500-nodes/</a></p>
+
+<ul>
+<li>Deep learning research on k8s - for 2 years.</li>
+<li>Several clusters, one of which is 2500nodes. Azure, combination of D15v2 and NC24 VMs</li>
+<li>Issues:
+
+<ul>
+<li>etcd: kubectl had regular timeouts. New master nodes don’t help. Found: write latency spiking to hundreds of ms. moved etcd to work with local (not network) ssd monitoring overload the apiservers, reduced the polling level</li>
+<li>tweak: store kubernetes events on a separate etcd cluster. (dataflow / controlflow split)</li>
+<li>kubedns antiaffinity rules</li>
+<li>Dota project - 17GB image. “Pending state” problem. TO fix: serialize-image-pulls -&gt; false (requires overlay2 instead of AUFS) image-pull-progress-deadline to 30min</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0173/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0177/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.719943 &#43;0400 &#43;04 m=&#43;0.080461325">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0212 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0212</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="netflix-s-edge-load-balancing">Netflix’s Edge Load balancing</h1>
+
+<p><a href="https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c">https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c</a></p>
+
+<ul>
+<li>Goal: very high load. Even small fraction of errors - problem</li>
+<li>All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem)</li>
+<li>Guiding principles:
+
+<ul>
+<li>avoid distributed state</li>
+<li>avoid client-side configuration:
+
+<ul>
+<li>not the same team -&gt; problems</li>
+<li>server side update -&gt; problems</li>
+<li>instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)</li>
+</ul></li>
+</ul></li>
+<li>Load-balancing approach
+
+<ul>
+<li>choice-of-2-algorithm to choose between the servers</li>
+<li>load-balancer’s view of the servers utilization</li>
+<li>servers’ view of the servers utilization</li>
+<li>“probation” and “server-age” mechanisms to avoid overloading newly started servers</li>
+</ul></li>
+<li>Server-Reported Utilization
+
+<ul>
+<li>Actively report</li>
+<li>Passively report (addition health-check calls might needed)</li>
+</ul></li>
+<li>Choice-of-2 instead of RoundRobin/JoinSmallesQueue
+
+<ul>
+<li>Client Health: errors for that server</li>
+<li>Server Utilization: most recent score provided by the server</li>
+<li>Client Utilization: number of inflight requests to the server from the LB</li>
+</ul></li>
+<li>FIRST: Filter out servers with high utilization and health
+
+<ul>
+<li>for each request (agains stale filtering result)</li>
+<li>best-effor by making N attempts to find anything, if not - without filtering</li>
+<li>helps with large amount of problematic servers (not to choose between 2 broken servers)</li>
+</ul></li>
+<li>Probation:
+
+<ul>
+<li>for new servers allow 1 request in-flight to gather stats</li>
+</ul></li>
+<li>Stats Decay:
+
+<ul>
+<li>Linear decay over 30 secs to flush all the stats</li>
+</ul></li>
+<li>RESULTS</li>
+<li>Slower Servers Receive Less Traffic
+
+<ul>
+<li>canary deployment won’t show degradation! :)</li>
+<li>Outlier detection is less effective</li>
+<li>some CPU/RPS combination should be used</li>
+</ul></li>
+<li>Synthetic load-test results
+
+<ul>
+<li>orders of magnitude reduction in load-shedding and connection errors compared to the round-robin</li>
+<li>3x reduction in average and long-tail latency</li>
+<li>server-utilization feature added 10x error redution
+<figure>
+    <img src="/images/0212_1.png"/> 
+</figure>
+</li>
+</ul></li>
+<li>Impact on real production traffic
+
+<ul>
+<li>Routing around intermittently and persistently degraded servers =&gt; avoid prod problems, do not need to wake eng up in the night (graphs)</li>
+<li>GC events - doesn’t harm anymore</li>
+</ul></li>
+</ul>
+
+<h1 id="big-hack-how-china-used-a-tiny-chip-to-infiltrate-u-s-companies">Big Hack: How China Used a Tiny Chip to Infiltrate U.S. Companies</h1>
+
+<p><a href="https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-china-used-a-tiny-chip-to-infiltrate-america-s-top-companies">https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-china-used-a-tiny-chip-to-infiltrate-america-s-top-companies</a></p>
+
+<ul>
+<li>AWS wanted to acquire a startup “Elemental” (software for compressing massive video files)</li>
+<li>AWS hired 3-party company to check Elemental’s security (to help with due-diligence)</li>
+<li>Problem</li>
+<li>SuperMicro assemble servers for Elemental, sent several servers to the company to check</li>
+<li>Found microchip (~ size of the grain of rice)</li>
+<li>The chip allowed the attackers to create a stealth doorway into any network included the server</li>
+<li>The chip was inserted during manufacturing</li>
+<li>17 people confirmed the manipulation of Supermicro’s hardware and other elements of the attacks</li>
+<li>“the microchip altered the operating system’s core, so it could accept modifications. The chip could also contact computers controlled by the attackers in search of further instructions and code”</li>
+</ul>
+
+<h1 id="kubernetes-1-12">Kubernetes-1.12</h1>
+
+<p><a href="https://kubernetes.io/blog/2018/09/27/kubernetes-1.12-kubelet-tls-bootstrap-and-azure-virtual-machine-scale-sets-vmss-move-to-general-availability/">https://kubernetes.io/blog/2018/09/27/kubernetes-1.12-kubelet-tls-bootstrap-and-azure-virtual-machine-scale-sets-vmss-move-to-general-availability/</a></p>
+
+<ul>
+<li>Kubelet TLS Bootstrap goes General Availability (GA) (автоматизация добавления kubelet в TLS-защищенный кластер, никакой ручной работы не требуется)</li>
+<li>Azure Virtual Machine Scale Sets (VMSS) and Cluster-Autoscaler is now Stable</li>
+<li>Arbitrary / CustomMetrics  in the HorisontalPodAutoscaler is moving to a second beta</li>
+<li>HPA to reach proper size faster (no cooldown for scale up event, but still cooldown for scale down event)</li>
+<li>Vertical Scaling of Pods - in beta
+-</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0209/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0213/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.713672 &#43;0400 &#43;04 m=&#43;0.074581593">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

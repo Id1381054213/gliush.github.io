@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0145 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0145</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="raid-controllers-and-ssds">Raid controllers and SSDs</h1>
+
+<p><a href="https://momjian.us/main/blogs/pgblog/2017.html#May_15_2017">https://momjian.us/main/blogs/pgblog/2017.html#May_15_2017</a></p>
+
+<ul>
+<li>Disk array controllers are popular because of:
+
+<ul>
+<li>Hardware RAID support</li>
+<li>Large read/write cache</li>
+<li>write reordering</li>
+<li>instant durable storage of writes using a BBU (backup battery)</li>
+</ul></li>
+<li>With SSD (with BBUs), the usefulness of RAID controllers is unclear:
+
+<ul>
+<li>CPU are fast and can do RAID in software</li>
+<li>servers have tons of RAM</li>
+<li>write reordering is unnecessary for SSDs (good random write perf)</li>
+<li>BBUs on SSDs make RAID BBUs redundant</li>
+</ul></li>
+</ul>
+
+<p>While raid controllers introduce problems on their own:
+* High failure rates
+* complex configuration
+* slowness
+Ссылки на переписку в postgresql mailing list</p>
+
+<h1 id="postgres-window-magic">Postgres Window Magic</h1>
+
+<p><a href="http://momjian.us/main/writings/pgsql/window.pdf">http://momjian.us/main/writings/pgsql/window.pdf</a></p>
+
+<ul>
+<li>Объясняется, что такое window, и как может быть использовано</li>
+<li>Много работающих примеров (код доступен)</li>
+<li>От простого к сложному</li>
+<li>Вкратце: window - это текущая строка + некоторое окружение, вы сами контролируете какое именно. Доступны агрегации над window, удобно для аналитики.</li>
+</ul>
+
+<h1 id="al-a-new-declarative-language-for-detecting-bugs-with-infer">AL: A new declarative language for detecting bugs with Infer</h1>
+
+<p><a href="https://code.facebook.com/posts/277643589367408/al-a-new-declarative-language-for-detecting-bugs-with-infer/?pnref=story">https://code.facebook.com/posts/277643589367408/al-a-new-declarative-language-for-detecting-bugs-with-infer/?pnref=story</a></p>
+
+<ul>
+<li>All code is checked with static analyzer Infer (interprocedural/interfile)</li>
+<li>Problem: extensibility. Add a checker for a new type of bug is a pain.</li>
+<li>Поэтому новый язык AL</li>
+<li>Декларативный, для логики над AST, Open Source.</li>
+<li>C/C++/ObjectiveC</li>
+<li>Temporal Logic</li>
+<li>Операторы работы со временем («никогда не будет иметь», «деаллокация раньше дерегистрации»)</li>
+<li>Как работает - плохо объяснили «a model-checking algorithm for temporal logic»</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0142/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0147/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.723816 &#43;0400 &#43;04 m=&#43;0.084334544">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

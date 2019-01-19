@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devzen_notes on DevZen Podcast Notes</title>
+    <link>http://example.org/devzen_note/</link>
+    <description>Recent content in Devzen_notes on DevZen Podcast Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Jan 2019 18:32:02 +0400</lastBuildDate>
+    
+	<atom:link href="http://example.org/devzen_note/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes for episode-0225</title>
+      <link>http://example.org/devzen_note/0225/</link>
+      <pubDate>Sat, 19 Jan 2019 18:32:02 +0400</pubDate>
+      
+      <guid>http://example.org/devzen_note/0225/</guid>
+      <description>Elixir v1.8 Release Notes https://elixir-lang.org/blog/2019/01/14/elixir-v1-8-0-released/
+ Custom struct inspections  defmodule User do @derive {Inspect, only: [:id, :name, :age]} defstruct [:id, :name, :age, :email, :encrypted_password] end   Calendar.TimeZoneDatabase behaviour, Date.day_of_year/1, quoter_of_year/1, etc Faster compilation, more efficient code in some cases Improved instrumentation and ownership with $callers  [your code] -- calls --&amp;gt; [supervisor] ---- spawns --&amp;gt; [task] [your code] [supervisor] &amp;lt;-- ancestor -- [task] ^ | |--------------------- caller ---------------------|   Started working on mix release  On Infrastructure at Scale: A Cascading Failure of Distributed Systems https://medium.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0222</title>
+      <link>http://example.org/devzen_note/0222/</link>
+      <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0222/</guid>
+      <description>Rust-1.31.0 stable + Rust 2018 https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html
+ Rust 2018 - work over the past 3 years + cohesive package  Tooling (IDE support, rustfmt, clippy) Documentation Domain working groups work new web site  new key in Cargo.toml: package -&amp;gt; “edition: 2018” (or 2015 by default) backward and forward compatible: 2018 vs 2015 2015 -&amp;gt; 2018: “cargo fix” non-lexical lifetime: more clever borrow checker module system simplified (important for newcomers) more lifetime elision rules (автовыведение lifetime) “const fn” - compile time generated functions, may be used in any constant context  const SIX: i32 = foo(5);  New Tools  clippy: rust linter (v 1.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0221</title>
+      <link>http://example.org/devzen_note/0221/</link>
+      <pubDate>Sun, 09 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0221/</guid>
+      <description>New Logger in Erlang https://ferd.ca/erlang-otp-21-s-new-logger.html
+ OTP-21 -&amp;gt; new logging library in Erlang - logger an alternative and “result” of lager library STRUCTURE  you should not know the structure of logger to use it. But to extend - you should logger exposes 3 types of components with well-defined interfaces  Log Filters Log Handlers Log Formatters  These elements are in config database (ETS -&amp;gt; cheap) You want to log asap (move everything to another process).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0219</title>
+      <link>http://example.org/devzen_note/0219/</link>
+      <pubDate>Mon, 26 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0219/</guid>
+      <description>Slow Software https://www.inkandswitch.com/slow-software.html
+ Что знает “медленное” для пользователей? “Latency”, а не “пропускная способность” Проще всего это проверять на тач-интерфейсах. Дают пользователям две разных программы 1ms vs 70ms и просят сравнить. 70 - однозначно медленно, 1ms - очень быстро, где граница? Перетаскивание Когда перетаскивают что-то по экрану, пользователи чувствуют, когда latency увеличивается больше 2ms (зависит от человека) Рисование В Литературе можно найти данные, что приемлимый уровень задержек при рисовании “ручкой” - от 20 до 80мс.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0218</title>
+      <link>http://example.org/devzen_note/0218/</link>
+      <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0218/</guid>
+      <description>Paper &amp;ldquo;RobinHood: tail latency aware caching – dynamic reallocation from cache-rich to cache-poor&amp;rdquo; https://blog.acolyer.org/2018/10/26/robinhood-tail-latency-aware-caching-dynamic-reallocation-from-cache-rich-to-cache-poor/ ￼    Cache - for the most frequent requests Tail? - no cache, will take longer to response Several services -&amp;gt; several caches. Reply after all of them have replied    Wait for all the caches Doesn’t make sense to improve the “average” latency Robin Hood: uses cache to improve highest tail latency Контринтуитивно - улучшать tail latency В результате:  Улучшается время запросов (попадаем в кэш) Уменьшается кол-во запросов к бэкенду, улучшая его производительность  Почему нельзя статически определить, какой сервис хуже ведет себя?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0217</title>
+      <link>http://example.org/devzen_note/0217/</link>
+      <pubDate>Mon, 12 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0217/</guid>
+      <description>Introducing ebpf_exporter https://blog.cloudflare.com/introducing-ebpf_exporter/
+ Two main options to collect system metrics  node_exporter: gauges and counters with lots of plugins cAdvisor: gauges and counters for container level metrics  Counters are great, but they lack details about individual events rate() - is 1 sec change, so &amp;gt; 1sec is impossible to get Histograms - better, but node_exporter - only counters Datazaurus picture =&amp;gt; any plot to preserve the same mean + standard deviation values Histogram - shows the truth io + linux kernel =&amp;gt; ?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0216</title>
+      <link>http://example.org/devzen_note/0216/</link>
+      <pubDate>Mon, 05 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0216/</guid>
+      <description>Maelstrom: mitigating datacenter-level disasters by draining interdependent traffic safely and efficiently https://blog.acolyer.org/2018/10/24/maelstrom-mitigating-datacenter-level-disasters-by-draining-interdependent-traffic-safely-and-efficiently/amp/
+ 4+ year of experience dealing with datacenter outages at Facebook Maelstrom = system FB use in prod to mitigate and recover from DC-level disasters Idea: drain traffic away from the failed DC, move it to another DC 4+ years, 100+ disasters =&amp;gt; 1 disaster per 2 weeks!! (DC-wide incident) 3 valuable contributions:  The description of the Maelstrom An explanation of drain tests as they are practiced at FB Hard-won wisdom and expectation settings for rolling out similar capabilities in your own organization  Traffic types:    Maelstrom is used to execute recovery runbooks:  to drain traffic out of the datacenter to restore traffic back  Runbooks are made of tasks.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0215</title>
+      <link>http://example.org/devzen_note/0215/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0215/</guid>
+      <description>Go 2 transition https://github.com/golang/proposal/blob/master/design/28221-go2-transitions.md
+ Proposal how to make incompatible changes Go1-&amp;gt;Go2 while breaking as little as possible background about C versions changed (_Complex + defines in headers; version for the compler -std=c90)  Backward compatibility matters. Breaking compatibility in small ways is OK, as long as people can spot the breakages through compiler options or compiler errors. Compiler options to select specific language/library versions are useful, provided code compiled using different options can be linked together.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0214</title>
+      <link>http://example.org/devzen_note/0214/</link>
+      <pubDate>Sun, 21 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0214/</guid>
+      <description>Github Actions https://github.com/features/actions
+ Workflow can be triggered by GitHub events (push, issue, release). Can run a sequence of serial or parallel actions in response. Actions can be written in any language Example: push -&amp;gt; docker build -&amp;gt; terraform provision -&amp;gt; get octocat -&amp;gt; notify -&amp;gt; OK Scalable container execution File or “Visual Editor” Declarative (Workflow.resolves = Action2; Action2.need = Action1 ) uses docker images to run action Secrets - are in the Repo’s Settings.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0213</title>
+      <link>http://example.org/devzen_note/0213/</link>
+      <pubDate>Sun, 14 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0213/</guid>
+      <description>Etsy’s experiment with Immutable documentation https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/
+ Парадокс: Чем чаще меняется проект, тем быстрее ваши знания о системе устаревают, и тем больше вам нужна документация. Которая устаревает Пример с БД: секция1 “why”, секция2 “как” -&amp;gt; how - постоянно меняется, why - остается долго Можно разделить документацию на how и why части, управлять устареванием документации - управляя смешиванием how и why частей Разработали систему добавления how-документации прямо из Slack-а (?fyi) Цель - сделать ее как можно более легкую в использовании ?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0212</title>
+      <link>http://example.org/devzen_note/0212/</link>
+      <pubDate>Sun, 07 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0212/</guid>
+      <description>Netflix’s Edge Load balancing https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c
+ Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&amp;gt; problems server side update -&amp;gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)   Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers  Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)  Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB  FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)  Probation:  for new servers allow 1 request in-flight to gather stats  Stats Decay:  Linear decay over 30 secs to flush all the stats  RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0209</title>
+      <link>http://example.org/devzen_note/0209/</link>
+      <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0209/</guid>
+      <description>ElixirConf 2018 Keynote by Jose Valim https://www.youtube.com/watch?v=m7TWMFtDwHg&amp;amp;list=PLqj39LCvnOWaxI87jVkxSdtjG8tlhl7U6
+ Elixir History, versions 1.7 release: EEP (Elixir Enhancement Proposal) 48 (documentation standard) Community:  New podcasts new ExDoc versions Erlang/OTP 21 (compilation time is 20% faster) Phoenix v1.3, Nerves v1.0 Nerves: ecosystem to build embedded systems with Elixir  https://nerves-project.org Platform (Linux starts BEAM VM) Framework: libraries Tooling: to manage builds, update firmware, configure devices, etc work via mix (mix firmware.burn -d /dev/rdisk3)   Feedback from community  Difficult to contribute now it’s transparent what team is doing doubled the elixir team  Criteria for new features Guidelines for new features on-going effort  code formatter  released in elixir-1.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0208</title>
+      <link>http://example.org/devzen_note/0208/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0208/</guid>
+      <description>Introducing Thanos: Prometheus at scale https://improbable.io/games/blog/thanos-prometheus-at-scale
+ Prometheus: simple and reliable Problem: can’t scale: Petabytes of historic data, Default solution: Hierarchical Federation    Leaf-prometheus servers, one meta-Prometheus server Problems:  Configuration Add one more single point of failure Complex rules to expose only certain data on the federated endpoint Not all data is available from a single query API   Another solution: HA pairs of Prometheus servers  independently collect data -&amp;gt; problem with deduplication  Prometheus 2.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0207</title>
+      <link>http://example.org/devzen_note/0207/</link>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0207/</guid>
+      <description>GitHub OpenSource LoadBalancer https://githubengineering.com/glb-director-open-source-load-balancer/
+ Layer4 (Transport Layer) LB -&amp;gt; Взять один IP address -&amp;gt; обрабатывать входящие коннекты на разных машинах нужно скейлить также и LB-сервера Простейшая схема (client - …. router - … backend) Несколько путей - Equal-Cost-Multi-Path (ECMP) routing:  пускать пакеты по нескольким путям (consistent hash). Пути могут изменяться, но это не важно, до конца дойдут все пакеты пускать пакеты к разным серверам: BGP (Border Gateway Protocol) анонсируют, что они один и тот же IP, пакеты идут к разным серверам, даже не зная, что это разные машины Сервера изменились - коннекты могут отломиться, т.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0206</title>
+      <link>http://example.org/devzen_note/0206/</link>
+      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0206/</guid>
+      <description>NetSpectre: Read Arbitrary Memory over Network https://misc0110.net/web/files/netspectre.pdf
+ Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15&amp;frasl;60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное + спекулятивное исполнение. Прерывания в pipeline -&amp;gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0201</title>
+      <link>http://example.org/devzen_note/0201/</link>
+      <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0201/</guid>
+      <description>XARs: An efficient system for self-contained executables https://code.fb.com/data-infrastructure/xars-a-more-efficient-open-source-system-for-self-contained-executables/
+ XAR: eXecutable ARchive to distribute software Alternative: PEX = self-contained Python virtual environments 1 file highly compressed all deps included can be run from anywhere in the system Python, Lua applications, Node.js applications, C++ exe and data files Initially: PAR (Python Archive), that decompress to tmp folder, run in folder Problems: decompressing each time, cleanup Alternative: PEX: decompress once, reuse it XAR uses squashfs files (mount before use, unmount after idle timeout) “nearly zero overhead” in prod Benchmark:    XAR:  4kb preamble = shebang pointing to a helper executable helper tool xarexec_fuse that knows how to read optionally mount, and execute content FUSE filesystem squashfs with zstd compression   11 Ways (Not) to Get Hacked in k8s https://kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0200</title>
+      <link>http://example.org/devzen_note/0200/</link>
+      <pubDate>Sun, 15 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0200/</guid>
+      <description>OpenAI Five versus Dota https://blog.openai.com/openai-five/
+ Отличное оформление блога: интерактивные картинки, поясняющие текущее состояние модели, цели, … OpenAI - это некоммерческая исследовательская организация OpenAI Five - команда из 5 нейронных сетей Начала побеждать новичков в Dota2. Сейчас играют с ограничениями, но цель - победить на мировом соревновании “The International” Dota2 - одна из самых сложных электронных игр в мире OpenAI Five играет 180 лет сама против себя каждый день Использует Reinforcement Learning, и работает на 256GPUs, и 128000 CPU cores Использует LSTM для каждого героя, без данных от человека, алгоритм вырабатывает сам узнаваемые стратегии =&amp;gt; Reinforcement learning может создавать долгосрочные цели 28 Июля - будет очередной матч с топовой командой, чтобы проверить уровень Одна из целей OpenAI - превзойти человека в сложных видеоиграх (StarCraft/Dota2).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0199</title>
+      <link>http://example.org/devzen_note/0199/</link>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0199/</guid>
+      <description>Kubernetes-1.11 https://habr.com/company/flant/blog/415349 + https://kubernetes.io/blog/2018/06/27/kubernetes-1.11-release-announcement
+ сети: IPVS для внутри-кластерного балансирования нагрузки -&amp;gt; stable. Не default по умолчанию. Лучше, чем iptables с точки зрения производительности и latency. CoreDNS - дефолт при установке через kubeadm^ Beta: Динамическая конфигурация kubelet, можно менять настройку k8s инстансов -&amp;gt; менять кластер на лету. До этого только через command line. Beta: возможность указывать sysctl настройки для отдельно взятого пода kubectl wait для ожидания изменений по ресурса (удалены)  Python-3.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0194</title>
+      <link>http://example.org/devzen_note/0194/</link>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0194/</guid>
+      <description>РИТ++ 2018 http://ritfest.ru
+ Много общался с Программным Комитетом для rootconf / backend. Рассказать про их сложную работу здесь и на devoops. Чем помогает подготовка, чем помогла мне: заочный и очные прогоны (лучше бы на сцене, но нереально) Роман Поборчий - очень сильно! (многие спрашивали, почему? что за советы для примера?)  Предложил эксплуатировать схему (mindmap) Отталкиваться от задач - задачи (примеры) хорошо притягивают внимание Шрифты, картинки, расположение на слайде, … Как связно вести рассказ, постоянно поддерживая внимание слушателей.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0192</title>
+      <link>http://example.org/devzen_note/0192/</link>
+      <pubDate>Sun, 20 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0192/</guid>
+      <description>BGP атака на Route53, чтобы перехватывать DNS траффик https://www.internetsociety.org/blog/2018/04/amazons-route-53-bgp-hijack/
+ 24 Апреля атака: 4 сети /23 адресов Амазона-Route53 (AS16509 - автономная система), их анонсировать стал eNet (AS10297), сильно распространять стал Hurricane Electric (AS6939), который соединен с большим количеством других сетей. Как результат - большое распространение этой BGP подмены. Любой DNS-сервер, находящийся в этих подсетях начал работать, спрашивая про Route53 адреса с некорректного адреса где-то в Equinix Chicago IBX (“это не наш сервак, это один из серверов наших кастомеров в нашем датацентре”) В результате они могли подменять все DNS-запросы, и подставлять любые свои ответы.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0191</title>
+      <link>http://example.org/devzen_note/0191/</link>
+      <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0191/</guid>
+      <description>The Hitchhiker&amp;rsquo;s Guide to the Unexpected https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html
+ He is system architect, and always explain system design in OTP terms (even if he’s talking not about Erlang/Elixir) Where bugs come from: ￼from “unknown”: spectre/meltdown, thundering herd.    Main target: move bugs from “unknown” to the “known” space. How?  Difficult: Increase knowledge of developers. Simple: Hire more seniors (temptation: send seniors alone to the difficult parts. They’ll leave some day).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0186</title>
+      <link>http://example.org/devzen_note/0186/</link>
+      <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0186/</guid>
+      <description>Giving every Tor Hidden Service a IPv6 address https://blog.benjojo.co.uk/post/tor-onions-to-v6-with-iptables-proxy
+ Onion Services (A) - allows to host and access a TCP port with anonmitity the only requirements - connection to the Tor network NAT/firewall evader. It would be nice if Tor client is not needed to access an onion service. For HTTP/HTTPS services there’s a service to do that: tor2web &amp;rdquo;&amp;ldquo;&amp;ldquo; it will only work for HTTP/HTTPS, even though onion services can be wrapped with any TCP port service!</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0185</title>
+      <link>http://example.org/devzen_note/0185/</link>
+      <pubDate>Sun, 01 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0185/</guid>
+      <description>HDMI -&amp;gt; UDP (MPEG TS) https://www.youtube.com/watch?v=SAvGylthpkU
+ one sender -&amp;gt; switch -&amp;gt; several receivers HDCP VLC sound 1.6s latency -&amp;gt; 0.2s latency Some 0-length UDP packets, not standard, may not work with some players ffmpeg doesn’t work, workaround: filter empty udp packets capture via vlc 1440p -&amp;gt; 720p by default. Upgrade позволяет обойти chromecast - doesn’t work HDMI splitter remove DRM signature (??)  Performance Under Load https://medium.com/@NetflixTechBlog/performance-under-load-3e6fa9a60581
+ Есть проблема определения максимального concurrency у любого компонента concurrency = rate * latency (среднее) Все, что выше - встает в очередь (увеличивая latency)   ￼ найти статические лимиты легко (тесты), но невозможно поддерживать актуальными Решение - действовать как в tcp: TCP congestion control algorithm   ￼ gradient=(RTTnoload/RTTactual) (как определять RTTnoload?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0184</title>
+      <link>http://example.org/devzen_note/0184/</link>
+      <pubDate>Sun, 25 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0184/</guid>
+      <description>TCP Tracepoints http://www.brendangregg.com/blog/2018-03-22/tcp-tracepoints.html
+ TCP Tracepoints have arrived in Linux. Linux-4.15 added 5 of them, 4.16 will add 2 more Versatile sock:inet_sock_set_state. It can be used to track when kernel changes the state of a TCP session (e.g. TCP_SYN_SENT -&amp;gt; TCP_ESTABLISHED) tcplife tool in the open-source “bcc” collection.  Used “kprobe” (kernel dynamic tracing) of the “tcp_set_state()” kernel function. Relies on kernel implementation, need to change from version to version  Tracepoints are considered as “stable” and “shouldn’t change” (not “set in stone”) “trace” tool in the bcc:   # trace -t &#39;t:sock:inet_sock_set_state &amp;quot;%llx: %d -&amp;gt; %d&amp;quot;, args-&amp;gt;skaddr, args-&amp;gt;oldstate, args-&amp;gt;newstate&#39; TIME PID TID COMM FUNC - 1.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0180</title>
+      <link>http://example.org/devzen_note/0180/</link>
+      <pubDate>Sun, 25 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0180/</guid>
+      <description>Bazel https://bazel.build/
+ Новая правильная тулза для сборки всего от гугла (Blaze) Несколько конфигурационных файлов (WORKSPACE, BUILD), Символьные ссылки на директории с результатами Полная сборка, включая все зависимости. Кэширование всех артифактов. Говорят, в гугле, все артифакты складываются на какую-то распределенную ФС. Так что если кто-то уже собирал эту версию - тебе не придется, воспользуешься чужими результатами. По-факту, инкрементальная сборка должна быть очень быстрая. Нет тразитивности при работе с зависимостями. Если A зависит от B, а B зависит от C -&amp;gt; надо прописать C в зависимостях к A.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0179</title>
+      <link>http://example.org/devzen_note/0179/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0179/</guid>
+      <description>Paper &amp;ldquo;Partisan: Enabling Cloud-Scale Erlang Applications&amp;rdquo; https://arxiv.org/abs/1802.02652
+ Models:  Full mesh model client-server model peer-to-peer model publish-subscribe model  Usually, the runtime support for distributed applications is not needed. But several counter-examples: Akka cluster, Microsoft Orleans, Distributed Erlang single topology is insufficient Partisan: distributed programming model + distributed layer = alternative to Distributed Erlang. 2 important improvements over Distributed Erlang:  addition of multiple runtime-selectable cluster topologies ability to gain additional parallelism by distributing messages over multiple communication channels  Default topology: full mesh But can distribute traffic over multiple connections to avoid congestion problem observed in Distributed Erlang Consider 2 application scenarios:  distributed database with large objects on smaller clusters (10s of nodes) lightweight replicated k-v store (100-1000s of nodes)  communication channels -&amp;gt; 30x improvements on point-to-point massaging, 13.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0178</title>
+      <link>http://example.org/devzen_note/0178/</link>
+      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0178/</guid>
+      <description>Name Age     Bob 27   Alice 23    Hackers can now steal data from faraday cage air-gapped computers. https://thehackernews.com/2018/02/airgap-computer-hacking.html
+ Techniques: Magneto and ODINI Malware generates a pattern of magnetic field frequencies by overloading the CPU with calculations that increase power consumption and generate a stronger magnetic field The malware leaves only a small footprint in the memory. At the OS level the program requires no special privileges, works in user space (busy loops, mainly) MAGNETO is a short-distance attack, where an android app installed on the attacker’s smartphone can receive stolen data with the help of phone’s magnetometer (magnetic sensor) ODINI - slightly longer range using a dedicated magnetic sensor.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0177</title>
+      <link>http://example.org/devzen_note/0177/</link>
+      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0177/</guid>
+      <description>Comparison of the Open Source OLAP Systems for Big Data: ClickHouse, Druid and Pinot https://medium.com/@leventov/comparison-of-the-open-source-olap-systems-for-big-data-clickhouse-druid-and-pinot-8e042a5ed1c7
+ Similarities: Store data and do query processing on the same node. Have their own format for storing data with indexes + integrated with query processing engines. Have data distributed quite statically between the nodes. Flip side: they don’t support queries that require movement of flare amounts of data between the nodes, e.g. joins between two large tables No point updates and deletes -&amp;gt; more efficient columnar compression and more aggressive indexes.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0176</title>
+      <link>http://example.org/devzen_note/0176/</link>
+      <pubDate>Sun, 28 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0176/</guid>
+      <description>Joel отказался от fb и tw https://www.joelonsoftware.com/2018/01/12/birdcage-liners/
+ Stream is always full of conflict and stress. Gave up, stopped using them. As he designs social software for a living, he should have a professional opinion why Tw and Fb made him unhappy Tw: I care about friends, I keep in touch with them. Everybody don’t use twitter to share happy news, only for some flame wars. 140 symbols is not enough: You start with complicated thought, then shorten it, the result - is very trivial idea without nuances Then it is incorrectly comprehended, then the reply is incorrectly read.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0173</title>
+      <link>http://example.org/devzen_note/0173/</link>
+      <pubDate>Sun, 24 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0173/</guid>
+      <description>Google Maps’s Moat https://www.justinobeirne.com/google-maps-moat
+ на гугловских картах больше зданий, чем на всех других картах здания очень точно повторяют очертания оказалось, что отображаются даже сарайки, вентиляторы на крышах, окна, которые выдаются из зданий это работает как для крупных городов, так и мелких населенных пунктов (13 человек), в которых никогда не ездила машина гуглоулиц покатые крыши, колокольни, … парки он прошелся по пресс-релизам, нашел, что первые упоминания про детали зданий - это 2012 год детали: аэрофотосъемки + техника компьютерного зрения -&amp;gt; большие здания получили много деталей очень эффектно смотрятся башни: seattle space needle Останкинская - плоский объект на 3d фотках.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0172</title>
+      <link>http://example.org/devzen_note/0172/</link>
+      <pubDate>Sun, 17 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0172/</guid>
+      <description>Kubernetes -1.9 http://blog.kubernetes.io/2017/12/kubernetes-19-workloads-expanded-ecosystem.html
+ 4 релиз за год Workloads API GA (general availability). apps/v1 вместо extensions/v1beta1, api/v1beta1, api/v1beta2. Включает Deployment, DaemonSet, ReplicaSet, StatefulSet. Показано, как надо мигрировать, есть тулы, для обратной совместимости еще поддержат. Интересно почитать, как развивалось API между версиями: Immutable Selectors Windows Support (beta) Storage Enhancements: k8s-1.9 добавили (alpha) поддержку Container Storage Interface (CSI). Упрощает работу с Volume, третесторонние провайдеры подобных систем. Custom Resource Definition (CRD) validation -&amp;gt; beta.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0171</title>
+      <link>http://example.org/devzen_note/0171/</link>
+      <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0171/</guid>
+      <description>AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3  Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0169</title>
+      <link>http://example.org/devzen_note/0169/</link>
+      <pubDate>Sun, 26 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0169/</guid>
+      <description> Paper &amp;ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&amp;rdquo; https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf
+ Every microcontroller has firmware readout protection Checked only STM32F0 family (entry-level microcontroller) Paper:  analysis of 3 security core components detection of 3 weknesses + 3 ideas for their exploitation  Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1 Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1  Proof of Concept for each weakness =&amp;gt; vulnerabilities discussion of impact  STM32 Security Concept  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0168</title>
+      <link>http://example.org/devzen_note/0168/</link>
+      <pubDate>Sun, 19 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0168/</guid>
+      <description>Separation of compute and state in Google BigQuery and Cloud Dataflow (and why it matters) https://cloud.google.com/blog/big-data/2017/10/separation-of-compute-and-state-in-google-bigquery-and-cloud-dataflow-and-why-it-matters
+ separation = ability to maintain intermediate state between processing stages in a high performance component, separate from either the compute cluster or storage Benefits to separating compute from state:  Less state in compute -&amp;gt; it is more ephemeral and scalable. Easier to parallelize and easier to recover from a lost node Processing stages don’t conflict within the same compute node Easier for the processing engine to re-partition the workload Pipeline execution: stage N+1 before stage N is finished.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0165</title>
+      <link>http://example.org/devzen_note/0165/</link>
+      <pubDate>Sun, 29 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0165/</guid>
+      <description>A general purpose counting filter: making every bit count https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/
+ Approximate Membership Query (AMQ). Example: Bloom filter. Определять, принадлежит какой-то элемент данному множеству. Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive. =&amp;gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно” Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc 4 недостатка Bloom фильтров:  Невозможность удалить объекты Плохо скалируются за размер RAM Невозможность динамически изменить размер Невозможность определить кол-во вхождений каждого элемента  В paper придумана новая AMQ структура: Counting Quotient Filter (подсчетный количественный фильтр) = CQF structure Все недостатки Bloom фильтра ушли, очень хорошо работает (время, объем памяти) В несколько раз быстрее Bloom Filter, cuckoo filter Поддержка количества объекта - это огромный плюс Обычный QF (долевой фильтр) -&amp;gt; RSQF (rank and reset based quotient filter) -&amp;gt; CQF QF: ￼   храним в h0-вой ячейке h1 (домашняя), либо сдвиг на соседнюю.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0163</title>
+      <link>http://example.org/devzen_note/0163/</link>
+      <pubDate>Sun, 15 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0163/</guid>
+      <description>Paper &amp;ldquo;Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol&amp;rdquo; https://eprint.iacr.org/2016/889.pdf
+ to generate a single block of bitcoin &amp;gt; 2^60 hash operations (energy requirements ~ small country) -&amp;gt; change “proof of work” to something more efficient with similar guarantees Proof of Work : choose randomly the miner to issue the next block -&amp;gt; depends on computational power Proof of Stake (PoS) : choose randomly proportionally to the stake. PoS design challenge: simulate leader election process (fair randomized election) Result:  Ouroboros, provably secure PoS system.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0162</title>
+      <link>http://example.org/devzen_note/0162/</link>
+      <pubDate>Sun, 08 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0162/</guid>
+      <description>Streams: a new general purpose data structure in Redis http://antirez.com/news/114
+On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-part-1-flavours-of-io-8e1ace1de017
+ Filesysem IO has a large influence (like Network IO) It has smaller set of tools. Flavours of IO:  syscalls: open, write, read, fsync, sync, close Standard IO: fopen, fwrite, fread, fflush, fclose Vectored IO: writev, readv Memory mapped IO: open, mmap, msync, munmap  Buffered IO. in stdlib: full and line buffering.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0161</title>
+      <link>http://example.org/devzen_note/0161/</link>
+      <pubDate>Sun, 01 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0161/</guid>
+      <description>Quantifying detectable bugs in JavaScript https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/
+ Статья начинается с цитаты менеджера из Microsoft: “если можно быстро поправить код, чтобы он начал статически анализироваться и кол-во ошибок снизится на 10% - это просто сногсшибательно, мы такое обязательно возьмем” authors study historical bugs in real world JS projects in GitHub History + static type system that can be applied with few modifications Error types: (detectable ^ public ^ patched)    1.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0160</title>
+      <link>http://example.org/devzen_note/0160/</link>
+      <pubDate>Sun, 24 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0160/</guid>
+      <description>Hijacking Bitcoin: Routing Attacks on Cryptocurrencies http://hackingdistributed.com/2017/05/01/bgp-attacks-on-btc/
+ биткоин кажется защищенным. атака направленная на “распространение данных”, использующая “Internet routing infra” Большие Internet service providers (ISPs) уже сидят в центре передачи, через них идет большой поток траффика. Он plaintext, им очень просто ее подменять, блокировать, или генерировать свой Вопрос - насколько bitcoin подвержен? Выпускаем paper https://btc-hijack.ethz.ch/files/btc_hijack.pdf Биткоин очень централизован. 20% биткоин нод расположены на 100 IP prefixes. (сейчас всего около 600K IP prefixes).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0156</title>
+      <link>http://example.org/devzen_note/0156/</link>
+      <pubDate>Sun, 27 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0156/</guid>
+      <description>Load Average in Linux http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html
+ It’s not load, it’s not average (N of processes running + waiting to run, N of processes in “uninterruptible sleep (usually IO”    Если заменить своп-диск с быстрого на медленный, мы уменьшим производительность системы, LA должен увеличиться, только если будет учитываться не только CPU  What’s next? http://graydon2.dreamwidth.org/253769.html
+ Автор: Graydon Hoare, создатель языка Rust Следующие проблемы в языках, которые надо решать Если любая из проблем кажется понятной и простой - “вы просто не понимаете ее до конца” Модули.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0155</title>
+      <link>http://example.org/devzen_note/0155/</link>
+      <pubDate>Sun, 20 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0155/</guid>
+      <description>Amazon Aurora http://www.allthingsdistributed.com/files/p1041-verbitski.pdf
+ вместо консенсуса 2&amp;frasl;3 они используют 4&amp;frasl;6 (3&amp;frasl;6 для чтения) 10GB сегменты, которые восстанавливать 10 сек (на 10Gbit сетке) logs are data - хранят только логи дополнительно, асинхронно материализуют страницы БД, которые имеют длинную цепочку изменений в логе Восстановление после крэша в Mysql: восстановить последний checkpoint + применить изменения из лога. В Aurora сохранение чекпоинтов идет асинхронно в фоне, на каждой ноде, и восстанавливаться оно будет также, т.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0154</title>
+      <link>http://example.org/devzen_note/0154/</link>
+      <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0154/</guid>
+      <description>If your software should be cross platform and accessible, forget about Qt https://blind.guru/qta11y.html
+“Ограниченные возможности” - What toolkit to choose to create a UI on most platform? - Java/Swing (Win, Linux, Mac) - C++? Qt. 10yr ago it didn’t work (4.x on Linux). Everybody hates Qt on Win - Email to QT -&amp;gt; answer “Works everywhere, if you find problem - we’ll fix it” - Проблема: основной (платный) продукт для чтения текста с экрана не видит текст в “text entry widgets” -&amp;gt; bug in Qt tracker - Answer (in a year): Will be fixed after rewrite, that has no deadline.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0147</title>
+      <link>http://example.org/devzen_note/0147/</link>
+      <pubDate>Sun, 18 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0147/</guid>
+      <description>Rust 1.18 https://habrahabr.ru/post/330778/
+ Новая книга open source (GH), написано 19 из 20 глав изменение ключевого слова pub для создания публичной области видимости объекта Переупорядочивание объектов в структуре (для занимания меньшего места) Начало перехода на новую систему документирования кода CommonMark (опция для rustdoc) Компилятор на 15-20% быстрее  System Programming in Rust: beyond safety (разбор paper от Adryan Colyer) https://blog.acolyer.org/2017/06/14/system-programming-in-rust-beyond-safety/
+ Авторы хотят переключить всё системное программирование на Rust Почему используем С?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0145</title>
+      <link>http://example.org/devzen_note/0145/</link>
+      <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0145/</guid>
+      <description>Raid controllers and SSDs https://momjian.us/main/blogs/pgblog/2017.html#May_15_2017
+ Disk array controllers are popular because of:  Hardware RAID support Large read/write cache write reordering instant durable storage of writes using a BBU (backup battery)  With SSD (with BBUs), the usefulness of RAID controllers is unclear:  CPU are fast and can do RAID in software servers have tons of RAM write reordering is unnecessary for SSDs (good random write perf) BBUs on SSDs make RAID BBUs redundant   While raid controllers introduce problems on their own: * High failure rates * complex configuration * slowness Ссылки на переписку в postgresql mailing list</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0142</title>
+      <link>http://example.org/devzen_note/0142/</link>
+      <pubDate>Sun, 14 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0142/</guid>
+      <description>Exploiting the Linux kernel via packet sockets https://googleprojectzero.blogspot.ru/2017/05/exploiting-linux-kernel-via-packet.html
+ bug CVE-2017-7308 фаззи-тестирование системных вызовов + проверка правильной работы с памятью  Intel Itanium VLIW - все https://arstechnica.com/gadgets/2017/05/intels-itanium-cpus-once-a-play-for-64-bit-servers-and-desktops-are-dead/</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0141</title>
+      <link>http://example.org/devzen_note/0141/</link>
+      <pubDate>Sun, 07 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0141/</guid>
+      <description>vCorfu: A cloud-scale object store on a shared log https://blog.acolyer.org/2017/05/03/vcorfu-a-cloud-scale-object-store-on-a-shared-log/
+ distributed shared log (CORFU) vCorfu combines a distributed shared log as in CORFU with materialized streams that store replicas of ojbect-specific subsets of the log data (one stream per object) =&amp;gt; vCorfu uses state machine replication to reconstruct the state of an object by replaying the log. With materialized stream we don’t store the whole log: just the updates but we still have full log Like Corfu.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0138</title>
+      <link>http://example.org/devzen_note/0138/</link>
+      <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0138/</guid>
+      <description> 2017 Настачку https://nastachku.ru/
+ Алексей Палажченко (golangshow) “Профилирование и оптимизация программ на Go” Олег Бартунов “Postgres - как NoSQL база данных” Иван Евтухович “Ключевые DevOps практики” Константин Назаров (hangops+devops deflope) “Быстрые микросервисы на flask+gevent” Говорят, было интересно на Valentin Bartenev (core developer NGINX) “Недостатки Linux API с точки зрения разработчика высокопроизводительного веб-сервера” Наклейки  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0137</title>
+      <link>http://example.org/devzen_note/0137/</link>
+      <pubDate>Sun, 09 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0137/</guid>
+      <description>Kubernetes-1.6 http://blog.kubernetes.io/2017/03/kubernetes-1.6-multi-user-multi-workloads-at-scale.html
+ Focus: scale + automation. 5K nodes cluster is supported (150K pods) etcd v3 Federation for more nodes &amp;amp; multi-cluster (kubefed - becomes beta) RBAC is beta (is used by default). Allows to give users/service accounts access to specific resourses on a per-namespace basis kubeadm tool - is beta (create a secure cluster, RBAC is supported) Node affinity/anti-affinity is in beta (assign to nodes based on node labels).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0134</title>
+      <link>http://example.org/devzen_note/0134/</link>
+      <pubDate>Sun, 19 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0134/</guid>
+      <description>FS redundancy https://blog.acolyer.org/2017/03/08/redundancy-does-not-imply-fault-tolerance-analysis-of-distributed-storage-reactions-to-single-errors-and-corruptions/
+ File system problems 3 contributions: CORDS, study of 8 systems, observations FS: media -&amp;gt; firmware -&amp;gt; driver. Problems in any layer Block errors and block corruptions Ext4 returns error or corrupted data. Btrfs, zfs transform corruption to error. Observations:  systems employ diverse data integrity strategies. checksums (ZK, MongoDB, CockroachDB) vs trust lower system to check integrity problems (RethinkDB + Redis). Inappropriate checksum algorithms (Adler32 for ZK &amp;lt;- a lot of collisions for short strings) Faults are undetected very often.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0132</title>
+      <link>http://example.org/devzen_note/0132/</link>
+      <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0132/</guid>
+      <description>Mythical 10x programmer http://antirez.com/news/112
+ Очень хорошее описание чем продуктивность разных программистов может отличаться Я верю в 10x программистово, я таких видел.  etcd vs zk vs consul https://coreos.com/blog/performance-of-etcd.html
+ Необходима большая производительность по записи (много ключей в большой системе) В целом, это воздействие на IO (Disc), IO (network), CPU, Memory Каждый тест создает 1М уникальных 256-bytes ключей с 1024-byte значением. Размер ключа - чтобы нагружать хранилище побольше, размер значения - среднее значение k8s protobuf values.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0130</title>
+      <link>http://example.org/devzen_note/0130/</link>
+      <pubDate>Sun, 19 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0130/</guid>
+      <description>Book &amp;ldquo;Software Engineering at Google&amp;rdquo; https://arxiv.org/pdf/1702.01715.pdf
+The most important chapters according to the content - 2.1 Source Repository - dev in “Head” of repo - automated systems run tests frequently - code ownership - 2.2 Build system - build results are cached in the cloud - incremental rebuilds are fast - 2.3 CR - all changes to main source code MUST be reviewed at least by 1 eng - CR discussions are automatically copied to a mailing list - 2.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0129</title>
+      <link>http://example.org/devzen_note/0129/</link>
+      <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0129/</guid>
+      <description>RethinkDB присоединяется к Linux Foundation https://www.rethinkdb.com/blog/rethinkdb-joins-linux-foundation/
+ Cloud Native Computing Foundation (cncf.io) покупает права на rethinkdb source code, и отдает в Linux Foundation с лицензией ASLv2 (Apache) Все остается как раньше, сайты, github исходники, продолжают работать Временная команда управления работает с сообществом, чтобы установить официальное руководство проекта Много разработчиков - ушло в Stripe (оно спонсировало проект на $25k) Сообщество уже вкладывается - выход 2.4 не за горами. 2.5 - улучшения в производительности.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0128</title>
+      <link>http://example.org/devzen_note/0128/</link>
+      <pubDate>Sun, 05 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0128/</guid>
+      <description>A million requests per second with Python https://medium.freecodecamp.com/million-requests-per-second-with-python-95c137af319#.orernkeye
+ Japronto c4.2xlarge with magnetic disks all contestants: single-worker process wrk 1 thread, 100 connections, 24 pipelined requests per connection if elb -&amp;gt; one connection, all requests in this connection Nagle algorithm -&amp;gt; many small requests in one TCP packet japronto glues response and write it back in one system call Written in C. Parser, protocol, connection reaper, router, request and response objects - C Extensions elb support connection reuse http://docs.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0126</title>
+      <link>http://example.org/devzen_note/0126/</link>
+      <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0126/</guid>
+      <description> Announcing Rust Language Server Alpha Release http://www.jonathanturner.org/2017/01/rls-alpha-release.html
+ RLS = racer + Rust compiler racer: quick but not accurate rust compiler - slower, accurate, async (will say when ready)  Rust for NTPSec https://www.opennet.ru/opennews/art.shtml?num=45832 (+links)
+ цель уйти с си - увеличить безопасность (выходы за границы массива, подвисшие указатели, и т.д.) Автор решил написать проект: simple IRC сервер (I can do it in my sleep) За 4 дня - 67 строк “wrapping code for the server” За 4 дня на Го - изучил язык, написал сервер и тесты No ‘select/poll/epoll_wait’ in Rust рассуждения про crate и систему  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0123</title>
+      <link>http://example.org/devzen_note/0123/</link>
+      <pubDate>Sun, 18 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0123/</guid>
+      <description>Kubernetes-1.5.0 https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.5.md#v150
+ StatefuleSets for: stable network id, persistent storage, ordered deployment and termination Federation: DaemonSets, Deployments, ConfigMaps OpenAPI spec is beta for APIServer, python client Выпустили 1.5.1 - надо пропускать 1.5.0 &amp;ndash;anonymous-auth= true by default  Three States and a Plan: The A.I. of F.E.A.R. http://alumni.media.mit.edu/~jorkin/gdc2006_orkin_jeff_fear.pdf
+ Two state: Animate and Goto not FSM for satte FSM: how to behave in every situation. Procedural Planning system: set goals and actions and AI decide how to sequence actions to satisfy goals.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0122</title>
+      <link>http://example.org/devzen_note/0122/</link>
+      <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0122/</guid>
+      <description> Amazon interview http://shivankaul.com/blog/2016/12/07/clean-your-desk-yet-another-amazon-interview-experience.html
+ почистите стол не должно быть ручек и листочков телефон положите, чтобы было видно установите приложение подождите, идет log off  Python-3.6 https://docs.python.org/3.6/whatsnew/3.6.html
+ PEP 495: Local Time Disambiguation: перевод часов назад на час - создается fold (извилина, загиб) PEP 529: Change Windows filesystem encoding to UTF-8 PEP 528: Change Windows console encoding to UTF-8 PEP 526: Syntax for variable annotations New dict implementation (memory usage is 20-25% smaller) PYTHONMALLOC environment variable (memory allocator + hooks) ‘secrets’ module for crypto-strong pseudo-random valules asyncio - fast  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0121</title>
+      <link>http://example.org/devzen_note/0121/</link>
+      <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0121/</guid>
+      <description> AWS Aurora + Postgresql https://aws.amazon.com/blogs/aws/amazon-aurora-update-postgresql-compatibility/ + comments https://news.ycombinator.com/item?id=13072861
+ RDS replicates to a standby instance + EBS. Aurora replicates to a special storage engine  FPGA on AWS https://aws.amazon.com/blogs/aws/developer-preview-ec2-instances-f1-with-programmable-hardware/
+ with Intel Broadwell processors, up to 976GB of memory, 4TB SSD, 1-8 FPGA several FPGA share the same memory address space (up to 12GB/sec in each direction) VHDL or Verilog + tools High Level Synthesis tools, including OpenCL to program FPGA -  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0120</title>
+      <link>http://example.org/devzen_note/0120/</link>
+      <pubDate>Sun, 27 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0120/</guid>
+      <description>Handling Overload http://ferd.ca/handling-overload.html
+ идея статьи - из спора о необходимости иметь бесконечный mailbox для процесса (все равно ограничение - в размере оперативки) ?Критика flow control остается в preemptive языках (Go). Кооперативные языки (Akka, Node.js) имеют неявные механизмы (большая нагрузка на CPU рано блокируется раньше) naive system - tasks are done asynchronously. No control, you hope for the best Usually, one of the part is not parallelized -&amp;gt; bottleneck -&amp;gt; problem with the size of the mailbox backpressure - default way in most languages, because function call is synced (you do smth, and return smth when everything is done) all the servers have some limit of concurrent requests Erlang is asynced by default (multi-process communication) (?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0119</title>
+      <link>http://example.org/devzen_note/0119/</link>
+      <pubDate>Sun, 20 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0119/</guid>
+      <description>DropBox &amp;amp; PoPs https://blogs.dropbox.com/tech/2016/11/infrastructure-update-pushing-the-edges-of-our-global-performance/
+ 180ms for the light to traverse Pacific Ocean 90ms to traverse Atlantic Ocean TCP slows down everything (установить соединение) Proxy in CA, Texas, NewYork, Washington, UK, Netherlands, Germany, Japan, Singapore, HongKong User connects to these proxy (TLS, TCP handshake) Backbone links PoP &amp;lt;-&amp;gt; Datacenter to min average Round Trip Time per HTTPS request (Магистральная “опорная” сеть?) Open Peering: Major ISPs (Internet Service Provider) route Dropbox traffic through their network (400 ISPs) Своя собственная магистральная сеть?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0118</title>
+      <link>http://example.org/devzen_note/0118/</link>
+      <pubDate>Sun, 13 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0118/</guid>
+      <description>USB-C + Thunderbolt-3 http://blog.fosketts.net/2016/10/29/total-nightmare-usb-c-thunderbolt-3
+ Спецификация на 24-pin штекер + кабель Разные сигналы (протоколы):  USB 2.0 USB 3.1 gen 1 -&amp;gt; 5Gbps, Apple 12” MacBook USB 3.1 gen 2 -&amp;gt; 10Gbps Alternate Mode (non-USB protocols): DisplayPort, MHL, HDMI, Thunderbolt. not every device supports every Alternate Mode protocol Power Delivery (up to 100Watts). 2 different specifications Audio Accessory Mode (Analogue Audio)  Problems:  Not every USB-C cable, port, device, and power supply will be compatible USB-C HDMI adapter: over USB3.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0116</title>
+      <link>http://example.org/devzen_note/0116/</link>
+      <pubDate>Sun, 30 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0116/</guid>
+      <description> Ansible-2.2 http://www.opennet.ru/opennews/art.shtml?num=45411  2 security fixes (command injection by fact variables + key check) docker_network listen feature for modules (easily notify multiple servers) performance improvements binary modules ec2vpc* modules f5 bigip_device  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0115</title>
+      <link>http://example.org/devzen_note/0115/</link>
+      <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0115/</guid>
+      <description>Chaos Monkey 2.0 http://techblog.netflix.com/2016/10/netflix-chaos-monkey-upgraded.html
+ Они не заставляют придерживаться каким-то шаблонам архитектуры, вместо этого используют Chaos Monkey ChaosMonkey-2.0 интегрирован с Spinnaker (CD система) Указываешь флаги для ChaosMonkey - и сам Spinnaker уже убивает все, и знает, что где находится. Несколько облачных провайдеров(как и spinnaker) Периодически, Chaos Monkey убивает и себя! :) Ранее было много разных вариантов проверок (birn CPU, take disks offline, etc), теперь только убивание  Testing Random, Valid SQL in CockroachDB https://www.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0112</title>
+      <link>http://example.org/devzen_note/0112/</link>
+      <pubDate>Sun, 02 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0112/</guid>
+      <description> Kubernetes-1.4 http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html
+ Cluster creation with two commands (kubeadm command)  limitations: AWS integration won’t work (ELB) single master, kubectl logs won’t work (use docker logs instead) no easy way to generate kubeconfig (copy from master)  simplified installation (4 packages with all the deps in all major linux distributions) expanded stateful application support  ScheduledJob = cron init-containers (start 1+ containers before starting the main application) Dynamic PVC Provisioning moved to Beta - expose multiple storage provisioners + users select them using Storage Class API ojbect Stable Kubernetes Helm charts: Jenkins, MariaDB, MySQL  Cluster Federation  Federated Replica Sets Beta (total federated replicas, relative weight / replica count in each region/cloud Federated Services -&amp;gt; Beta (secrets, events and namespaces are added) Federated Ingress -&amp;gt; Alpha for GCP (L7 globally load balanced)  Container security support (Pod Security Policy) Infra enhancements  inter-pod affinity and anti-affinity  Kubernetes Dashboard UI   </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0109</title>
+      <link>http://example.org/devzen_note/0109/</link>
+      <pubDate>Sun, 11 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0109/</guid>
+      <description> The Myth of Ram - part I http://www.ilikebigbits.com/blog/2014/4/21/the-myth-of-ram-part-i
+ O(sqrt(N)) instead of O(1) for accessing RAM =&amp;gt; O(N*sqrt(N)) for going through linked list simple program accessing linked list. Accessing element is not O(1) (plot) (1ns -&amp;gt; 1 microsec) several levels of caching -&amp;gt; O(sqrt(N))  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0108</title>
+      <link>http://example.org/devzen_note/0108/</link>
+      <pubDate>Sun, 04 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0108/</guid>
+      <description>Wisdom about Erlang BEAM and VM http://beam-wisdoms.clau.se/
+ Explain like I&amp;rsquo;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
+ TP-Link + Lenovo X200 Распознавание напечатанного по анализу сигнала wifi Значение - результат трех эффектов: затухание, multi-paths and Doppler shift Три сложности:  распознать начало и окончание нажатия (алгоритм предложили для приблизительного выяснения) выделение свойств каждого сигнала для того, чтобы распознавать 37 знаков (10 цифр, 26 букв и пробел).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0107</title>
+      <link>http://example.org/devzen_note/0107/</link>
+      <pubDate>Sun, 28 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0107/</guid>
+      <description>TCP puzzlers http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/
+ happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&amp;rsquo;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&amp;rsquo;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0106</title>
+      <link>http://example.org/devzen_note/0106/</link>
+      <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0106/</guid>
+      <description>Redis EVAL Lua Sandbox Escape http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/
+ It’s possible to break out of the Lua sandbox in Redis. (using Lua bytecode type confusion) if only “trusted” users could connect - no threat. Redis-2.8.21 and 3.0.2 have fixes loadstring function - can be used to load bytecode that is unsafe workaround: strong password on Redis upgrade to a new Redis - will fix, but password is better  Linux-троянец написаный на Go http://news.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0100</title>
+      <link>http://example.org/devzen_note/0100/</link>
+      <pubDate>Sat, 09 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0100/</guid>
+      <description>etcd3 https://coreos.com/blog/etcd3-a-new-etcd.html
+ already integrated into Kubernetes a lot of features: distributed locks, elections, STM originally - for CoreOS updates. Now - for different purposes, not always good gprc for efficiency (protobuf). JSON is through a gRPC gateway. HTTP2 to multiplex streams over single TCP. key TTL (request + connection to refresh each key + consensus proposal to update the key)&amp;gt; lightweight streaming lease keepalive model (lease per several keys) watchers -&amp;gt; multiplexer watches on a single connection (several keys) data model with reliable events.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0098</title>
+      <link>http://example.org/devzen_note/0098/</link>
+      <pubDate>Sun, 26 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0098/</guid>
+      <description>Docker-1.12 https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/
+ built-in orchestration. One binary (git style?) docker swarm init - creates a Raft with one node. Adding nodes either worker (default) or managers PR: docker design is based on 4 principles resilience: restart container on another node if a node fails Security: TLS, certificate rotation 30min, Bundles: image + network + network of containers interaction gRPC for inter-node communication (HTTP/2 multiplexing and header compression) protobufs  Erlang-19.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0097</title>
+      <link>http://example.org/devzen_note/0097/</link>
+      <pubDate>Sun, 19 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0097/</guid>
+      <description>Bitsquatting https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf - Проблемы железа. Sun UltraSparc II CPU - во время изготовления получали примеси, которые являются эмиттером альфа частиц в SRAM. Кэш получал битовые ошибки - крэш сервера. Нет проверки корректности. - memtest86 не просто так добавляют на Ubuntu LiveCD - DRAM тоже очень подвержен - Температура - Радиация (высокоэнергичные частицы из космоса) - основной источник ошибок в DRAM. На высоте километра - в 5 раз выше, чем на уровне моря - Тесты DRAM: до 1 ошибки в 1.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0096</title>
+      <link>http://example.org/devzen_note/0096/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0096/</guid>
+      <description>On Being A Senior Engineer http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/
+ senior - очень плавный вход. Не проснешься в один день, а ты уже senior поколение x/y - очень быстрый фидбек, хочется за 5 лет в senior, но надо больше. А что еще через 5 лет? автор предпочитает слово mature.  ищет конструктивную критику своего дизайна понимает (не-техническую область), как они воспринимаются окружающими не боятся давать какие-то оценки, и пытаются стать лучше в этом врожденное чувство предвидения понимают, что не все их проекты интересны растят окружающих показывают все trade-off, когда принимают решения эмпатичны не дают пустых жалоб (всегда подкреплены фактами)  рассказ про biases 10 заповедей разработчика без эго  Disadvantages of purely functional programming http://flyingfrogblog.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0095</title>
+      <link>http://example.org/devzen_note/0095/</link>
+      <pubDate>Sun, 05 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0095/</guid>
+      <description>Hypernetes: Bringing Security and Multi-tenancy to Kubernetes https://kubernetes.io/blog/2016/05/hypernetes-security-and-multi-tenancy-in-kubernetes/
+ HyperContainer - hypervisor-based container, allows you to launch Docker images with KVM, XEN, etc OCI support HyperKernel - minimal Linux kernel inside a pod Pod = VM + docker image FS use OpenStack components Keystone project to manage different tenants (which has network isolation): manifest for Network, tenantID, Network for Namespace  Advanced Testing with Go https://speakerdeck.com/mitchellh/advanced-testing-with-go
+ Table Driven Tests Test Fixtures (read data from files located in prepared place) Golden Files (compare with “correct version”, “—update” if needed) Split into packages/functions.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0094</title>
+      <link>http://example.org/devzen_note/0094/</link>
+      <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0094/</guid>
+      <description>Practical Dependent Types in Haskell https://blog.jle.im/entry/practical-dependent-types-in-haskell-1.html
+ никогда не использовал kind signature для описания типов. Фактически, ты строишь две зависимости: от чего зависит твой тип, и от чего зависит конструктор данных Когда я последний раз слушал доклад на CodeMesh, еще нельзя было делать арифметику в типах (h ‘: hs - чтобы присоединить еще один слой к нейронной сети) все с типами и проверяет себя - реально клево! Генерация - по указанию типа - суперклево!</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0093</title>
+      <link>http://example.org/devzen_note/0093/</link>
+      <pubDate>Sun, 22 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0093/</guid>
+      <description> YTrace: End-to-end Performance Diagnosis in Large Content Providers: http://arxiv.org/abs/1602.03273
+ Примерно то же дано, что и в MysteryMachine: большое приложение, много слоев, сложно разбираться в проблемах Решение должно быть легко интегрируемым, и иметь маленькие false positive and false negative  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0092</title>
+      <link>http://example.org/devzen_note/0092/</link>
+      <pubDate>Sun, 15 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0092/</guid>
+      <description>Visualization of a Paxos-based distributed state machine http://rystsov.info/2016/05/01/paxos.html
+ “Paxos made simple” paper (2001) - algorithm how to transform any FSM into a fault-tolerant distributed system:  Build linearizable distributed write-once register (based on his Sinod protocol) Build linearizable distributed append-only log (sequence of write-once regs) Use distributed append-only log to store the sequence of all events leading a system to the current state instead of storing the state itself  logs - is natural, but need GC or snapshots.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0089</title>
+      <link>http://example.org/devzen_note/0089/</link>
+      <pubDate>Sat, 23 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0089/</guid>
+      <description>The linux scheduler: a Decade of Wasted Cores http://www.ece.ubc.ca/~sasha/papers/eurosys16-final29.pdf
+ Шедулер на одном ядре очень прост: фиксированный интервал, за который любой тред должен работать как минимум один раз. Интервал делится между тредами пропорционально их весу. Thread accumulates vruntime = runtime/weight. Runqueue: Red-Black tree of threads, sorted by vruntime. Multi-core =&amp;gt; complex. Scalability dictates per-core runqueue: context switch is expensive Balance runqueue on different cores Balancing - modify cached data strucures (cache misses) Periodic load balancing (rare) + emergency load balancing (if core is idle) load = combination of thread’s weight and CPU utilization autogroup = tty -&amp;gt; the same cgroup scheduling: NUMA nodes -&amp;gt; 4 groups by 2 cores -&amp;gt; 2 cores Bug1: Group Imbalance bug (one R process - vs - 64 make threads).</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0088</title>
+      <link>http://example.org/devzen_note/0088/</link>
+      <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0088/</guid>
+      <description> Docker-1.11 https://github.com/docker/docker/releases
+ millions of “fixes a bug/race/problem” (it’s very stable! :) ) DNS round robin LB Yubikey hardware image signing experimental support for the MacVlan and IPVlan now it resumes download images (after network error/timeout) client user agent is passed to the registry on pull, build, push, login and search SOCKS proxy docker cli is now able to build on OpenBSD (skip) docker + systemd correctly works with cgroups fixed a panic when pulling an image with 0 layers  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0087</title>
+      <link>http://example.org/devzen_note/0087/</link>
+      <pubDate>Sat, 09 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0087/</guid>
+      <description>Containers are not VMs https://blog.docker.com/2016/03/containers-are-not-vms/
+ containers - квартиры vms - полноценные дома Все понимают, а потом начинают спрашивать вопросы:  как мне бэкапить приложения а где они на самом деле работают (какой Host) patch management strategy (upgrading application inside the container)  на самом деле, контейнеры - это способ доставки сервисов, которые составляют приложение сервисы проще обновлять поотдельности, декларативно определяя, как они составляют приложения  Erlang 19.0 GC https://www.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0086</title>
+      <link>http://example.org/devzen_note/0086/</link>
+      <pubDate>Sat, 02 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0086/</guid>
+      <description>1000 nodes and beyond http://blog.kubernetes.io/2016/03/1000-nodes-and-beyond-updates-to-Kubernetes-performance-and-scalability-in-12.html
+ 1.1. Watching from API server instead of etcd 1.2. Created a “read cache” at the API server level (in-memory cache, instead of etcd read). Cache is updated via watch in the background pods density: 30 (1.1) -&amp;gt; 100 (1.2): Pod Lifecycle Event Generator (PLEG). Pull docker state per pod -&amp;gt; per host scheduler throughput. 30k pod scheduled time was cut by ~1400% + link (coreos) JSON parser 1.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0085</title>
+      <link>http://example.org/devzen_note/0085/</link>
+      <pubDate>Sat, 26 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0085/</guid>
+      <description> Erlang/OTP 18.3 http://www.erlang.org/news/101
+ пофиксили баги и race (exit and timeout signals) исправления ошибок в связи с поддержкой новых времен Add validation callback for heart  Ubuntu 16.04 https://wiki.ubuntu.com/XenialXerus/ReleaseNotes
+ Python 3 by default?  Docker for Mac and Windows Beta https://blog.docker.com/2016/03/docker-for-mac-windows-beta/
+ Alpine Linux xhyve Virtual Machine for MacOS, Hyper-V VM for Windows OS X sandbox security записался на бету, меня добавили в список  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0084</title>
+      <link>http://example.org/devzen_note/0084/</link>
+      <pubDate>Wed, 09 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0084/</guid>
+      <description>Dropbox уходит из амазона http://www.wired.com/2016/03/epic-story-dropboxs-exodus-amazon-cloud-empire/
+ Мало деталей, рассуждения на тему почему большие компании уходят из облаков. Немного коснулись Rust, что они с Go переписали часть сервисов на Rust В комментах на HN:  heap size is the issue. How little memory and CPU is used to manage 1GB of data. Perfect hash tables, extensive bit-packing. Lot of custom inline cache-friendly data structures. Data on stack to take the pressure off the VM.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0082</title>
+      <link>http://example.org/devzen_note/0082/</link>
+      <pubDate>Sat, 05 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0082/</guid>
+      <description>Rust-1.7 http://blog.rust-lang.org/2016/03/02/Rust-1.7.html
+ Library stabilisation. HashMap : SipHash algorithm + FNV hash algorithm Cargo minor changes  Java vs Rust https://llogiq.github.io/2016/02/28/java-rust.html
+ History Runtime  just in time (JIT) compilation in JVM -&amp;gt; profile based optimisation Rust - is fast, but could be slower, depends on you :) in Rust - orders of magnitude less memory Java GC is very optimized -&amp;gt; painless programming. you can write complex code to use less memory.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0083</title>
+      <link>http://example.org/devzen_note/0083/</link>
+      <pubDate>Wed, 02 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0083/</guid>
+      <description>rebar3 http://lists.basho.com/pipermail/rebar_lists.basho.com/2016-March/002342.html
+ in github.com/erlang ! rebar3 shell: code paths, boots up applications. rebar agent as r3 with a name: r3:do(compile) r3:do(dialyse) r3 name can be used for IDE tooling plugins for rebar3 agent: rebar3_auto recompiles modified files rebar3 shell detect release configurations, so boot the system the way release would rebar3 tree to see the deps tree (first wins deps resolution strategy) overrides feature. allow replace or add configuration for an app at a lower level (deps) profiles feature to manage env and options test profile - use neck, eunit_opts, etc release profile - to add erts dependency tracking feature each time it runs compile it’ll verify deps hex packages are cached rm -rf deps is not needed anymore tradeoff between repeatability and efficiency for developer deps are never rebuilt even if sources are changed by hands checkout dependencies feature with _checkout directory that is used at first place if sources for deps are changed in _checkout, they’re recompiled and used  Paper &amp;ldquo;Borg, Omega, Kubernetes&amp;rdquo; http://queue.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0079</title>
+      <link>http://example.org/devzen_note/0079/</link>
+      <pubDate>Sat, 13 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0079/</guid>
+      <description>Rust for Web https://medium.com/@eugeniyoz/restful-api-in-rust-impressions-63250d611d15#.8p6pzohow
+ Разработчик переходил на Rust с PHP, опыта в Rust было 0 Кратко про ownership, говорит, что очень, очень помогает. Компилятор: враг -&amp;gt; союзник; debugging более дорогой, чем написание кода cargo - супер штука IDE: IntelliJ IDEA syntax: недоволен, но готов мириться ради функциональности JSON: pain  Paper &amp;ldquo;Time is illusion&amp;rdquo; http://queue.acm.org/detail.cfm?ref=rss&amp;amp;id=2878574
+ Мало кто читал “Time, Clocks и порядок событий в распределенной системе” чуть больше воспринимает всерьез эту проблему.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0078</title>
+      <link>http://example.org/devzen_note/0078/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0078/</guid>
+      <description> Google and Red Hat integrate OpenShift Dedicated and Google Cloud Platform to make adopting containers easier http://googlecloudplatform.blogspot.co.uk/2016/01/google-and-red-hat-integrate-openshift-dedicated.html
+ Red Hat будет предлагать OpenShift Dedicated на Google Cloud Platform. Странно, что они до этого такой возможности не предоставляли, это их очевидный шаг. Хотя, я не очень понимаю тех людей, которые покупают Dedicated. $48k в год за поддержку 4 год. https://www.openshift.com/dedicated/  </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0077</title>
+      <link>http://example.org/devzen_note/0077/</link>
+      <pubDate>Sat, 30 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0077/</guid>
+      <description>Суперкомпьютер на Pi Zero https://geektimes.ru/post/269850/
+ Суперкомпьютер на Pi Zero. 16 малинок на одной плате, 2 micro-usb для каждой малинки, 1 - питание, 1 - данные 16 ethernet разъемов Есть только одна малинка!!! Больше не нашли! Как так можно?  Миграция 500М записей без downtime https://medium.com/twitch-engineering/how-we-migrated-over-half-a-billion-records-without-downtime-d91e58f39cad#.bj8ypgrho
+ Сделали новую базу, перетащили данные, актуализировали дифом, который накопился пока перетаскивали Потом поставили модуль сравнения с новым результатом, добились, что ответы не отличаются Переключили.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0076</title>
+      <link>http://example.org/devzen_note/0076/</link>
+      <pubDate>Sat, 23 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0076/</guid>
+      <description>Introduction to PostgreSQL physical storage http://rachbelaid.com/introduction-to-postgres-physical-storage/
+ определение OID (object ID) вашей таблицы ( select * from pg_database ) сама база хранится в 1ГБ файлах, filenode system table pg_catalog для каждой таблицы таблица сохраняется как массив страниц фиксированного размера (8кб) страницы перемешаны, никакого порядка    записи лежат очень долго, почти вечно, поэтому индекс тоже не меняется указатель на запись = номер страницы + индекс select cid, * from bar ; кол-во столбцов ограничено, т.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0073</title>
+      <link>http://example.org/devzen_note/0073/</link>
+      <pubDate>Sat, 26 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/devzen_note/0073/</guid>
+      <description>Fuck the Cloud http://ascii.textfiles.com/archives/1717
+(comments are on https://news.ycombinator.com/item?id=10771539)
+ Manifesto about the position Cloud is a vital part that you don’t own or control “Cloud” was used to represent outside network since 1980s If you fail - who blame you? It’s a cloud. Soft, huggable cloud. if you lose your shit, the technologies will not help you. They will giggle at you and make fun of your not understanding the fundamental principles and engineering of client-server models The question is about value Porn, music, films - you can redownload The thing you make: writing, linking of friends, … - everything is gone when you’re died If you’re not asking what stuff means anything to you - you are a sucker, ready to throw your stuff down.</description>
+    </item>
+    
+  </channel>
+</rss>

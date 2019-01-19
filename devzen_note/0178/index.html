@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0178 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0178</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Age</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Bob</td>
+<td>27</td>
+</tr>
+
+<tr>
+<td>Alice</td>
+<td>23</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="hackers-can-now-steal-data-from-faraday-cage-air-gapped-computers">Hackers can now steal data from faraday cage air-gapped computers.</h1>
+
+<p><a href="https://thehackernews.com/2018/02/airgap-computer-hacking.html">https://thehackernews.com/2018/02/airgap-computer-hacking.html</a></p>
+
+<ul>
+<li>Techniques: Magneto and ODINI</li>
+<li>Malware generates a pattern of magnetic field frequencies by overloading the CPU with calculations that increase power consumption and generate a stronger magnetic field</li>
+<li>The malware leaves only a small footprint in the memory.</li>
+<li>At the OS level the program requires no special privileges, works in user space (busy loops, mainly)</li>
+<li>MAGNETO is a short-distance attack, where an android app installed on the attacker’s smartphone can receive stolen data with the help of phone’s magnetometer (magnetic sensor)</li>
+<li>ODINI - slightly longer range using a dedicated magnetic sensor.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Work</th>
+<th>Signal generation</th>
+<th>Receiver</th>
+<th>Max bitrate</th>
+<th>Max distance</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ODINI</td>
+<td>CPU</td>
+<td>Magnetic sensor</td>
+<td>40 bit/sec</td>
+<td>100 to 150cm</td>
+</tr>
+
+<tr>
+<td>MAGNETO</td>
+<td>CPU</td>
+<td>Smartphone</td>
+<td>5-0.2 bit/sec</td>
+<td>0 to 12cm</td>
+</tr>
+
+<tr>
+<td>Hard Disk Drive</td>
+<td>HDD</td>
+<td>Smartphone</td>
+<td>2-0.06 bit/sec</td>
+<td>0 to 12cm</td>
+</tr>
+</tbody>
+</table>
+
+<h1 id="open-hardware-ecosystem-with-risc-v">Open Hardware Ecosystem with RISC-V</h1>
+
+<p><a href="https://fosdem.org/2018/schedule/event/riscv/">https://fosdem.org/2018/schedule/event/riscv/</a></p>
+
+<ul>
+<li>RISC-V - free and open ISA standard</li>
+<li>ISA = Instruction Set Architecture</li>
+<li>RISC-V binutils, GCC, Linux and glib have been released by upstream as of Feb 1, 2018</li>
+<li>In 2010 - time to choose an ISA for next set of projects. Obvious choices: x86 and ARM</li>
+<li>X86 impossible - IP issues, too complex</li>
+<li>ARM mostly impossible - no 64-bit, IP issues, complex</li>
+<li>They started 3-month project, in summer 2010 to develop their own clean-slate ISA</li>
+<li>In 2014 they released the frozen base user spec (first release in may 2011)</li>
+<li>RISC-V is the smallest ISA for 32- and 64-bit addresses</li>
+<li>Current state:
+
+<ul>
+<li>User Mode ISA specification:
+
+<ul>
+<li>ALU, branches, memory</li>
+<li>M extension for multiplication</li>
+<li>A extension for atomics</li>
+<li>F and D extensions for single and double precision floating point</li>
+<li>C extension for compressed instructions (16-bit)</li>
+</ul></li>
+<li>Privileged Mode ISA specification:
+
+<ul>
+<li>Supervisor mode</li>
+<li>Hypervisor mode</li>
+<li>Machine mode</li>
+</ul></li>
+<li>External Debug specification
+
+<ul>
+<li>Debug machine-mode software over JTAG</li>
+</ul></li>
+</ul></li>
+<li>Future of RISC-V
+
+<ul>
+<li>Debian, Fedore - bootstrap is in progress</li>
+<li>V extension for vectors</li>
+<li>J extension for JITs (primary target - is advanced JVMs)</li>
+</ul></li>
+<li>HiFive Unleashed: Multi-Core RISC-V Linux Development Board
+
+<ul>
+<li>4+1 Multi-Core Coherent Configuration, up to 1.5GHz</li>
+<li>1x Gigabit Ethernet</li>
+<li>8GB 64-bit DDR4 with ECC</li>
+<li>MicroSD card for removable storage</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0177/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0179/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.71963 &#43;0400 &#43;04 m=&#43;0.080148632">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

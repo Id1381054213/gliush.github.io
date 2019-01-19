@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0106 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0106</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="redis-eval-lua-sandbox-escape">Redis EVAL Lua Sandbox Escape</h1>
+
+<p><a href="http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/">http://benmmurphy.github.io/blog/2015/06/04/redis-eval-lua-sandbox-escape/</a></p>
+
+<ul>
+<li>It’s possible to break out of the Lua sandbox in Redis. (using Lua bytecode type confusion)</li>
+<li>if only “trusted” users could connect - no threat.</li>
+<li>Redis-2.8.21 and 3.0.2 have fixes</li>
+<li>loadstring function - can be used to load bytecode that is unsafe</li>
+<li>workaround: strong password on Redis</li>
+<li>upgrade to a new Redis - will fix, but password is better</li>
+</ul>
+
+<h1 id="linux-троянец-написаный-на-go">Linux-троянец написаный на Go</h1>
+
+<p><a href="http://news.drweb.ru/show/?i=10140">http://news.drweb.ru/show/?i=10140</a></p>
+
+<ul>
+<li>Linux.Lady.1</li>
+<li>Загружает конфиг с инета, запускает майнер.</li>
+<li>Майнит деньги</li>
+<li>Заражает другие машины через сканирование портов Redis</li>
+</ul>
+
+<h1 id="изменение-памяти-виртуальных-машин">Изменение памяти Виртуальных машин</h1>
+
+<p><a href="http://www.opennet.ru/opennews/art.shtml?num=44968">http://www.opennet.ru/opennews/art.shtml?num=44968</a></p>
+
+<ul>
+<li>1. Изменить значение отдельных битов публичного RSA ключа OpenSSH, в соответствие с закрытым ключом атакующего</li>
+<li>2. Изменить URL загрузки deb-пакетов ubuntu.com -&gt; ubuftu.com</li>
+<li>DRAM RowHammer: частые чтения из соседних ячеек -&gt; теряет заряд -&gt; не успевает восстановить</li>
+<li>зеркалирование read-only участка общей памяти для двух разных VM</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0100/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0107/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.730438 &#43;0400 &#43;04 m=&#43;0.090956631">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

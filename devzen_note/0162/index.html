@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0162 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0162</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="streams-a-new-general-purpose-data-structure-in-redis">Streams: a new general purpose data structure in Redis</h1>
+
+<p><a href="http://antirez.com/news/114">http://antirez.com/news/114</a></p>
+
+<h1 id="on-disk-io-part-1-flavours-of-io">On Disk IO, Part 1: Flavours of IO</h1>
+
+<p><a href="https://medium.com/@ifesdjeen/on-disk-io-part-1-flavours-of-io-8e1ace1de017">https://medium.com/@ifesdjeen/on-disk-io-part-1-flavours-of-io-8e1ace1de017</a></p>
+
+<ul>
+<li>Filesysem IO has a large influence (like Network IO)</li>
+<li>It has smaller set of tools.</li>
+<li>Flavours of IO:
+
+<ul>
+<li>syscalls: open, write, read, fsync, sync, close</li>
+<li>Standard IO: fopen, fwrite, fread, fflush, fclose</li>
+<li>Vectored IO: writev, readv</li>
+<li>Memory mapped IO: open, mmap, msync, munmap</li>
+</ul></li>
+<li>Buffered IO. in stdlib: full and line buffering.</li>
+<li>Kernel buffering</li>
+<li>HDD + SDD: block device. The smallest addressable unit is sector. Not possible to read/write less then sector</li>
+<li>Smallest addressable unit of FS is block (generally &gt; sector)</li>
+<li>Page size &gt;= block size (Virtual Memory unit)</li>
+<li>Disk -&gt; OS (+cache) -&gt; RAM</li>
+<li>Page cache: linux delay writes and coalescing join adjecent reads. read-write-read can be done in memory. “Dirty” pages are flushed</li>
+<li>Delaying FS errors (during flush)</li>
+<li>DirectIO: O_DIRECT while opening file (slower). Postgresql, Mysql uses it. Should be block-aligned.</li>
+</ul>
+
+<h1 id="on-disk-io-part-2-more-flavours-of-io">On Disk IO, Part 2: More Flavours of IO</h1>
+
+<p><a href="https://medium.com/@ifesdjeen/on-disk-io-part-2-more-flavours-of-io-c945db3edb13">https://medium.com/@ifesdjeen/on-disk-io-part-2-more-flavours-of-io-c945db3edb13</a>
+- mmap
+- PageFault during first read of not-yet-loaded-memory
+- mmap with protection flags (e.g. in read-only). If OS violates -&gt; SegFault
+- help Kernel about bufferingIO -&gt; <code>fadvise</code>, <code>mlock</code> (to lock pages to be held in the memory, all operations are via Page Cache)
+- Asynchronous IO (AIO). Register operations + callbacks to be called. io_submit, io_getevents
+- Problems: AIO is not in glibc, some syscalls (stat, fsync, open) aren’t fully async
+- Linux AIO is not the same as Posix AIO. Posix AIO is in user space.
+- VectorIO</p>
+
+<h1 id="on-disk-io-part-3-lsm-trees">On Disk IO, Part 3: LSM Trees</h1>
+
+<p><a href="https://medium.com/@ifesdjeen/on-disk-io-part-3-lsm-trees-8b2da218496f">https://medium.com/@ifesdjeen/on-disk-io-part-3-lsm-trees-8b2da218496f</a>
+- Immutable vs Mutable data structures
+- LSM-trees</p>
+
+<p>IMHO: Must read</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0161/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0163/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.721593 &#43;0400 &#43;04 m=&#43;0.082111339">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

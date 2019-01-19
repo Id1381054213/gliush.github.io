@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0089 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0089</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="the-linux-scheduler-a-decade-of-wasted-cores">The linux scheduler: a Decade of Wasted Cores</h1>
+
+<p><a href="http://www.ece.ubc.ca/~sasha/papers/eurosys16-final29.pdf">http://www.ece.ubc.ca/~sasha/papers/eurosys16-final29.pdf</a></p>
+
+<ul>
+<li>Шедулер на одном ядре очень прост: фиксированный интервал, за который любой тред должен работать как минимум один раз. Интервал делится между тредами пропорционально их весу.</li>
+<li>Thread accumulates vruntime = runtime/weight. Runqueue: Red-Black tree of threads, sorted by vruntime.</li>
+<li>Multi-core =&gt; complex. Scalability dictates per-core runqueue: context switch is expensive</li>
+<li>Balance runqueue on different cores</li>
+<li>Balancing - modify cached data strucures (cache misses)</li>
+<li>Periodic load balancing (rare) + emergency load balancing (if core is idle)</li>
+<li>load = combination of thread’s weight and CPU utilization</li>
+<li>autogroup = tty -&gt; the same cgroup</li>
+<li>scheduling: NUMA nodes -&gt; 4 groups by 2 cores -&gt; 2 cores</li>
+<li>Bug1: Group Imbalance bug (one R process - vs - 64 make threads). Fix: compare average load -&gt; compare minimum load</li>
+<li>Bug2: Scheduling Group Construction bug ({0,1,2,4,6} , {1,2,3,4,5,7}: 1,2 in both groups). Fix: scheduling group construction algorithm -&gt; 1,2 no long included in all scheduling groups</li>
+<li>Bug3: Overload-on-Wakeup bug: wake up on current core if it is idle, otherwise - on the longest idle core.</li>
+<li>Bug4: Missing Scheduling Domain bug (disable+enable via /proc -&gt; load balancing is no longer performs). Fix: fix the bug :)</li>
+<li>Tools: Online Sanity Checker, Scheduler Visualization tool.</li>
+</ul>
+
+<h1 id="demystifying-deep-reinforcement-learning">Demystifying Deep Reinforcement Learning</h1>
+
+<p><a href="http://www.nervanasys.com/demystifying-deep-reinforcement-learning/">http://www.nervanasys.com/demystifying-deep-reinforcement-learning/</a></p>
+
+<ul>
+<li>small company in London “Deep Mind” uploaded paper “Playing Atari with Deep Reinforcement Learning”</li>
+<li>Reinforcement Learning for Breakout game.</li>
+<li>Credit assignment problem</li>
+<li>Explore-exploit dilemma</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0088/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0092/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.734981 &#43;0400 &#43;04 m=&#43;0.095500021">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

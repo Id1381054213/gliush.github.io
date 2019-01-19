@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0165 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0165</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="a-general-purpose-counting-filter-making-every-bit-count">A general purpose counting filter: making every bit count</h1>
+
+<p><a href="https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/">https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/</a></p>
+
+<ul>
+<li>Approximate Membership Query (AMQ). Example: Bloom filter.</li>
+<li>Определять, принадлежит какой-то элемент данному множеству.</li>
+<li>Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.</li>
+<li>=&gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”</li>
+<li>Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc</li>
+<li>4 недостатка Bloom фильтров:
+
+<ul>
+<li>Невозможность удалить объекты</li>
+<li>Плохо скалируются за размер RAM</li>
+<li>Невозможность динамически изменить размер</li>
+<li>Невозможность определить кол-во вхождений каждого элемента</li>
+</ul></li>
+<li>В paper придумана новая AMQ структура: Counting Quotient Filter (подсчетный количественный фильтр) = CQF structure</li>
+<li>Все недостатки Bloom фильтра ушли, очень хорошо работает (время, объем памяти)</li>
+<li>В несколько раз быстрее Bloom Filter, cuckoo filter</li>
+<li>Поддержка количества объекта - это огромный плюс</li>
+<li>Обычный QF (долевой фильтр) -&gt; RSQF (rank and reset based quotient filter) -&gt; CQF</li>
+<li>QF:
+￼<figure>
+    <img src="/images/0165_1.png"/> 
+</figure>
+</li>
+<li>храним в h0-вой ячейке h1 (домашняя), либо сдвиг на соседнюю.</li>
+<li>QF использует чуть больше места, чем Bloom, но намного меньше, чем counting bloom.</li>
+<li>QF скорость сравнима с Bloom.</li>
+<li>QF лучше переиспользует cache значения, чем Bloom, поэтому лучше и быстрее работает на SSD</li>
+<li>Производительность значительно падает после 60% наполнения</li>
+<li>RSQF:
+
+<ul>
+<li>2.125 бита медаданных на слот (вместо 3)</li>
+<li>лучше работает при заполненной таблице (QF max заполненность = 75%, RSQF ~ 95%)</li>
+<li>структура метаданных позволяет использовать rank и select операции -&gt; быстрее на x86</li>
+<li>немного другая структура метаданных (occupieds, rundends) , попытка всегда хранить в “домашнем” слоте</li>
+<li>дополнительные инварианты: сравнение h0(x) &lt;= h0(y) ===&gt; h1(x) хранится левее h1(y)</li>
+<li>дополнительный runends бит-вектор, хранящий 1 если слот содержит последний remainder в ряду.
+￼<figure>
+    <img src="/images/0165_2.png"/> 
+</figure>
+
+￼</li>
+</ul></li>
+<li>RANK(B,i) - возвращает кол-во 1-чек в B до позиции i</li>
+<li>SELECT(B,i) - возвращает индекс первой 1-цы в B</li>
+<li>обе функции будут бегать по occupieds, runends, remainders - плохо с кэшом, поэтому</li>
+<li>добавлен offsets массив, который хранит дистанцию от слота i до runend, который соответствует этому слоту i. Для оптимизации, сохраняют только для каждого 64-го слота (uint8) -&gt; 2.125 бита на слот</li>
+<li>Т.е. делят на блоки по 64 записи, которые хранятся вместе -&gt; все операции хорошо оптимизируются на machine-word операции PDEP, TZCNT</li>
+<li>Counting Quotient Filters
+
+<ul>
+<li>добавляют подсчет количества к RSQF</li>
+<li>variable-size counters (счётчики переменного размера) -&gt; эффективно по размеру для любых распределений (разряженно-плотных)</li>
+<li>если элемент присутствует более, чем однажды - тогда следующий за remainder слот хранит количество раз этот элемент присутствует.</li>
+<li>CQF разделяет remainder или счетчик т.к. счетчик увеличивается, и любые изменения -&gt; число.</li>
+<li>Есть трюки</li>
+</ul></li>
+<li>Сравнение использование места
+￼<figure>
+    <img src="/images/0165_3.png"/> 
+</figure>
+
+￼</li>
+<li>CQF лучше почти всегда.</li>
+
+<li><p>CQF может быть сделан мультитредовым (шарды, лочатся всегда по два)</p></li>
+
+<li><p>Сравнение по производительности:</p>
+
+<ul>
+<li>CQF в несколько раз лучше Bloom FIlter, хотя тот не поддерживает счетчик. И на порядок-два лучше Counting Bloom Filter(CBF)</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0163/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0168/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.721642 &#43;0400 &#43;04 m=&#43;0.082160494">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0132 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0132</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="mythical-10x-programmer">Mythical 10x programmer</h1>
+
+<p><a href="http://antirez.com/news/112">http://antirez.com/news/112</a></p>
+
+<ul>
+<li>Очень хорошее описание чем продуктивность разных программистов может отличаться</li>
+<li>Я верю в 10x программистово, я таких видел.</li>
+</ul>
+
+<h1 id="etcd-vs-zk-vs-consul">etcd vs zk vs consul</h1>
+
+<p><a href="https://coreos.com/blog/performance-of-etcd.html">https://coreos.com/blog/performance-of-etcd.html</a></p>
+
+<ul>
+<li>Необходима большая производительность по записи (много ключей в большой системе)</li>
+<li>В целом, это воздействие на IO (Disc), IO (network), CPU, Memory</li>
+<li>Каждый тест создает 1М уникальных 256-bytes ключей с 1024-byte значением. Размер ключа - чтобы нагружать хранилище побольше, размер значения - среднее значение k8s protobuf values.</li>
+<li>Графики:
+
+<ul>
+<li>avg disk write throughput when creating 1M keys per number of clients (etcd is the worst, zk is the bets)</li>
+<li>total data transferred for 1M keys creation (etcd is the best, consul is the worst)</li>
+<li>CPU usage for creating 1M keys as clients scale (zk is the worst)</li>
+<li>Server memory footprint for creating 1M keys</li>
+<li>Throughput scaling (etcd max: stable 34.7krps, consul scales well up to 300 clients, then drop)</li>
+<li>Latency distribution (etcd: <code>&lt; 50ms</code> for 1k clients)</li>
+<li>Latency over keys when creating 3M keys</li>
+</ul></li>
+<li>zk: once it triggers a snapshot - client requests begin failing</li>
+<li>dbtester (coreos / github)</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0130/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0134/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.725457 &#43;0400 &#43;04 m=&#43;0.085975768">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

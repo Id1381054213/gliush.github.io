@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0194 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0194</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="рит-2018">РИТ++ 2018</h1>
+
+<p><a href="http://ritfest.ru">http://ritfest.ru</a></p>
+
+<ul>
+<li>Много общался с Программным Комитетом для rootconf / backend.</li>
+<li>Рассказать про их сложную работу здесь и на devoops.</li>
+<li>Чем помогает подготовка, чем помогла мне: заочный и очные прогоны (лучше бы на сцене, но нереально)</li>
+<li>Роман Поборчий - очень сильно! (многие спрашивали, почему? что за советы для примера?)
+
+<ul>
+<li>Предложил эксплуатировать схему (mindmap)</li>
+<li>Отталкиваться от задач - задачи (примеры) хорошо притягивают внимание</li>
+<li>Шрифты, картинки, расположение на слайде, …</li>
+<li>Как связно вести рассказ, постоянно поддерживая внимание слушателей. Балансировать между скучными частями (теорией) и развлечением слушателей
+
+<ul>
+<li>картинками</li>
+<li>шутками</li>
+<li>примерами</li>
+<li>вопросами в зал</li>
+<li>риторическими вопросами + паузами</li>
+</ul></li>
+</ul></li>
+<li>Для докладчиков - экскурсия и пре-пати</li>
+<li>Много общался между / вместо докладов в зоне с кофе</li>
+<li>Мнение от многих докладчиков: на конференции интересно, потому что можно общаться с тем, с кем тебе интересно</li>
+<li>Сам ответил на множество вопросов не только про свой доклад, но вообще на совершенно отвлеченные темы</li>
+<li>Было направление про управление, я не ходил, теперь жалею.</li>
+<li>Доклады: Все хвалили доклад Александра Андронова из “ДоДо Пица” “Как большая IT-команда может меняться сразу по всем фронтам и при этом не умереть”</li>
+<li>Было несколько раз, что сильные докладчики сделали замечательные слайды, но не успели их рассказать. Или отвлекались, или просто не рассчитали время. (Константина Осипова - шардинг в NoSQL)</li>
+<li>К сожалению, были доклады из разряда “почитаю документацию со сцены”</li>
+<li>Алексей рассказывал по старым слайдам! :)</li>
+<li>Запомнились старые добрые герои: Андрей Аксенов (что мы знаем про Хэш), Макс Лапшин (DevOps в коробочной разработке),</li>
+<li>Я рассказывал про пакетные менеджеры в k8s: helm, его функции, проблемы,</li>
+</ul>
+
+<h1 id="will-kubernetes-collapse-under-the-weight-of-its-complexity">Will Kubernetes Collapse Under the Weight of Its Complexity?</h1>
+
+<p><a href="https://www.influxdata.com/blog/will-kubernetes-collapse-under-the-weight-of-its-complexity/">https://www.influxdata.com/blog/will-kubernetes-collapse-under-the-weight-of-its-complexity/</a></p>
+
+<ul>
+<li>автор докладывал на KubeCon, и это ему напомнило о докладе на конфе OpenStack</li>
+<li>окружают - только SRE или операторы системы, но не разработчики</li>
+<li>потому что объективно сложно</li>
+<li>аналогично, возможно, и с кубернетесом? Нет, не так, отвечает сам автор</li>
+<li>1. Он более скалируемый, и легко работает на 1000-чах серверов</li>
+<li>2. Есть hosted решения во всех основных облаках</li>
+<li>Но проблемы есть:</li>
+<li>Многие девелоперы не имеют Google-проблем с масштабом</li>
+<li>Запускаете простые приложения, либо не надо иметь 99.99999 SLA, либо …</li>
+<li>Для новых приложений скалирование и SLA - это одна из последних проблем (сперва найдите клиентов!)</li>
+<li>Идея стартапа - быстро развиваться. Новый проект будет быстрее развиваться на Heroku-модели, чем на k8s.</li>
+<li>Почему взлетел Rails по сравнению с .Net решениями: на презентации за 15 минут можно сделать приложение и запустить его в вебе. .Net - недели и месяцы.</li>
+<li>Rails приложение создает за тебя всю оболочку, а ты только пишешь код</li>
+<li>Аналогично нужно для k8s. Создавать базу, кэш, базу приложения, и останется только кодом наполнить</li>
+<li>Ландшафт решений вокруг k8s огромен, легко запутаться. 14 трэков на KubeCon, куда податься?</li>
+<li>Однако это лучше, чем учить всех cloud провайдеров. Гораздо проще везде работать с k8s.</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0192/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0199/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.717749 &#43;0400 &#43;04 m=&#43;0.078267659">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0161 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0161</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="quantifying-detectable-bugs-in-javascript">Quantifying detectable bugs in JavaScript</h1>
+
+<p><a href="https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/">https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/</a></p>
+
+<ul>
+<li>Статья начинается с цитаты менеджера из Microsoft: “если можно быстро поправить код, чтобы он начал статически анализироваться и кол-во ошибок снизится на 10% - это просто сногсшибательно, мы такое обязательно возьмем”</li>
+<li>authors study historical bugs in real world JS projects in GitHub</li>
+<li>History + static type system that can be applied with few modifications</li>
+<li>Error types: (detectable ^ public ^ patched)
+<figure>
+    <img src="/images/0161_1.png"/> 
+</figure>
+</li>
+<li>1. Найти все баги, которые поправили (issue с ссылкой на commit)</li>
+<li>2. Отфильтровать вручную (не новая фича, рефакторинг)</li>
+<li>~4M багов, confidence level = 5%, поэтому мы анализировали 400 багов</li>
+<li>48% патчей ~ 5строк кода</li>
+<li>Оценка бага (может ли статическая типизация помочь) должна делаться не дольше 10 мин (анализ на предварительных исследованиях 78 ошибок)</li>
+<li>Каждый баг проверялся на Flow, TypeScript</li>
+<li>Некоторые ошибки - type-system undetectable</li>
+<li>400: 59 (Flow), 58(TypeScript), 18: timeout,</li>
+<li>18 разобрали -&gt; 60 у Flow и у TypeScript</li>
+<li>Flow: 1.7 токенов доп типов для детектирования ошибок, TypeScript: 2.4</li>
+<li>Flow: выводит больше типов + более краткая нотация для nullable types</li>
+<li>Результаты:
+<figure>
+    <img src="/images/0161_2.png"/> 
+</figure>
+</li>
+<li>Из комментов:
+
+<ul>
+<li>В перле лучше система типов: нельзя сложить 3 + “0” и получить “30”</li>
+<li>баги - это бонус. Больше плюсов дает удобство неявного документирования, соглашений, шаблонов проектирования, неявные инварианты</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0160/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0162/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.722167 &#43;0400 &#43;04 m=&#43;0.082685727">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

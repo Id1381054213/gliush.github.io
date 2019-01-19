@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0186 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0186</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="giving-every-tor-hidden-service-a-ipv6-address">Giving every Tor Hidden Service a IPv6 address</h1>
+
+<p><a href="https://blog.benjojo.co.uk/post/tor-onions-to-v6-with-iptables-proxy">https://blog.benjojo.co.uk/post/tor-onions-to-v6-with-iptables-proxy</a></p>
+
+<ul>
+<li>Onion Services (A) - allows to host and access a TCP port with anonmitity</li>
+<li>the only requirements - connection to the Tor network</li>
+<li>NAT/firewall evader.</li>
+<li>It would be nice if Tor client is not needed to access an onion service.</li>
+<li>For HTTP/HTTPS services there’s a service to do that: tor2web</li>
+<li>&rdquo;&ldquo;&ldquo; it will only work for HTTP/HTTPS, even though onion services can be wrapped with any TCP port service! &rdquo;&ldquo;&rdquo;
+
+<ul>
+<li>not sure why?</li>
+<li>(скорее всего - не хватит адресов)</li>
+</ul></li>
+<li>Tor onion - 8 byte base32 encoded string (80 bits) -&gt; /48 addresses in IPv6</li>
+<li>Правило перевода + small dns server</li>
+<li>iptables чтобы перенаправлять поток на одну программу</li>
+<li>IMHO: какая-то бессмысленная идея, или я чего-то не понял?</li>
+</ul>
+
+<h1 id="kubernetes-1-10">Kubernetes-1.10</h1>
+
+<p><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.10.md">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.10.md</a></p>
+
+<ul>
+<li>a lot of changes in SIG-Node:
+
+<ul>
+<li>kubelet configuration via kubelet versioned config file (beta in 1.10). evictionHard: memory.available: “200Mi”</li>
+<li>containers in a pod may share the same process namespace (configured)</li>
+<li>CPU manager to request exclusive CPU cores</li>
+<li>consumption of pre-allocated huge pages</li>
+</ul></li>
+</ul>
+
+<h1 id="операционная-система-из-говна-и-палок">Операционная система из говна и палок</h1>
+
+<p><a href="http://shura.luberetsky.ru/2018/04/05/operacionnaya-sistema-iz-govna-i-palok/">http://shura.luberetsky.ru/2018/04/05/operacionnaya-sistema-iz-govna-i-palok/</a></p>
+
+<ul>
+<li>что надо курить, чтобы такое написать? автор увидел в двух функциях (на goto), работающих с двумя указателями,  кооперативную многозадачность. один указатель, как я понял, у него значит номер потока (lc?) второй указатель (counter), как бы volatile - внешние данные, медленное io.</li>
+<li>оригинальный кусок кода (<a href="http://www.dunkels.com/adam/pt/">http://www.dunkels.com/adam/pt/</a>), написанный на макросах - значит намного больше, я там увидел, что значит “многопоточный)</li>
+<li>Непонятно, почему именно такой сложный синтаксис лег в основу данных “легких потоков”. По-сути, просто добавили goto в две функции. Аналогичное можно написать без goto (turing-полнота любого языка, как бы, гарантирует) </li>
+<li>IMHO: тоже не понял, может сегодня настроение такое?</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0185/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0191/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.718368 &#43;0400 &#43;04 m=&#43;0.078886736">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

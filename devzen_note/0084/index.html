@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0084 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0084</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="dropbox-уходит-из-амазона">Dropbox уходит из амазона</h1>
+
+<p><a href="http://www.wired.com/2016/03/epic-story-dropboxs-exodus-amazon-cloud-empire/">http://www.wired.com/2016/03/epic-story-dropboxs-exodus-amazon-cloud-empire/</a></p>
+
+<ul>
+<li>Мало деталей, рассуждения на тему почему большие компании уходят из облаков.</li>
+<li>Немного коснулись Rust, что они с Go переписали часть сервисов на Rust</li>
+<li>В комментах на HN:
+
+<ul>
+<li>heap size is the issue. How little memory and CPU is used to manage 1GB of data. Perfect hash tables, extensive bit-packing. Lot of custom inline cache-friendly data structures. Data on stack to take the pressure off the VM.</li>
+<li>CPU optimisation is easier to do in Rust than in Go</li>
+<li>GC pauses is not an issue.</li>
+<li>powerful abstractions, no null, no segfaults, no leaks, yet C-like performance and control over memory and you can use that whole C/C++ bag of optimization tricks.</li>
+<li>very close to Rust team! Rust developers often go to Dropbox offices</li>
+<li>Big ask - improve compile time</li>
+<li>pain to work around unstable API (dust hasn&rsquo;t settled yet in Rust core team)</li>
+<li>Comment from Rust Core team: “If you use Rust in production, we want to hear from you! We&rsquo;re very interested in supporting production users.”</li>
+</ul></li>
+</ul>
+
+<h1 id="kubernetes-1-2-0">Kubernetes-1.2.0</h1>
+
+<p><a href="http://blog.kubernetes.io/2016/03/Kubernetes-1.2-even-more-performance-upgrades-plus-easier-application-deployment-and-management-.html">http://blog.kubernetes.io/2016/03/Kubernetes-1.2-even-more-performance-upgrades-plus-easier-application-deployment-and-management-.html</a></p>
+
+<ul>
+<li>scale: 30k pods per cluster</li>
+<li>deployments: versioning, multiple simultaneous rollouts, aggregating status across pods, <a href="http://kubernetes.io/docs/user-guide/deployments/">http://kubernetes.io/docs/user-guide/deployments/</a></li>
+<li>Dynamic Configuration (via ConfigMap API): приложения могут вытаскивать конфигурацию во время старта, вместо запаковывания  в образ во время создания образа. More info: <a href="https://github.com/kubernetes/kubernetes/blob/master/docs/design/configmap.md">https://github.com/kubernetes/kubernetes/blob/master/docs/design/configmap.md</a></li>
+<li>multi-zone scheduling in AWS</li>
+<li>graceful node shutdown (node drain): <a href="http://kubernetes.io/docs/user-guide/kubectl/kubectl_drain/">http://kubernetes.io/docs/user-guide/kubectl/kubectl_drain/</a></li>
+<li>Custom Metrics for Autoscaling</li>
+<li>new GUI</li>
+<li>Community: 400 pull requests per week</li>
+<li>Обновили документацию</li>
+<li>Bugs Bounty!!! For every PR: <a href="https://github.com/kubernetes/kubernetes.github.io/issues?q=is%3Aissue+is%3Aopen+label%3ABounty:">https://github.com/kubernetes/kubernetes.github.io/issues?q=is%3Aissue+is%3Aopen+label%3ABounty:</a>
+
+<ul>
+<li>$100 to every accepted diagram (for concepts)</li>
+<li>$25  for each merged pull request that fully processes a page and makes sure it is linking out to helpful information.</li>
+<li>$25 for anyone who submits a PR that ads {% raw %}{% endraw %} in the codeblocks</li>
+</ul></li>
+<li>Next version: 1.3 is scheduled to 24 Jun</li>
+<li><strong>RedHat Kubernetes 1.3 features:</strong>
+
+<ul>
+<li>Better Seccomp support for docker/container (restrict the actions/syscalls available within the container)</li>
+<li>kubelete evicts pods when low on memory (QoS tier)</li>
+<li>Backpressure support in several controllers</li>
+<li>k8s on docker-1.10</li>
+<li>dynamic provisioning on volumes</li>
+<li>PersistentVolume quota</li>
+<li>PetSet (stateful services)</li>
+<li>Scale out to 1000 nodes of half-max-pod-density with 250 pods per server</li>
+<li>apiserver performance (adding protobuf serialization)</li>
+<li>assist with disk accounting</li>
+<li>cgroups QoS hierarchy</li>
+</ul></li>
+<li>Node SIG 1.3 feature
+
+<ul>
+<li>introduce out-of-disk policy</li>
+<li>disk account for device mapper</li>
+<li>handle “out-of-memory”</li>
+</ul></li>
+<li>Other SIG 1.3 feature:
+
+<ul>
+<li>etcd3</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0082/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0085/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.736384 &#43;0400 &#43;04 m=&#43;0.096902643">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

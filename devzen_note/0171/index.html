@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0171 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0171</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="aws-ec2-virtualization-2017-introducing-nitro">AWS EC2 Virtualization 2017: Introducing Nitro</h1>
+
+<p><a href="http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html">http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html</a>
+￼
+<figure>
+    <img src="/images/0171.png"/> 
+</figure>
+</p>
+
+<ul>
+<li>Для себя:
+
+<ul>
+<li>HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU.</li>
+<li>с4.<em>, m4.</em> - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3</li>
+</ul></li>
+<li>Nitro - Latest AWS supervisor. Hardware virtualization is now fast</li>
+<li>Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS.</li>
+<li>Каждое направление развивается по следующим стадиям:
+
+<ul>
+<li>Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее</li>
+<li>Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов. Координация меджу гипервизором и гостевой ОС для улучшения производительности. 10-50% падения производительности. Не может пользоваться расширенной функциональностью аппаратной части, которая есть на хосте.</li>
+<li>Virtualized in Hardware. Поддержка виртуализации в железе. Близкая к железу скорость работы в гостевой ОС. 0.1-0.5% падение производительности. Необходима для “enhanced networking + GPU processing”</li>
+</ul></li>
+<li>Fully Emulated: аналог VMWare 1998. Первые гипервизоры использовали полную эмуляцию и бинарную трансляцию для привилегированных операций (syscalls &amp; page table операции). Большие падения производительности, особенно для высоко нагруженных I/O задач.</li>
+<li>Xen PV 3.0: Enter paravirtualization. Гостевая ОС модифицирована, чтобы знать о гипервизоре и чтобы делать эффективные вызовы гипервизора. AMI и boot - paravirt (PV). Kernel делает гипервызовы (hypercalls) вместо привилегированных инструкций. И ядро использует paravirt network + storage drivers. Это улучшает производительность, но всё ещё просадки при выполнении привилегированных операций (syscalls, page table events). CPU тоже чуть лучше, чем в Fully Emulated, но хуже, т.к. ещё не появилась HW виртуализация в CPU (Intel VT-x, AMD-V). m1.small</li>
+<li>Xen HVM 3.0. Более современный гипервизор на процессорах с аппаратной поддержкой для CPU и памяти (VT-x). Paravirt драйвера используются для сети и storage devices. AMI и boot - теперь тоже HVM. Прерывания и таймеры - все еще на software virtualization, но загружаются и работают уже достаточно быстро (поэтому - зеленые)</li>
+<li>Xen HVM 4.0.1. boot HVM, uses Paravirt (PV) drivers with HVM features (PV on HVM = PVHVM). Много путаницы:
+
+<ul>
+<li>AMI type: PV vs HVM, но на самом деле там PV vs (HVM + PV drivers) vs (HVM + PVHVM). Most often, HVM is HVM + PVHVM.</li>
+<li>еще путаница: производительность. Первые HVM не использовали Paravirt drivers, поэтому были медленнее, чем PV (поэтому многие рекомендовали PV чем HVM). Вскоре производительность HVM обогнала PV, и рекомендация устарела.</li>
+<li>в 2014 Netflix перевела все инстансы PV -&gt; HVM (PVHVM)</li>
+</ul></li>
+<li>Xen AWS 2013. Начиная c 2013 некоторые инстансы начали поддерживать аппаратную виртуализацию для сетевых интерфейсов: Single Root I/O Virtualization (SR-IOV). Первым был c3, AWS назвала это Enhanced Networking. Сперва это было через ixgbe драйвер для работы до 10Гбит, а потом ena драйвер для скоростей до 25Гбит. Они в Netflix тестировали это и добились 2М packets per second</li>
+<li>Xen AWS 2017. В 2015 AWS запустила c4.<em>, которая использует аппаратную виртуализацию для EBS. Эта же технология использовалась для запуска новых storage-optimized инстансов в 2017: i3.</em>, которые использовали SR-IOV и nvme драйвер. Netflix протестировали - 3М storage IOPS.</li>
+<li>AWS Nitro 2017. На последнем re:Invent был анонсирован новый гипервизор Nitro, под которым работает c5. Nitro основан на ядре KVM, но не использует многие его дополнения (напр QEMU). Также упрощена работа с I/O (не используется domO  или IDD), так как работают с железом напрямую Цель Nitro - сделать производительность, неотличимую от “bare metal”. Теперь аппаратная поддержка используется и для прерываний (детали есть в статье “Comprehensive  Implementation and Evaluation  of Direct Interrupt Delivery”) Все предыдущие улучшения - являются частями Nitro, которые постепенно появлялись в AWS. Brendan пробовал протестировать оверхед от Nitro - получилось точно меньше 1%, очень часто - неотличимо от железа. Чем еще хорош c5 - он позволяет считывать PMC (Performance Monitoring Counters) (отдельная статья Brendan-а). Раньше на некоторых инстансах можно было считывать 7 PMC, теперь их сотни. И вы можете анализировать низкоуровнево производительность CPU (можно искать способы поднять производительность на 5-10%) m5 также использует Nitro, AWS пообещал, что все инстансы постепенно перетащит на Nitro. За исключением Bare Metal инстансов</li>
+<li>AWS Bare Metal 2017. 0% оверхеда, реальные железяки, на которых вы можете запускать все, что хотите (Xen, KVM, …). Они называются Nitro System, в отличие от предыдущих Nitro Hypervisor</li>
+</ul>
+
+<h1 id="problem-with-app-on-k8s-postmortem">Problem with App on k8s: postmortem</h1>
+
+<p><a href="https://community.monzo.com/t/resolved-current-account-payments-may-fail-major-outage-27-10-2017/26296/95">https://community.monzo.com/t/resolved-current-account-payments-may-fail-major-outage-27-10-2017/26296/95</a></p>
+
+<ul>
+<li>Monzo’s head of eng.</li>
+<li>Stack: k8s + сотни микросервисов (in Docker container). etcd for k8s. linkerd (routing, lb)</li>
+<li>За две недели до - обновили etcd: 3-&gt;9 нод (1-&gt;3 в каждой AZ)</li>
+<li>За день до - запустили новый сервис, но проблемы, поэтому отсколировали до 0 (сервис остался)</li>
+<li>14:10 релиз (мелкие изменения постоянно), после этого начались проблемы (реквесты падают)</li>
+<li>14:12 Откатили изменения, но ошибки остались</li>
+<li>14:16 внутреннее признание, что outage</li>
+<li>14:18 обнаружили, что linkerd в нездоровом состоянии. Не заметил изменений о новых подах, поэтому трафик не доходил</li>
+<li>14:26 Поняли, что проще всего перезапустить все linkerd инстансы (сотни). Задействовали резервную систему для платежей</li>
+<li>14:37 Новые поды linkerd не стартовали, т.к. информацию нельзя получить с apiserver. Поняли, что проблема где-то в k8s, поэтому рестартовали все 3 apiserver. После их рестарта - linkerd стартовал успешно</li>
+<li>15:13 linkerd поды рестартовали, но все процессы перестали получать трафик (у клиентов все лежит)</li>
+<li>15:27 linkerd логирует NullPointerException когда птыается распарсить вывод от apiserver. Они поняли, что это несовместимость версий k8s и linkerd, а точнее - проблема распарсить сервис, в котором нет подов. К этому времени они уже долго тестировали новую версию linkerd, с решенной проблемой - они ее релизят чтобы решить проблему</li>
+<li>15:31 После анализа проблемы, поняли, что можно все починить, если убить тот сервис, которые не содержит подов. Удалили сервис - заработала старая версия linkerd</li>
+<li>RootCause: Был найден баг в k8s, когда обновление с удаление подом (а сервис жив) - падало по timeout. Поэтому</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0169/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0172/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.72106 &#43;0400 &#43;04 m=&#43;0.081578950">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

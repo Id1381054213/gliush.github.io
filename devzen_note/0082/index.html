@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0082 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0082</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="rust-1-7">Rust-1.7</h1>
+
+<p><a href="http://blog.rust-lang.org/2016/03/02/Rust-1.7.html">http://blog.rust-lang.org/2016/03/02/Rust-1.7.html</a></p>
+
+<ul>
+<li>Library stabilisation.</li>
+<li>HashMap : SipHash algorithm + FNV hash algorithm</li>
+<li>Cargo minor changes</li>
+</ul>
+
+<h1 id="java-vs-rust">Java vs Rust</h1>
+
+<p><a href="https://llogiq.github.io/2016/02/28/java-rust.html">https://llogiq.github.io/2016/02/28/java-rust.html</a></p>
+
+<ul>
+<li>History</li>
+<li>Runtime
+
+<ul>
+<li>just in time (JIT) compilation in JVM -&gt; profile based optimisation</li>
+<li>Rust - is fast, but could be slower, depends on you :)</li>
+<li>in Rust - orders of magnitude less memory</li>
+<li>Java GC is very optimized -&gt; painless programming.</li>
+<li>you can write complex code to use less memory.</li>
+<li>Rust has zero-sized runtime</li>
+<li>Rust is compiled language -&gt; less portable. But LLVM -&gt; easier to support many architectures</li>
+<li>lifetime- and ownership- rules: headache and help</li>
+</ul></li>
+<li>Types:
+
+<ul>
+<li>Java’s primitive type are a subset of Rust’s</li>
+<li>Java: integral operations are wrapping (no overflow check).</li>
+<li>Rust: integral operations are checked in debug, wrapping in release.</li>
+<li>Rust has tuple</li>
+<li>Rust and Java keep generics to compile time</li>
+<li>Rust type system is more mightier, turing capable. Uses generics to communicate lifetime information</li>
+<li>Java: null</li>
+<li>Java: automatic widening coercion: int -&gt; long</li>
+<li>Rust has only ‘deref coercion’. Code is easy to understand and predict the type.</li>
+<li>Rust’s immutability by default</li>
+<li>it may be harder to write Rust code than Java code</li>
+<li>it’s a lot harder to write incorrect Rust code than incorrect Java code</li>
+<li>“compiles -&gt; will work”</li>
+</ul></li>
+<li>Java has Class, Rust has Trait
+
+<ul>
+<li>in Rust you think about data at first, then about behaviour</li>
+</ul></li>
+<li>Destructing pattern matching in Rust</li>
+<li>Functions and Closures
+
+<ul>
+<li>Java has lambdas. Rust too (can modify captured env if ownership allows)</li>
+<li>Java streams offer a low-code way to data-parallelise computations</li>
+<li>Rust doesn’t, but has 3d-party libs</li>
+<li>Java dispatches functions based on argument types. Mangling</li>
+<li>Rust: the same set of arguments + generics some_fun<S: Into<String>&gt;(s: S)</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0083/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0084/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.736489 &#43;0400 &#43;04 m=&#43;0.097007773">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

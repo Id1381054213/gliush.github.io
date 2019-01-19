@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0155 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0155</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="amazon-aurora">Amazon Aurora</h1>
+
+<p><a href="http://www.allthingsdistributed.com/files/p1041-verbitski.pdf">http://www.allthingsdistributed.com/files/p1041-verbitski.pdf</a></p>
+
+<ul>
+<li>вместо консенсуса <sup>2</sup>&frasl;<sub>3</sub> они используют <sup>4</sup>&frasl;<sub>6</sub> (<sup>3</sup>&frasl;<sub>6</sub> для чтения)</li>
+<li>10GB сегменты, которые восстанавливать 10 сек (на 10Gbit сетке)</li>
+<li>logs are data - хранят только логи</li>
+<li>дополнительно, асинхронно материализуют страницы БД, которые имеют длинную цепочку изменений в логе</li>
+<li>Восстановление после крэша в Mysql: восстановить последний checkpoint + применить изменения из лога. В Aurora сохранение чекпоинтов идет асинхронно в фоне, на каждой ноде, и восстанавливаться оно будет также, т.е. размазывая по кластеру операции.</li>
+</ul>
+
+<h1 id="github-moved-to-k8s">Github moved to K8s</h1>
+
+<p><a href="https://githubengineering.com/kubernetes-at-github/">https://githubengineering.com/kubernetes-at-github/</a></p>
+
+<ul>
+<li>Ruby &amp; Rails</li>
+<li>“New services took days, weeks, or months to deploy depending on their complexity and the SRE team’s availability.”</li>
+<li>Хотели ускорить разработку и выкатку, сделать единую инфраструктуру,</li>
+<li>Решили рискнуть и начать с самой критической части!!!</li>
+<li>Terraform + kops</li>
+<li>Dockerfile для github/github</li>
+<li>Yaml-представление 50+ ресурсов k8s,</li>
+<li>Гибрид haproxy+consul-template для направления трафика от Unicorn pods -&gt; services</li>
+<li>Calico</li>
+<li>негативные тесты -&gt; Падение api сервера приводило к отказу всего сервера (странно!). Они решили переходить на мульти-кластерную модель.</li>
+<li>Иногда под нагрузкой kernel panic + reboot. До сих пор.</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0154/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0156/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.722666 &#43;0400 &#43;04 m=&#43;0.083184619">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

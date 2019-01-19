@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0222 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0222</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="rust-1-31-0-stable-rust-2018">Rust-1.31.0 stable + Rust 2018</h1>
+
+<p><a href="https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html">https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html</a></p>
+
+<ul>
+<li>Rust 2018 - work over the past 3 years + cohesive package
+
+<ul>
+<li>Tooling (IDE support, rustfmt, clippy)</li>
+<li>Documentation</li>
+<li>Domain working groups work</li>
+<li>new web site</li>
+</ul></li>
+<li>new key in Cargo.toml: package -&gt; “edition: 2018” (or 2015 by default)</li>
+<li>backward and forward compatible: 2018 vs 2015</li>
+<li>2015 -&gt; 2018: “cargo fix”</li>
+<li>non-lexical lifetime: more clever borrow checker</li>
+<li>module system simplified (important for newcomers)</li>
+<li>more lifetime elision rules (автовыведение lifetime)</li>
+<li>“const fn” - compile time generated functions, may be used in any constant context
+
+<ul>
+<li>const SIX: i32 = foo(5);</li>
+</ul></li>
+<li>New Tools
+
+<ul>
+<li>clippy: rust linter (v 1.0)</li>
+<li>rustfmt</li>
+<li>IDE support (vscode, intellij, atom, sublime, eclipse) vim????</li>
+</ul></li>
+<li>tool attributes (for linter)</li>
+<li>Documentation. New Book (TRPL = The Rust Programming Language)</li>
+<li>Working groups. Announced the formation of 4 working groups:
+
+<ul>
+<li>Network Services</li>
+<li>Command-line applications</li>
+<li>WebAssembly</li>
+<li>Embedded Devices</li>
+</ul></li>
+<li>New Website</li>
+<li>Library Stabilization</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0221/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0225/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.709699 &#43;0400 &#43;04 m=&#43;0.070216704">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

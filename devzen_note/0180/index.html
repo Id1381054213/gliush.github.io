@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0180 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0180</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="bazel">Bazel</h1>
+
+<p><a href="https://bazel.build/">https://bazel.build/</a></p>
+
+<ul>
+<li>Новая правильная тулза для сборки всего от гугла (Blaze)</li>
+<li>Несколько конфигурационных файлов (WORKSPACE, BUILD),</li>
+<li>Символьные ссылки на директории с результатами</li>
+<li>Полная сборка, включая все зависимости.</li>
+<li>Кэширование всех артифактов. Говорят, в гугле, все артифакты складываются на какую-то распределенную ФС. Так что если кто-то уже собирал эту версию - тебе не придется, воспользуешься чужими результатами.</li>
+<li>По-факту, инкрементальная сборка должна быть очень быстрая.</li>
+<li>Нет тразитивности при работе с зависимостями. Если A зависит от B, а B зависит от C -&gt; надо прописать C в зависимостях к A.</li>
+<li>Минусы:
+
+<ul>
+<li>Нельзя (или я не нашел?) как использовать библиотеки, установленные уже в систему через системный менеджер пакетов apt-get и т.д.</li>
+<li>Как следствие, иногда для сборки простейшей библиотеки, нужно собирать или иметь собранным все зависимости</li>
+<li>Чтобы собирать на bazel - нужно иметь хорошую подготовленную инфраструктуру.</li>
+</ul></li>
+<li>Плевался. Поговорил с гуглеровцами. Комментарий одного из них: он не  может разрабатывать opensource, потому что там нет bazel.</li>
+<li>Пользуясь случаем - передаю привет Финисту, я знаю, он нас слушает.</li>
+<li>Я понимаю, что каждый строит свою систему сборки под свои нужды, гугл сделал то, что им нужно, но это далеко не сербрянная пуля.</li>
+<li>Пример: tensorflow-serving: c++ тула, которая работает поверх tensorflow. Написана на C++, 10KLOC. Если устанавливать из бинарей - 250МБ - включая все зависимости. Если собирать в CI - собирается больше 4ч, готовый образ - 7ГБ.</li>
+<li>Пример2: у нас была система сборки и управления системой, сделанная на bash + make. Занимала 10+ файлов, которые легко можно было прочитать и понять. Сейчас ее перевели на bazel, и нужно скачать 1.5ГБ, чтобы оно начало работать.</li>
+</ul>
+
+<h1 id="package-versioning-in-go">Package Versioning in Go</h1>
+
+<p><a href="https://news.ycombinator.com/item?id=16421966">https://news.ycombinator.com/item?id=16421966</a>
+<a href="https://research.swtch.com/vgo-intro">https://research.swtch.com/vgo-intro</a>
+<a href="https://research.swtch.com/version-sat">https://research.swtch.com/version-sat</a></p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0179/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0184/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.719083 &#43;0400 &#43;04 m=&#43;0.079601262">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

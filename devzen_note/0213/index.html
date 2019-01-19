@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0213 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0213</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="etsy-s-experiment-with-immutable-documentation">Etsy’s experiment with Immutable documentation</h1>
+
+<p><a href="https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/">https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/</a></p>
+
+<ul>
+<li>Парадокс: Чем чаще меняется проект, тем быстрее ваши знания о системе устаревают, и тем больше вам нужна документация. Которая устаревает</li>
+<li>Пример с БД: секция1 “why”, секция2 “как” -&gt; how - постоянно меняется, why - остается долго</li>
+<li>Можно разделить документацию на how и why части, управлять устареванием документации - управляя смешиванием how и why частей</li>
+<li>Разработали систему добавления how-документации прямо из Slack-а (?fyi)</li>
+<li>Цель - сделать ее как можно более легкую в использовании</li>
+<li><code>?fyi</code> <info></li>
+<li>:fyi: реакция в слаке, чтобы добавить оригинальный коммент</li>
+<li>?how <search request> - покажет все ответы с timestamp</li>
+<li>FYI разменивает полноту на свежесть документации, ?how всегда покажет сперва самую свежую</li>
+<li>изменение в коде очень быстрое, заменять проще, чем редактировать, поэтому how документация тоже иммутабельная</li>
+<li>Устаревание - легко проверяется по timestamp</li>
+<li>FYI - не хватает самих по себе, необходима why-документация, которая долгоживущая и хранится где-то в вики</li>
+</ul>
+
+<h1 id="internet-hacking-is-about-to-get-much-worse">Internet Hacking Is About to Get Much Worse</h1>
+
+<p><a href="https://www.nytimes.com/2018/10/11/opinion/internet-hacking-cybersecurity-iot.html">https://www.nytimes.com/2018/10/11/opinion/internet-hacking-cybersecurity-iot.html</a></p>
+
+<ul>
+<li>computers are insecure.</li>
+<li>Facebook hack, Equifax hack, hacking of government agencies - последние примеры</li>
+<li>Но все еще хуже, чем видно в новостях. Компьютеры будут встраиваться в физические устройства, от них будут зависеть жизни, не только данные.</li>
+<li>“Правительство должно вмешаться и зарегулировать эту опасную область” ХЗ КАК!</li>
+<li>Основная причина проблем с безопасностью - нежелание покупателей вкладываться в надежность деньгами.</li>
+<li>Проблема - что это уже привычка “можно не вкладываться в безопасность, это всего лишь данные”</li>
+<li>Компьютеров все больше. Холодильник = компьютер, который морозит. Машина = компьютер, который ездит и возит, и т.д. Они все коммуницируют. И могут быть заражены “все сразу”.</li>
+<li>Уже были атаки на “роботов пылелосов”, “вирусы, которые выключают машины” - все это только усилится.</li>
+<li>Дорогие устройства мы патчим. Проблема с мелкими дешевыми устройствами - о них не заботятся.</li>
+<li>Проблема: покупателя интересуют фичи и цена. Производителям важнее оптимизировать эти два показателя. Покупатель не может оценить “безопасность”.</li>
+<li>Решения:
+
+<ul>
+<li>Правила и стандарты, контролирующие, что “небезопасные продукты не повредят никому”</li>
+<li>The National Institute of Standards and Technology’s “Cybersecurity Framework” - должен стать обязательным (???)</li>
+<li>Регуляторы должны штрафовать компании с проблемами в security. При этом штрафы должны быть настолько большими, чтобы окупать добавление проверки безопасности как стадии разработки устройства/программы</li>
+</ul></li>
+<li>Регуляция неизбежна.</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0212/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0214/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.713375 &#43;0400 &#43;04 m=&#43;0.073892956">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

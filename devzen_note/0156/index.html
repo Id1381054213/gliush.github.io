@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0156 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0156</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="load-average-in-linux">Load Average in Linux</h1>
+
+<p><a href="http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html">http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html</a></p>
+
+<ul>
+<li>It’s not load, it’s not average (N of processes running + waiting to run, N of processes in “uninterruptible sleep (usually IO”
+<figure>
+    <img src="/images/0156.png"/> 
+</figure>
+</li>
+<li>Если заменить своп-диск с быстрого на медленный, мы уменьшим производительность системы, LA должен увеличиться, только если будет учитываться не только CPU</li>
+</ul>
+
+<h1 id="what-s-next">What’s next?</h1>
+
+<p><a href="http://graydon2.dreamwidth.org/253769.html">http://graydon2.dreamwidth.org/253769.html</a></p>
+
+<ul>
+<li>Автор: Graydon Hoare, создатель языка Rust</li>
+<li>Следующие проблемы в языках, которые надо решать</li>
+<li>Если любая из проблем кажется понятной и простой - “вы просто не понимаете ее до конца”</li>
+<li>Модули. Много проблем, лидер разработки - 1ML (modules are truly first-class values).</li>
+<li>Управление ошибками</li>
+<li>Корутины, async/await, user-visible asynchronicity</li>
+<li>Система Эффектов. “система эффектов и типов”</li>
+<li>Расширенная статическая проверка, ограничение типов, общие языки с зависимыми типами</li>
+<li>Актуальная формальная логика / Метатеория</li>
+<li>Behavioural type, session type,</li>
+<li>Parametric mutability, permission/state polymorphism</li>
+<li>Более богатые шаблоны</li>
+<li>Система типов с оценкой стоимости (Cost-model type system) - let you “typecheck” the cost-model of a program.</li>
+<li>Гетерогенная память и параллелизм</li>
+</ul>
+
+<p>IMHO: очень серьезная статья человека, который погряз в науке “Языки программирования”. Многие вопросы, которые он ставит, мне в принципе не приходят на ум.
+Рекомендую всем, кто прямо сейчас думает, какой следующий язык программирования изучать.</p>
+
+<h1 id="paper-reverse-engineering-x86-processor-microcode">Paper &ldquo;Reverse Engineering x86 Processor Microcode&rdquo;</h1>
+
+<p><a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-koppe.pdf">https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-koppe.pdf</a></p>
+
+<ul>
+<li>Автор: Philipp Koppe et all</li>
+<li>По этическим соображениям мы не рассказываем про алгоритм обфускации</li>
+<li>Все, что нужно знать про закрытые исходники: “we developed a novel technique to reverse engineer proprietary microcode encoding in a semi-automatic way”</li>
+<li>Brute force analysis (<code>&lt;10bits</code>)</li>
+<li>???Hardware setup: multiple nodes</li>
+<li>написали простейшую операционку с нуля!</li>
+<li>Изучение железа (электронным микроскопом, кислотой)</li>
+<li>Написали свою микропрограмму</li>
+<li>Показали удаленную атаку микрокода: микропрограмма ждет A / B и выполняет произвольный код (увеличивает eip на единичку - пропустится возвращение из процедуры)</li>
+<li>Два гранта, и поддержка Министерства Образования и Исследований</li>
+<li>90 дней выдержали после того, как рассказали компании AMD</li>
+</ul>
+
+<p>IMHO: никому верить нельзя, вообще никому!</p>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0155/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0160/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.72296 &#43;0400 &#43;04 m=&#43;0.083478421">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

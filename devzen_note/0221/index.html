@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0221 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0221</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="new-logger-in-erlang">New Logger in Erlang</h1>
+
+<p><a href="https://ferd.ca/erlang-otp-21-s-new-logger.html">https://ferd.ca/erlang-otp-21-s-new-logger.html</a></p>
+
+<ul>
+<li>OTP-21 -&gt; new logging library in Erlang - <code>logger</code></li>
+<li>an alternative and “result” of <code>lager</code> library</li>
+<li>STRUCTURE
+
+<ul>
+<li>you should not know the structure of <code>logger</code> to use it. But to extend - you should</li>
+<li><code>logger</code> exposes 3 types of components with well-defined interfaces
+
+<ul>
+<li>Log Filters</li>
+<li>Log Handlers</li>
+<li>Log Formatters</li>
+</ul></li>
+<li>These elements are in config database (ETS -&gt; cheap)</li>
+<li>You want to log asap (move everything to another process).</li>
+<li>For Erlang (preemptive concurrency) logger might be a bottleneck:
+<figure>
+    <img src="/images/0221_1.png"/> 
+</figure>
+</li>
+<li>=&gt; we want to distribute this work as much as possible at the call-site</li>
+<li>quick -&gt; will not be noticeable
+<figure>
+    <img src="/images/0221_2.png"/> 
+</figure>
+</li>
+<li>as logger-configuration is ready for concurrent reading -&gt; easy to implement</li>
+</ul></li>
+<li>DATA FLOW
+
+<ul>
+<li>check level, get logger config</li>
+<li>apply general filters, apply handlers (+filters +formatters)</li>
+<li>skip logging on any level</li>
+<li>disk logging - one process that handle a file descriptor</li>
+</ul></li>
+<li>GOOD LOGGING
+
+<ul>
+<li>log what you know/observe, not your deductions (ssl problems -&gt; “your system is hacked”)</li>
+<li>single way to produce logs -&gt; auto dispatch to different storage based on content</li>
+<li>structured logs (maps of maps -&gt; handler to flatten or json them)</li>
+</ul></li>
+<li>MORE
+
+<ul>
+<li>distributed tracing work nicely with the logger</li>
+<li>metrics from log - too</li>
+<li>which fields logs should contain (table)</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0219/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0222/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.713601 &#43;0400 &#43;04 m=&#43;0.074119565">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

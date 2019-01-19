@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0168 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0168</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="separation-of-compute-and-state-in-google-bigquery-and-cloud-dataflow-and-why-it-matters">Separation of compute and state in Google BigQuery and Cloud Dataflow (and why it matters)</h1>
+
+<p><a href="https://cloud.google.com/blog/big-data/2017/10/separation-of-compute-and-state-in-google-bigquery-and-cloud-dataflow-and-why-it-matters">https://cloud.google.com/blog/big-data/2017/10/separation-of-compute-and-state-in-google-bigquery-and-cloud-dataflow-and-why-it-matters</a></p>
+
+<ul>
+<li>separation = ability to maintain intermediate state between processing stages in a high performance component, separate from either the compute cluster or storage</li>
+<li>Benefits to separating compute from state:
+
+<ul>
+<li>Less state in compute -&gt; it is more ephemeral and scalable. Easier to parallelize and easier to recover from a lost node</li>
+<li>Processing stages don’t conflict within the same compute node</li>
+<li>Easier for the processing engine to re-partition the workload</li>
+<li>Pipeline execution: stage N+1 before stage N is finished.</li>
+<li>Resilience to node failures</li>
+<li>Service can utilitize available resources more effeciently</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0165/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0169/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.720805 &#43;0400 &#43;04 m=&#43;0.081323445">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

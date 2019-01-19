@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0121 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0121</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="aws-aurora-postgresql">AWS Aurora + Postgresql</h1>
+
+<p><a href="https://aws.amazon.com/blogs/aws/amazon-aurora-update-postgresql-compatibility/ +">https://aws.amazon.com/blogs/aws/amazon-aurora-update-postgresql-compatibility/ +</a> comments <a href="https://news.ycombinator.com/item?id=13072861">https://news.ycombinator.com/item?id=13072861</a></p>
+
+<ul>
+<li>RDS replicates to a standby instance + EBS. Aurora replicates to a special storage engine</li>
+</ul>
+
+<h1 id="fpga-on-aws">FPGA on AWS</h1>
+
+<p><a href="https://aws.amazon.com/blogs/aws/developer-preview-ec2-instances-f1-with-programmable-hardware/">https://aws.amazon.com/blogs/aws/developer-preview-ec2-instances-f1-with-programmable-hardware/</a></p>
+
+<ul>
+<li>with Intel Broadwell processors, up to 976GB of memory, 4TB SSD, 1-8 FPGA</li>
+<li>several FPGA share the same memory address space (up to 12GB/sec in each direction)</li>
+<li>VHDL or Verilog + tools</li>
+<li>High Level Synthesis tools, including OpenCL to program FPGA
+-</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0120/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0122/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.728094 &#43;0400 &#43;04 m=&#43;0.088612284">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

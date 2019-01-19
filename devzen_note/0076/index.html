@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0076 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0076</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="introduction-to-postgresql-physical-storage">Introduction to PostgreSQL physical storage</h1>
+
+<p><a href="http://rachbelaid.com/introduction-to-postgres-physical-storage/">http://rachbelaid.com/introduction-to-postgres-physical-storage/</a></p>
+
+<ul>
+<li>определение OID (object ID) вашей таблицы ( <code>select * from pg_database</code> )</li>
+<li>сама база хранится в 1ГБ файлах, <code>filenode</code></li>
+<li>system table pg_catalog для каждой таблицы</li>
+<li>таблица сохраняется как массив страниц фиксированного размера (8кб)</li>
+<li>страницы перемешаны, никакого порядка
+<figure>
+    <img src="/images/0076.png"/> 
+</figure>
+</li>
+<li>записи лежат очень долго, почти вечно, поэтому индекс тоже не меняется</li>
+<li>указатель на запись = номер страницы + индекс <code>select cid, * from bar</code> ;</li>
+<li>кол-во столбцов ограничено, т.к. строки нельзя переносить между страницами</li>
+<li>TOAST = The Oversized-Attribute Storage Technique. Отдельная таблица с данными + указатель.</li>
+<li>Free Space map - очень приблизительно показывает свободное место, с точностью до <sup>1</sup>&frasl;<sub>256</sub> страницы (32 байта).</li>
+<li>Vacuum удаляет dead row и помечает записи для дальнейшего использования.</li>
+<li>Vacuum Full - компактизирует таблицы, перезаписывая файлы, поэтому освобождает место. Занимает много места.</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0073/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0077/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.737764 &#43;0400 &#43;04 m=&#43;0.098283308">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

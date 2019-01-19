@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0214 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0214</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="github-actions">Github Actions</h1>
+
+<p><a href="https://github.com/features/actions">https://github.com/features/actions</a></p>
+
+<ul>
+<li>Workflow can be triggered by GitHub events (push, issue, release).</li>
+<li>Can run a sequence of serial or parallel actions in response.</li>
+<li>Actions can be written in any language</li>
+<li>Example: push -&gt; docker build -&gt; terraform provision                                                      -&gt; get octocat -&gt; notify -&gt; OK</li>
+<li>Scalable container execution</li>
+<li>File or “Visual Editor”</li>
+<li>Declarative (Workflow.resolves = Action2; Action2.need = Action1 )</li>
+<li>uses docker images to run action</li>
+<li>Secrets - are in the Repo’s Settings. Available to everyone with “Write” access</li>
+</ul>
+
+<h1 id="consistency-without-clocks-the-faunadb-distributed-transaction-protocol">Consistency without Clocks: The FaunaDB Distributed Transaction Protocol</h1>
+
+<p><a href="http://fauna.com/blog/consistency-without-clocks-faunadb-transaction-protocol">http://fauna.com/blog/consistency-without-clocks-faunadb-transaction-protocol</a></p>
+
+<ul>
+<li>FaunaDB places no constraints on replica distance</li>
+<li>How transactions are implemented</li>
+</ul>
+
+<h1 id="ecto-3-0-breaking-changes">Ecto 3.0: breaking changes</h1>
+
+<p><a href="http://blog.plataformatec.com.br/2018/10/a-sneak-peek-at-ecto-3-0-breaking-changes/">http://blog.plataformatec.com.br/2018/10/a-sneak-peek-at-ecto-3-0-breaking-changes/</a></p>
+
+<ul>
+<li>Split Ecto repository apart</li>
+<li>Remove deprecated Ecto datatime -&gt; Calendar types that ship as part of Elixir</li>
+<li>Update to the latest JSON handling best practices</li>
+<li>Ecto -&gt; ecto and ecto_sql
+
+<ul>
+<li>ecto for data typing and validation</li>
+<li>ecto_sql instead of previous ecto</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0213/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0215/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.713619 &#43;0400 &#43;04 m=&#43;0.074137127">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

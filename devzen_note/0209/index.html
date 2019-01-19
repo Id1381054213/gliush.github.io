@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0209 &middot; DevZen Podcast Notes
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="DevZen Podcast Notes" />
+	</head>
+	
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">DevZen Podcast Notes</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0209</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="elixirconf-2018-keynote-by-jose-valim">ElixirConf 2018 Keynote by Jose Valim</h1>
+
+<p><a href="https://www.youtube.com/watch?v=m7TWMFtDwHg&amp;list=PLqj39LCvnOWaxI87jVkxSdtjG8tlhl7U6">https://www.youtube.com/watch?v=m7TWMFtDwHg&amp;list=PLqj39LCvnOWaxI87jVkxSdtjG8tlhl7U6</a></p>
+
+<ul>
+<li>Elixir History, versions</li>
+<li>1.7 release: EEP (Elixir Enhancement Proposal) 48 (documentation standard)</li>
+<li>Community:
+
+<ul>
+<li>New podcasts</li>
+<li>new ExDoc versions</li>
+<li>Erlang/OTP 21 (compilation time is 20% faster)</li>
+<li>Phoenix v1.3, Nerves v1.0</li>
+<li>Nerves: ecosystem to build embedded systems with Elixir
+
+<ul>
+<li><a href="https://nerves-project.org">https://nerves-project.org</a></li>
+<li>Platform (Linux starts  BEAM VM)</li>
+<li>Framework: libraries</li>
+<li>Tooling: to manage builds, update firmware, configure devices, etc</li>
+<li>work via mix (mix firmware.burn -d /dev/rdisk3)</li>
+</ul></li>
+</ul></li>
+<li>Feedback from community
+
+<ul>
+<li>Difficult to contribute</li>
+<li>now it’s transparent what team is doing</li>
+<li>doubled the elixir team</li>
+</ul></li>
+<li>Criteria for new features</li>
+<li>Guidelines for new features</li>
+<li>on-going effort
+
+<ul>
+<li>code formatter
+
+<ul>
+<li>released in elixir-1.6</li>
+<li>consistent style</li>
+<li>focus you on what matters</li>
+<li>guide for newcomers</li>
+<li>unifies the community</li>
+</ul></li>
+<li>property-based testing
+
+<ul>
+<li>useful to describe the invariants</li>
+<li>(examples)</li>
+<li>2 lectures about property based language + book (The pragmatic programming)</li>
+<li>StreamData will remain as a lib, outside of elixir-lang <a href="https://github.com/whatyouhide/stream_data">https://github.com/whatyouhide/stream_data</a></li>
+</ul></li>
+<li>xhttp
+
+<ul>
+<li>HTTP client, architecture-agnostic</li>
+<li>unifies the mechanisms to interact with HTTP1 and HTTP2</li>
+<li><a href="https://github.com/ericmj/xhttp">https://github.com/ericmj/xhttp</a></li>
+</ul></li>
+<li>releases
+
+<ul>
+<li>will be part of core</li>
+<li>will be smaller scope than in Distillery</li>
+<li><a href="https://dockyard.com/blog/2018/08/23/announcing-distillery-2-0">https://dockyard.com/blog/2018/08/23/announcing-distillery-2-0</a></li>
+</ul></li>
+<li>Type system
+
+<ul>
+<li>started and stopped working on the Type system</li>
+<li>why? detect errors, documentation &amp; tooling, performance</li>
+<li>intersection types (converter: str-&gt;int, int-&gt;str) are very expensive -&gt; impractical</li>
+</ul></li>
+<li>the next 5 years
+
+<ul>
+<li>elixir v2.0 - not coming any soon</li>
+<li>only 1 breaker change from 2014 - doc attribute</li>
+<li>Elixir is extensible, plenty of “depraceted”  =&gt; 2.0 to remove deprecated</li>
+<li>everything else - is in the hands of the community</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="remote-code-execution-in-alpine-linux">Remote Code Execution in Alpine Linux</h1>
+
+<p><a href="https://justi.cz/security/2018/09/13/alpine-apk-rce.html">https://justi.cz/security/2018/09/13/alpine-apk-rce.html</a></p>
+
+<ul>
+<li>.apk - is a gzipped tar files</li>
+<li>apk pull packages without TLS for default repos</li>
+<li>/etc/apk/commit_hooks.d/ folder with scripts to run when apk exists</li>
+<li>apk add works:
+
+<ul>
+<li>pull</li>
+<li>extract into root (/)  (suffix with .apk-new)
+
+<ul>
+<li>extracted folder are not suffixed with .apk-new</li>
+</ul></li>
+<li>checksumm</li>
+<li>if incorrect remove all extracted files</li>
+</ul></li>
+<li>vulnerability. Create apk:
+
+<ul>
+<li>with “/etc/apk/commit_hooks.d/“ folder. Without “.apk-new” suffix</li>
+<li>create symlink  /etc/apk/commit_hooks.d/x that points to “link” (-&gt; link.apk-new)</li>
+<li>create a regular file, named “link” (-&gt; link.apk-new). This will write through the symlink and create a file at “/etc/apk/commit_hooks.d/x”</li>
+<li>incorrect checksum -&gt; remove everything:
+
+<ul>
+<li>unlink link.apk-new (the file /etc/apk/commit_hooks.d/x will persist)</li>
+<li>unlink /etc/apk/commit_hooks.d -&gt; ENONEMTPY error (contains our payload)</li>
+</ul></li>
+<li>RESULT: apk commit-hook</li>
+</ul></li>
+<li>Step2. fix the exit code.
+
+<ul>
+<li>apk returns number of packages it failed to install (number%256 !!! )</li>
+<li>write to the /proc/<pid>/mem for the apk process</li>
+</ul></li>
+<li>Conclusion: 100x of orgranizations might have problems in prod</li>
+<li>Fixed. Update your images.</li>
+<li>BountyGraph: crowdfund bug bounty programs</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0208/" class="left arrow">&#8592;</a>
+		<a href="/devzen_note/0212/" class="right arrow">&#8594;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-01-20 01:15:59.714422 &#43;0400 &#43;04 m=&#43;0.074939975">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
