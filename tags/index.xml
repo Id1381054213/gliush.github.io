@@ -6,9 +6,28 @@
     <description>Recent content in Tags on Ivan Glushkov blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 19 Jan 2019 18:32:02 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Devzen</title>
+      <link>http://gliush.github.io/tags/devzen/</link>
+      <pubDate>Sat, 19 Jan 2019 18:32:02 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/tags/devzen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>English</title>
+      <link>http://gliush.github.io/tags/english/</link>
+      <pubDate>Sat, 19 Jan 2019 18:32:02 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/tags/english/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

@@ -448,7 +448,19 @@
   </url>
   
   <url>
+    <loc>http://gliush.github.io/tags/devzen/</loc>
+    <lastmod>2019-01-19T18:32:02+04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://gliush.github.io/devzen_note/</loc>
+    <lastmod>2019-01-19T18:32:02+04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/tags/english/</loc>
     <lastmod>2019-01-19T18:32:02+04:00</lastmod>
     <priority>0</priority>
   </url>
@@ -461,6 +473,7 @@
   
   <url>
     <loc>http://gliush.github.io/tags/</loc>
+    <lastmod>2019-01-19T18:32:02+04:00</lastmod>
     <priority>0</priority>
   </url>
   

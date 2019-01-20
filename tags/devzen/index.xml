@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devzen on Ivan Glushkov blog</title>
+    <link>http://gliush.github.io/tags/devzen/</link>
+    <description>Recent content in Devzen on Ivan Glushkov blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 19 Jan 2019 18:32:02 +0400</lastBuildDate>
+    
+	<atom:link href="http://gliush.github.io/tags/devzen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes for episode-0225</title>
+      <link>http://gliush.github.io/devzen_note/0225/</link>
+      <pubDate>Sat, 19 Jan 2019 18:32:02 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0225/</guid>
+      <description>Elixir v1.8 Release Notes https://elixir-lang.org/blog/2019/01/14/elixir-v1-8-0-released/
+ Custom struct inspections  defmodule User do @derive {Inspect, only: [:id, :name, :age]} defstruct [:id, :name, :age, :email, :encrypted_password] end   Calendar.TimeZoneDatabase behaviour, Date.day_of_year/1, quoter_of_year/1, etc Faster compilation, more efficient code in some cases Improved instrumentation and ownership with $callers  [your code] -- calls --&amp;gt; [supervisor] ---- spawns --&amp;gt; [task] [your code] [supervisor] &amp;lt;-- ancestor -- [task] ^ | |--------------------- caller ---------------------|   Started working on mix release  On Infrastructure at Scale: A Cascading Failure of Distributed Systems https://medium.</description>
+    </item>
+    
+  </channel>
+</rss>
