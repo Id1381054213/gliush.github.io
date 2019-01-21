@@ -443,6 +443,10 @@
   </url>
   
   <url>
+    <loc>http://gliush.github.io/about/</loc>
+  </url>
+  
+  <url>
     <loc>http://gliush.github.io/categories/</loc>
     <priority>0</priority>
   </url>
