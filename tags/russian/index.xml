@@ -6,10 +6,20 @@
     <description>Recent content in Russian on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Nov 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 26 Jan 2019 14:47:39 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/russian/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0226</title>
+      <link>http://gliush.github.io/devzen_note/0226/</link>
+      <pubDate>Sat, 26 Jan 2019 14:47:39 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0226/</guid>
+      <description>Про одного парня https://habr.com/ru/post/437298/
+ Очень напомнила по стилю Кастанеду. Суперуспешный человек развился из нуля, вот почитайте, что он рассказал (Выдуманная?) история про суперуспешного человека, который был 1C-программистом, а стал суперуправленцем Как не надо бояться экспериментировать (lol) Как надо постоянно самообразовываться Рекомендация посмотреть на методики  boundary management. Преподают в Сколково, почитать Эрика Триста. Идея: видеть границы, они везде. Между отделами, функциями, разными видами работы, и т.д. Если их видишь, можно управлять ими и пользоваться ими.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0219</title>
