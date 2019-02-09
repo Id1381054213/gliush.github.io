@@ -6,10 +6,20 @@
     <description>Recent content in Devzen_notes on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Jan 2019 14:47:39 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 09 Feb 2019 20:50:52 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/devzen_note/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0228</title>
+      <link>http://gliush.github.io/devzen_note/0228/</link>
+      <pubDate>Sat, 09 Feb 2019 20:50:52 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0228/</guid>
+      <description>Hex package registry vulnerability https://blog.voltone.net/post/22
+ Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&amp;rsquo;s hosting and CDN package repository mirror  We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases + properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&amp;rsquo;s private key  Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&amp;rsquo;t include package name.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0226</title>
