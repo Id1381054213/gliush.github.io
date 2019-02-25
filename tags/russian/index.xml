@@ -6,10 +6,20 @@
     <description>Recent content in Russian on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Jan 2019 14:47:39 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 16 Feb 2019 21:52:31 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/russian/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0230</title>
+      <link>http://gliush.github.io/devzen_note/0229/</link>
+      <pubDate>Sat, 16 Feb 2019 21:52:31 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0229/</guid>
+      <description>It’s Time to Move on from Two Phase Commit http://dbmsmusings.blogspot.com/2019/01/its-time-to-move-on-from-two-phase.html
+ 2PC is used in industry &amp;gt; 30yrs Briefly, what is 2PC 2PC problems:  Blocking problem: coordinator fails before final decision. Wait until coordinator recovers. Work arounds reduce performance Cloggage problem: until the end of second phase workers have to stop other conflicting transactions, and their conflicting transactions, etc  To sum up 2PC problems: latency, throughput, scalability, availability Conceptually, main 2PC problem: worker can abort after the work is done (1st phase).</description>
+    </item>
     
     <item>
       <title>Notes for episode-0226</title>
