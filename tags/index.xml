@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Feb 2019 18:27:21 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 20 Apr 2019 20:15:17 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Devzen</title>
       <link>http://gliush.github.io/tags/devzen/</link>
-      <pubDate>Sat, 23 Feb 2019 18:27:21 +0300</pubDate>
+      <pubDate>Sat, 20 Apr 2019 20:15:17 +0400</pubDate>
       
       <guid>http://gliush.github.io/tags/devzen/</guid>
       <description></description>
@@ -26,6 +26,15 @@
       <pubDate>Sat, 23 Feb 2019 18:27:21 +0300</pubDate>
       
       <guid>http://gliush.github.io/tags/english/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Paper</title>
+      <link>http://gliush.github.io/tags/paper/</link>
+      <pubDate>Sat, 20 Apr 2019 20:15:17 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/tags/paper/</guid>
       <description></description>
     </item>
     

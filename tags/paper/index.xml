@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paper on Gliush Notebook</title>
+    <link>http://gliush.github.io/tags/paper/</link>
+    <description>Recent content in Paper on Gliush Notebook</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Apr 2019 20:15:17 +0400</lastBuildDate>
+    
+	<atom:link href="http://gliush.github.io/tags/paper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes for episode-0238</title>
+      <link>http://gliush.github.io/devzen_note/0238/</link>
+      <pubDate>Sat, 20 Apr 2019 20:15:17 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0238/</guid>
+      <description>Overload Control for Scaling WeChat Microservices https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf
+ 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request  introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &amp;ldquo;upstream microservices&amp;rdquo; these &amp;ldquo;upper microservices&amp;rdquo; don&amp;rsquo;t send request with low priorities  2.</description>
+    </item>
+    
+  </channel>
+</rss>

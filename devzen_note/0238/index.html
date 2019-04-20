@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0238 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0238</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="overload-control-for-scaling-wechat-microservices">Overload Control for Scaling WeChat Microservices</h1>
+
+<p><a href="https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf">https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf</a></p>
+
+<ul>
+<li>1.INTRODUCTION</li>
+<li>Overload control aims to mitigate problems during service overload</li>
+<li>For simple services, gateway monitors the load status and rejects
+client requests (load schedding)</li>
+<li>For complex SOA systems it is more difficult:
+
+<ul>
+<li>all services should be monitored</li>
+<li>independent load schedding is hard to implement</li>
+<li>with large number of services, high probability to not handle user request
+because of some service rejects request</li>
+</ul></li>
+<li>introduce overload control scheme DAGOR:
+
+<ul>
+<li>each client request is assigned with business priority and user priority</li>
+<li>each microservice maintain its own priority thresholds</li>
+<li>during overload, the threshold is increased (to sched half of the load), and new
+threshold value is passed to the direct &ldquo;upstream microservices&rdquo;</li>
+<li>these &ldquo;upper microservices&rdquo; don&rsquo;t send request with low priorities</li>
+</ul></li>
+<li>2.WECHAT SERVICE ARCHITECTURE
+
+<ul>
+<li>DAG of services (directed acyclic graph)</li>
+<li>leap services = number of outbound edges &gt; 0</li>
+<li>basic services = number of outbound edges = 0</li>
+<li>entry leap services = leap services with number of inboud edges = 0</li>
+<li>total amount of requests to the entry services ~ 10^10 -10^11 per day!!</li>
+<li>3k services</li>
+<li>20k machines</li>
+</ul></li>
+<li>3.OVERLOAD
+
+<ul>
+<li>Scenario1: ServiceA-&gt;ServiceM (overloaded)</li>
+<li>Scenario2 (subsequent overload): ServiceA-&gt;ServiceM + ServiceA-&gt;ServiceM</li>
+<li>Scenario3 (subsequent overload): ServiceA-&gt;ServiceM + ServiceA-&gt;ServiceN</li>
+<li>For subsequent overload probability to handle request to serviceA: p=0.5 * p=0.5 =&gt; p=0.25</li>
+</ul></li>
+<li>4.DAGOR OVERLOAD CONTROL
+
+<ul>
+<li>Service agnostic. Can be run anywhere</li>
+<li>Runs on each individual machine</li>
+<li>!! load status = queue time (time difference between the request arrival and processing being started)</li>
+<li>Response time is bad for leap services</li>
+<li>CPU is bad because high CPU doesn&rsquo;t mean it is overloaded.</li>
+<li>load is calculated every 2k requests or 1s (what is sooner)</li>
+<li>&gt;20ms in the queue = the service is overloaded (default timeout for each service is 500ms)</li>
+</ul></li>
+<li>Business Oriented Admission Control
+
+<ul>
+<li>Business priorities (Login &gt; Pay &gt; Message &gt; ImageSent &gt; &hellip;)</li>
+<li>Small table replicated on all the machines</li>
+<li>Any request is assigned a business priority. Sub requests copy the same business priority</li>
+<li>First provided API to change it, deprecated some time later</li>
+</ul></li>
+<li>User Oriented Admission Control
+
+<ul>
+<li>Problem: a lot of requests with the same business priority.
+Turn off - too low load, turn on - too high load. Becomes flappy.</li>
+<li>Generate hash for each. And sched load inside the same business priority
+by user hash (hash priority)</li>
+<li>Regenerate hash for each user every hour. For fairness</li>
+</ul></li>
+<li>Session Oriented Admission Control
+
+<ul>
+<li>User login session hash - for the same purpose as user oriented admission control.</li>
+<li>Users realized that relogin helps them (but doesn&rsquo;t help the system).</li>
+<li>=&gt; Is not used</li>
+</ul></li>
+<li>Adaptive Admission Control
+
+<ul>
+<li>Each business level has 128 user levels -&gt; ~10k total levels (B,U)</li>
+<li>O(N) - won&rsquo;t work, O(logN) - won&rsquo;t work =&gt; Histogram of all (B,U) requests</li>
+<li>Adjusting the load</li>
+<li>during overload, reduce the number of handled requests by A (5%) percent</li>
+<li>if ok -&gt; increase the requests by B (1%) percent</li>
+</ul></li>
+<li>5.EVALUATION
+
+<ul>
+<li>Comparison of different load indicators</li>
+<li>Service admissoin control</li>
+<li>Stress test</li>
+</ul></li>
+<li>IMHO
+
+<ul>
+<li>It&rsquo;s the fist detailed overload handling system that works in production for several years.</li>
+<li>There&rsquo;re several interesting design solutions that are not intuitive</li>
+<li>It will not be widely used now, there&rsquo;re few companies that might need that.
+All of them have similar systems already</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0230/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-04-20 23:27:23.828902 &#43;0400 &#43;04 m=&#43;0.063301810">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
