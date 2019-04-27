@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0239 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0239</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="https-kurtmadel-com-posts-cicd-with-kubernetes-tekton-standardizing-native-kubernetes-cd"><a href="https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/">https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/</a></h1>
+
+<p>A Kubernetes-native pipeline resource</p>
+
+<ul>
+<li>Part of CD foundation <a href="https://cd.foundation">https://cd.foundation</a></li>
+<li>Golang</li>
+<li>Run on Kubernetes, k8s - first class citizen</li>
+<li>Apache-2.0 license</li>
+<li>Concepts:
+
+<ul>
+<li>Task - (k8s resource) work to be executed. Individually, or part of Pipeline</li>
+<li>Runs as a Pod in k8s cluster</li>
+<li>Each step in a separate container</li>
+<li>TaskRun - (k8s resource) runs the Task</li>
+<li><code>kubectl get taskruns/mytask -o yaml</code> - to get results</li>
+<li>PipelineResources - to define resources to be passed in/out of a task</li>
+<li>types: git, image, cluster, storage</li>
+<li>all the resources are used in tasks</li>
+<li>Pipeline - list of tasks to execute in order</li>
+<li>previous results could be used as input for the next task</li>
+<li>PipelineRun - to execute a Pipeline</li>
+<li>PipelineRun will create TaskRun for the each Tasks</li>
+</ul></li>
+<li>More features
+
+<ul>
+<li>Rich Auth capabilities</li>
+<li>DAG (directed acyclic graph) of execution</li>
+</ul></li>
+<li>Roadmap
+
+<ul>
+<li>Notifications to Slack, email, Github PR, &hellip;</li>
+<li>Retries</li>
+<li>Triggers</li>
+</ul></li>
+<li>IMHO
+
+<ul>
+<li>Good basement for a rich CD systems</li>
+<li>Can&rsquo;t be used by itself</li>
+<li>Jenkins X Pipelines uses Tekton</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0238/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-04-27 23:34:36.516568 &#43;0400 &#43;04 m=&#43;0.142752863">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

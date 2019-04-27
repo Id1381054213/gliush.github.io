@@ -6,10 +6,20 @@
     <description>Recent content on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Apr 2019 20:15:17 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 27 Apr 2019 20:32:19 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0239</title>
+      <link>http://gliush.github.io/devzen_note/0239/</link>
+      <pubDate>Sat, 27 Apr 2019 20:32:19 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0239/</guid>
+      <description> https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/ A Kubernetes-native pipeline resource
+ Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline Runs as a Pod in k8s cluster Each step in a separate container TaskRun - (k8s resource) runs the Task kubectl get taskruns/mytask -o yaml - to get results PipelineResources - to define resources to be passed in/out of a task types: git, image, cluster, storage all the resources are used in tasks Pipeline - list of tasks to execute in order previous results could be used as input for the next task PipelineRun - to execute a Pipeline PipelineRun will create TaskRun for the each Tasks  More features  Rich Auth capabilities DAG (directed acyclic graph) of execution  Roadmap  Notifications to Slack, email, Github PR, &amp;hellip; Retries Triggers  IMHO  Good basement for a rich CD systems Can&amp;rsquo;t be used by itself Jenkins X Pipelines uses Tekton   </description>
+    </item>
     
     <item>
       <title>Notes for episode-0238</title>

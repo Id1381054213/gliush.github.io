@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://gliush.github.io/devzen_note/0239/</loc>
+    <lastmod>2019-04-27T20:32:19+04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://gliush.github.io/devzen_note/0238/</loc>
     <lastmod>2019-04-20T20:15:17+04:00</lastmod>
   </url>
@@ -484,7 +489,7 @@
   
   <url>
     <loc>http://gliush.github.io/devzen_note/</loc>
-    <lastmod>2019-04-20T20:15:17+04:00</lastmod>
+    <lastmod>2019-04-27T20:32:19+04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -496,7 +501,7 @@
   
   <url>
     <loc>http://gliush.github.io/</loc>
-    <lastmod>2019-04-20T20:15:17+04:00</lastmod>
+    <lastmod>2019-04-27T20:32:19+04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -508,7 +513,7 @@
   
   <url>
     <loc>http://gliush.github.io/tags/russian/</loc>
-    <lastmod>2019-02-16T21:52:31+04:00</lastmod>
+    <lastmod>2019-04-27T20:32:19+04:00</lastmod>
     <priority>0</priority>
   </url>
   
