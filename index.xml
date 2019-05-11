@@ -6,10 +6,20 @@
     <description>Recent content on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Apr 2019 20:32:19 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 11 May 2019 18:40:03 +0300</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0241</title>
+      <link>http://gliush.github.io/devzen_note/0241/</link>
+      <pubDate>Sat, 11 May 2019 18:40:03 +0300</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0241/</guid>
+      <description>Local-first software. You own your data, in spite of the cloud https://www.inkandswitch.com/local-first.html
+ Cloud is convenient, but you don&amp;rsquo;t have your data. Services dies - you loose your data They suggest a set of principles of &amp;ldquo;Local-first software&amp;rdquo;:  work offline work collaborative (gdoc, trello, etc) across multiple devices improve security, privacy user controls the data  PRINCIPLES  No spinners: your work at your fingertips. Should not require roundtrip to server    You work is not trapped to one device (sync to servers in background) The network is optional Seamless collaboration with your colleagues.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0239</title>
