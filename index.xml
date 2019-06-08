@@ -6,10 +6,20 @@
     <description>Recent content on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 May 2019 18:40:03 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 08 Jun 2019 21:49:17 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0245</title>
+      <link>http://gliush.github.io/devzen_note/0245/</link>
+      <pubDate>Sat, 08 Jun 2019 21:49:17 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0245/</guid>
+      <description>Some Were Meant for C https://www.cs.kent.ac.uk/people/staff/srk21//research/papers/kell17some-preprint.pdf
+ The C language is used for: writing application and writing system code (&amp;ldquo;communicative&amp;rdquo;) For both parts performance is not THAT needed It has a lot of problems. Then why is it so popular? Several possible explanations:  &amp;ldquo;C&amp;rdquo; values simplicity, tolerates incorrectness, inconsistency and incompleteness Only &amp;ldquo;C&amp;rdquo; allows to write a &amp;ldquo;communicative code&amp;rdquo; to allow several solutions to work together. Memory - is a &amp;ldquo;communication channel&amp;rdquo; E.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0241</title>

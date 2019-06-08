@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0245 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0245</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="some-were-meant-for-c">Some Were Meant for C</h1>
+
+<p><a href="https://www.cs.kent.ac.uk/people/staff/srk21//research/papers/kell17some-preprint.pdf">https://www.cs.kent.ac.uk/people/staff/srk21//research/papers/kell17some-preprint.pdf</a></p>
+
+<ul>
+<li>The C language is used for: writing application and writing system code (&ldquo;communicative&rdquo;)</li>
+<li>For both parts performance is not THAT needed</li>
+<li>It has a lot of problems. Then why is it so popular?</li>
+<li>Several possible explanations:
+
+<ul>
+<li>&ldquo;C&rdquo; values simplicity, tolerates incorrectness, inconsistency and incompleteness</li>
+<li>Only &ldquo;C&rdquo; allows to write a &ldquo;communicative code&rdquo; to allow several solutions to work together.
+Memory - is a &ldquo;communication channel&rdquo;</li>
+<li>E.g. you can implement a function to call callbacks from some memory blocks: void (*cb)(&ldquo;some args&rdquo;)</li>
+<li>It can be JIT-compiled regions, code compiled from other languates, etc</li>
+<li>&ldquo;C&rdquo; chooses not to encapsulate everything, but rather have some agreement between all participants (ABI)</li>
+</ul></li>
+<li>Why &ldquo;C&rdquo; is not safe?
+
+<ul>
+<li>&ldquo;Managed&rdquo; memory (= safe memory management) always mean working inside our own memory.</li>
+<li>All languages have &ldquo;unsafe&rdquo; instructions (including Rust, Haskell)</li>
+<li>&ldquo;Communication&rdquo; level requires to work with not &ldquo;our own memory&rdquo; =&gt; unsafe.</li>
+<li>What is &ldquo;safe&rdquo; language (!!!!!):
+
+<ul>
+<li>Catching errors immediately and cleanly rather than gradually and corruptingly</li>
+<li>Behaviour of any program can be easily understood in terms of the source-level language semantics</li>
+</ul></li>
+<li>But &ldquo;safety&rdquo; is possible! Not in language spec, but in language implementationk:</li>
+<li>Check casting, have some tags in every pointer, properly check casting.</li>
+<li>Temporal safety is possible (=&gt; pointer to paper)</li>
+<li>&ldquo;Nowhere does C define that array accesses are unchecked&hellip; implementations don&rsquo;t check it&rdquo;</li>
+<li>Overrunning pointer into some other object - undefined behaviour. Should catch this errors</li>
+<li>META-level (meta-circular), when the next level adds some additional abstraction
+(&ldquo;define simple c compiler&rdquo; to compile &ldquo;usual c&rdquo;)- possible to be safe</li>
+</ul></li>
+<li>Undefined, Unspecified, Implementation-specific
+
+<ul>
+<li>Undefined is not to optimize anything. It means that the error can&rsquo;t be detect in all possible cases</li>
+</ul></li>
+<li>IMHO:
+
+<ul>
+<li>It is not a &ldquo;technical paper&rdquo;. It should have been said in the very beginning!</li>
+<li>Could be shortened at least twice! Sometimes it is difficult to read (one sentence per paragraph, repetitions, etc)</li>
+<li>I can&rsquo;t agree that safety should not be specified in the language spec (instead - in implementation).
+If you don&rsquo;t specify anything in spec, it won&rsquo;t survive.
+-</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0241/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-06-08 23:16:33.890823 &#43;0400 &#43;04 m=&#43;0.066996119">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
