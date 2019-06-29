@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0248 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0248</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today">How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today</h1>
+
+<p><a href="https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/">https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/</a></p>
+
+<ul>
+<li>Border Gateway Protocol (BGP) - is a protocol to exchange routing tables</li>
+<li>BGP optimizer: splits up IP prefixes into smaller (more specific) parts</li>
+<li>Verison sent these rules into the internet
+<figure>
+    <img src="/images/0248_0.png"/> 
+</figure>
+</li>
+<li>15% loss of global traffic</li>
+<li>Verizon should have configured everything correctly long ago:
+
+<ul>
+<li>Configure hard limit prefixes to be received</li>
+<li>IRR-based filtering</li>
+<li>RPKI framework with BGP Origin Validation (AT&amp;T have enabld it)</li>
+<li>All these ideas are defined in the MANRS (<a href="https://www.manrs.org/">Mutually Agreed Norms for Routing Security</a>)</li>
+</ul></li>
+<li>&ldquo;<strong>And there&rsquo;s no good reason, other than sloppiness or laziness</strong>&rdquo; (about Verizon)</li>
+<li>They fixed it by phone: calling the DQE to stop advertizing the incorrect BGP routes (screensot of phone calls is attached)</li>
+</ul>
+
+<h1 id="elixir-v1-9-0">Elixir v1.9.0</h1>
+
+<p><a href="https://github.com/elixir-lang/elixir/releases/tag/v1.9.0">https://github.com/elixir-lang/elixir/releases/tag/v1.9.0</a></p>
+
+<ul>
+<li>New concept is added: Releases!!!</li>
+<li>Folder with everything, including BEAM</li>
+<li>New configuration management module (Config instead of Mux.Config)</li>
+<li>New set of commands, new hooks and configuration files</li>
+<li>Buf fixes + small improvements</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0245/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-06-29 23:32:14.823801 &#43;0400 &#43;04 m=&#43;0.066665813">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

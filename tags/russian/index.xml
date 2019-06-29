@@ -6,10 +6,20 @@
     <description>Recent content in Russian on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Apr 2019 20:32:19 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jun 2019 21:48:17 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/russian/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0248</title>
+      <link>http://gliush.github.io/devzen_note/0248/</link>
+      <pubDate>Sat, 29 Jun 2019 21:48:17 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0248/</guid>
+      <description>How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/
+ Border Gateway Protocol (BGP) - is a protocol to exchange routing tables BGP optimizer: splits up IP prefixes into smaller (more specific) parts Verison sent these rules into the internet    15% loss of global traffic Verizon should have configured everything correctly long ago:  Configure hard limit prefixes to be received IRR-based filtering RPKI framework with BGP Origin Validation (AT&amp;amp;T have enabld it) All these ideas are defined in the MANRS (Mutually Agreed Norms for Routing Security)  &amp;ldquo;And there&amp;rsquo;s no good reason, other than sloppiness or laziness&amp;rdquo; (about Verizon) They fixed it by phone: calling the DQE to stop advertizing the incorrect BGP routes (screensot of phone calls is attached)  Elixir v1.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0239</title>
