@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0247 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0247</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="rambleed">RAMBleed</h1>
+
+<ul>
+<li>Better read the paper, it&rsquo;s not that difficult</li>
+<li>Idea1: All the memory cells during reads could influence cells in the same column on the nearest row</li>
+<li>Idea2: Put your memory between rows with a secret (how to do that explained below):
+<figure>
+    <img src="/images/0247_0.png"/> 
+</figure>
+</li>
+<li>As you have EQUAL cells containing secret above and below your cell, they will influence the same way.</li>
+<li>Perform many reads in (A0) cells, that will the cells with secrets activate cells in your memory</li>
+<li>If you had <code>0</code> in your cell and after the experiment, it didn&rsquo;t change -&gt; secret has <code>0</code> in the corresponding cell</li>
+<li>If you had <code>0</code> in your cell and after the experiment, it switched to <code>1</code> -&gt; secret has <code>1</code> in the corresponding cell</li>
+<li>PROFIT!</li>
+<li>All other 17 pages of the paper they explain how to put a secret in the needed places and how DRAM works</li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0248/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-07-06 16:52:30.26522 &#43;0300 MSK m=&#43;0.067444740">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

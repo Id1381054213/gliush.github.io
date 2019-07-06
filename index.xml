@@ -6,10 +6,19 @@
     <description>Recent content on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Jun 2019 21:48:17 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jul 2019 16:39:40 +0300</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0247</title>
+      <link>http://gliush.github.io/devzen_note/0247/</link>
+      <pubDate>Sat, 06 Jul 2019 16:39:40 +0300</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0247/</guid>
+      <description>RAMBleed  Better read the paper, it&amp;rsquo;s not that difficult Idea1: All the memory cells during reads could influence cells in the same column on the nearest row Idea2: Put your memory between rows with a secret (how to do that explained below):    As you have EQUAL cells containing secret above and below your cell, they will influence the same way. Perform many reads in (A0) cells, that will the cells with secrets activate cells in your memory If you had 0 in your cell and after the experiment, it didn&amp;rsquo;t change -&amp;gt; secret has 0 in the corresponding cell If you had 0 in your cell and after the experiment, it switched to 1 -&amp;gt; secret has 1 in the corresponding cell PROFIT!</description>
+    </item>
     
     <item>
       <title>Notes for episode-0248</title>
