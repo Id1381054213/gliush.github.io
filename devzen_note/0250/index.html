@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0250 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0250</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="cloudflare-outage-jul-2nd">CloudFlare outage (Jul 2nd)</h1>
+
+<p><a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/">https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/</a></p>
+
+<ul>
+<li>Transparency - is the best</li>
+<li>TLDR</li>
+<li>Deployed a new rule that caused CPU to become exhausted  (<a href="https://blog.cloudflare.com/cloudflare-outage/">https://blog.cloudflare.com/cloudflare-outage/</a>)</li>
+<li>-&gt; 502 status (by front line servers that had CPU)</li>
+<li>Bad regular expression that created excessive backtracking</li>
+</ul>
+
+<pre><code>(?:(?:\&quot;|'|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))
+</code></pre>
+
+<ul>
+<li>Sequence of events</li>
+<li>13:42 engineer deployed a minor change to the XSS detection rule</li>
+<li>13:45 PagerDuty page with error in WAF Manager (synthetic test)</li>
+<li>13:45 Many other tests failed</li>
+<li>13:45 P0 incident, SRE teams started working, all other teams helped</li>
+<li>14:00 WAF was identified as a component causing problems (&ldquo;attack variant&rdquo; dismissed)</li>
+<li>14:02 proposed a &lsquo;global kill&rsquo; = mechanism to disable single component worldwide
+
+<ul>
+<li>=&gt; Access service will be down, can&rsquo;t authenticate to control panel</li>
+<li>=&gt; Security feature will disable credentials if anyone won&rsquo;t use it frequently</li>
+<li>=&gt; Can&rsquo;t access Jira or build system directly. Need to use workaround that is used very seldom</li>
+</ul></li>
+<li>14:07 executed &lsquo;global kill&rsquo;</li>
+<li>14:09 CPU is back to the expected levels</li>
+<li>14:52 were 100% sure they found and fixed a problem and restored WAF</li>
+<li>Releases:</li>
+<li>WAF is released globally, unlike all other changes. 476 changes per 60 days (one every 3 hour)</li>
+<li>Usual release (may take hours - days):
+
+<ul>
+<li>DOG (install for cloudflare internal usage)</li>
+<li>PIG (small subset of non-paying customers)</li>
+<li>Canary releases</li>
+<li>Live</li>
+</ul></li>
+<li>WAF is to protect again some attacks. Need to react quickly</li>
+<li>CI test must pass before WAF deploy</li>
+<li>At 13:31 - the PR is merged</li>
+<li>At 13:37 - TeamCity turn on the green light (all tests passed)</li>
+<li>Tests: unit tests (positive and negative), but not for the CPU usage.</li>
+<li>Tests run time didn&rsquo;t increase</li>
+<li>TeamCity wrote changes in QuickSilver KV (p99: 2.29sec to write change to ~200cities world wide)</li>
+<li>Reasons of the problem:
+
+<ul>
+<li>Regular expression that could easily backtrack enormously</li>
+<li>Protection was removed weeks ago (to reduce CPU usage, lol)</li>
+<li>Tests didn&rsquo;t check CPU usage</li>
+<li>No staged rollout</li>
+<li>Rollback plan required WAF build twice, take too long</li>
+<li>The first alert took too long to fire</li>
+<li>Dogfooting -&gt; the SRE had the same problems accessing internal resources</li>
+</ul></li>
+<li>Simplified regex: <code>.*.*=.*</code>
+
+<ul>
+<li><code>x=x</code> requires 23 steps to match</li>
+<li><code>x=xx</code> requires 33 steps to match</li>
+<li><code>x=xxx</code> requires 45 steps to match</li>
+<li>not linear, exponent</li>
+</ul></li>
+<li><a href="https://www.regular-expressions.info/catastrophic.html">https://www.regular-expressions.info/catastrophic.html</a></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0247/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-07-13 22:10:05.925755 &#43;0300 MSK m=&#43;0.067984905">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>

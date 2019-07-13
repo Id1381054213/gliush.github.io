@@ -6,10 +6,20 @@
     <description>Recent content in Devzen on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 06 Jul 2019 16:39:40 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jul 2019 21:11:17 +0300</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/devzen/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0250</title>
+      <link>http://gliush.github.io/devzen_note/0250/</link>
+      <pubDate>Sat, 13 Jul 2019 21:11:17 +0300</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0250/</guid>
+      <description>CloudFlare outage (Jul 2nd) https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/
+ Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&amp;gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&amp;quot;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))   Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&amp;ldquo;attack variant&amp;rdquo; dismissed) 14:02 proposed a &amp;lsquo;global kill&amp;rsquo; = mechanism to disable single component worldwide  =&amp;gt; Access service will be down, can&amp;rsquo;t authenticate to control panel =&amp;gt; Security feature will disable credentials if anyone won&amp;rsquo;t use it frequently =&amp;gt; Can&amp;rsquo;t access Jira or build system directly.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0247</title>
