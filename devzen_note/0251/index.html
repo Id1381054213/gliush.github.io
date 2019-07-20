@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<title>
+				Notes for episode-0251 &middot; Gliush Notebook
+		</title>
+	
+		
+  		<link rel="stylesheet" href="/css/style.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+	
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	
+		
+		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
+	</head>
+	
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">Gliush Notebook</h2>
+				</a>
+				<ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/">Posts</a></li>
+</ul>
+			</div>
+		</nav>
+
+        
+
+<main>
+	<div class="post">
+        <div class="post-title">Notes for episode-0251</div>
+        <div class="post-line"></div>
+
+		
+
+		
+
+<h1 id="new-approach-could-sink-floating-point-computation-posits">New approach could sink floating point computation (Posits)</h1>
+
+<p><a href="https://www.nextplatform.com/2019/07/08/new-approach-could-sink-floating-point-computation/">https://www.nextplatform.com/2019/07/08/new-approach-could-sink-floating-point-computation/</a></p>
+
+<ul>
+<li>float was designed in 1985 by IEEE.</li>
+<li>Performance and accuracy is not the best</li>
+<li>John Gustafson reworked the &ldquo;float&rdquo; idea (his 3d iteration) -&gt; Posits</li>
+<li>Difference: denser representation of real numbers.</li>
+<li>Instead of fixed-size exponent and mantissa -&gt; variadic representation</li>
+<li>Additional &ldquo;regime&rdquo; part, of ANY length
+<figure>
+    <img src="/images/0251_0.png"/> 
+</figure>
+</li>
+<li>Coded as &ldquo;total number of bits + max number of bits for exponent&rdquo;: <code>posit&lt; bits, es &gt;</code></li>
+<li>Priority: sign -&gt; regime -&gt; exponent (up to es bits, =0 if no bits available) -&gt; fraction (=1.0 if no bits available)</li>
+<li>Advantages:
+
+<ul>
+<li>+∞ = -∞</li>
+<li>only one NAN (1/∞)</li>
+<li>Higher precision (32bit posits can replace 64bit float in almost all use cases!)</li>
+<li>Higher performance
+<figure>
+    <img src="/images/0251_1.png"/> 
+</figure>
+</li>
+</ul></li>
+</ul>
+
+
+		
+	</div>
+
+	<div class="pagination">
+		<a href="/devzen_note/0250/" class="left arrow">&#8592;</a>
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&copy; <time datetime="2019-07-20 23:21:40.5135 &#43;0400 &#43;04 m=&#43;0.065390645">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
+			</span>
+		</footer>
+
+    </body>
+</html>
