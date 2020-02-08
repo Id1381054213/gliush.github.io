@@ -7,7 +7,7 @@
 <meta property="og:description" content="Introduction to PostgreSQL physical storage http://rachbelaid.com/introduction-to-postgres-physical-storage/
  определение OID (object ID) вашей таблицы ( select * from pg_database ) сама база хранится в 1ГБ файлах, filenode system table pg_catalog для каждой таблицы таблица сохраняется как массив страниц фиксированного размера (8кб) страницы перемешаны, никакого порядка    записи лежат очень долго, почти вечно, поэтому индекс тоже не меняется указатель на запись = номер страницы &#43; индекс select cid, * from bar ; кол-во столбцов ограничено, т." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://gliush.github.io/devzen_note/0076/" />
+<meta property="og:url" content="https://gliush.github.io/devzen_note/0076/" />
 <meta property="article:published_time" content="2016-01-23T00:00:00+00:00" />
 <meta property="article:modified_time" content="2016-01-23T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
@@ -16,17 +16,17 @@
  определение OID (object ID) вашей таблицы ( select * from pg_database ) сама база хранится в 1ГБ файлах, filenode system table pg_catalog для каждой таблицы таблица сохраняется как массив страниц фиксированного размера (8кб) страницы перемешаны, никакого порядка    записи лежат очень долго, почти вечно, поэтому индекс тоже не меняется указатель на запись = номер страницы &#43; индекс select cid, * from bar ; кол-во столбцов ограничено, т."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="https://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
 
 	
-	<script src="http://gliush.github.io/js/main.js"></script>
+	<script src="https://gliush.github.io/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<h1 class="site-title"><a href="https://gliush.github.io/">Gliush Notebook</a></h1>
 	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
 			<ul class="flat"></ul>
 		</nav>

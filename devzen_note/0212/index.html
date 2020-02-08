@@ -7,7 +7,7 @@
 <meta property="og:description" content="Netflix’s Edge Load balancing https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c
  Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&gt; problems server side update -&gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)     Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers   Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)   Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB   FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)   Probation:  for new servers allow 1 request in-flight to gather stats   Stats Decay:  Linear decay over 30 secs to flush all the stats   RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://gliush.github.io/devzen_note/0212/" />
+<meta property="og:url" content="https://gliush.github.io/devzen_note/0212/" />
 <meta property="article:published_time" content="2018-10-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2018-10-07T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
@@ -16,17 +16,17 @@
  Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&gt; problems server side update -&gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)     Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers   Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)   Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB   FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)   Probation:  for new servers allow 1 request in-flight to gather stats   Stats Decay:  Linear decay over 30 secs to flush all the stats   RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!"/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="https://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
 
 	
-	<script src="http://gliush.github.io/js/main.js"></script>
+	<script src="https://gliush.github.io/js/main.js"></script>
 </head>
 
 <body>
 	<div class="container wrapper post">
 		<div class="header">
-	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<h1 class="site-title"><a href="https://gliush.github.io/">Gliush Notebook</a></h1>
 	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
 			<ul class="flat"></ul>
 		</nav>

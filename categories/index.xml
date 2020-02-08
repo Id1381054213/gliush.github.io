@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Gliush Notebook</title>
-    <link>http://gliush.github.io/categories/</link>
+    <link>https://gliush.github.io/categories/</link>
     <description>Recent content in Categories on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 01 Feb 2020 15:55:47 +0000</lastBuildDate>
     
-	<atom:link href="http://gliush.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gliush.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>devzen</title>
-      <link>http://gliush.github.io/categories/devzen/</link>
+      <link>https://gliush.github.io/categories/devzen/</link>
       <pubDate>Sat, 01 Feb 2020 15:55:47 +0000</pubDate>
       
-      <guid>http://gliush.github.io/categories/devzen/</guid>
+      <guid>https://gliush.github.io/categories/devzen/</guid>
       <description></description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>devzen on Gliush Notebook</title>
-    <link>http://gliush.github.io/categories/devzen/</link>
+    <link>https://gliush.github.io/categories/devzen/</link>
     <description>Recent content in devzen on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 01 Feb 2020 15:55:47 +0000</lastBuildDate>
     
-	<atom:link href="http://gliush.github.io/categories/devzen/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gliush.github.io/categories/devzen/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Notes for episode-0274</title>
-      <link>http://gliush.github.io/devzen_note/0274/</link>
+      <link>https://gliush.github.io/devzen_note/0274/</link>
       <pubDate>Sat, 01 Feb 2020 15:55:47 +0000</pubDate>
       
-      <guid>http://gliush.github.io/devzen_note/0274/</guid>
+      <guid>https://gliush.github.io/devzen_note/0274/</guid>
       <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
  INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
     </item>
