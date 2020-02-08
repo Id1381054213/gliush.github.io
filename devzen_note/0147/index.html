@@ -1,55 +1,67 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0147 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0147 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0147" />
+<meta property="og:description" content="Rust 1.18 https://habrahabr.ru/post/330778/
+ Новая книга open source (GH), написано 19 из 20 глав изменение ключевого слова pub для создания публичной области видимости объекта Переупорядочивание объектов в структуре (для занимания меньшего места) Начало перехода на новую систему документирования кода CommonMark (опция для rustdoc) Компилятор на 15-20% быстрее  System Programming in Rust: beyond safety (разбор paper от Adryan Colyer) https://blog.acolyer.org/2017/06/14/system-programming-in-rust-beyond-safety/
+ Авторы хотят переключить всё системное программирование на Rust Почему используем С?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0147/" />
+<meta property="article:published_time" content="2017-06-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-06-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0147"/>
+<meta name="twitter:description" content="Rust 1.18 https://habrahabr.ru/post/330778/
+ Новая книга open source (GH), написано 19 из 20 глав изменение ключевого слова pub для создания публичной области видимости объекта Переупорядочивание объектов в структуре (для занимания меньшего места) Начало перехода на новую систему документирования кода CommonMark (опция для rustdoc) Компилятор на 15-20% быстрее  System Programming in Rust: beyond safety (разбор paper от Adryan Colyer) https://blog.acolyer.org/2017/06/14/system-programming-in-rust-beyond-safety/
+ Авторы хотят переключить всё системное программирование на Rust Почему используем С?"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0147</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0147</h1>
+			<div class="meta">Posted at &mdash; Jun 18, 2017</div>
+		</div>
 
-		
-
-<h1 id="rust-1-18">Rust 1.18</h1>
-
+		<div class="markdown">
+			<h1 id="rust-118">Rust 1.18</h1>
 <p><a href="https://habrahabr.ru/post/330778/">https://habrahabr.ru/post/330778/</a></p>
-
 <ul>
 <li>Новая книга open source (GH), написано 19 из 20 глав</li>
 <li>изменение ключевого слова pub для создания публичной области видимости объекта</li>
@@ -57,39 +69,35 @@
 <li>Начало перехода на новую систему документирования кода CommonMark (опция для rustdoc)</li>
 <li>Компилятор на 15-20% быстрее</li>
 </ul>
-
 <h1 id="system-programming-in-rust-beyond-safety-разбор-paper-от-adryan-colyer">System Programming in Rust: beyond safety (разбор paper от Adryan Colyer)</h1>
-
 <p><a href="https://blog.acolyer.org/2017/06/14/system-programming-in-rust-beyond-safety/">https://blog.acolyer.org/2017/06/14/system-programming-in-rust-beyond-safety/</a></p>
-
 <ul>
 <li>Авторы хотят переключить всё системное программирование на Rust</li>
 <li>Почему используем С?
-
 <ul>
 <li>Безопасные языки добавляют оверхед</li>
 <li>Это известный язык (от самого Adrian Colyer)</li>
 <li>Большая кодовая база</li>
-</ul></li>
+</ul>
+</li>
 <li>Дилемма «безопасно vs производительно» - ошибочна</li>
 <li>Rust предлагает и безопасность и производительность с помощью:
-
 <ul>
 <li>linear types (ensures that object is used exactly once, allow references but not aliases)</li>
 <li>= ownership, that can be transfered or borrowed.</li>
 <li>есть «unsafe» области, где нет ограничений</li>
 <li>safe read-only aliases (Rc or Arc)</li>
 <li>Mutex type for write aliasing</li>
-</ul></li>
+</ul>
+</li>
 <li>Многие проекты показали, что Rust хорош для производительных систем, но авторы идут дальше, показывая, что Rust хорош еще и
-
 <ul>
 <li>Software Fault Isolation (SFI)</li>
 <li>Program Analysis, особенно Static Information Flow Control (IFC)</li>
 <li>безопасное перемещение структур данных с ссылками внутри, что позволяет автоматизировать разные задачи, вроде Checkpointing.</li>
-</ul></li>
+</ul>
+</li>
 <li>SFI (Software Fault Isolation)
-
 <ul>
 <li>идея границ модулей програм, без подключения защит на уровне железа (плагины браузеров, драйвера устройств)</li>
 <li>с требованием производительности</li>
@@ -97,81 +105,96 @@
 <li>Zero-copy SFI: компилятор гарантирует, что если указатель проходит через эти границы независимости - значит он теперь принадлежит нам</li>
 <li>Авторы показали, как строить SFI библиотеки на Rust,</li>
 <li>Библиотека экспортирует 2 типа данных: Protection Domains (PDs) и Remote References (rrefs). Borrowed References - доступны в домене на все время вызова. Все остальные ссылки - навсегда берут владение. И только для Remote References - владение остается в своем домене.</li>
-<li>
-￼
+<li></li>
+</ul>
+</li>
+</ul>
+<p>￼
 Если паника происходит в домене- вся таблица ссылок очищается.
-Оценка оверхеда делалась применением пустых фильтров на списке пакетов.<br />
-TODO: Оценка Оверхеда</li>
-</ul></li>
+Оценка оверхеда делалась применением пустых фильтров на списке пакетов.<br>
+TODO: Оценка Оверхеда</p>
+<ul>
 <li>Information Flow Control (IFC) (Analysis)
-
 <ul>
 <li>Отслеживать проход важной информации через программу.</li>
 <li>Когда есть много алиасов (копий ссылок) - очень сложно делать хороший анализ. Поэтому Rust очень хорош.</li>
 <li>Авторы сделали proof-of-concept реализацию IFC для Rust. Rust макросы трансформируют программу в абстрактную репрезентацию, в которой значение каждой переменной представляется ее секьюрной меткой.</li>
 <li>Входные переменные инициализированы с помощью пользовательских меток, арифметические операции над secure values вычисляют верхнюю границу их аргументов.</li>
 <li>Результирующая абстрактная программа проверяется верификатором, реализованным как расширение к SMACK. Он способен детектировать проблемы в простейших программах.</li>
-</ul></li>
+</ul>
+</li>
 <li>Automation. Safe Traversals. (Checkpointing, transactions, replication, mvcc) - включают в себя снэпшоттинг состояния. А это - перемещение данных в памяти. Aliasing - усложняет автоматизацию
-
 <ul>
 <li>В Rust все проще. Любая ссылка - уникальна, ее можно перемещать без дополнительных проверок. Aliasin делается эксплицитно, с помощью Rc, Arc.</li>
 <li>Авторы построили автоматическую «checkpointing library», используя «Checkpointable» trait (интерфейс?) и частную реализацию для Rc/Arc. При этом, компилятор сам генерирует имплементацию Checkpointable для всех составных типов из скалярных величин.</li>
 <li>Это позволяет делать дешево Checkpoints.</li>
-</ul></li>
+</ul>
+</li>
 <li>Авторы делают вывод: Мы показываем, что системное программирование на Rust возможно, и оно предоставляет такие механизмы надежности, как SFI, IFC и автоматических чекпоинтов, намного лучше, чем в других языках. И мы думаем, что это только начало.
 Впечатление:</li>
 <li>сама идея статьи очень банальна «на Rust надежнее»</li>
 <li>но 3 идеи с примерами реализации - очень интересные, лично мне они кажутся очень многообещающими, но мне сложно предположить, какие проекты могут появиться на базе этого</li>
 </ul>
-
 <h1 id="amazon-dynamodb-autoscaling">Amazon DynamoDB Autoscaling</h1>
-
 <p><a href="https://aws.amazon.com/ru/blogs/aws/new-auto-scaling-for-amazon-dynamodb/">https://aws.amazon.com/ru/blogs/aws/new-auto-scaling-for-amazon-dynamodb/</a>
 <a href="https://aws.amazon.com/ru/about-aws/whats-new/2017/06/announcing-amazon-dynamodb-auto-scaling/">https://aws.amazon.com/ru/about-aws/whats-new/2017/06/announcing-amazon-dynamodb-auto-scaling/</a> 14 Jun</p>
-
 <ul>
 <li>Устанавливать min;max, и дальше оно скалируется само</li>
 <li>Работает вместе с Amazon CloudWatch чтобы мониторить текущее потребление</li>
 <li>Надо также устанавливать target utilization (в процентах)</li>
 </ul>
-
-<h1 id="bugs-you-ll-probably-only-have-in-rust">Bugs you’ll probably only have in Rust</h1>
-
+<h1 id="bugs-youll-probably-only-have-in-rust">Bugs you’ll probably only have in Rust</h1>
 <p><a href="https://gankro.github.io/blah/only-in-rust/">https://gankro.github.io/blah/only-in-rust/</a>
 <a href="https://www.ralfj.de/blog/2017/06/09/mutexguard-sync.html">https://www.ralfj.de/blog/2017/06/09/mutexguard-sync.html</a>
 <a href="https://news.ycombinator.com/item?id=14553222">https://news.ycombinator.com/item?id=14553222</a></p>
-
 <ul>
 <li>Баг интересный: позволяет писать в Shared переменную.</li>
-<li>Произошел оттого, что не была написана строка, которая запрещает типу MutexGuard<T> быть Sync автоматически. Т.е. проблема не в коде, а в отсутствии дополнительного кода, который будет гарантировать корректность. (автоматическая имплементация некоторых Trait)</li>
+<li>Произошел оттого, что не была написана строка, которая запрещает типу MutexGuard<!-- raw HTML omitted --> быть Sync автоматически. Т.е. проблема не в коде, а в отсутствии дополнительного кода, который будет гарантировать корректность. (автоматическая имплементация некоторых Trait)</li>
 <li>TL;DR: if you write unsafe you must closely audit Send and Sync for your types!</li>
 <li>Несколько примеров на разные ошибки с Unsafe.</li>
 <li>Комменты:
-
 <ul>
 <li>compiletest - тула, создающая тесты, которые должны упасть. Нужно не только позитивное подтверждение иметь, но и негативное</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0145/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0154/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.940668 &#43;0400 &#43;04 m=&#43;0.084968160">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

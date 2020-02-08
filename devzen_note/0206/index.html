@@ -1,59 +1,68 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0206 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0206 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0206" />
+<meta property="og:description" content="NetSpectre: Read Arbitrary Memory over Network https://misc0110.net/web/files/netspectre.pdf
+ Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15/60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное &#43; спекулятивное исполнение. Прерывания в pipeline -&gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0206/" />
+<meta property="article:published_time" content="2018-08-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-08-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0206"/>
+<meta name="twitter:description" content="NetSpectre: Read Arbitrary Memory over Network https://misc0110.net/web/files/netspectre.pdf
+ Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15/60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное &#43; спекулятивное исполнение. Прерывания в pipeline -&gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0206</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0206</h1>
+			<div class="meta">Posted at &mdash; Aug 26, 2018</div>
+		</div>
 
-		
-
-<h1 id="netspectre-read-arbitrary-memory-over-network">NetSpectre: Read Arbitrary Memory over Network</h1>
-
+		<div class="markdown">
+			<h1 id="netspectre-read-arbitrary-memory-over-network">NetSpectre: Read Arbitrary Memory over Network</h1>
 <p><a href="https://misc0110.net/web/files/netspectre.pdf">https://misc0110.net/web/files/netspectre.pdf</a></p>
-
 <ul>
-<li>Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает <sup>15</sup>&frasl;<sub>60</sub> бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности</li>
+<li>Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15/60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности</li>
 <li>BACKGROUND
-
 <ul>
 <li>Последовательное и непоследовательное + спекулятивное исполнение. Прерывания в pipeline -&gt; отбрасывание результатов.</li>
 <li>Предсказание переходов - один из примеров использования Спекулятивного вычисления</li>
@@ -62,9 +71,9 @@
 <li>Spectre: это side channel атака, использующая спекулятивное исполнение и тайминги доступа к кэшу.</li>
 <li>Spectre: Не будет работать, если перейти на последовательное исполнение.</li>
 <li>Spectre1 не будет пофикшен в ближайших поколениях CPU (в отличие от meltdown и Spectre2)</li>
-</ul></li>
+</ul>
+</li>
 <li>ATTACK OVERVIEW
-
 <ul>
 <li>Два гаджета: Leak gadget и transmit gadget</li>
 <li>Leak гаджет (утечка) читает битовый поток по индексу, который контролирует атакующий и меняет какое-то микроархитектурное состояние в зависимости от прочитанного бита.</li>
@@ -79,62 +88,81 @@
 <li>Большинство сетевых драйверов - работают в KernelSpace -&gt; Если в драйвере есть NetSpectre Gadget -&gt; можно утащить любой бит в памяти</li>
 <li>Большинство пакетов в дальнейшем идет в приложение в UserSpace, огромное поле приложений (Web, FTP, SSH, …).</li>
 <li>Могут быть атакованы и клиентские машины, когда вы подключаетесь  к серверу!!!</li>
-</ul></li>
+</ul>
+</li>
 <li>REMOTE COVERT CHANNEL
-
 <ul>
 <li>Covert Channel attack (атака скрытого канала). Канал передачи информации, скрытый от всех, не предназначенный:
-
 <ul>
 <li>Timing Channels - передавать, используя временные задержки</li>
-</ul></li>
+</ul>
+</li>
 <li>Remote cache covert channel. Thrasр+Reload (атака) - удалить весь кэш последнего уровня. Скачивание 590kb file -&gt; 99% вероятность удалить переменную из кэша.</li>
 <li>Remote AVX-based covert channel. AVX2 требует прогрева, добавляет 0.5ms</li>
-</ul></li>
+</ul>
+</li>
 <li>ATTACK VARIANTS
-
 <ul>
 <li>Вытаскивание данных из памяти:
-
 <ul>
 <li>натренировать предсказатель переходов</li>
 <li>занулить состояние микроархитектурного компонента</li>
 <li>вытащить бит в микроархитектурный компонент</li>
 <li>вытащить бит из микроархитектурного компонента в сеть</li>
-</ul></li>
+</ul>
+</li>
 <li>Сломать ASLR (address space layout randomization), что в дальнейшем может использоваться для других атак
-
 <ul>
 <li>меньшие требования к leak gadget =&gt; больше вариантов гаджетов</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>ОЦЕНКА
-
 <ul>
 <li>100k измерений, чтобы вытащить бит,</li>
 <li>Desktop/ARM/Cloud</li>
 <li>AVX2 -&gt; 1byte/8min on desktop, 1b/3h in the Cloud</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0201/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0207/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.93189 &#43;0400 &#43;04 m=&#43;0.076189427">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

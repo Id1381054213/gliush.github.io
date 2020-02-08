@@ -1,74 +1,81 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0213 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0213 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0213" />
+<meta property="og:description" content="Etsy’s experiment with Immutable documentation https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/
+ Парадокс: Чем чаще меняется проект, тем быстрее ваши знания о системе устаревают, и тем больше вам нужна документация. Которая устаревает Пример с БД: секция1 “why”, секция2 “как” -&gt; how - постоянно меняется, why - остается долго Можно разделить документацию на how и why части, управлять устареванием документации - управляя смешиванием how и why частей Разработали систему добавления how-документации прямо из Slack-а (?fyi) Цель - сделать ее как можно более легкую в использовании ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0213/" />
+<meta property="article:published_time" content="2018-10-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-10-14T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0213"/>
+<meta name="twitter:description" content="Etsy’s experiment with Immutable documentation https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/
+ Парадокс: Чем чаще меняется проект, тем быстрее ваши знания о системе устаревают, и тем больше вам нужна документация. Которая устаревает Пример с БД: секция1 “why”, секция2 “как” -&gt; how - постоянно меняется, why - остается долго Можно разделить документацию на how и why части, управлять устареванием документации - управляя смешиванием how и why частей Разработали систему добавления how-документации прямо из Slack-а (?fyi) Цель - сделать ее как можно более легкую в использовании ?"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0213</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0213</h1>
+			<div class="meta">Posted at &mdash; Oct 14, 2018</div>
+		</div>
 
-		
-
-<h1 id="etsy-s-experiment-with-immutable-documentation">Etsy’s experiment with Immutable documentation</h1>
-
+		<div class="markdown">
+			<h1 id="etsys-experiment-with-immutable-documentation">Etsy’s experiment with Immutable documentation</h1>
 <p><a href="https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/">https://codeascraft.com/2018/10/10/etsys-experiment-with-immutable-documentation/</a></p>
-
 <ul>
 <li>Парадокс: Чем чаще меняется проект, тем быстрее ваши знания о системе устаревают, и тем больше вам нужна документация. Которая устаревает</li>
 <li>Пример с БД: секция1 “why”, секция2 “как” -&gt; how - постоянно меняется, why - остается долго</li>
 <li>Можно разделить документацию на how и why части, управлять устареванием документации - управляя смешиванием how и why частей</li>
 <li>Разработали систему добавления how-документации прямо из Slack-а (?fyi)</li>
 <li>Цель - сделать ее как можно более легкую в использовании</li>
-<li><code>?fyi</code> <info></li>
+<li><code>?fyi</code> <!-- raw HTML omitted --></li>
 <li>:fyi: реакция в слаке, чтобы добавить оригинальный коммент</li>
-<li>?how <search request> - покажет все ответы с timestamp</li>
+<li>?how <!-- raw HTML omitted --> - покажет все ответы с timestamp</li>
 <li>FYI разменивает полноту на свежесть документации, ?how всегда покажет сперва самую свежую</li>
 <li>изменение в коде очень быстрое, заменять проще, чем редактировать, поэтому how документация тоже иммутабельная</li>
 <li>Устаревание - легко проверяется по timestamp</li>
 <li>FYI - не хватает самих по себе, необходима why-документация, которая долгоживущая и хранится где-то в вики</li>
 </ul>
-
 <h1 id="internet-hacking-is-about-to-get-much-worse">Internet Hacking Is About to Get Much Worse</h1>
-
 <p><a href="https://www.nytimes.com/2018/10/11/opinion/internet-hacking-cybersecurity-iot.html">https://www.nytimes.com/2018/10/11/opinion/internet-hacking-cybersecurity-iot.html</a></p>
-
 <ul>
 <li>computers are insecure.</li>
 <li>Facebook hack, Equifax hack, hacking of government agencies - последние примеры</li>
@@ -81,33 +88,51 @@
 <li>Дорогие устройства мы патчим. Проблема с мелкими дешевыми устройствами - о них не заботятся.</li>
 <li>Проблема: покупателя интересуют фичи и цена. Производителям важнее оптимизировать эти два показателя. Покупатель не может оценить “безопасность”.</li>
 <li>Решения:
-
 <ul>
 <li>Правила и стандарты, контролирующие, что “небезопасные продукты не повредят никому”</li>
 <li>The National Institute of Standards and Technology’s “Cybersecurity Framework” - должен стать обязательным (???)</li>
 <li>Регуляторы должны штрафовать компании с проблемами в security. При этом штрафы должны быть настолько большими, чтобы окупать добавление проверки безопасности как стадии разработки устройства/программы</li>
-</ul></li>
+</ul>
+</li>
 <li>Регуляция неизбежна.</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0212/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0214/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.930799 &#43;0400 &#43;04 m=&#43;0.075098954">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

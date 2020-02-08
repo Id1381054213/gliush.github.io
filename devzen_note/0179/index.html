@@ -1,150 +1,180 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0179 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0179 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0179" />
+<meta property="og:description" content="Paper &ldquo;Partisan: Enabling Cloud-Scale Erlang Applications&rdquo; https://arxiv.org/abs/1802.02652
+ Models:  Full mesh model client-server model peer-to-peer model publish-subscribe model   Usually, the runtime support for distributed applications is not needed. But several counter-examples: Akka cluster, Microsoft Orleans, Distributed Erlang single topology is insufficient Partisan: distributed programming model &#43; distributed layer = alternative to Distributed Erlang. 2 important improvements over Distributed Erlang:  addition of multiple runtime-selectable cluster topologies ability to gain additional parallelism by distributing messages over multiple communication channels   Default topology: full mesh But can distribute traffic over multiple connections to avoid congestion problem observed in Distributed Erlang Consider 2 application scenarios:  distributed database with large objects on smaller clusters (10s of nodes) lightweight replicated k-v store (100-1000s of nodes)   communication channels -&gt; 30x improvements on point-to-point massaging, 13." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0179/" />
+<meta property="article:published_time" content="2018-02-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-02-18T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0179"/>
+<meta name="twitter:description" content="Paper &ldquo;Partisan: Enabling Cloud-Scale Erlang Applications&rdquo; https://arxiv.org/abs/1802.02652
+ Models:  Full mesh model client-server model peer-to-peer model publish-subscribe model   Usually, the runtime support for distributed applications is not needed. But several counter-examples: Akka cluster, Microsoft Orleans, Distributed Erlang single topology is insufficient Partisan: distributed programming model &#43; distributed layer = alternative to Distributed Erlang. 2 important improvements over Distributed Erlang:  addition of multiple runtime-selectable cluster topologies ability to gain additional parallelism by distributing messages over multiple communication channels   Default topology: full mesh But can distribute traffic over multiple connections to avoid congestion problem observed in Distributed Erlang Consider 2 application scenarios:  distributed database with large objects on smaller clusters (10s of nodes) lightweight replicated k-v store (100-1000s of nodes)   communication channels -&gt; 30x improvements on point-to-point massaging, 13."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0179</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0179</h1>
+			<div class="meta">Posted at &mdash; Feb 18, 2018</div>
+		</div>
 
-		
-
-<h1 id="paper-partisan-enabling-cloud-scale-erlang-applications">Paper &ldquo;Partisan: Enabling Cloud-Scale Erlang Applications&rdquo;</h1>
-
+		<div class="markdown">
+			<h1 id="paper-partisan-enabling-cloud-scale-erlang-applications">Paper &ldquo;Partisan: Enabling Cloud-Scale Erlang Applications&rdquo;</h1>
 <p><a href="https://arxiv.org/abs/1802.02652">https://arxiv.org/abs/1802.02652</a></p>
-
 <ul>
 <li>Models:
-
 <ul>
 <li>Full mesh model</li>
 <li>client-server model</li>
 <li>peer-to-peer model</li>
 <li>publish-subscribe model</li>
-</ul></li>
+</ul>
+</li>
 <li>Usually, the runtime support for distributed applications is not needed. But several counter-examples: Akka cluster, Microsoft Orleans, Distributed Erlang</li>
 <li>single topology is insufficient</li>
 <li>Partisan: distributed programming model + distributed layer = alternative to Distributed Erlang.</li>
 <li>2 important improvements over Distributed Erlang:
-
 <ul>
 <li>addition of multiple runtime-selectable cluster topologies</li>
 <li>ability to gain additional parallelism by distributing messages over multiple communication channels</li>
-</ul></li>
+</ul>
+</li>
 <li>Default topology: full mesh</li>
 <li>But can distribute traffic over multiple connections to avoid congestion problem observed in Distributed Erlang</li>
 <li>Consider 2 application scenarios:
-
 <ul>
 <li>distributed database with large objects on smaller clusters (10s of nodes)</li>
 <li>lightweight replicated k-v store (100-1000s of nodes)</li>
-</ul></li>
+</ul>
+</li>
 <li>communication channels -&gt; 30x improvements on point-to-point massaging, 13.5x on distributed database application.</li>
 <li>specify topology at runtime -&gt; 256 nodes in cluster -&gt; 1024 nodes</li>
 <li>Contribution of this paper:
-
 <ul>
 <li>design of the Partisan programming model, that supports the runtime specification of multiple cluster topologies</li>
 <li>design of the channel-based full mesh backend</li>
 <li>open source implementation of Partisan</li>
 <li>detailed evaluation of Partisan</li>
-</ul></li>
+</ul>
+</li>
 <li>3.1 Partisan Programming Model:
-
 <ul>
 <li>2 sets of operations: membership operations (join + remove Erlang nodes from the cluster) messaging operations (async deliver messages between nodes)</li>
 <li>topology-agnostic and async</li>
 <li>Messaging is async and best-effort: in full mesh - directly to the node, in peer-to-peer mode a message may have  to be forwarded through several nodes.</li>
-</ul></li>
+</ul>
+</li>
 <li>3.2 API
-
 <ul>
 <li>Join: join a node to the cluster</li>
 <li>Self Leave / Leave</li>
 <li>Members</li>
 <li>Forward Message</li>
 <li>Cast Message</li>
-</ul></li>
+</ul>
+</li>
 <li>3.3 Topologies:
-
 <ul>
 <li>Static: explicit configuration at the deployment time</li>
 <li>Full Mesh: single TCP connection for Erlang nodes + Channels</li>
 <li>Client-Server</li>
 <li>Peer-to-Peer: all clients connect to one other client in the system</li>
 <li>Publish-subscribe: Partisan will connect to preconfigured AMQP message broker for node-to-node messaging and dissemination of cluster membership information.</li>
-</ul></li>
+</ul>
+</li>
 <li>3.5 Impl
-
 <ul>
 <li>Erlang 19.3</li>
 <li>6.7KLOC</li>
 <li>Open Source GitHub</li>
-</ul></li>
-<li>4. Evaluation</li>
+</ul>
+</li>
+<li>
+<ol start="4">
+<li>Evaluation</li>
+</ol>
+</li>
 <li>6 Conclusion:
-
 <ul>
 <li>13.5x-30x performance improvement for real Erlang applications</li>
 <li>Performance gains for Riak Core -&gt; for all similar apps.</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0178/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0180/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.934771 &#43;0400 &#43;04 m=&#43;0.079070684">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

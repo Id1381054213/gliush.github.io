@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0230 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0230 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0230" />
+<meta property="og:description" content="Another reason why your Docker containers may be slow https://hackernoon.com/another-reason-why-your-docker-containers-may-be-slow-d37207dec27f
+ They use docker for dev,CI/CD Dockerized prod was VERY slow (comparing to bare-metal installation) 72CPU / 512GB Hosts -&gt; 3-4 copies of containers, and then slows down Requests: seconds to process Found article https://sysdig.com/blog/container-isolation-gone-wrong/. Used perf for debugging posix_fadvise call (announce an intention to access file data in a specific pattern in the future) glog used it to &ldquo;LogFileObject::Write&rdquo;, can be turned off by an option Improved: 2sec -&gt; 8ms!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0230/" />
+<meta property="article:published_time" content="2019-02-23T18:27:21+03:00" />
+<meta property="article:modified_time" content="2019-02-23T18:27:21+03:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0230"/>
+<meta name="twitter:description" content="Another reason why your Docker containers may be slow https://hackernoon.com/another-reason-why-your-docker-containers-may-be-slow-d37207dec27f
+ They use docker for dev,CI/CD Dockerized prod was VERY slow (comparing to bare-metal installation) 72CPU / 512GB Hosts -&gt; 3-4 copies of containers, and then slows down Requests: seconds to process Found article https://sysdig.com/blog/container-isolation-gone-wrong/. Used perf for debugging posix_fadvise call (announce an intention to access file data in a specific pattern in the future) glog used it to &ldquo;LogFileObject::Write&rdquo;, can be turned off by an option Improved: 2sec -&gt; 8ms!"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0230</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0230</h1>
+			<div class="meta">Posted at &mdash; Feb 23, 2019</div>
+		</div>
 
-		
-
-<h1 id="another-reason-why-your-docker-containers-may-be-slow">Another reason why your Docker containers may be slow</h1>
-
+		<div class="markdown">
+			<h1 id="another-reason-why-your-docker-containers-may-be-slow">Another reason why your Docker containers may be slow</h1>
 <p><a href="https://hackernoon.com/another-reason-why-your-docker-containers-may-be-slow-d37207dec27f">https://hackernoon.com/another-reason-why-your-docker-containers-may-be-slow-d37207dec27f</a></p>
-
 <ul>
 <li>They use docker for dev,CI/CD</li>
 <li>Dockerized prod was VERY slow (comparing to bare-metal installation)</li>
@@ -60,40 +70,56 @@
 <li><code>posix_fadvise</code> call (announce an intention to access file data in a specific pattern in the future)</li>
 <li>glog used it to &ldquo;LogFileObject::Write&rdquo;, can be turned off by an option</li>
 <li>Improved: 2sec -&gt; 8ms! Bingo.</li>
-<li>&ldquo;because there we had only one copy of each process per machine/kernel&rdquo; - they didn&rsquo;t see a problem on bare metal</li>
+<li>&ldquo;because there we had only one copy of each process per machine/kernel&rdquo; - they didn't see a problem on bare metal</li>
 <li>their conclusions:
-
 <ul>
 <li>&ldquo;isolated&rdquo; processes compete not only for CPU, RAM, disk, network, but also Linux</li>
 <li>intruders could slow down / break your system even in containers</li>
 <li>perf - must have</li>
-</ul></li>
+</ul>
+</li>
 <li>IMHO:
-
 <ul>
 <li>docker in the title is for buzzzz</li>
 <li>just a happy-end story about perf-debugging</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0229/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0238/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.927917 &#43;0400 &#43;04 m=&#43;0.072216987">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

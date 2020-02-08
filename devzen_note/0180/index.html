@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0180 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0180 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0180" />
+<meta property="og:description" content="Bazel https://bazel.build/
+ Новая правильная тулза для сборки всего от гугла (Blaze) Несколько конфигурационных файлов (WORKSPACE, BUILD), Символьные ссылки на директории с результатами Полная сборка, включая все зависимости. Кэширование всех артифактов. Говорят, в гугле, все артифакты складываются на какую-то распределенную ФС. Так что если кто-то уже собирал эту версию - тебе не придется, воспользуешься чужими результатами. По-факту, инкрементальная сборка должна быть очень быстрая. Нет тразитивности при работе с зависимостями. Если A зависит от B, а B зависит от C -&gt; надо прописать C в зависимостях к A." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0180/" />
+<meta property="article:published_time" content="2018-02-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-02-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0180"/>
+<meta name="twitter:description" content="Bazel https://bazel.build/
+ Новая правильная тулза для сборки всего от гугла (Blaze) Несколько конфигурационных файлов (WORKSPACE, BUILD), Символьные ссылки на директории с результатами Полная сборка, включая все зависимости. Кэширование всех артифактов. Говорят, в гугле, все артифакты складываются на какую-то распределенную ФС. Так что если кто-то уже собирал эту версию - тебе не придется, воспользуешься чужими результатами. По-факту, инкрементальная сборка должна быть очень быстрая. Нет тразитивности при работе с зависимостями. Если A зависит от B, а B зависит от C -&gt; надо прописать C в зависимостях к A."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0180</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0180</h1>
+			<div class="meta">Posted at &mdash; Feb 25, 2018</div>
+		</div>
 
-		
-
-<h1 id="bazel">Bazel</h1>
-
+		<div class="markdown">
+			<h1 id="bazel">Bazel</h1>
 <p><a href="https://bazel.build/">https://bazel.build/</a></p>
-
 <ul>
 <li>Новая правильная тулза для сборки всего от гугла (Blaze)</li>
 <li>Несколько конфигурационных файлов (WORKSPACE, BUILD),</li>
@@ -59,43 +69,59 @@
 <li>По-факту, инкрементальная сборка должна быть очень быстрая.</li>
 <li>Нет тразитивности при работе с зависимостями. Если A зависит от B, а B зависит от C -&gt; надо прописать C в зависимостях к A.</li>
 <li>Минусы:
-
 <ul>
 <li>Нельзя (или я не нашел?) как использовать библиотеки, установленные уже в систему через системный менеджер пакетов apt-get и т.д.</li>
 <li>Как следствие, иногда для сборки простейшей библиотеки, нужно собирать или иметь собранным все зависимости</li>
 <li>Чтобы собирать на bazel - нужно иметь хорошую подготовленную инфраструктуру.</li>
-</ul></li>
+</ul>
+</li>
 <li>Плевался. Поговорил с гуглеровцами. Комментарий одного из них: он не  может разрабатывать opensource, потому что там нет bazel.</li>
 <li>Пользуясь случаем - передаю привет Финисту, я знаю, он нас слушает.</li>
 <li>Я понимаю, что каждый строит свою систему сборки под свои нужды, гугл сделал то, что им нужно, но это далеко не сербрянная пуля.</li>
 <li>Пример: tensorflow-serving: c++ тула, которая работает поверх tensorflow. Написана на C++, 10KLOC. Если устанавливать из бинарей - 250МБ - включая все зависимости. Если собирать в CI - собирается больше 4ч, готовый образ - 7ГБ.</li>
 <li>Пример2: у нас была система сборки и управления системой, сделанная на bash + make. Занимала 10+ файлов, которые легко можно было прочитать и понять. Сейчас ее перевели на bazel, и нужно скачать 1.5ГБ, чтобы оно начало работать.</li>
 </ul>
-
 <h1 id="package-versioning-in-go">Package Versioning in Go</h1>
-
 <p><a href="https://news.ycombinator.com/item?id=16421966">https://news.ycombinator.com/item?id=16421966</a>
 <a href="https://research.swtch.com/vgo-intro">https://research.swtch.com/vgo-intro</a>
 <a href="https://research.swtch.com/version-sat">https://research.swtch.com/version-sat</a></p>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0179/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0184/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.934694 &#43;0400 &#43;04 m=&#43;0.078994334">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

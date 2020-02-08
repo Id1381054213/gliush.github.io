@@ -1,86 +1,137 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0165 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0165 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0165" />
+<meta property="og:description" content="A general purpose counting filter: making every bit count https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/
+  Approximate Membership Query (AMQ). Example: Bloom filter.
+  Определять, принадлежит какой-то элемент данному множеству.
+  Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.
+  =&gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”
+  Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0165/" />
+<meta property="article:published_time" content="2017-10-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-10-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0165"/>
+<meta name="twitter:description" content="A general purpose counting filter: making every bit count https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/
+  Approximate Membership Query (AMQ). Example: Bloom filter.
+  Определять, принадлежит какой-то элемент данному множеству.
+  Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.
+  =&gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”
+  Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0165</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0165</h1>
+			<div class="meta">Posted at &mdash; Oct 29, 2017</div>
+		</div>
 
-		
-
-<h1 id="a-general-purpose-counting-filter-making-every-bit-count">A general purpose counting filter: making every bit count</h1>
-
+		<div class="markdown">
+			<h1 id="a-general-purpose-counting-filter-making-every-bit-count">A general purpose counting filter: making every bit count</h1>
 <p><a href="https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/">https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/</a></p>
-
 <ul>
-<li>Approximate Membership Query (AMQ). Example: Bloom filter.</li>
-<li>Определять, принадлежит какой-то элемент данному множеству.</li>
-<li>Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.</li>
-<li>=&gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”</li>
-<li>Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc</li>
-<li>4 недостатка Bloom фильтров:
-
+<li>
+<p>Approximate Membership Query (AMQ). Example: Bloom filter.</p>
+</li>
+<li>
+<p>Определять, принадлежит какой-то элемент данному множеству.</p>
+</li>
+<li>
+<p>Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.</p>
+</li>
+<li>
+<p>=&gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”</p>
+</li>
+<li>
+<p>Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc</p>
+</li>
+<li>
+<p>4 недостатка Bloom фильтров:</p>
 <ul>
 <li>Невозможность удалить объекты</li>
 <li>Плохо скалируются за размер RAM</li>
 <li>Невозможность динамически изменить размер</li>
 <li>Невозможность определить кол-во вхождений каждого элемента</li>
-</ul></li>
-<li>В paper придумана новая AMQ структура: Counting Quotient Filter (подсчетный количественный фильтр) = CQF structure</li>
-<li>Все недостатки Bloom фильтра ушли, очень хорошо работает (время, объем памяти)</li>
-<li>В несколько раз быстрее Bloom Filter, cuckoo filter</li>
-<li>Поддержка количества объекта - это огромный плюс</li>
-<li>Обычный QF (долевой фильтр) -&gt; RSQF (rank and reset based quotient filter) -&gt; CQF</li>
-<li>QF:
+</ul>
+</li>
+<li>
+<p>В paper придумана новая AMQ структура: Counting Quotient Filter (подсчетный количественный фильтр) = CQF structure</p>
+</li>
+<li>
+<p>Все недостатки Bloom фильтра ушли, очень хорошо работает (время, объем памяти)</p>
+</li>
+<li>
+<p>В несколько раз быстрее Bloom Filter, cuckoo filter</p>
+</li>
+<li>
+<p>Поддержка количества объекта - это огромный плюс</p>
+</li>
+<li>
+<p>Обычный QF (долевой фильтр) -&gt; RSQF (rank and reset based quotient filter) -&gt; CQF</p>
+</li>
+<li>
+<p>QF:
 ￼<figure>
     <img src="/images/0165_1.png"/> 
 </figure>
+</p>
 </li>
-<li>храним в h0-вой ячейке h1 (домашняя), либо сдвиг на соседнюю.</li>
-<li>QF использует чуть больше места, чем Bloom, но намного меньше, чем counting bloom.</li>
-<li>QF скорость сравнима с Bloom.</li>
-<li>QF лучше переиспользует cache значения, чем Bloom, поэтому лучше и быстрее работает на SSD</li>
-<li>Производительность значительно падает после 60% наполнения</li>
-<li>RSQF:
-
+<li>
+<p>храним в h0-вой ячейке h1 (домашняя), либо сдвиг на соседнюю.</p>
+</li>
+<li>
+<p>QF использует чуть больше места, чем Bloom, но намного меньше, чем counting bloom.</p>
+</li>
+<li>
+<p>QF скорость сравнима с Bloom.</p>
+</li>
+<li>
+<p>QF лучше переиспользует cache значения, чем Bloom, поэтому лучше и быстрее работает на SSD</p>
+</li>
+<li>
+<p>Производительность значительно падает после 60% наполнения</p>
+</li>
+<li>
+<p>RSQF:</p>
 <ul>
 <li>2.125 бита медаданных на слот (вместо 3)</li>
 <li>лучше работает при заполненной таблице (QF max заполненность = 75%, RSQF ~ 95%)</li>
@@ -93,56 +144,91 @@
 </figure>
 
 ￼</li>
-</ul></li>
-<li>RANK(B,i) - возвращает кол-во 1-чек в B до позиции i</li>
-<li>SELECT(B,i) - возвращает индекс первой 1-цы в B</li>
-<li>обе функции будут бегать по occupieds, runends, remainders - плохо с кэшом, поэтому</li>
-<li>добавлен offsets массив, который хранит дистанцию от слота i до runend, который соответствует этому слоту i. Для оптимизации, сохраняют только для каждого 64-го слота (uint8) -&gt; 2.125 бита на слот</li>
-<li>Т.е. делят на блоки по 64 записи, которые хранятся вместе -&gt; все операции хорошо оптимизируются на machine-word операции PDEP, TZCNT</li>
-<li>Counting Quotient Filters
-
+</ul>
+</li>
+<li>
+<p>RANK(B,i) - возвращает кол-во 1-чек в B до позиции i</p>
+</li>
+<li>
+<p>SELECT(B,i) - возвращает индекс первой 1-цы в B</p>
+</li>
+<li>
+<p>обе функции будут бегать по occupieds, runends, remainders - плохо с кэшом, поэтому</p>
+</li>
+<li>
+<p>добавлен offsets массив, который хранит дистанцию от слота i до runend, который соответствует этому слоту i. Для оптимизации, сохраняют только для каждого 64-го слота (uint8) -&gt; 2.125 бита на слот</p>
+</li>
+<li>
+<p>Т.е. делят на блоки по 64 записи, которые хранятся вместе -&gt; все операции хорошо оптимизируются на machine-word операции PDEP, TZCNT</p>
+</li>
+<li>
+<p>Counting Quotient Filters</p>
 <ul>
 <li>добавляют подсчет количества к RSQF</li>
 <li>variable-size counters (счётчики переменного размера) -&gt; эффективно по размеру для любых распределений (разряженно-плотных)</li>
 <li>если элемент присутствует более, чем однажды - тогда следующий за remainder слот хранит количество раз этот элемент присутствует.</li>
 <li>CQF разделяет remainder или счетчик т.к. счетчик увеличивается, и любые изменения -&gt; число.</li>
 <li>Есть трюки</li>
-</ul></li>
-<li>Сравнение использование места
+</ul>
+</li>
+<li>
+<p>Сравнение использование места
 ￼<figure>
     <img src="/images/0165_3.png"/> 
 </figure>
 
-￼</li>
-<li>CQF лучше почти всегда.</li>
-
-<li><p>CQF может быть сделан мультитредовым (шарды, лочатся всегда по два)</p></li>
-
-<li><p>Сравнение по производительности:</p>
-
+￼</p>
+</li>
+<li>
+<p>CQF лучше почти всегда.</p>
+</li>
+<li>
+<p>CQF может быть сделан мультитредовым (шарды, лочатся всегда по два)</p>
+</li>
+<li>
+<p>Сравнение по производительности:</p>
 <ul>
 <li>CQF в несколько раз лучше Bloom FIlter, хотя тот не поддерживает счетчик. И на порядок-два лучше Counting Bloom Filter(CBF)</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0163/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0168/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.938739 &#43;0400 &#43;04 m=&#43;0.083038498">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

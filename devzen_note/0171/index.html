@@ -1,96 +1,101 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0171 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0171 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0171" />
+<meta property="og:description" content="AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3   Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0171/" />
+<meta property="article:published_time" content="2017-12-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-12-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0171"/>
+<meta name="twitter:description" content="AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3   Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0171</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0171</h1>
+			<div class="meta">Posted at &mdash; Dec 10, 2017</div>
+		</div>
 
-		
-
-<h1 id="aws-ec2-virtualization-2017-introducing-nitro">AWS EC2 Virtualization 2017: Introducing Nitro</h1>
-
+		<div class="markdown">
+			<h1 id="aws-ec2-virtualization-2017-introducing-nitro">AWS EC2 Virtualization 2017: Introducing Nitro</h1>
 <p><a href="http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html">http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html</a>
 ￼
 <figure>
     <img src="/images/0171.png"/> 
 </figure>
 </p>
-
 <ul>
 <li>Для себя:
-
 <ul>
 <li>HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU.</li>
 <li>с4.<em>, m4.</em> - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3</li>
-</ul></li>
+</ul>
+</li>
 <li>Nitro - Latest AWS supervisor. Hardware virtualization is now fast</li>
 <li>Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS.</li>
 <li>Каждое направление развивается по следующим стадиям:
-
 <ul>
 <li>Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее</li>
 <li>Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов. Координация меджу гипервизором и гостевой ОС для улучшения производительности. 10-50% падения производительности. Не может пользоваться расширенной функциональностью аппаратной части, которая есть на хосте.</li>
 <li>Virtualized in Hardware. Поддержка виртуализации в железе. Близкая к железу скорость работы в гостевой ОС. 0.1-0.5% падение производительности. Необходима для “enhanced networking + GPU processing”</li>
-</ul></li>
+</ul>
+</li>
 <li>Fully Emulated: аналог VMWare 1998. Первые гипервизоры использовали полную эмуляцию и бинарную трансляцию для привилегированных операций (syscalls &amp; page table операции). Большие падения производительности, особенно для высоко нагруженных I/O задач.</li>
 <li>Xen PV 3.0: Enter paravirtualization. Гостевая ОС модифицирована, чтобы знать о гипервизоре и чтобы делать эффективные вызовы гипервизора. AMI и boot - paravirt (PV). Kernel делает гипервызовы (hypercalls) вместо привилегированных инструкций. И ядро использует paravirt network + storage drivers. Это улучшает производительность, но всё ещё просадки при выполнении привилегированных операций (syscalls, page table events). CPU тоже чуть лучше, чем в Fully Emulated, но хуже, т.к. ещё не появилась HW виртуализация в CPU (Intel VT-x, AMD-V). m1.small</li>
 <li>Xen HVM 3.0. Более современный гипервизор на процессорах с аппаратной поддержкой для CPU и памяти (VT-x). Paravirt драйвера используются для сети и storage devices. AMI и boot - теперь тоже HVM. Прерывания и таймеры - все еще на software virtualization, но загружаются и работают уже достаточно быстро (поэтому - зеленые)</li>
 <li>Xen HVM 4.0.1. boot HVM, uses Paravirt (PV) drivers with HVM features (PV on HVM = PVHVM). Много путаницы:
-
 <ul>
 <li>AMI type: PV vs HVM, но на самом деле там PV vs (HVM + PV drivers) vs (HVM + PVHVM). Most often, HVM is HVM + PVHVM.</li>
 <li>еще путаница: производительность. Первые HVM не использовали Paravirt drivers, поэтому были медленнее, чем PV (поэтому многие рекомендовали PV чем HVM). Вскоре производительность HVM обогнала PV, и рекомендация устарела.</li>
 <li>в 2014 Netflix перевела все инстансы PV -&gt; HVM (PVHVM)</li>
-</ul></li>
+</ul>
+</li>
 <li>Xen AWS 2013. Начиная c 2013 некоторые инстансы начали поддерживать аппаратную виртуализацию для сетевых интерфейсов: Single Root I/O Virtualization (SR-IOV). Первым был c3, AWS назвала это Enhanced Networking. Сперва это было через ixgbe драйвер для работы до 10Гбит, а потом ena драйвер для скоростей до 25Гбит. Они в Netflix тестировали это и добились 2М packets per second</li>
 <li>Xen AWS 2017. В 2015 AWS запустила c4.<em>, которая использует аппаратную виртуализацию для EBS. Эта же технология использовалась для запуска новых storage-optimized инстансов в 2017: i3.</em>, которые использовали SR-IOV и nvme драйвер. Netflix протестировали - 3М storage IOPS.</li>
 <li>AWS Nitro 2017. На последнем re:Invent был анонсирован новый гипервизор Nitro, под которым работает c5. Nitro основан на ядре KVM, но не использует многие его дополнения (напр QEMU). Также упрощена работа с I/O (не используется domO  или IDD), так как работают с железом напрямую Цель Nitro - сделать производительность, неотличимую от “bare metal”. Теперь аппаратная поддержка используется и для прерываний (детали есть в статье “Comprehensive  Implementation and Evaluation  of Direct Interrupt Delivery”) Все предыдущие улучшения - являются частями Nitro, которые постепенно появлялись в AWS. Brendan пробовал протестировать оверхед от Nitro - получилось точно меньше 1%, очень часто - неотличимо от железа. Чем еще хорош c5 - он позволяет считывать PMC (Performance Monitoring Counters) (отдельная статья Brendan-а). Раньше на некоторых инстансах можно было считывать 7 PMC, теперь их сотни. И вы можете анализировать низкоуровнево производительность CPU (можно искать способы поднять производительность на 5-10%) m5 также использует Nitro, AWS пообещал, что все инстансы постепенно перетащит на Nitro. За исключением Bare Metal инстансов</li>
 <li>AWS Bare Metal 2017. 0% оверхеда, реальные железяки, на которых вы можете запускать все, что хотите (Xen, KVM, …). Они называются Nitro System, в отличие от предыдущих Nitro Hypervisor</li>
 </ul>
-
 <h1 id="problem-with-app-on-k8s-postmortem">Problem with App on k8s: postmortem</h1>
-
 <p><a href="https://community.monzo.com/t/resolved-current-account-payments-may-fail-major-outage-27-10-2017/26296/95">https://community.monzo.com/t/resolved-current-account-payments-may-fail-major-outage-27-10-2017/26296/95</a></p>
-
 <ul>
 <li>Monzo’s head of eng.</li>
 <li>Stack: k8s + сотни микросервисов (in Docker container). etcd for k8s. linkerd (routing, lb)</li>
@@ -108,24 +113,42 @@
 <li>RootCause: Был найден баг в k8s, когда обновление с удаление подом (а сервис жив) - падало по timeout. Поэтому</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0169/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0172/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.936558 &#43;0400 &#43;04 m=&#43;0.080857528">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

@@ -1,6 +1,81 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://gliush.github.io/categories/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/categories/devzen/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/tags/devzen/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/tags/english/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0274/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/tags/</loc>
+    <lastmod>2020-02-01T15:55:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0272/</loc>
+    <lastmod>2019-12-21T17:40:52+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0271/</loc>
+    <lastmod>2019-12-14T22:51:16+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/tags/russian/</loc>
+    <lastmod>2019-12-14T22:51:16+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0267/</loc>
+    <lastmod>2019-11-16T20:10:00+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0265/</loc>
+    <lastmod>2019-11-02T21:11:03+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0262/</loc>
+    <lastmod>2019-10-12T22:26:26+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/devzen_note/0255/</loc>
+    <lastmod>2019-08-24T19:45:15+03:00</lastmod>
+  </url>
   
   <url>
     <loc>http://gliush.github.io/devzen_note/0251/</loc>
@@ -39,6 +114,11 @@
   
   <url>
     <loc>http://gliush.github.io/devzen_note/0238/</loc>
+    <lastmod>2019-04-20T20:15:17+04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://gliush.github.io/tags/paper/</loc>
     <lastmod>2019-04-20T20:15:17+04:00</lastmod>
   </url>
   
@@ -504,53 +584,11 @@
   
   <url>
     <loc>http://gliush.github.io/about/</loc>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://gliush.github.io/tags/devzen/</loc>
-    <lastmod>2019-07-20T22:47:47+04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/devzen_note/</loc>
-    <lastmod>2019-07-20T22:47:47+04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/tags/english/</loc>
-    <lastmod>2019-07-20T22:47:47+04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/</loc>
-    <lastmod>2019-07-20T22:47:47+04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/tags/paper/</loc>
-    <lastmod>2019-04-20T20:15:17+04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/tags/russian/</loc>
-    <lastmod>2019-07-13T21:11:17+03:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://gliush.github.io/tags/</loc>
-    <lastmod>2019-07-20T22:47:47+04:00</lastmod>
-    <priority>0</priority>
+    <loc>http://gliush.github.io/series/</loc>
   </url>
   
 </urlset>

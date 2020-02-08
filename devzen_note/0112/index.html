@@ -1,108 +1,134 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0112 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0112 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0112" />
+<meta property="og:description" content="Kubernetes-1.4 http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html
+ Cluster creation with two commands (kubeadm command)  limitations: AWS integration won’t work (ELB) single master, kubectl logs won’t work (use docker logs instead) no easy way to generate kubeconfig (copy from master)   simplified installation (4 packages with all the deps in all major linux distributions) expanded stateful application support  ScheduledJob = cron init-containers (start 1&#43; containers before starting the main application) Dynamic PVC Provisioning moved to Beta - expose multiple storage provisioners &#43; users select them using Storage Class API ojbect Stable Kubernetes Helm charts: Jenkins, MariaDB, MySQL   Cluster Federation  Federated Replica Sets Beta (total federated replicas, relative weight / replica count in each region/cloud Federated Services -&gt; Beta (secrets, events and namespaces are added) Federated Ingress -&gt; Alpha for GCP (L7 globally load balanced)   Container security support (Pod Security Policy) Infra enhancements  inter-pod affinity and anti-affinity   Kubernetes Dashboard UI   " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0112/" />
+<meta property="article:published_time" content="2016-10-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-10-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0112"/>
+<meta name="twitter:description" content="Kubernetes-1.4 http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html
+ Cluster creation with two commands (kubeadm command)  limitations: AWS integration won’t work (ELB) single master, kubectl logs won’t work (use docker logs instead) no easy way to generate kubeconfig (copy from master)   simplified installation (4 packages with all the deps in all major linux distributions) expanded stateful application support  ScheduledJob = cron init-containers (start 1&#43; containers before starting the main application) Dynamic PVC Provisioning moved to Beta - expose multiple storage provisioners &#43; users select them using Storage Class API ojbect Stable Kubernetes Helm charts: Jenkins, MariaDB, MySQL   Cluster Federation  Federated Replica Sets Beta (total federated replicas, relative weight / replica count in each region/cloud Federated Services -&gt; Beta (secrets, events and namespaces are added) Federated Ingress -&gt; Alpha for GCP (L7 globally load balanced)   Container security support (Pod Security Policy) Infra enhancements  inter-pod affinity and anti-affinity   Kubernetes Dashboard UI   "/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0112</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0112</h1>
+			<div class="meta">Posted at &mdash; Oct 2, 2016</div>
+		</div>
 
-		
-
-<h1 id="kubernetes-1-4">Kubernetes-1.4</h1>
-
+		<div class="markdown">
+			<h1 id="kubernetes-14">Kubernetes-1.4</h1>
 <p><a href="http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html">http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html</a></p>
-
 <ul>
 <li>Cluster creation with two commands (kubeadm command)
-
 <ul>
 <li>limitations: AWS integration won’t work (ELB)</li>
 <li>single master,</li>
 <li>kubectl logs won’t work (use docker logs instead)</li>
 <li>no easy way to generate kubeconfig (copy from master)</li>
-</ul></li>
+</ul>
+</li>
 <li>simplified installation (4 packages with all the deps in all major linux distributions)</li>
 <li>expanded stateful application support
-
 <ul>
 <li>ScheduledJob = cron</li>
 <li>init-containers (start 1+ containers before starting the main application)</li>
 <li>Dynamic PVC Provisioning moved to Beta - expose multiple storage provisioners + users select them using Storage Class API ojbect</li>
 <li>Stable Kubernetes Helm charts: Jenkins, MariaDB, MySQL</li>
-</ul></li>
+</ul>
+</li>
 <li>Cluster Federation
-
 <ul>
 <li>Federated Replica Sets Beta (total federated replicas, relative weight / replica count in each region/cloud</li>
 <li>Federated Services -&gt; Beta (secrets, events and namespaces are added)</li>
 <li>Federated Ingress -&gt; Alpha for GCP (L7 globally load balanced)</li>
-</ul></li>
+</ul>
+</li>
 <li>Container security support (Pod Security Policy)</li>
 <li>Infra enhancements
-
 <ul>
 <li>inter-pod affinity and anti-affinity</li>
-</ul></li>
+</ul>
+</li>
 <li>Kubernetes Dashboard UI</li>
 <li></li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0109/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0115/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.944717 &#43;0400 &#43;04 m=&#43;0.089016625">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

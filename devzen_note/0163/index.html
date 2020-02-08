@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0163 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0163 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0163" />
+<meta property="og:description" content="Paper &ldquo;Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol&rdquo; https://eprint.iacr.org/2016/889.pdf
+ to generate a single block of bitcoin &gt; 2^60 hash operations (energy requirements ~ small country) -&gt; change “proof of work” to something more efficient with similar guarantees Proof of Work : choose randomly the miner to issue the next block -&gt; depends on computational power Proof of Stake (PoS) : choose randomly proportionally to the stake. PoS design challenge: simulate leader election process (fair randomized election) Result:  Ouroboros, provably secure PoS system." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0163/" />
+<meta property="article:published_time" content="2017-10-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-10-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0163"/>
+<meta name="twitter:description" content="Paper &ldquo;Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol&rdquo; https://eprint.iacr.org/2016/889.pdf
+ to generate a single block of bitcoin &gt; 2^60 hash operations (energy requirements ~ small country) -&gt; change “proof of work” to something more efficient with similar guarantees Proof of Work : choose randomly the miner to issue the next block -&gt; depends on computational power Proof of Stake (PoS) : choose randomly proportionally to the stake. PoS design challenge: simulate leader election process (fair randomized election) Result:  Ouroboros, provably secure PoS system."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0163</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0163</h1>
+			<div class="meta">Posted at &mdash; Oct 15, 2017</div>
+		</div>
 
-		
-
-<h1 id="paper-ouroboros-a-provably-secure-proof-of-stake-blockchain-protocol">Paper &ldquo;Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol&rdquo;</h1>
-
+		<div class="markdown">
+			<h1 id="paper-ouroboros-a-provably-secure-proof-of-stake-blockchain-protocol">Paper &ldquo;Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol&rdquo;</h1>
 <p><a href="https://eprint.iacr.org/2016/889.pdf">https://eprint.iacr.org/2016/889.pdf</a></p>
-
 <ul>
 <li>to generate a single block of bitcoin &gt; 2^60 hash operations (energy requirements ~ small country)</li>
 <li>-&gt; change “proof of work” to something more efficient with similar guarantees</li>
@@ -57,33 +67,49 @@
 <li>Proof of Stake (PoS) : choose randomly proportionally to the stake.</li>
 <li>PoS design challenge: simulate leader election process (fair randomized election)</li>
 <li>Result:
-
 <ul>
 <li>Ouroboros, provably secure PoS system. First blockchain protocol with rigorous security analysis</li>
-<li>1. Model that focus on persistence and liveness</li>
+<li>
+<ol>
+<li>Model that focus on persistence and liveness</li>
+</ol>
+</li>
 <li>Persistence: 1 node claim the transaction as “stable”, the remaining nodes, if queried and responding honestly, will also report it as stable</li>
 <li>Liveness: once an honestly generated transaction has been made available for a sufficient amount of time (“u” time steps), it will become stable.</li>
 <li>Stability - predicate parameterized by “security parameter” k, that will affect the certainty  (e.g. “more than k blocks deep”).</li>
 <li>Liveness + persistence = robust transaction ledger</li>
-<li>2. Novel blockchain protocol, based on PoS. Protocol assumes that</li>
-<li>3. Set of formal arguments establishing that no adversary can break persistence and liveness. Assumptions:
-
+<li>
+<ol start="2">
+<li>Novel blockchain protocol, based on PoS. Protocol assumes that</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Set of formal arguments establishing that no adversary can break persistence and liveness. Assumptions:</li>
+</ol>
 <ul>
 <li>Network is synchronous (upper bound of communication time)</li>
 <li>Number of stakeholders is available as needed to participate in each epoch</li>
 <li>Stakeholders do not remain offline for long periods of time</li>
 <li>Adaptivity of corruptions is subject to a small delay (measured in rounds linear in the “security parameter”)</li>
 <li>Distinguish “covert attack” (тайная атака) class of general forking attacks. Adversary wishes to break the protocol, but prefer not to be caught</li>
-</ul></li>
-<li>4. Present a novel reward mechanism for incentivizing the participants to the system which we prove to be an approximate Nash equiilibrium (ни один участник не может увеличить выигрыш, изменив свою стратегию, если другие участники своих стратегий не меняют).
-
+</ul>
+</li>
+<li>
+<ol start="4">
+<li>Present a novel reward mechanism for incentivizing the participants to the system which we prove to be an approximate Nash equiilibrium (ни один участник не может увеличить выигрыш, изменив свою стратегию, если другие участники своих стратегий не меняют).</li>
+</ol>
 <ul>
 <li>Attacks like “block withholding” and “selfish-mining” are mitigated by the design</li>
 <li>Core idea: provide positive payoff for those protocol actions that cannot be stifled by a coalition of parties that diverges from the protocol. Платить за те операции, которые сложно подавить коалицией. Если эти операции просто сделать, то мы сохраним равновесие Нэша</li>
-</ul></li>
-<li>5. Stake delegation mechanism, for large number of stakeholders (delegate their “voting rights”)</li>
+</ul>
+</li>
+<li>
+<ol start="5">
+<li>Stake delegation mechanism, for large number of stakeholders (delegate their “voting rights”)</li>
+</ol>
+</li>
 <li>Model, protocol -&gt; проверить, как атаки будут работать в их системе. ПРоверили:
-
 <ul>
 <li>double spending attacks,</li>
 <li>transaction denial attacks</li>
@@ -91,16 +117,15 @@
 <li>nothing-at-stake</li>
 <li>desynchronization attack</li>
 <li>others.</li>
-</ul></li>
+</ul>
+</li>
 <li>Benchmark + analysis of processing performance (5-10-100 times faster)</li>
 <li>56 страниц</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h1 id="the-absurdly-underestimated-dangers-of-csv-injection">The Absurdly Underestimated Dangers of CSV Injection</h1>
-
 <p><a href="http://georgemauer.net/2017/10/07/csv-injection.html">http://georgemauer.net/2017/10/07/csv-injection.html</a></p>
-
 <ul>
 <li>Old news</li>
 <li>Imagine a time or ticket tracking app: Users enter their time/tickets, but can’t see data of other users. Site admin exports entries to a csv, open in a spreadsheet app.</li>
@@ -111,43 +136,58 @@
 <li>Send data not only this Google Sheets, but from anywhere, any other table that it can <code>read</code>. Need “SheetID”, but it is part of URL, often shared. Work in Excel!</li>
 <li>Prevention: “tab” before any formula sign (=,-,+,@). May be inside of the quotes.</li>
 </ul>
-
 <h1 id="how-google-and-microsoft-made-email-unreliable">How Google and Microsoft made email unreliable</h1>
-
 <p><a href="http://penguindreams.org/blog/how-google-and-microsoft-made-email-unreliable/">http://penguindreams.org/blog/how-google-and-microsoft-made-email-unreliable/</a></p>
-
 <ul>
 <li>Privacy, email-server, Google + FBI</li>
 <li>Google (G+), Facebook (messenger) and closed communication: No XMPP already</li>
 <li>Overaggressive Spam Filters:
-
 <ul>
 <li>separate email server -&gt; spam</li>
 <li>pdf is attached -&gt; spam</li>
 <li>ip в подозрительной сети - spam</li>
-</ul></li>
+</ul>
+</li>
 <li>Facebook messenger: fee to reach people (Цукерберг: $100)</li>
 <li>2009: social networking is more often, then email</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0162/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0165/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.937797 &#43;0400 &#43;04 m=&#43;0.082097265">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

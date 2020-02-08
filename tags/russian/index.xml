@@ -1,15 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Russian on Gliush Notebook</title>
+    <title>russian on Gliush Notebook</title>
     <link>http://gliush.github.io/tags/russian/</link>
-    <description>Recent content in Russian on Gliush Notebook</description>
+    <description>Recent content in russian on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 13 Jul 2019 21:11:17 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 14 Dec 2019 22:51:16 +0400</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/tags/russian/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0271</title>
+      <link>http://gliush.github.io/devzen_note/0271/</link>
+      <pubDate>Sat, 14 Dec 2019 22:51:16 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0271/</guid>
+      <description>Kubernetes-1.17 https://habr.com/ru/company/flant/blog/476998/
+ Topology-aware service routing (in alpha)  Locality: defined by user: same node, same rack, same zone, same region Two nodes are &amp;ldquo;local&amp;rdquo;, if they have the same value for a special label &amp;ldquo;topologyKey&amp;rdquo; New PodLocator resource (cache of all Pods in the system) with controller kube-proxy will create different proxy rules on different nodes dns server change (will be in beta): different dns response on different pods more info: https://imroc.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0267</title>
+      <link>http://gliush.github.io/devzen_note/0267/</link>
+      <pubDate>Sat, 16 Nov 2019 20:10:00 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0267/</guid>
+      <description>Отчет о посещении Highload++ 2019 https://www.highload.ru/moscow/2019
+Я вел часть текстовой трансляции в телеграмме (от имени HighLoad). Раздали крутую книжку про Event Sourcing . ITSumm Press.
+7 Ноября
+ Егор Рогов (Postgres Professional) “Locks in postgresql” Разные полезные знания про блокировки в Postgresql. Самое интересное, что чисто теоретически, можно получить взаимную блокировку, если идет большой поток входящих Update, при котором происходит переключение на другой тип индекса (на более быстрый). Петр Зайцев (Percona) bpfTrace как полноценная замена DTrace в Linux История + возможности bpf Андрей Бородин (Яндекс) “Odyssey roadmap: что ещё мы хотим от пулера соединений” Рассказал про новый пулер соединений к postgresql  8 Ноября</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0262</title>
+      <link>http://gliush.github.io/devzen_note/0262/</link>
+      <pubDate>Sat, 12 Oct 2019 22:26:26 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0262/</guid>
+      <description>COZ: Finding Code that Counts with Causal Profiling https://arxiv.org/pdf/1608.03676v1.pdf
+   </description>
+    </item>
     
     <item>
       <title>Notes for episode-0250</title>
@@ -18,7 +50,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0250/</guid>
       <description>CloudFlare outage (Jul 2nd) https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/
- Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&amp;gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&amp;quot;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))   Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&amp;ldquo;attack variant&amp;rdquo; dismissed) 14:02 proposed a &amp;lsquo;global kill&amp;rsquo; = mechanism to disable single component worldwide  =&amp;gt; Access service will be down, can&amp;rsquo;t authenticate to control panel =&amp;gt; Security feature will disable credentials if anyone won&amp;rsquo;t use it frequently =&amp;gt; Can&amp;rsquo;t access Jira or build system directly.</description>
+ Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&amp;gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&amp;#34;|&amp;#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))  Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&amp;ldquo;attack variant&amp;rdquo; dismissed) 14:02 proposed a &amp;lsquo;global kill&amp;rsquo; = mechanism to disable single component worldwide  =&amp;gt; Access service will be down, can&#39;t authenticate to control panel =&amp;gt; Security feature will disable credentials if anyone won&#39;t use it frequently =&amp;gt; Can&#39;t access Jira or build system directly.</description>
     </item>
     
     <item>
@@ -27,7 +59,7 @@
       <pubDate>Sat, 06 Jul 2019 16:39:40 +0300</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0247/</guid>
-      <description>RAMBleed  Better read the paper, it&amp;rsquo;s not that difficult Idea1: All the memory cells during reads could influence cells in the same column on the nearest row Idea2: Put your memory between rows with a secret (how to do that explained below):    As you have EQUAL cells containing secret above and below your cell, they will influence the same way. Perform many reads in (A0) cells, that will the cells with secrets activate cells in your memory If you had 0 in your cell and after the experiment, it didn&amp;rsquo;t change -&amp;gt; secret has 0 in the corresponding cell If you had 0 in your cell and after the experiment, it switched to 1 -&amp;gt; secret has 1 in the corresponding cell PROFIT!</description>
+      <description>RAMBleed  Better read the paper, it&#39;s not that difficult Idea1: All the memory cells during reads could influence cells in the same column on the nearest row Idea2: Put your memory between rows with a secret (how to do that explained below):    As you have EQUAL cells containing secret above and below your cell, they will influence the same way. Perform many reads in (A0) cells, that will the cells with secrets activate cells in your memory If you had 0 in your cell and after the experiment, it didn&#39;t change -&amp;gt; secret has 0 in the corresponding cell If you had 0 in your cell and after the experiment, it switched to 1 -&amp;gt; secret has 1 in the corresponding cell PROFIT!</description>
     </item>
     
     <item>
@@ -37,7 +69,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0248/</guid>
       <description>How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/
- Border Gateway Protocol (BGP) - is a protocol to exchange routing tables BGP optimizer: splits up IP prefixes into smaller (more specific) parts Verison sent these rules into the internet    15% loss of global traffic Verizon should have configured everything correctly long ago:  Configure hard limit prefixes to be received IRR-based filtering RPKI framework with BGP Origin Validation (AT&amp;amp;T have enabld it) All these ideas are defined in the MANRS (Mutually Agreed Norms for Routing Security)  &amp;ldquo;And there&amp;rsquo;s no good reason, other than sloppiness or laziness&amp;rdquo; (about Verizon) They fixed it by phone: calling the DQE to stop advertizing the incorrect BGP routes (screensot of phone calls is attached)  Elixir v1.</description>
+ Border Gateway Protocol (BGP) - is a protocol to exchange routing tables BGP optimizer: splits up IP prefixes into smaller (more specific) parts Verison sent these rules into the internet    15% loss of global traffic Verizon should have configured everything correctly long ago:  Configure hard limit prefixes to be received IRR-based filtering RPKI framework with BGP Origin Validation (AT&amp;amp;T have enabld it) All these ideas are defined in the MANRS (Mutually Agreed Norms for Routing Security)   &amp;ldquo;And there&#39;s no good reason, other than sloppiness or laziness&amp;rdquo; (about Verizon) They fixed it by phone: calling the DQE to stop advertizing the incorrect BGP routes (screensot of phone calls is attached)  Elixir v1.</description>
     </item>
     
     <item>
@@ -46,8 +78,8 @@
       <pubDate>Sat, 27 Apr 2019 20:32:19 +0400</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0239/</guid>
-      <description> TektonCD: A Kubernetes-native pipeline resource https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/
- Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline Runs as a Pod in k8s cluster Each step in a separate container TaskRun - (k8s resource) runs the Task kubectl get taskruns/mytask -o yaml - to get results PipelineResources - to define resources to be passed in/out of a task types: git, image, cluster, storage all the resources are used in tasks Pipeline - list of tasks to execute in order previous results could be used as input for the next task PipelineRun - to execute a Pipeline PipelineRun will create TaskRun for the each Tasks  More features  Rich Auth capabilities DAG (directed acyclic graph) of execution  Roadmap  Notifications to Slack, email, Github PR, &amp;hellip; Retries Triggers  IMHO  Good basement for a rich CD systems Can&amp;rsquo;t be used by itself Jenkins X Pipelines uses Tekton   </description>
+      <description>TektonCD: A Kubernetes-native pipeline resource https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/
+ Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline  Runs as a Pod in k8s cluster Each step in a separate container   TaskRun - (k8s resource) runs the Task  kubectl get taskruns/mytask -o yaml - to get results   PipelineResources - to define resources to be passed in/out of a task  types: git, image, cluster, storage all the resources are used in tasks   Pipeline - list of tasks to execute in order  previous results could be used as input for the next task   PipelineRun - to execute a Pipeline  PipelineRun will create TaskRun for the each Tasks     More features  Rich Auth capabilities DAG (directed acyclic graph) of execution   Roadmap  Notifications to Slack, email, Github PR, &amp;hellip; Retries Triggers   IMHO  Good basement for a rich CD systems Can&#39;t be used by itself Jenkins X Pipelines uses Tekton    </description>
     </item>
     
     <item>
@@ -57,7 +89,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0229/</guid>
       <description>It’s Time to Move on from Two Phase Commit http://dbmsmusings.blogspot.com/2019/01/its-time-to-move-on-from-two-phase.html
- 2PC is used in industry &amp;gt; 30yrs Briefly, what is 2PC 2PC problems:  Blocking problem: coordinator fails before final decision. Wait until coordinator recovers. Work arounds reduce performance Cloggage problem: until the end of second phase workers have to stop other conflicting transactions, and their conflicting transactions, etc  To sum up 2PC problems: latency, throughput, scalability, availability Conceptually, main 2PC problem: worker can abort after the work is done (1st phase).</description>
+ 2PC is used in industry &amp;gt; 30yrs Briefly, what is 2PC 2PC problems:  Blocking problem: coordinator fails before final decision. Wait until coordinator recovers. Work arounds reduce performance Cloggage problem: until the end of second phase workers have to stop other conflicting transactions, and their conflicting transactions, etc   To sum up 2PC problems: latency, throughput, scalability, availability Conceptually, main 2PC problem: worker can abort after the work is done (1st phase).</description>
     </item>
     
     <item>
@@ -86,7 +118,7 @@
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0218/</guid>
-      <description>Paper &amp;ldquo;RobinHood: tail latency aware caching – dynamic reallocation from cache-rich to cache-poor&amp;rdquo; https://blog.acolyer.org/2018/10/26/robinhood-tail-latency-aware-caching-dynamic-reallocation-from-cache-rich-to-cache-poor/ ￼    Cache - for the most frequent requests Tail? - no cache, will take longer to response Several services -&amp;gt; several caches. Reply after all of them have replied    Wait for all the caches Doesn’t make sense to improve the “average” latency Robin Hood: uses cache to improve highest tail latency Контринтуитивно - улучшать tail latency В результате:  Улучшается время запросов (попадаем в кэш) Уменьшается кол-во запросов к бэкенду, улучшая его производительность  Почему нельзя статически определить, какой сервис хуже ведет себя?</description>
+      <description>Paper &amp;ldquo;RobinHood: tail latency aware caching – dynamic reallocation from cache-rich to cache-poor&amp;rdquo; https://blog.acolyer.org/2018/10/26/robinhood-tail-latency-aware-caching-dynamic-reallocation-from-cache-rich-to-cache-poor/ ￼    Cache - for the most frequent requests Tail? - no cache, will take longer to response Several services -&amp;gt; several caches. Reply after all of them have replied    Wait for all the caches Doesn’t make sense to improve the “average” latency Robin Hood: uses cache to improve highest tail latency Контринтуитивно - улучшать tail latency В результате:  Улучшается время запросов (попадаем в кэш) Уменьшается кол-во запросов к бэкенду, улучшая его производительность   Почему нельзя статически определить, какой сервис хуже ведет себя?</description>
     </item>
     
     <item>
@@ -106,7 +138,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0212/</guid>
       <description>Netflix’s Edge Load balancing https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c
- Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&amp;gt; problems server side update -&amp;gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)   Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers  Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)  Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB  FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)  Probation:  for new servers allow 1 request in-flight to gather stats  Stats Decay:  Linear decay over 30 secs to flush all the stats  RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!</description>
+ Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&amp;gt; problems server side update -&amp;gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)     Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers   Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)   Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB   FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)   Probation:  for new servers allow 1 request in-flight to gather stats   Stats Decay:  Linear decay over 30 secs to flush all the stats   RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!</description>
     </item>
     
     <item>
@@ -126,7 +158,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0206/</guid>
       <description>NetSpectre: Read Arbitrary Memory over Network https://misc0110.net/web/files/netspectre.pdf
- Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15&amp;frasl;60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное + спекулятивное исполнение. Прерывания в pipeline -&amp;gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе.</description>
+ Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15/60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное + спекулятивное исполнение. Прерывания в pipeline -&amp;gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе.</description>
     </item>
     
     <item>
@@ -176,7 +208,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0186/</guid>
       <description>Giving every Tor Hidden Service a IPv6 address https://blog.benjojo.co.uk/post/tor-onions-to-v6-with-iptables-proxy
- Onion Services (A) - allows to host and access a TCP port with anonmitity the only requirements - connection to the Tor network NAT/firewall evader. It would be nice if Tor client is not needed to access an onion service. For HTTP/HTTPS services there’s a service to do that: tor2web &amp;rdquo;&amp;ldquo;&amp;ldquo; it will only work for HTTP/HTTPS, even though onion services can be wrapped with any TCP port service!</description>
+ Onion Services (A) - allows to host and access a TCP port with anonmitity the only requirements - connection to the Tor network NAT/firewall evader. It would be nice if Tor client is not needed to access an onion service. For HTTP/HTTPS services there’s a service to do that: tor2web &amp;quot;&amp;rdquo;&amp;rdquo; it will only work for HTTP/HTTPS, even though onion services can be wrapped with any TCP port service!</description>
     </item>
     
     <item>
@@ -236,7 +268,7 @@
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0171/</guid>
-      <description>AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3  Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов.</description>
+      <description>AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3   Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов.</description>
     </item>
     
     <item>
@@ -246,7 +278,11 @@
       
       <guid>http://gliush.github.io/devzen_note/0165/</guid>
       <description>A general purpose counting filter: making every bit count https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/
- Approximate Membership Query (AMQ). Example: Bloom filter. Определять, принадлежит какой-то элемент данному множеству. Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive. =&amp;gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно” Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc 4 недостатка Bloom фильтров:  Невозможность удалить объекты Плохо скалируются за размер RAM Невозможность динамически изменить размер Невозможность определить кол-во вхождений каждого элемента  В paper придумана новая AMQ структура: Counting Quotient Filter (подсчетный количественный фильтр) = CQF structure Все недостатки Bloom фильтра ушли, очень хорошо работает (время, объем памяти) В несколько раз быстрее Bloom Filter, cuckoo filter Поддержка количества объекта - это огромный плюс Обычный QF (долевой фильтр) -&amp;gt; RSQF (rank and reset based quotient filter) -&amp;gt; CQF QF: ￼   храним в h0-вой ячейке h1 (домашняя), либо сдвиг на соседнюю.</description>
+  Approximate Membership Query (AMQ). Example: Bloom filter.
+  Определять, принадлежит какой-то элемент данному множеству.
+  Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.
+  =&amp;gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”
+  Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc</description>
     </item>
     
     <item>
@@ -266,7 +302,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0161/</guid>
       <description>Quantifying detectable bugs in JavaScript https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/
- Статья начинается с цитаты менеджера из Microsoft: “если можно быстро поправить код, чтобы он начал статически анализироваться и кол-во ошибок снизится на 10% - это просто сногсшибательно, мы такое обязательно возьмем” authors study historical bugs in real world JS projects in GitHub History + static type system that can be applied with few modifications Error types: (detectable ^ public ^ patched)    1.</description>
+ Статья начинается с цитаты менеджера из Microsoft: “если можно быстро поправить код, чтобы он начал статически анализироваться и кол-во ошибок снизится на 10% - это просто сногсшибательно, мы такое обязательно возьмем” authors study historical bugs in real world JS projects in GitHub History + static type system that can be applied with few modifications Error types: (detectable ^ public ^ patched)      Найти все баги, которые поправили (issue с ссылкой на commit)    Отфильтровать вручную (не новая фича, рефакторинг)   ~4M багов, confidence level = 5%, поэтому мы анализировали 400 багов 48% патчей ~ 5строк кода Оценка бага (может ли статическая типизация помочь) должна делаться не дольше 10 мин (анализ на предварительных исследованиях 78 ошибок) Каждый баг проверялся на Flow, TypeScript Некоторые ошибки - type-system undetectable 400: 59 (Flow), 58(TypeScript), 18: timeout, 18 разобрали -&amp;gt; 60 у Flow и у TypeScript Flow: 1.</description>
     </item>
     
     <item>
@@ -297,7 +333,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0155/</guid>
       <description>Amazon Aurora http://www.allthingsdistributed.com/files/p1041-verbitski.pdf
- вместо консенсуса 2&amp;frasl;3 они используют 4&amp;frasl;6 (3&amp;frasl;6 для чтения) 10GB сегменты, которые восстанавливать 10 сек (на 10Gbit сетке) logs are data - хранят только логи дополнительно, асинхронно материализуют страницы БД, которые имеют длинную цепочку изменений в логе Восстановление после крэша в Mysql: восстановить последний checkpoint + применить изменения из лога. В Aurora сохранение чекпоинтов идет асинхронно в фоне, на каждой ноде, и восстанавливаться оно будет также, т.</description>
+ вместо консенсуса 2/3 они используют 4/6 (3/6 для чтения) 10GB сегменты, которые восстанавливать 10 сек (на 10Gbit сетке) logs are data - хранят только логи дополнительно, асинхронно материализуют страницы БД, которые имеют длинную цепочку изменений в логе Восстановление после крэша в Mysql: восстановить последний checkpoint + применить изменения из лога. В Aurora сохранение чекпоинтов идет асинхронно в фоне, на каждой ноде, и восстанавливаться оно будет также, т.</description>
     </item>
     
     <item>
@@ -307,7 +343,8 @@
       
       <guid>http://gliush.github.io/devzen_note/0154/</guid>
       <description>If your software should be cross platform and accessible, forget about Qt https://blind.guru/qta11y.html
-“Ограниченные возможности” - What toolkit to choose to create a UI on most platform? - Java/Swing (Win, Linux, Mac) - C++? Qt. 10yr ago it didn’t work (4.x on Linux). Everybody hates Qt on Win - Email to QT -&amp;gt; answer “Works everywhere, if you find problem - we’ll fix it” - Проблема: основной (платный) продукт для чтения текста с экрана не видит текст в “text entry widgets” -&amp;gt; bug in Qt tracker - Answer (in a year): Will be fixed after rewrite, that has no deadline.</description>
+“Ограниченные возможности”
+ What toolkit to choose to create a UI on most platform?  Java/Swing (Win, Linux, Mac) C++? Qt. 10yr ago it didn’t work (4.x on Linux). Everybody hates Qt on Win   Email to QT -&amp;gt; answer “Works everywhere, if you find problem - we’ll fix it” Проблема: основной (платный) продукт для чтения текста с экрана не видит текст в “text entry widgets” -&amp;gt; bug in Qt tracker Answer (in a year): Will be fixed after rewrite, that has no deadline.</description>
     </item>
     
     <item>
@@ -328,7 +365,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0145/</guid>
       <description>Raid controllers and SSDs https://momjian.us/main/blogs/pgblog/2017.html#May_15_2017
- Disk array controllers are popular because of:  Hardware RAID support Large read/write cache write reordering instant durable storage of writes using a BBU (backup battery)  With SSD (with BBUs), the usefulness of RAID controllers is unclear:  CPU are fast and can do RAID in software servers have tons of RAM write reordering is unnecessary for SSDs (good random write perf) BBUs on SSDs make RAID BBUs redundant   While raid controllers introduce problems on their own: * High failure rates * complex configuration * slowness Ссылки на переписку в postgresql mailing list</description>
+ Disk array controllers are popular because of:  Hardware RAID support Large read/write cache write reordering instant durable storage of writes using a BBU (backup battery)   With SSD (with BBUs), the usefulness of RAID controllers is unclear:  CPU are fast and can do RAID in software servers have tons of RAM write reordering is unnecessary for SSDs (good random write perf) BBUs on SSDs make RAID BBUs redundant    While raid controllers introduce problems on their own:</description>
     </item>
     
     <item>
@@ -357,7 +394,7 @@
       <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0138/</guid>
-      <description> 2017 Настачку https://nastachku.ru/
+      <description>2017 Настачку https://nastachku.ru/
  Алексей Палажченко (golangshow) “Профилирование и оптимизация программ на Go” Олег Бартунов “Postgres - как NoSQL база данных” Иван Евтухович “Ключевые DevOps практики” Константин Назаров (hangops+devops deflope) “Быстрые микросервисы на flask+gevent” Говорят, было интересно на Valentin Bartenev (core developer NGINX) “Недостатки Linux API с точки зрения разработчика высокопроизводительного веб-сервера” Наклейки  </description>
     </item>
     
@@ -368,7 +405,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0137/</guid>
       <description>Kubernetes-1.6 http://blog.kubernetes.io/2017/03/kubernetes-1.6-multi-user-multi-workloads-at-scale.html
- Focus: scale + automation. 5K nodes cluster is supported (150K pods) etcd v3 Federation for more nodes &amp;amp; multi-cluster (kubefed - becomes beta) RBAC is beta (is used by default). Allows to give users/service accounts access to specific resourses on a per-namespace basis kubeadm tool - is beta (create a secure cluster, RBAC is supported) Node affinity/anti-affinity is in beta (assign to nodes based on node labels).</description>
+ Focus: scale + automation. 5K nodes cluster is supported (150K pods) etcd v3 Federation for more nodes &amp;amp; multi-cluster (kubefed - becomes beta) RBAC is beta (is used by default). Allows to give users/service accounts access to specific resourses on a per-namespace basis kubeadm tool - is beta (create a secure cluster, RBAC is supported) Node affinity/anti-affinity is in beta (assign to nodes based on node labels). Taints and tolerations is in beta (exclude pods from particular nodes).</description>
     </item>
     
     <item>
@@ -408,7 +445,7 @@
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0126/</guid>
-      <description> Announcing Rust Language Server Alpha Release http://www.jonathanturner.org/2017/01/rls-alpha-release.html
+      <description>Announcing Rust Language Server Alpha Release http://www.jonathanturner.org/2017/01/rls-alpha-release.html
  RLS = racer + Rust compiler racer: quick but not accurate rust compiler - slower, accurate, async (will say when ready)  Rust for NTPSec https://www.opennet.ru/opennews/art.shtml?num=45832 (+links)
  цель уйти с си - увеличить безопасность (выходы за границы массива, подвисшие указатели, и т.д.) Автор решил написать проект: simple IRC сервер (I can do it in my sleep) За 4 дня - 67 строк “wrapping code for the server” За 4 дня на Го - изучил язык, написал сервер и тесты No ‘select/poll/epoll_wait’ in Rust рассуждения про crate и систему  </description>
     </item>
@@ -419,7 +456,7 @@
       <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0122/</guid>
-      <description> Amazon interview http://shivankaul.com/blog/2016/12/07/clean-your-desk-yet-another-amazon-interview-experience.html
+      <description>Amazon interview http://shivankaul.com/blog/2016/12/07/clean-your-desk-yet-another-amazon-interview-experience.html
  почистите стол не должно быть ручек и листочков телефон положите, чтобы было видно установите приложение подождите, идет log off  Python-3.6 https://docs.python.org/3.6/whatsnew/3.6.html
  PEP 495: Local Time Disambiguation: перевод часов назад на час - создается fold (извилина, загиб) PEP 529: Change Windows filesystem encoding to UTF-8 PEP 528: Change Windows console encoding to UTF-8 PEP 526: Syntax for variable annotations New dict implementation (memory usage is 20-25% smaller) PYTHONMALLOC environment variable (memory allocator + hooks) ‘secrets’ module for crypto-strong pseudo-random valules asyncio - fast  </description>
     </item>
@@ -451,7 +488,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0118/</guid>
       <description>USB-C + Thunderbolt-3 http://blog.fosketts.net/2016/10/29/total-nightmare-usb-c-thunderbolt-3
- Спецификация на 24-pin штекер + кабель Разные сигналы (протоколы):  USB 2.0 USB 3.1 gen 1 -&amp;gt; 5Gbps, Apple 12” MacBook USB 3.1 gen 2 -&amp;gt; 10Gbps Alternate Mode (non-USB protocols): DisplayPort, MHL, HDMI, Thunderbolt. not every device supports every Alternate Mode protocol Power Delivery (up to 100Watts). 2 different specifications Audio Accessory Mode (Analogue Audio)  Problems:  Not every USB-C cable, port, device, and power supply will be compatible USB-C HDMI adapter: over USB3.</description>
+ Спецификация на 24-pin штекер + кабель Разные сигналы (протоколы):  USB 2.0 USB 3.1 gen 1 -&amp;gt; 5Gbps, Apple 12” MacBook USB 3.1 gen 2 -&amp;gt; 10Gbps Alternate Mode (non-USB protocols): DisplayPort, MHL, HDMI, Thunderbolt. not every device supports every Alternate Mode protocol Power Delivery (up to 100Watts). 2 different specifications Audio Accessory Mode (Analogue Audio)   Problems:  Not every USB-C cable, port, device, and power supply will be compatible USB-C HDMI adapter: over USB3.</description>
     </item>
     
     <item>
@@ -471,7 +508,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0108/</guid>
       <description>Wisdom about Erlang BEAM and VM http://beam-wisdoms.clau.se/
- Explain like I&amp;rsquo;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
+ Explain like I&#39;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
  TP-Link + Lenovo X200 Распознавание напечатанного по анализу сигнала wifi Значение - результат трех эффектов: затухание, multi-paths and Doppler shift Три сложности:  распознать начало и окончание нажатия (алгоритм предложили для приблизительного выяснения) выделение свойств каждого сигнала для того, чтобы распознавать 37 знаков (10 цифр, 26 букв и пробел).</description>
     </item>
     
@@ -482,7 +519,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0107/</guid>
       <description>TCP puzzlers http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/
- happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&amp;rsquo;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&amp;rsquo;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
+ happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&#39;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&#39;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
     </item>
     
     <item>
@@ -501,7 +538,8 @@
       <pubDate>Sun, 19 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0097/</guid>
-      <description>Bitsquatting https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf - Проблемы железа. Sun UltraSparc II CPU - во время изготовления получали примеси, которые являются эмиттером альфа частиц в SRAM. Кэш получал битовые ошибки - крэш сервера. Нет проверки корректности. - memtest86 не просто так добавляют на Ubuntu LiveCD - DRAM тоже очень подвержен - Температура - Радиация (высокоэнергичные частицы из космоса) - основной источник ошибок в DRAM. На высоте километра - в 5 раз выше, чем на уровне моря - Тесты DRAM: до 1 ошибки в 1.</description>
+      <description>Bitsquatting https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf
+ Проблемы железа. Sun UltraSparc II CPU - во время изготовления получали примеси, которые являются эмиттером альфа частиц в SRAM. Кэш получал битовые ошибки - крэш сервера. Нет проверки корректности. memtest86 не просто так добавляют на Ubuntu LiveCD - DRAM тоже очень подвержен Температура Радиация (высокоэнергичные частицы из космоса) - основной источник ошибок в DRAM. На высоте километра - в 5 раз выше, чем на уровне моря Тесты DRAM: до 1 ошибки в 1.</description>
     </item>
     
     <item>
@@ -511,7 +549,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0096/</guid>
       <description>On Being A Senior Engineer http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/
- senior - очень плавный вход. Не проснешься в один день, а ты уже senior поколение x/y - очень быстрый фидбек, хочется за 5 лет в senior, но надо больше. А что еще через 5 лет? автор предпочитает слово mature.  ищет конструктивную критику своего дизайна понимает (не-техническую область), как они воспринимаются окружающими не боятся давать какие-то оценки, и пытаются стать лучше в этом врожденное чувство предвидения понимают, что не все их проекты интересны растят окружающих показывают все trade-off, когда принимают решения эмпатичны не дают пустых жалоб (всегда подкреплены фактами)  рассказ про biases 10 заповедей разработчика без эго  Disadvantages of purely functional programming http://flyingfrogblog.</description>
+ senior - очень плавный вход. Не проснешься в один день, а ты уже senior поколение x/y - очень быстрый фидбек, хочется за 5 лет в senior, но надо больше. А что еще через 5 лет? автор предпочитает слово mature.  ищет конструктивную критику своего дизайна понимает (не-техническую область), как они воспринимаются окружающими не боятся давать какие-то оценки, и пытаются стать лучше в этом врожденное чувство предвидения понимают, что не все их проекты интересны растят окружающих показывают все trade-off, когда принимают решения эмпатичны не дают пустых жалоб (всегда подкреплены фактами)   рассказ про biases 10 заповедей разработчика без эго  Disadvantages of purely functional programming http://flyingfrogblog.</description>
     </item>
     
     <item>
@@ -530,7 +568,7 @@
       <pubDate>Sun, 22 May 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0093/</guid>
-      <description> YTrace: End-to-end Performance Diagnosis in Large Content Providers: http://arxiv.org/abs/1602.03273
+      <description>YTrace: End-to-end Performance Diagnosis in Large Content Providers: http://arxiv.org/abs/1602.03273
  Примерно то же дано, что и в MysteryMachine: большое приложение, много слоев, сложно разбираться в проблемах Решение должно быть легко интегрируемым, и иметь маленькие false positive and false negative  </description>
     </item>
     
@@ -551,7 +589,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0087/</guid>
       <description>Containers are not VMs https://blog.docker.com/2016/03/containers-are-not-vms/
- containers - квартиры vms - полноценные дома Все понимают, а потом начинают спрашивать вопросы:  как мне бэкапить приложения а где они на самом деле работают (какой Host) patch management strategy (upgrading application inside the container)  на самом деле, контейнеры - это способ доставки сервисов, которые составляют приложение сервисы проще обновлять поотдельности, декларативно определяя, как они составляют приложения  Erlang 19.0 GC https://www.</description>
+ containers - квартиры vms - полноценные дома Все понимают, а потом начинают спрашивать вопросы:  как мне бэкапить приложения а где они на самом деле работают (какой Host) patch management strategy (upgrading application inside the container)   на самом деле, контейнеры - это способ доставки сервисов, которые составляют приложение сервисы проще обновлять поотдельности, декларативно определяя, как они составляют приложения  Erlang 19.0 GC https://www.</description>
     </item>
     
     <item>
@@ -560,7 +598,7 @@
       <pubDate>Sat, 26 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0085/</guid>
-      <description> Erlang/OTP 18.3 http://www.erlang.org/news/101
+      <description>Erlang/OTP 18.3 http://www.erlang.org/news/101
  пофиксили баги и race (exit and timeout signals) исправления ошибок в связи с поддержкой новых времен Add validation callback for heart  Ubuntu 16.04 https://wiki.ubuntu.com/XenialXerus/ReleaseNotes
  Python 3 by default?  Docker for Mac and Windows Beta https://blog.docker.com/2016/03/docker-for-mac-windows-beta/
  Alpine Linux xhyve Virtual Machine for MacOS, Hyper-V VM for Windows OS X sandbox security записался на бету, меня добавили в список  </description>
@@ -593,7 +631,7 @@
       <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0078/</guid>
-      <description> Google and Red Hat integrate OpenShift Dedicated and Google Cloud Platform to make adopting containers easier http://googlecloudplatform.blogspot.co.uk/2016/01/google-and-red-hat-integrate-openshift-dedicated.html
+      <description>Google and Red Hat integrate OpenShift Dedicated and Google Cloud Platform to make adopting containers easier http://googlecloudplatform.blogspot.co.uk/2016/01/google-and-red-hat-integrate-openshift-dedicated.html
  Red Hat будет предлагать OpenShift Dedicated на Google Cloud Platform. Странно, что они до этого такой возможности не предоставляли, это их очевидный шаг. Хотя, я не очень понимаю тех людей, которые покупают Dedicated. $48k в год за поддержку 4 год. https://www.openshift.com/dedicated/  </description>
     </item>
     

@@ -1,55 +1,67 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0156 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0156 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0156" />
+<meta property="og:description" content="Load Average in Linux http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html
+ It’s not load, it’s not average (N of processes running &#43; waiting to run, N of processes in “uninterruptible sleep (usually IO”    Если заменить своп-диск с быстрого на медленный, мы уменьшим производительность системы, LA должен увеличиться, только если будет учитываться не только CPU  What’s next? http://graydon2.dreamwidth.org/253769.html
+ Автор: Graydon Hoare, создатель языка Rust Следующие проблемы в языках, которые надо решать Если любая из проблем кажется понятной и простой - “вы просто не понимаете ее до конца” Модули." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0156/" />
+<meta property="article:published_time" content="2017-08-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-08-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0156"/>
+<meta name="twitter:description" content="Load Average in Linux http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html
+ It’s not load, it’s not average (N of processes running &#43; waiting to run, N of processes in “uninterruptible sleep (usually IO”    Если заменить своп-диск с быстрого на медленный, мы уменьшим производительность системы, LA должен увеличиться, только если будет учитываться не только CPU  What’s next? http://graydon2.dreamwidth.org/253769.html
+ Автор: Graydon Hoare, создатель языка Rust Следующие проблемы в языках, которые надо решать Если любая из проблем кажется понятной и простой - “вы просто не понимаете ее до конца” Модули."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0156</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0156</h1>
+			<div class="meta">Posted at &mdash; Aug 27, 2017</div>
+		</div>
 
-		
-
-<h1 id="load-average-in-linux">Load Average in Linux</h1>
-
+		<div class="markdown">
+			<h1 id="load-average-in-linux">Load Average in Linux</h1>
 <p><a href="http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html">http://www.brendangregg.com/blog/2017-08-08/linux-load-averages.html</a></p>
-
 <ul>
 <li>It’s not load, it’s not average (N of processes running + waiting to run, N of processes in “uninterruptible sleep (usually IO”
 <figure>
@@ -58,11 +70,8 @@
 </li>
 <li>Если заменить своп-диск с быстрого на медленный, мы уменьшим производительность системы, LA должен увеличиться, только если будет учитываться не только CPU</li>
 </ul>
-
-<h1 id="what-s-next">What’s next?</h1>
-
+<h1 id="whats-next">What’s next?</h1>
 <p><a href="http://graydon2.dreamwidth.org/253769.html">http://graydon2.dreamwidth.org/253769.html</a></p>
-
 <ul>
 <li>Автор: Graydon Hoare, создатель языка Rust</li>
 <li>Следующие проблемы в языках, которые надо решать</li>
@@ -79,14 +88,10 @@
 <li>Система типов с оценкой стоимости (Cost-model type system) - let you “typecheck” the cost-model of a program.</li>
 <li>Гетерогенная память и параллелизм</li>
 </ul>
-
 <p>IMHO: очень серьезная статья человека, который погряз в науке “Языки программирования”. Многие вопросы, которые он ставит, мне в принципе не приходят на ум.
 Рекомендую всем, кто прямо сейчас думает, какой следующий язык программирования изучать.</p>
-
 <h1 id="paper-reverse-engineering-x86-processor-microcode">Paper &ldquo;Reverse Engineering x86 Processor Microcode&rdquo;</h1>
-
 <p><a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-koppe.pdf">https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-koppe.pdf</a></p>
-
 <ul>
 <li>Автор: Philipp Koppe et all</li>
 <li>По этическим соображениям мы не рассказываем про алгоритм обфускации</li>
@@ -100,27 +105,44 @@
 <li>Два гранта, и поддержка Министерства Образования и Исследований</li>
 <li>90 дней выдержали после того, как рассказали компании AMD</li>
 </ul>
-
 <p>IMHO: никому верить нельзя, вообще никому!</p>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0155/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0160/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.93957 &#43;0400 &#43;04 m=&#43;0.083870087">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

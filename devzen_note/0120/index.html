@@ -1,55 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0120 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0120 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0120" />
+<meta property="og:description" content="Handling Overload http://ferd.ca/handling-overload.html
+ идея статьи - из спора о необходимости иметь бесконечный mailbox для процесса (все равно ограничение - в размере оперативки) ?Критика flow control остается в preemptive языках (Go). Кооперативные языки (Akka, Node.js) имеют неявные механизмы (большая нагрузка на CPU рано блокируется раньше) naive system - tasks are done asynchronously. No control, you hope for the best Usually, one of the part is not parallelized -&gt; bottleneck -&gt; problem with the size of the mailbox backpressure - default way in most languages, because function call is synced (you do smth, and return smth when everything is done) all the servers have some limit of concurrent requests Erlang is asynced by default (multi-process communication) (?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0120/" />
+<meta property="article:published_time" content="2016-11-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2016-11-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0120"/>
+<meta name="twitter:description" content="Handling Overload http://ferd.ca/handling-overload.html
+ идея статьи - из спора о необходимости иметь бесконечный mailbox для процесса (все равно ограничение - в размере оперативки) ?Критика flow control остается в preemptive языках (Go). Кооперативные языки (Akka, Node.js) имеют неявные механизмы (большая нагрузка на CPU рано блокируется раньше) naive system - tasks are done asynchronously. No control, you hope for the best Usually, one of the part is not parallelized -&gt; bottleneck -&gt; problem with the size of the mailbox backpressure - default way in most languages, because function call is synced (you do smth, and return smth when everything is done) all the servers have some limit of concurrent requests Erlang is asynced by default (multi-process communication) (?"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0120</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0120</h1>
+			<div class="meta">Posted at &mdash; Nov 27, 2016</div>
+		</div>
 
-		
-
-<h1 id="handling-overload">Handling Overload</h1>
-
+		<div class="markdown">
+			<h1 id="handling-overload">Handling Overload</h1>
 <p><a href="http://ferd.ca/handling-overload.html">http://ferd.ca/handling-overload.html</a></p>
-
 <ul>
 <li>идея статьи - из спора о необходимости иметь бесконечный mailbox для процесса (все равно ограничение - в размере оперативки)</li>
 <li>?Критика flow control остается в preemptive языках (Go). Кооперативные языки (Akka, Node.js) имеют неявные механизмы (большая нагрузка на CPU рано блокируется раньше)</li>
@@ -69,39 +79,57 @@
 <li>bounded queues: fail fast if queue is full. Problem: queue process is also a limitation (copy message, copy from mailbox to heap, then shed)</li>
 <li>counter-protected process: counter to send request</li>
 <li>Probing for quality and adjusting behaviour:
-
 <ul>
 <li>queue time (sum of all the reqs - more avg stats)</li>
 <li>randomly drop requests (from the queue - shedding, before queue - back-pressure)</li>
 <li>sometimes you can’t loose messages</li>
-</ul></li>
+</ul>
+</li>
 <li>Capacity probes (CPU?memory in system, send buffers of network get filled, etc)
-
 <ul>
 <li>circuit breaker - fail if a lot of fails for this service (3 failures during 10 secs - do not send more reqs)</li>
-<li>drop specific operations (return error)
--</li>
-</ul></li>
+<li>drop specific operations (return error)</li>
+<li></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0119/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0121/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.943922 &#43;0400 &#43;04 m=&#43;0.088221881">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

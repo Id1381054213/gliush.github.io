@@ -1,116 +1,140 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0228 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0228 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0228" />
+<meta property="og:description" content="Hex package registry vulnerability https://blog.voltone.net/post/22
+ Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&#39;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases &#43; properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&#39;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&#39;t include package name." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0228/" />
+<meta property="article:published_time" content="2019-02-09T20:50:52+04:00" />
+<meta property="article:modified_time" content="2019-02-09T20:50:52+04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0228"/>
+<meta name="twitter:description" content="Hex package registry vulnerability https://blog.voltone.net/post/22
+ Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&#39;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases &#43; properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&#39;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&#39;t include package name."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0228</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0228</h1>
+			<div class="meta">Posted at &mdash; Feb 9, 2019</div>
+		</div>
 
-		
-
-<h1 id="hex-package-registry-vulnerability">Hex package registry vulnerability</h1>
-
+		<div class="markdown">
+			<h1 id="hex-package-registry-vulnerability">Hex package registry vulnerability</h1>
 <p><a href="https://blog.voltone.net/post/22">https://blog.voltone.net/post/22</a></p>
-
 <ul>
 <li>Fixed in rebar3-3.8.0 and Hex-0.19.0</li>
 <li>When you add a depp you should trust:
-
 <ul>
 <li>author of the code</li>
 <li>the source code repo</li>
 <li>package manager</li>
-<li>package manager&rsquo;s hosting and CDN</li>
+<li>package manager's hosting and CDN</li>
 <li>package repository mirror</li>
-</ul></li>
+</ul>
+</li>
 <li>We should also trust their ability to protect their systems from attackers!!</li>
 <li>The simplest protection: checksum and digital signature</li>
 <li>Hex Package Registry:
-
 <ul>
 <li>For each package Hex maintain a registry with list of all releases + properties</li>
 <li>SHA256 - one of the properties</li>
-<li>The registry is protected by a signature, generated with the Hex Server&rsquo;s private key</li>
-</ul></li>
+<li>The registry is protected by a signature, generated with the Hex Server's private key</li>
+</ul>
+</li>
 <li>Hex Client check registry signature, package SHA256 checksum</li>
 <li>Problem:
-
 <ul>
-<li>Hex server signed any package, and didn&rsquo;t include package name.</li>
-<li>Send malicious package (that&rsquo;ll execulte bad code during <code>mix compile</code>)</li>
+<li>Hex server signed any package, and didn't include package name.</li>
+<li>Send malicious package (that'll execulte bad code during <code>mix compile</code>)</li>
 <li>Substitute the package on mirror</li>
-</ul></li>
+</ul>
+</li>
 <li>Fix:
-
 <ul>
 <li>Include package name and organization name into the package on Hex server before singature</li>
-</ul></li>
+</ul>
+</li>
 <li>IMHO:
-
 <ul>
 <li>Very difficult to foresee the problem</li>
 <li>Do we have a &lsquo;all-purpose-security-check-list&rsquo;?</li>
 <li>Hackerone?</li>
 <li><a href="https://theupdateframework.github.io/">https://theupdateframework.github.io/</a> - is a solid approach</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0226/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0229/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.927938 &#43;0400 &#43;04 m=&#43;0.072237517">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

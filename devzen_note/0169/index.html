@@ -1,93 +1,119 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0169 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0169 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0169" />
+<meta property="og:description" content="Paper &ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&rdquo; https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf
+ Every microcontroller has firmware readout protection Checked only STM32F0 family (entry-level microcontroller) Paper:  analysis of 3 security core components detection of 3 weknesses &#43; 3 ideas for their exploitation  Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1 Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1   Proof of Concept for each weakness =&gt; vulnerabilities discussion of impact   STM32 Security Concept  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0169/" />
+<meta property="article:published_time" content="2017-11-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-11-26T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0169"/>
+<meta name="twitter:description" content="Paper &ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&rdquo; https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf
+ Every microcontroller has firmware readout protection Checked only STM32F0 family (entry-level microcontroller) Paper:  analysis of 3 security core components detection of 3 weknesses &#43; 3 ideas for their exploitation  Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1 Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1   Proof of Concept for each weakness =&gt; vulnerabilities discussion of impact   STM32 Security Concept  "/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0169</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0169</h1>
+			<div class="meta">Posted at &mdash; Nov 26, 2017</div>
+		</div>
 
-		
-
-<h1 id="paper-shedding-too-much-light-on-a-microcontroller-s-firmware-protection">Paper &ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&rdquo;</h1>
-
+		<div class="markdown">
+			<h1 id="paper-shedding-too-much-light-on-a-microcontrollers-firmware-protection">Paper &ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&rdquo;</h1>
 <p><a href="https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf">https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf</a></p>
-
 <ul>
 <li>Every microcontroller has firmware readout protection</li>
 <li>Checked only STM32F0 family (entry-level microcontroller)</li>
 <li>Paper:
-
 <ul>
 <li>analysis of 3 security core components</li>
 <li>detection of 3 weknesses + 3 ideas for their exploitation
-
 <ul>
 <li>Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1</li>
 <li>Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting</li>
 <li>Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1</li>
-</ul></li>
+</ul>
+</li>
 <li>Proof of Concept for each weakness =&gt; vulnerabilities</li>
 <li>discussion of impact</li>
-</ul></li>
+</ul>
+</li>
 <li>STM32 Security Concept</li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0168/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0171/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.937186 &#43;0400 &#43;04 m=&#43;0.081486031">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

@@ -1,118 +1,127 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-		<title>
-				Notes for episode-0212 &middot; Gliush Notebook
-		</title>
-	
-		
-  		<link rel="stylesheet" href="/css/style.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-	
-		
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	
-		
-		<link href="" rel="alternate" type="application/rss+xml" title="Gliush Notebook" />
-	</head>
-	
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0212 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0212" />
+<meta property="og:description" content="Netflix’s Edge Load balancing https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c
+ Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&gt; problems server side update -&gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)     Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers   Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)   Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB   FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)   Probation:  for new servers allow 1 request in-flight to gather stats   Stats Decay:  Linear decay over 30 secs to flush all the stats   RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0212/" />
+<meta property="article:published_time" content="2018-10-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-10-07T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0212"/>
+<meta name="twitter:description" content="Netflix’s Edge Load balancing https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c
+ Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&gt; problems server side update -&gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)     Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers   Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)   Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB   FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)   Probation:  for new servers allow 1 request in-flight to gather stats   Stats Decay:  Linear decay over 30 secs to flush all the stats   RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">Gliush Notebook</h2>
-				</a>
-				<ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/">Posts</a></li>
-</ul>
-			</div>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
 		</nav>
+	</div>
 
-        
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
 
-<main>
-	<div class="post">
-        <div class="post-title">Notes for episode-0212</div>
-        <div class="post-line"></div>
 
-		
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0212</h1>
+			<div class="meta">Posted at &mdash; Oct 7, 2018</div>
+		</div>
 
-		
-
-<h1 id="netflix-s-edge-load-balancing">Netflix’s Edge Load balancing</h1>
-
+		<div class="markdown">
+			<h1 id="netflixs-edge-load-balancing">Netflix’s Edge Load balancing</h1>
 <p><a href="https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c">https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c</a></p>
-
 <ul>
 <li>Goal: very high load. Even small fraction of errors - problem</li>
 <li>All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem)</li>
 <li>Guiding principles:
-
 <ul>
 <li>avoid distributed state</li>
 <li>avoid client-side configuration:
-
 <ul>
 <li>not the same team -&gt; problems</li>
 <li>server side update -&gt; problems</li>
 <li>instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Load-balancing approach
-
 <ul>
 <li>choice-of-2-algorithm to choose between the servers</li>
 <li>load-balancer’s view of the servers utilization</li>
 <li>servers’ view of the servers utilization</li>
 <li>“probation” and “server-age” mechanisms to avoid overloading newly started servers</li>
-</ul></li>
+</ul>
+</li>
 <li>Server-Reported Utilization
-
 <ul>
 <li>Actively report</li>
 <li>Passively report (addition health-check calls might needed)</li>
-</ul></li>
+</ul>
+</li>
 <li>Choice-of-2 instead of RoundRobin/JoinSmallesQueue
-
 <ul>
 <li>Client Health: errors for that server</li>
 <li>Server Utilization: most recent score provided by the server</li>
 <li>Client Utilization: number of inflight requests to the server from the LB</li>
-</ul></li>
+</ul>
+</li>
 <li>FIRST: Filter out servers with high utilization and health
-
 <ul>
 <li>for each request (agains stale filtering result)</li>
 <li>best-effor by making N attempts to find anything, if not - without filtering</li>
 <li>helps with large amount of problematic servers (not to choose between 2 broken servers)</li>
-</ul></li>
+</ul>
+</li>
 <li>Probation:
-
 <ul>
 <li>for new servers allow 1 request in-flight to gather stats</li>
-</ul></li>
+</ul>
+</li>
 <li>Stats Decay:
-
 <ul>
 <li>Linear decay over 30 secs to flush all the stats</li>
-</ul></li>
+</ul>
+</li>
 <li>RESULTS</li>
 <li>Slower Servers Receive Less Traffic
-
 <ul>
 <li>canary deployment won’t show degradation! :)</li>
 <li>Outlier detection is less effective</li>
 <li>some CPU/RPS combination should be used</li>
-</ul></li>
+</ul>
+</li>
 <li>Synthetic load-test results
-
 <ul>
 <li>orders of magnitude reduction in load-shedding and connection errors compared to the round-robin</li>
 <li>3x reduction in average and long-tail latency</li>
@@ -121,19 +130,17 @@
     <img src="/images/0212_1.png"/> 
 </figure>
 </li>
-</ul></li>
+</ul>
+</li>
 <li>Impact on real production traffic
-
 <ul>
 <li>Routing around intermittently and persistently degraded servers =&gt; avoid prod problems, do not need to wake eng up in the night (graphs)</li>
 <li>GC events - doesn’t harm anymore</li>
-</ul></li>
 </ul>
-
-<h1 id="big-hack-how-china-used-a-tiny-chip-to-infiltrate-u-s-companies">Big Hack: How China Used a Tiny Chip to Infiltrate U.S. Companies</h1>
-
+</li>
+</ul>
+<h1 id="big-hack-how-china-used-a-tiny-chip-to-infiltrate-us-companies">Big Hack: How China Used a Tiny Chip to Infiltrate U.S. Companies</h1>
 <p><a href="https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-china-used-a-tiny-chip-to-infiltrate-america-s-top-companies">https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-china-used-a-tiny-chip-to-infiltrate-america-s-top-companies</a></p>
-
 <ul>
 <li>AWS wanted to acquire a startup “Elemental” (software for compressing massive video files)</li>
 <li>AWS hired 3-party company to check Elemental’s security (to help with due-diligence)</li>
@@ -145,38 +152,53 @@
 <li>17 people confirmed the manipulation of Supermicro’s hardware and other elements of the attacks</li>
 <li>“the microchip altered the operating system’s core, so it could accept modifications. The chip could also contact computers controlled by the attackers in search of further instructions and code”</li>
 </ul>
-
-<h1 id="kubernetes-1-12">Kubernetes-1.12</h1>
-
+<h1 id="kubernetes-112">Kubernetes-1.12</h1>
 <p><a href="https://kubernetes.io/blog/2018/09/27/kubernetes-1.12-kubelet-tls-bootstrap-and-azure-virtual-machine-scale-sets-vmss-move-to-general-availability/">https://kubernetes.io/blog/2018/09/27/kubernetes-1.12-kubelet-tls-bootstrap-and-azure-virtual-machine-scale-sets-vmss-move-to-general-availability/</a></p>
-
 <ul>
 <li>Kubelet TLS Bootstrap goes General Availability (GA) (автоматизация добавления kubelet в TLS-защищенный кластер, никакой ручной работы не требуется)</li>
 <li>Azure Virtual Machine Scale Sets (VMSS) and Cluster-Autoscaler is now Stable</li>
 <li>Arbitrary / CustomMetrics  in the HorisontalPodAutoscaler is moving to a second beta</li>
 <li>HPA to reach proper size faster (no cooldown for scale up event, but still cooldown for scale down event)</li>
-<li>Vertical Scaling of Pods - in beta
--</li>
+<li>Vertical Scaling of Pods - in beta</li>
+<li></li>
 </ul>
 
+		</div>
 
-		
-	</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
 
-	<div class="pagination">
-		<a href="/devzen_note/0209/" class="left arrow">&#8592;</a>
-		<a href="/devzen_note/0213/" class="right arrow">&#8594;</a>
 
-		<a href="#" class="top">Top</a>
-	</div>
-</main>
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
 
 
-        		<footer>
-			<span>
-			&copy; <time datetime="2019-07-20 23:23:50.931047 &#43;0400 &#43;04 m=&#43;0.075346936">2019</time> . Made with <a href='https://gohugo.io'>Hugo</a> using the <a href='https://github.com/EmielH/tale-hugo/'>Tale</a> theme.
-			</span>
-		</footer>
 
-    </body>
+
+</body>
 </html>

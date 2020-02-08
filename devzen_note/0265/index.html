@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0265 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0265" />
+<meta property="og:description" content="https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1 Testing in Production, the safe way
+ It is not easy, it is not risk-free. Often &ldquo;staging&rdquo; = &ldquo;miniature replica of production&rdquo; Need to keep stage &ldquo;in-sync&rdquo; with production, which is almost impossible:  Impossible to copy production data (GDPR, etc) The size of staging cluster Different configuration of LB, DB, Queues, etc (# of connections opened, # of replicas live, # of Kafka partitions, etc) Different monitoring configuration (because traffic is not similar to production)   Some testing better to perform on prod (long-living tests, memory leaks, unusual CPU usage patterns) Testing in prod requires:  Huge automation Understanding of best practices Prepared design of the system   Best effort simulation of the production is - production      Production consists of 3 phases:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://gliush.github.io/devzen_note/0265/" />
+<meta property="article:published_time" content="2019-11-02T21:11:03+03:00" />
+<meta property="article:modified_time" content="2019-11-02T21:11:03+03:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0265"/>
+<meta name="twitter:description" content="https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1 Testing in Production, the safe way
+ It is not easy, it is not risk-free. Often &ldquo;staging&rdquo; = &ldquo;miniature replica of production&rdquo; Need to keep stage &ldquo;in-sync&rdquo; with production, which is almost impossible:  Impossible to copy production data (GDPR, etc) The size of staging cluster Different configuration of LB, DB, Queues, etc (# of connections opened, # of replicas live, # of Kafka partitions, etc) Different monitoring configuration (because traffic is not similar to production)   Some testing better to perform on prod (long-living tests, memory leaks, unusual CPU usage patterns) Testing in prod requires:  Huge automation Understanding of best practices Prepared design of the system   Best effort simulation of the production is - production      Production consists of 3 phases:"/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="http://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="http://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="http://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0265</h1>
+			<div class="meta">Posted at &mdash; Nov 2, 2019</div>
+		</div>
+
+		<div class="markdown">
+			<h1 id="httpsmediumcomcopyconstructtesting-in-production-the-safe-way-18ca102d0ef1"><a href="https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1">https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1</a></h1>
+<p>Testing in Production, the safe way</p>
+<ul>
+<li>It is not easy, it is not risk-free.</li>
+<li>Often &ldquo;staging&rdquo; = &ldquo;miniature replica of production&rdquo;</li>
+<li>Need to keep stage &ldquo;in-sync&rdquo; with production, which is almost impossible:
+<ul>
+<li>Impossible to copy production data (GDPR, etc)</li>
+<li>The size of staging cluster</li>
+<li>Different configuration of LB, DB, Queues, etc (# of connections opened, # of replicas live, # of Kafka partitions, etc)</li>
+<li>Different monitoring configuration (because traffic is not similar to production)</li>
+</ul>
+</li>
+<li>Some testing better to perform on prod (long-living tests, memory leaks, unusual CPU usage patterns)</li>
+<li>Testing in prod requires:
+<ul>
+<li>Huge automation</li>
+<li>Understanding of best practices</li>
+<li>Prepared design of the system</li>
+</ul>
+</li>
+<li>Best effort simulation of the production is - production</li>
+</ul>
+<figure>
+    <img src="/images/0265_1.png"/> 
+</figure>
+
+<ul>
+<li>
+<p>Production consists of 3 phases:</p>
+</li>
+<li>
+<p>Phase 1 - Deploy</p>
+<ul>
+<li>Process of installing new version to production servers</li>
+<li>Deploy does not expose users to the new version</li>
+</ul>
+</li>
+<li>
+<p>Phase 2 - Release</p>
+<ul>
+<li>Process of moving production traffic to the new version</li>
+<li>Up to several days</li>
+<li>In case of any problem - rollback to the previous version</li>
+<li>Best, when automated</li>
+</ul>
+</li>
+<li>
+<p>Phase 3 - Post-Release</p>
+<ul>
+<li>Some degree of degradation all the time (something is broken)</li>
+</ul>
+</li>
+<li>
+<p>Testing in Production in the Deploy Phase.</p>
+<ul>
+<li>Integration testing: just use prod env, do not try to copy it
+<ul>
+<li>Deploy services (without releasing, e.g., with new labels), but use in Testing</li>
+<li>Service Mesh helps</li>
+<li>New DB row for testing, do not touch production data</li>
+</ul>
+</li>
+<li>Shadowing (= Dark Traffic Testing = Mirroring)
+<ul>
+<li>Production traffic is captured and replayed against newly deployed version</li>
+</ul>
+</li>
+<li>Tap Compare
+<ul>
+<li>Send traffic to the new version and to previous version =&gt; And compare the results</li>
+</ul>
+</li>
+<li>Load Testing</li>
+<li>Config Tests
+<ul>
+<li>Canary release to test configuration.</li>
+<li>No other test could find problems</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Testing in Production in the Release Phase.</p>
+<ul>
+<li>Canarying</li>
+<li>Monitoring</li>
+<li>Exception Tracking</li>
+<li>Traffic Shaping (0% -&gt; 100% and back in case of problem)</li>
+</ul>
+</li>
+<li>
+<p>Testing in Production in the Post-Release Phase.</p>
+<ul>
+<li>Feature Flagging or Dark Launch</li>
+<li>A/B Testing</li>
+<li>Logs/Events, Metrics and Tracing</li>
+<li>Profiling</li>
+<li>Teeing</li>
+</ul>
+</li>
+</ul>
+<h1 id="testing-in-production-the-hard-parts">Testing in Production: the hard parts</h1>
+<p>Testing in Production: the hard parts</p>
+
+		</div>
+
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/devzen">devzen</a></li>
+                
+                <li><a href="/tags/english">english</a></li>
+                
+            </ul>
+    </nav>
+
+
+			
+		</div>
+		<div class="post-tags">
+			
+              
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gliush Notebook</title>
@@ -6,10 +6,82 @@
     <description>Recent content on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jul 2019 22:47:47 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 15:55:47 +0000</lastBuildDate>
     
 	<atom:link href="http://gliush.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0274</title>
+      <link>http://gliush.github.io/devzen_note/0274/</link>
+      <pubDate>Sat, 01 Feb 2020 15:55:47 +0000</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0274/</guid>
+      <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
+ INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0272</title>
+      <link>http://gliush.github.io/devzen_note/0272/</link>
+      <pubDate>Sat, 21 Dec 2019 17:40:52 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0272/</guid>
+      <description>Release of Helm-3 https://helm.sh/blog/helm-3-released/ https://helm.sh/docs/faq/#changes-since-helm-2
+ Removal of Tiller  RBAC by default in k8s-1.6 -&amp;gt; more difficult to manage tiller in prod Permissive mode (simplicity) - is not good for prod   3-way merge patch  Helm 2 used two-way merge patch. kubectl edit caused problems. automatic manifest change caused problems (add sidecar) now: old manifest, new manifest and the live state   Release names are now scoped to Namespace  helm list --namespace foo   Secrets as the default storage driver JSON schema -&amp;gt; chart values validation Consolidation of requirements.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0271</title>
+      <link>http://gliush.github.io/devzen_note/0271/</link>
+      <pubDate>Sat, 14 Dec 2019 22:51:16 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0271/</guid>
+      <description>Kubernetes-1.17 https://habr.com/ru/company/flant/blog/476998/
+ Topology-aware service routing (in alpha)  Locality: defined by user: same node, same rack, same zone, same region Two nodes are &amp;ldquo;local&amp;rdquo;, if they have the same value for a special label &amp;ldquo;topologyKey&amp;rdquo; New PodLocator resource (cache of all Pods in the system) with controller kube-proxy will create different proxy rules on different nodes dns server change (will be in beta): different dns response on different pods more info: https://imroc.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0267</title>
+      <link>http://gliush.github.io/devzen_note/0267/</link>
+      <pubDate>Sat, 16 Nov 2019 20:10:00 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0267/</guid>
+      <description>Отчет о посещении Highload++ 2019 https://www.highload.ru/moscow/2019
+Я вел часть текстовой трансляции в телеграмме (от имени HighLoad). Раздали крутую книжку про Event Sourcing . ITSumm Press.
+7 Ноября
+ Егор Рогов (Postgres Professional) “Locks in postgresql” Разные полезные знания про блокировки в Postgresql. Самое интересное, что чисто теоретически, можно получить взаимную блокировку, если идет большой поток входящих Update, при котором происходит переключение на другой тип индекса (на более быстрый). Петр Зайцев (Percona) bpfTrace как полноценная замена DTrace в Linux История + возможности bpf Андрей Бородин (Яндекс) “Odyssey roadmap: что ещё мы хотим от пулера соединений” Рассказал про новый пулер соединений к postgresql  8 Ноября</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0265</title>
+      <link>http://gliush.github.io/devzen_note/0265/</link>
+      <pubDate>Sat, 02 Nov 2019 21:11:03 +0300</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0265/</guid>
+      <description>https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1 Testing in Production, the safe way
+ It is not easy, it is not risk-free. Often &amp;ldquo;staging&amp;rdquo; = &amp;ldquo;miniature replica of production&amp;rdquo; Need to keep stage &amp;ldquo;in-sync&amp;rdquo; with production, which is almost impossible:  Impossible to copy production data (GDPR, etc) The size of staging cluster Different configuration of LB, DB, Queues, etc (# of connections opened, # of replicas live, # of Kafka partitions, etc) Different monitoring configuration (because traffic is not similar to production)   Some testing better to perform on prod (long-living tests, memory leaks, unusual CPU usage patterns) Testing in prod requires:  Huge automation Understanding of best practices Prepared design of the system   Best effort simulation of the production is - production      Production consists of 3 phases:</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0262</title>
+      <link>http://gliush.github.io/devzen_note/0262/</link>
+      <pubDate>Sat, 12 Oct 2019 22:26:26 +0400</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0262/</guid>
+      <description>COZ: Finding Code that Counts with Causal Profiling https://arxiv.org/pdf/1608.03676v1.pdf
+   </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0255</title>
+      <link>http://gliush.github.io/devzen_note/0255/</link>
+      <pubDate>Sat, 24 Aug 2019 19:45:15 +0300</pubDate>
+      
+      <guid>http://gliush.github.io/devzen_note/0255/</guid>
+      <description>&amp;ldquo;What We Know We Don&#39;t Know&amp;rdquo; or &amp;ldquo;Empirical Software Engineering&amp;rdquo; https://www.hillelwayne.com/talks/what-we-know-we-dont-know/
+ Video from goto; conference + plenty of links Do you believe that &amp;ldquo;small functions are better then large functions&amp;rdquo;? Are you more confidence in that ^^ or in the &amp;ldquo;vaccine help against flu&amp;rdquo;? We don&#39;t have Empirical results for Software Engineering!!! Everything we know about SE is a believe! Empirical Software Engineering (ESE): test, observe, find out what is true, and what is just &amp;ldquo;feel good&amp;rdquo; Why?</description>
+    </item>
     
     <item>
       <title>Notes for episode-0251</title>
@@ -28,7 +100,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0250/</guid>
       <description>CloudFlare outage (Jul 2nd) https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/
- Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&amp;gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&amp;quot;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))   Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&amp;ldquo;attack variant&amp;rdquo; dismissed) 14:02 proposed a &amp;lsquo;global kill&amp;rsquo; = mechanism to disable single component worldwide  =&amp;gt; Access service will be down, can&amp;rsquo;t authenticate to control panel =&amp;gt; Security feature will disable credentials if anyone won&amp;rsquo;t use it frequently =&amp;gt; Can&amp;rsquo;t access Jira or build system directly.</description>
+ Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&amp;gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&amp;#34;|&amp;#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\+)+[)]*;?((?:\s|-|~|!|{}|\|\||\+)*.*(?:.*=.*)))  Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&amp;ldquo;attack variant&amp;rdquo; dismissed) 14:02 proposed a &amp;lsquo;global kill&amp;rsquo; = mechanism to disable single component worldwide  =&amp;gt; Access service will be down, can&#39;t authenticate to control panel =&amp;gt; Security feature will disable credentials if anyone won&#39;t use it frequently =&amp;gt; Can&#39;t access Jira or build system directly.</description>
     </item>
     
     <item>
@@ -37,7 +109,7 @@
       <pubDate>Sat, 06 Jul 2019 16:39:40 +0300</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0247/</guid>
-      <description>RAMBleed  Better read the paper, it&amp;rsquo;s not that difficult Idea1: All the memory cells during reads could influence cells in the same column on the nearest row Idea2: Put your memory between rows with a secret (how to do that explained below):    As you have EQUAL cells containing secret above and below your cell, they will influence the same way. Perform many reads in (A0) cells, that will the cells with secrets activate cells in your memory If you had 0 in your cell and after the experiment, it didn&amp;rsquo;t change -&amp;gt; secret has 0 in the corresponding cell If you had 0 in your cell and after the experiment, it switched to 1 -&amp;gt; secret has 1 in the corresponding cell PROFIT!</description>
+      <description>RAMBleed  Better read the paper, it&#39;s not that difficult Idea1: All the memory cells during reads could influence cells in the same column on the nearest row Idea2: Put your memory between rows with a secret (how to do that explained below):    As you have EQUAL cells containing secret above and below your cell, they will influence the same way. Perform many reads in (A0) cells, that will the cells with secrets activate cells in your memory If you had 0 in your cell and after the experiment, it didn&#39;t change -&amp;gt; secret has 0 in the corresponding cell If you had 0 in your cell and after the experiment, it switched to 1 -&amp;gt; secret has 1 in the corresponding cell PROFIT!</description>
     </item>
     
     <item>
@@ -47,7 +119,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0248/</guid>
       <description>How Verizon and a BGP Optimizer Knocked Large Parts of the Internet Offline Today https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/
- Border Gateway Protocol (BGP) - is a protocol to exchange routing tables BGP optimizer: splits up IP prefixes into smaller (more specific) parts Verison sent these rules into the internet    15% loss of global traffic Verizon should have configured everything correctly long ago:  Configure hard limit prefixes to be received IRR-based filtering RPKI framework with BGP Origin Validation (AT&amp;amp;T have enabld it) All these ideas are defined in the MANRS (Mutually Agreed Norms for Routing Security)  &amp;ldquo;And there&amp;rsquo;s no good reason, other than sloppiness or laziness&amp;rdquo; (about Verizon) They fixed it by phone: calling the DQE to stop advertizing the incorrect BGP routes (screensot of phone calls is attached)  Elixir v1.</description>
+ Border Gateway Protocol (BGP) - is a protocol to exchange routing tables BGP optimizer: splits up IP prefixes into smaller (more specific) parts Verison sent these rules into the internet    15% loss of global traffic Verizon should have configured everything correctly long ago:  Configure hard limit prefixes to be received IRR-based filtering RPKI framework with BGP Origin Validation (AT&amp;amp;T have enabld it) All these ideas are defined in the MANRS (Mutually Agreed Norms for Routing Security)   &amp;ldquo;And there&#39;s no good reason, other than sloppiness or laziness&amp;rdquo; (about Verizon) They fixed it by phone: calling the DQE to stop advertizing the incorrect BGP routes (screensot of phone calls is attached)  Elixir v1.</description>
     </item>
     
     <item>
@@ -67,7 +139,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0241/</guid>
       <description>Local-first software. You own your data, in spite of the cloud https://www.inkandswitch.com/local-first.html
- Cloud is convenient, but you don&amp;rsquo;t have your data. Services dies - you loose your data They suggest a set of principles of &amp;ldquo;Local-first software&amp;rdquo;:  work offline work collaborative (gdoc, trello, etc) across multiple devices improve security, privacy user controls the data  PRINCIPLES  No spinners: your work at your fingertips. Should not require roundtrip to server    You work is not trapped to one device (sync to servers in background) The network is optional Seamless collaboration with your colleagues.</description>
+ Cloud is convenient, but you don&#39;t have your data. Services dies - you loose your data They suggest a set of principles of &amp;ldquo;Local-first software&amp;rdquo;:  work offline work collaborative (gdoc, trello, etc) across multiple devices improve security, privacy user controls the data   PRINCIPLES  No spinners: your work at your fingertips. Should not require roundtrip to server    You work is not trapped to one device (sync to servers in background) The network is optional Seamless collaboration with your colleagues.</description>
     </item>
     
     <item>
@@ -76,8 +148,8 @@
       <pubDate>Sat, 27 Apr 2019 20:32:19 +0400</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0239/</guid>
-      <description> TektonCD: A Kubernetes-native pipeline resource https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/
- Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline Runs as a Pod in k8s cluster Each step in a separate container TaskRun - (k8s resource) runs the Task kubectl get taskruns/mytask -o yaml - to get results PipelineResources - to define resources to be passed in/out of a task types: git, image, cluster, storage all the resources are used in tasks Pipeline - list of tasks to execute in order previous results could be used as input for the next task PipelineRun - to execute a Pipeline PipelineRun will create TaskRun for the each Tasks  More features  Rich Auth capabilities DAG (directed acyclic graph) of execution  Roadmap  Notifications to Slack, email, Github PR, &amp;hellip; Retries Triggers  IMHO  Good basement for a rich CD systems Can&amp;rsquo;t be used by itself Jenkins X Pipelines uses Tekton   </description>
+      <description>TektonCD: A Kubernetes-native pipeline resource https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/
+ Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline  Runs as a Pod in k8s cluster Each step in a separate container   TaskRun - (k8s resource) runs the Task  kubectl get taskruns/mytask -o yaml - to get results   PipelineResources - to define resources to be passed in/out of a task  types: git, image, cluster, storage all the resources are used in tasks   Pipeline - list of tasks to execute in order  previous results could be used as input for the next task   PipelineRun - to execute a Pipeline  PipelineRun will create TaskRun for the each Tasks     More features  Rich Auth capabilities DAG (directed acyclic graph) of execution   Roadmap  Notifications to Slack, email, Github PR, &amp;hellip; Retries Triggers   IMHO  Good basement for a rich CD systems Can&#39;t be used by itself Jenkins X Pipelines uses Tekton    </description>
     </item>
     
     <item>
@@ -87,7 +159,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0238/</guid>
       <description>Overload Control for Scaling WeChat Microservices https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf
- 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request  introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &amp;ldquo;upstream microservices&amp;rdquo; these &amp;ldquo;upper microservices&amp;rdquo; don&amp;rsquo;t send request with low priorities  2.</description>
+ 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &amp;ldquo;upstream microservices&amp;rdquo; these &amp;ldquo;upper microservices&amp;rdquo; don&#39;t send request with low priorities   2.</description>
     </item>
     
     <item>
@@ -107,7 +179,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0229/</guid>
       <description>It’s Time to Move on from Two Phase Commit http://dbmsmusings.blogspot.com/2019/01/its-time-to-move-on-from-two-phase.html
- 2PC is used in industry &amp;gt; 30yrs Briefly, what is 2PC 2PC problems:  Blocking problem: coordinator fails before final decision. Wait until coordinator recovers. Work arounds reduce performance Cloggage problem: until the end of second phase workers have to stop other conflicting transactions, and their conflicting transactions, etc  To sum up 2PC problems: latency, throughput, scalability, availability Conceptually, main 2PC problem: worker can abort after the work is done (1st phase).</description>
+ 2PC is used in industry &amp;gt; 30yrs Briefly, what is 2PC 2PC problems:  Blocking problem: coordinator fails before final decision. Wait until coordinator recovers. Work arounds reduce performance Cloggage problem: until the end of second phase workers have to stop other conflicting transactions, and their conflicting transactions, etc   To sum up 2PC problems: latency, throughput, scalability, availability Conceptually, main 2PC problem: worker can abort after the work is done (1st phase).</description>
     </item>
     
     <item>
@@ -117,7 +189,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0228/</guid>
       <description>Hex package registry vulnerability https://blog.voltone.net/post/22
- Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&amp;rsquo;s hosting and CDN package repository mirror  We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases + properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&amp;rsquo;s private key  Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&amp;rsquo;t include package name.</description>
+ Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&#39;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases + properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&#39;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&#39;t include package name.</description>
     </item>
     
     <item>
@@ -137,7 +209,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0225/</guid>
       <description>Elixir v1.8 Release Notes https://elixir-lang.org/blog/2019/01/14/elixir-v1-8-0-released/
- Custom struct inspections  defmodule User do @derive {Inspect, only: [:id, :name, :age]} defstruct [:id, :name, :age, :email, :encrypted_password] end   Calendar.TimeZoneDatabase behaviour, Date.day_of_year/1, quoter_of_year/1, etc Faster compilation, more efficient code in some cases Improved instrumentation and ownership with $callers  [your code] -- calls --&amp;gt; [supervisor] ---- spawns --&amp;gt; [task] [your code] [supervisor] &amp;lt;-- ancestor -- [task] ^ | |--------------------- caller ---------------------|   Started working on mix release  On Infrastructure at Scale: A Cascading Failure of Distributed Systems https://medium.</description>
+ Custom struct inspections  defmodule User do @derive {Inspect, only: [:id, :name, :age]} defstruct [:id, :name, :age, :email, :encrypted_password] end  Calendar.TimeZoneDatabase behaviour, Date.day_of_year/1, quoter_of_year/1, etc Faster compilation, more efficient code in some cases Improved instrumentation and ownership with $callers  [your code] -- calls --&amp;gt; [supervisor] ---- spawns --&amp;gt; [task] [your code] [supervisor] &amp;lt;-- ancestor -- [task] ^ | |--------------------- caller ---------------------|  Started working on mix release  On Infrastructure at Scale: A Cascading Failure of Distributed Systems https://medium.</description>
     </item>
     
     <item>
@@ -147,7 +219,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0222/</guid>
       <description>Rust-1.31.0 stable + Rust 2018 https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html
- Rust 2018 - work over the past 3 years + cohesive package  Tooling (IDE support, rustfmt, clippy) Documentation Domain working groups work new web site  new key in Cargo.toml: package -&amp;gt; “edition: 2018” (or 2015 by default) backward and forward compatible: 2018 vs 2015 2015 -&amp;gt; 2018: “cargo fix” non-lexical lifetime: more clever borrow checker module system simplified (important for newcomers) more lifetime elision rules (автовыведение lifetime) “const fn” - compile time generated functions, may be used in any constant context  const SIX: i32 = foo(5);  New Tools  clippy: rust linter (v 1.</description>
+ Rust 2018 - work over the past 3 years + cohesive package  Tooling (IDE support, rustfmt, clippy) Documentation Domain working groups work new web site   new key in Cargo.toml: package -&amp;gt; “edition: 2018” (or 2015 by default) backward and forward compatible: 2018 vs 2015 2015 -&amp;gt; 2018: “cargo fix” non-lexical lifetime: more clever borrow checker module system simplified (important for newcomers) more lifetime elision rules (автовыведение lifetime) “const fn” - compile time generated functions, may be used in any constant context  const SIX: i32 = foo(5);   New Tools  clippy: rust linter (v 1.</description>
     </item>
     
     <item>
@@ -157,7 +229,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0221/</guid>
       <description>New Logger in Erlang https://ferd.ca/erlang-otp-21-s-new-logger.html
- OTP-21 -&amp;gt; new logging library in Erlang - logger an alternative and “result” of lager library STRUCTURE  you should not know the structure of logger to use it. But to extend - you should logger exposes 3 types of components with well-defined interfaces  Log Filters Log Handlers Log Formatters  These elements are in config database (ETS -&amp;gt; cheap) You want to log asap (move everything to another process).</description>
+ OTP-21 -&amp;gt; new logging library in Erlang - logger an alternative and “result” of lager library STRUCTURE  you should not know the structure of logger to use it. But to extend - you should logger exposes 3 types of components with well-defined interfaces  Log Filters Log Handlers Log Formatters   These elements are in config database (ETS -&amp;gt; cheap) You want to log asap (move everything to another process).</description>
     </item>
     
     <item>
@@ -176,7 +248,7 @@
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0218/</guid>
-      <description>Paper &amp;ldquo;RobinHood: tail latency aware caching – dynamic reallocation from cache-rich to cache-poor&amp;rdquo; https://blog.acolyer.org/2018/10/26/robinhood-tail-latency-aware-caching-dynamic-reallocation-from-cache-rich-to-cache-poor/ ￼    Cache - for the most frequent requests Tail? - no cache, will take longer to response Several services -&amp;gt; several caches. Reply after all of them have replied    Wait for all the caches Doesn’t make sense to improve the “average” latency Robin Hood: uses cache to improve highest tail latency Контринтуитивно - улучшать tail latency В результате:  Улучшается время запросов (попадаем в кэш) Уменьшается кол-во запросов к бэкенду, улучшая его производительность  Почему нельзя статически определить, какой сервис хуже ведет себя?</description>
+      <description>Paper &amp;ldquo;RobinHood: tail latency aware caching – dynamic reallocation from cache-rich to cache-poor&amp;rdquo; https://blog.acolyer.org/2018/10/26/robinhood-tail-latency-aware-caching-dynamic-reallocation-from-cache-rich-to-cache-poor/ ￼    Cache - for the most frequent requests Tail? - no cache, will take longer to response Several services -&amp;gt; several caches. Reply after all of them have replied    Wait for all the caches Doesn’t make sense to improve the “average” latency Robin Hood: uses cache to improve highest tail latency Контринтуитивно - улучшать tail latency В результате:  Улучшается время запросов (попадаем в кэш) Уменьшается кол-во запросов к бэкенду, улучшая его производительность   Почему нельзя статически определить, какой сервис хуже ведет себя?</description>
     </item>
     
     <item>
@@ -186,7 +258,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0217/</guid>
       <description>Introducing ebpf_exporter https://blog.cloudflare.com/introducing-ebpf_exporter/
- Two main options to collect system metrics  node_exporter: gauges and counters with lots of plugins cAdvisor: gauges and counters for container level metrics  Counters are great, but they lack details about individual events rate() - is 1 sec change, so &amp;gt; 1sec is impossible to get Histograms - better, but node_exporter - only counters Datazaurus picture =&amp;gt; any plot to preserve the same mean + standard deviation values Histogram - shows the truth io + linux kernel =&amp;gt; ?</description>
+ Two main options to collect system metrics  node_exporter: gauges and counters with lots of plugins cAdvisor: gauges and counters for container level metrics   Counters are great, but they lack details about individual events rate() - is 1 sec change, so &amp;gt; 1sec is impossible to get Histograms - better, but node_exporter - only counters Datazaurus picture =&amp;gt; any plot to preserve the same mean + standard deviation values Histogram - shows the truth io + linux kernel =&amp;gt; ?</description>
     </item>
     
     <item>
@@ -196,7 +268,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0216/</guid>
       <description>Maelstrom: mitigating datacenter-level disasters by draining interdependent traffic safely and efficiently https://blog.acolyer.org/2018/10/24/maelstrom-mitigating-datacenter-level-disasters-by-draining-interdependent-traffic-safely-and-efficiently/amp/
- 4+ year of experience dealing with datacenter outages at Facebook Maelstrom = system FB use in prod to mitigate and recover from DC-level disasters Idea: drain traffic away from the failed DC, move it to another DC 4+ years, 100+ disasters =&amp;gt; 1 disaster per 2 weeks!! (DC-wide incident) 3 valuable contributions:  The description of the Maelstrom An explanation of drain tests as they are practiced at FB Hard-won wisdom and expectation settings for rolling out similar capabilities in your own organization  Traffic types:    Maelstrom is used to execute recovery runbooks:  to drain traffic out of the datacenter to restore traffic back  Runbooks are made of tasks.</description>
+ 4+ year of experience dealing with datacenter outages at Facebook Maelstrom = system FB use in prod to mitigate and recover from DC-level disasters Idea: drain traffic away from the failed DC, move it to another DC 4+ years, 100+ disasters =&amp;gt; 1 disaster per 2 weeks!! (DC-wide incident) 3 valuable contributions:  The description of the Maelstrom An explanation of drain tests as they are practiced at FB Hard-won wisdom and expectation settings for rolling out similar capabilities in your own organization   Traffic types:    Maelstrom is used to execute recovery runbooks:  to drain traffic out of the datacenter to restore traffic back   Runbooks are made of tasks.</description>
     </item>
     
     <item>
@@ -236,7 +308,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0212/</guid>
       <description>Netflix’s Edge Load balancing https://medium.com/netflix-techblog/netflix-edge-load-balancing-695308b5548c
- Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&amp;gt; problems server side update -&amp;gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)   Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers  Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)  Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB  FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)  Probation:  for new servers allow 1 request in-flight to gather stats  Stats Decay:  Linear decay over 30 secs to flush all the stats  RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!</description>
+ Goal: very high load. Even small fraction of errors - problem All servers are overloaded - problem. Usually, only a subset (just started, GC, hardware problem) Guiding principles:  avoid distributed state avoid client-side configuration:  not the same team -&amp;gt; problems server side update -&amp;gt; problems instead of static thresholds use adaptive mechanisms as func(traffic, performance, env)     Load-balancing approach  choice-of-2-algorithm to choose between the servers load-balancer’s view of the servers utilization servers’ view of the servers utilization “probation” and “server-age” mechanisms to avoid overloading newly started servers   Server-Reported Utilization  Actively report Passively report (addition health-check calls might needed)   Choice-of-2 instead of RoundRobin/JoinSmallesQueue  Client Health: errors for that server Server Utilization: most recent score provided by the server Client Utilization: number of inflight requests to the server from the LB   FIRST: Filter out servers with high utilization and health  for each request (agains stale filtering result) best-effor by making N attempts to find anything, if not - without filtering helps with large amount of problematic servers (not to choose between 2 broken servers)   Probation:  for new servers allow 1 request in-flight to gather stats   Stats Decay:  Linear decay over 30 secs to flush all the stats   RESULTS Slower Servers Receive Less Traffic  canary deployment won’t show degradation!</description>
     </item>
     
     <item>
@@ -246,7 +318,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0209/</guid>
       <description>ElixirConf 2018 Keynote by Jose Valim https://www.youtube.com/watch?v=m7TWMFtDwHg&amp;amp;list=PLqj39LCvnOWaxI87jVkxSdtjG8tlhl7U6
- Elixir History, versions 1.7 release: EEP (Elixir Enhancement Proposal) 48 (documentation standard) Community:  New podcasts new ExDoc versions Erlang/OTP 21 (compilation time is 20% faster) Phoenix v1.3, Nerves v1.0 Nerves: ecosystem to build embedded systems with Elixir  https://nerves-project.org Platform (Linux starts BEAM VM) Framework: libraries Tooling: to manage builds, update firmware, configure devices, etc work via mix (mix firmware.burn -d /dev/rdisk3)   Feedback from community  Difficult to contribute now it’s transparent what team is doing doubled the elixir team  Criteria for new features Guidelines for new features on-going effort  code formatter  released in elixir-1.</description>
+ Elixir History, versions 1.7 release: EEP (Elixir Enhancement Proposal) 48 (documentation standard) Community:  New podcasts new ExDoc versions Erlang/OTP 21 (compilation time is 20% faster) Phoenix v1.3, Nerves v1.0 Nerves: ecosystem to build embedded systems with Elixir  https://nerves-project.org Platform (Linux starts BEAM VM) Framework: libraries Tooling: to manage builds, update firmware, configure devices, etc work via mix (mix firmware.burn -d /dev/rdisk3)     Feedback from community  Difficult to contribute now it’s transparent what team is doing doubled the elixir team   Criteria for new features Guidelines for new features on-going effort  code formatter  released in elixir-1.</description>
     </item>
     
     <item>
@@ -256,7 +328,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0208/</guid>
       <description>Introducing Thanos: Prometheus at scale https://improbable.io/games/blog/thanos-prometheus-at-scale
- Prometheus: simple and reliable Problem: can’t scale: Petabytes of historic data, Default solution: Hierarchical Federation    Leaf-prometheus servers, one meta-Prometheus server Problems:  Configuration Add one more single point of failure Complex rules to expose only certain data on the federated endpoint Not all data is available from a single query API   Another solution: HA pairs of Prometheus servers  independently collect data -&amp;gt; problem with deduplication  Prometheus 2.</description>
+ Prometheus: simple and reliable Problem: can’t scale: Petabytes of historic data, Default solution: Hierarchical Federation    Leaf-prometheus servers, one meta-Prometheus server Problems:  Configuration Add one more single point of failure Complex rules to expose only certain data on the federated endpoint Not all data is available from a single query API     Another solution: HA pairs of Prometheus servers  independently collect data -&amp;gt; problem with deduplication   Prometheus 2.</description>
     </item>
     
     <item>
@@ -276,7 +348,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0206/</guid>
       <description>NetSpectre: Read Arbitrary Memory over Network https://misc0110.net/web/files/netspectre.pdf
- Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15&amp;frasl;60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное + спекулятивное исполнение. Прерывания в pipeline -&amp;gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе.</description>
+ Вкратце: Удаленная атака (чтение произвольной памяти), не требующая запуска локального кода, утаскивает 15/60 бит в час. Использует идею, что latency чтения из памяти влияет на latency любого сетевого запроса. Нужно только усреднять по большому числу запросов, чтобы определить разницу. Полный трындец безопасности BACKGROUND  Последовательное и непоследовательное + спекулятивное исполнение. Прерывания в pipeline -&amp;gt; отбрасывание результатов. Предсказание переходов - один из примеров использования Спекулятивного вычисления Side channel атака - это атака, основанная на дополнительном знании о строении компьютерной системы, а не о самой программе.</description>
     </item>
     
     <item>
@@ -286,7 +358,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0201/</guid>
       <description>XARs: An efficient system for self-contained executables https://code.fb.com/data-infrastructure/xars-a-more-efficient-open-source-system-for-self-contained-executables/
- XAR: eXecutable ARchive to distribute software Alternative: PEX = self-contained Python virtual environments 1 file highly compressed all deps included can be run from anywhere in the system Python, Lua applications, Node.js applications, C++ exe and data files Initially: PAR (Python Archive), that decompress to tmp folder, run in folder Problems: decompressing each time, cleanup Alternative: PEX: decompress once, reuse it XAR uses squashfs files (mount before use, unmount after idle timeout) “nearly zero overhead” in prod Benchmark:    XAR:  4kb preamble = shebang pointing to a helper executable helper tool xarexec_fuse that knows how to read optionally mount, and execute content FUSE filesystem squashfs with zstd compression   11 Ways (Not) to Get Hacked in k8s https://kubernetes.</description>
+ XAR: eXecutable ARchive to distribute software Alternative: PEX = self-contained Python virtual environments 1 file highly compressed all deps included can be run from anywhere in the system Python, Lua applications, Node.js applications, C++ exe and data files Initially: PAR (Python Archive), that decompress to tmp folder, run in folder Problems: decompressing each time, cleanup Alternative: PEX: decompress once, reuse it XAR uses squashfs files (mount before use, unmount after idle timeout) “nearly zero overhead” in prod Benchmark:    XAR:  4kb preamble = shebang pointing to a helper executable helper tool xarexec_fuse that knows how to read optionally mount, and execute content FUSE filesystem squashfs with zstd compression    11 Ways (Not) to Get Hacked in k8s https://kubernetes.</description>
     </item>
     
     <item>
@@ -335,7 +407,7 @@
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0191/</guid>
-      <description>The Hitchhiker&amp;rsquo;s Guide to the Unexpected https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html
+      <description>The Hitchhiker&#39;s Guide to the Unexpected https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html
  He is system architect, and always explain system design in OTP terms (even if he’s talking not about Erlang/Elixir) Where bugs come from: ￼from “unknown”: spectre/meltdown, thundering herd.    Main target: move bugs from “unknown” to the “known” space. How?  Difficult: Increase knowledge of developers. Simple: Hire more seniors (temptation: send seniors alone to the difficult parts. They’ll leave some day).</description>
     </item>
     
@@ -346,7 +418,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0186/</guid>
       <description>Giving every Tor Hidden Service a IPv6 address https://blog.benjojo.co.uk/post/tor-onions-to-v6-with-iptables-proxy
- Onion Services (A) - allows to host and access a TCP port with anonmitity the only requirements - connection to the Tor network NAT/firewall evader. It would be nice if Tor client is not needed to access an onion service. For HTTP/HTTPS services there’s a service to do that: tor2web &amp;rdquo;&amp;ldquo;&amp;ldquo; it will only work for HTTP/HTTPS, even though onion services can be wrapped with any TCP port service!</description>
+ Onion Services (A) - allows to host and access a TCP port with anonmitity the only requirements - connection to the Tor network NAT/firewall evader. It would be nice if Tor client is not needed to access an onion service. For HTTP/HTTPS services there’s a service to do that: tor2web &amp;quot;&amp;rdquo;&amp;rdquo; it will only work for HTTP/HTTPS, even though onion services can be wrapped with any TCP port service!</description>
     </item>
     
     <item>
@@ -367,7 +439,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0184/</guid>
       <description>TCP Tracepoints http://www.brendangregg.com/blog/2018-03-22/tcp-tracepoints.html
- TCP Tracepoints have arrived in Linux. Linux-4.15 added 5 of them, 4.16 will add 2 more Versatile sock:inet_sock_set_state. It can be used to track when kernel changes the state of a TCP session (e.g. TCP_SYN_SENT -&amp;gt; TCP_ESTABLISHED) tcplife tool in the open-source “bcc” collection.  Used “kprobe” (kernel dynamic tracing) of the “tcp_set_state()” kernel function. Relies on kernel implementation, need to change from version to version  Tracepoints are considered as “stable” and “shouldn’t change” (not “set in stone”) “trace” tool in the bcc:   # trace -t &#39;t:sock:inet_sock_set_state &amp;quot;%llx: %d -&amp;gt; %d&amp;quot;, args-&amp;gt;skaddr, args-&amp;gt;oldstate, args-&amp;gt;newstate&#39; TIME PID TID COMM FUNC - 1.</description>
+ TCP Tracepoints have arrived in Linux. Linux-4.15 added 5 of them, 4.16 will add 2 more Versatile sock:inet_sock_set_state. It can be used to track when kernel changes the state of a TCP session (e.g. TCP_SYN_SENT -&amp;gt; TCP_ESTABLISHED) tcplife tool in the open-source “bcc” collection.  Used “kprobe” (kernel dynamic tracing) of the “tcp_set_state()” kernel function. Relies on kernel implementation, need to change from version to version   Tracepoints are considered as “stable” and “shouldn’t change” (not “set in stone”) “trace” tool in the bcc:   # trace -t &amp;#39;t:sock:inet_sock_set_state &amp;#34;%llx: %d -&amp;gt; %d&amp;#34;, args-&amp;gt;skaddr, args-&amp;gt;oldstate, args-&amp;gt;newstate&amp;#39; TIME PID TID COMM FUNC - 1.</description>
     </item>
     
     <item>
@@ -387,7 +459,7 @@
       
       <guid>http://gliush.github.io/devzen_note/0179/</guid>
       <description>Paper &amp;ldquo;Partisan: Enabling Cloud-Scale Erlang Applications&amp;rdquo; https://arxiv.org/abs/1802.02652
- Models:  Full mesh model client-server model peer-to-peer model publish-subscribe model  Usually, the runtime support for distributed applications is not needed. But several counter-examples: Akka cluster, Microsoft Orleans, Distributed Erlang single topology is insufficient Partisan: distributed programming model + distributed layer = alternative to Distributed Erlang. 2 important improvements over Distributed Erlang:  addition of multiple runtime-selectable cluster topologies ability to gain additional parallelism by distributing messages over multiple communication channels  Default topology: full mesh But can distribute traffic over multiple connections to avoid congestion problem observed in Distributed Erlang Consider 2 application scenarios:  distributed database with large objects on smaller clusters (10s of nodes) lightweight replicated k-v store (100-1000s of nodes)  communication channels -&amp;gt; 30x improvements on point-to-point massaging, 13.</description>
+ Models:  Full mesh model client-server model peer-to-peer model publish-subscribe model   Usually, the runtime support for distributed applications is not needed. But several counter-examples: Akka cluster, Microsoft Orleans, Distributed Erlang single topology is insufficient Partisan: distributed programming model + distributed layer = alternative to Distributed Erlang. 2 important improvements over Distributed Erlang:  addition of multiple runtime-selectable cluster topologies ability to gain additional parallelism by distributing messages over multiple communication channels   Default topology: full mesh But can distribute traffic over multiple connections to avoid congestion problem observed in Distributed Erlang Consider 2 application scenarios:  distributed database with large objects on smaller clusters (10s of nodes) lightweight replicated k-v store (100-1000s of nodes)   communication channels -&amp;gt; 30x improvements on point-to-point massaging, 13.</description>
     </item>
     
     <item>
@@ -446,7 +518,7 @@
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0171/</guid>
-      <description>AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3  Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов.</description>
+      <description>AWS EC2 Virtualization 2017: Introducing Nitro http://www.brendangregg.com/blog/2017-11-29/aws-ec2-virtualization-2017.html ￼    Для себя:  HVM позволяет использовать фичи железа: enhanced networking, какие-то фишки CPU. с4., m4. - уже HVM only, последняя серия, где можно было использовать PV - это c3/m3   Nitro - Latest AWS supervisor. Hardware virtualization is now fast Зеленый цвет (высокая производительность) впервые появился на CPU (самое важное), распространяется правее. Это намеренное решение AWS. Каждое направление развивается по следующим стадиям:  Virtualized in Software: работает с неизменной гостевой ОС, все эмулируемые операции в 2-10 раз медленнее Paravirtualization: Гипервизор позволяет эффективные гипервызовы, и гостевая ОС должна использовать драйвера и модификации ядра для вызова этих гипервызовов.</description>
     </item>
     
     <item>
@@ -455,8 +527,8 @@
       <pubDate>Sun, 26 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0169/</guid>
-      <description> Paper &amp;ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&amp;rdquo; https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf
- Every microcontroller has firmware readout protection Checked only STM32F0 family (entry-level microcontroller) Paper:  analysis of 3 security core components detection of 3 weknesses + 3 ideas for their exploitation  Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1 Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1  Proof of Concept for each weakness =&amp;gt; vulnerabilities discussion of impact  STM32 Security Concept  </description>
+      <description>Paper &amp;ldquo;Shedding too much Light on a Microcontroller’s Firmware Protection&amp;rdquo; https://www.aisec.fraunhofer.de/content/dam/aisec/ResearchExcellence/woot17-paper-obermaier.pdf
+ Every microcontroller has firmware readout protection Checked only STM32F0 family (entry-level microcontroller) Paper:  analysis of 3 security core components detection of 3 weknesses + 3 ideas for their exploitation  Cold-Boot Stepping: enforcing single-stepping under limited debugging capabilities in Readout Protection (RDP) Level 1 Security Downgrade: Leveraging the lock-level design to downgrade the firmware protection setting Debug Interface Exploit: Discovery of a race condition in the debug interface in RDP Level1   Proof of Concept for each weakness =&amp;gt; vulnerabilities discussion of impact   STM32 Security Concept  </description>
     </item>
     
     <item>
@@ -476,7 +548,11 @@
       
       <guid>http://gliush.github.io/devzen_note/0165/</guid>
       <description>A general purpose counting filter: making every bit count https://blog.acolyer.org/2017/08/08/a-general-purpose-counting-filter-making-every-bit-count/amp/
- Approximate Membership Query (AMQ). Example: Bloom filter. Определять, принадлежит какой-то элемент данному множеству. Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive. =&amp;gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно” Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc 4 недостатка Bloom фильтров:  Невозможность удалить объекты Плохо скалируются за размер RAM Невозможность динамически изменить размер Невозможность определить кол-во вхождений каждого элемента  В paper придумана новая AMQ структура: Counting Quotient Filter (подсчетный количественный фильтр) = CQF structure Все недостатки Bloom фильтра ушли, очень хорошо работает (время, объем памяти) В несколько раз быстрее Bloom Filter, cuckoo filter Поддержка количества объекта - это огромный плюс Обычный QF (долевой фильтр) -&amp;gt; RSQF (rank and reset based quotient filter) -&amp;gt; CQF QF: ￼   храним в h0-вой ячейке h1 (домашняя), либо сдвиг на соседнюю.</description>
+  Approximate Membership Query (AMQ). Example: Bloom filter.
+  Определять, принадлежит какой-то элемент данному множеству.
+  Не возвращают false negative (т.е. они говорят, что не принадлежат, хотя они принадлежат), но могут возвращать false positive.
+  =&amp;gt; Суммарно на вопрос “объект в множестве?” отвечают либо “No”, либо “Возможно”
+  Расширения: удаление, изменение размеров множеств, вести подсчет кол-ва, etc</description>
     </item>
     
     <item>
@@ -497,7 +573,7 @@
       <guid>http://gliush.github.io/devzen_note/0162/</guid>
       <description>Streams: a new general purpose data structure in Redis http://antirez.com/news/114
 On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-part-1-flavours-of-io-8e1ace1de017
- Filesysem IO has a large influence (like Network IO) It has smaller set of tools. Flavours of IO:  syscalls: open, write, read, fsync, sync, close Standard IO: fopen, fwrite, fread, fflush, fclose Vectored IO: writev, readv Memory mapped IO: open, mmap, msync, munmap  Buffered IO. in stdlib: full and line buffering.</description>
+ Filesysem IO has a large influence (like Network IO) It has smaller set of tools. Flavours of IO:  syscalls: open, write, read, fsync, sync, close Standard IO: fopen, fwrite, fread, fflush, fclose Vectored IO: writev, readv Memory mapped IO: open, mmap, msync, munmap   Buffered IO. in stdlib: full and line buffering.</description>
     </item>
     
     <item>
@@ -507,7 +583,7 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       
       <guid>http://gliush.github.io/devzen_note/0161/</guid>
       <description>Quantifying detectable bugs in JavaScript https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/
- Статья начинается с цитаты менеджера из Microsoft: “если можно быстро поправить код, чтобы он начал статически анализироваться и кол-во ошибок снизится на 10% - это просто сногсшибательно, мы такое обязательно возьмем” authors study historical bugs in real world JS projects in GitHub History + static type system that can be applied with few modifications Error types: (detectable ^ public ^ patched)    1.</description>
+ Статья начинается с цитаты менеджера из Microsoft: “если можно быстро поправить код, чтобы он начал статически анализироваться и кол-во ошибок снизится на 10% - это просто сногсшибательно, мы такое обязательно возьмем” authors study historical bugs in real world JS projects in GitHub History + static type system that can be applied with few modifications Error types: (detectable ^ public ^ patched)      Найти все баги, которые поправили (issue с ссылкой на commit)    Отфильтровать вручную (не новая фича, рефакторинг)   ~4M багов, confidence level = 5%, поэтому мы анализировали 400 багов 48% патчей ~ 5строк кода Оценка бага (может ли статическая типизация помочь) должна делаться не дольше 10 мин (анализ на предварительных исследованиях 78 ошибок) Каждый баг проверялся на Flow, TypeScript Некоторые ошибки - type-system undetectable 400: 59 (Flow), 58(TypeScript), 18: timeout, 18 разобрали -&amp;gt; 60 у Flow и у TypeScript Flow: 1.</description>
     </item>
     
     <item>
@@ -538,7 +614,7 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       
       <guid>http://gliush.github.io/devzen_note/0155/</guid>
       <description>Amazon Aurora http://www.allthingsdistributed.com/files/p1041-verbitski.pdf
- вместо консенсуса 2&amp;frasl;3 они используют 4&amp;frasl;6 (3&amp;frasl;6 для чтения) 10GB сегменты, которые восстанавливать 10 сек (на 10Gbit сетке) logs are data - хранят только логи дополнительно, асинхронно материализуют страницы БД, которые имеют длинную цепочку изменений в логе Восстановление после крэша в Mysql: восстановить последний checkpoint + применить изменения из лога. В Aurora сохранение чекпоинтов идет асинхронно в фоне, на каждой ноде, и восстанавливаться оно будет также, т.</description>
+ вместо консенсуса 2/3 они используют 4/6 (3/6 для чтения) 10GB сегменты, которые восстанавливать 10 сек (на 10Gbit сетке) logs are data - хранят только логи дополнительно, асинхронно материализуют страницы БД, которые имеют длинную цепочку изменений в логе Восстановление после крэша в Mysql: восстановить последний checkpoint + применить изменения из лога. В Aurora сохранение чекпоинтов идет асинхронно в фоне, на каждой ноде, и восстанавливаться оно будет также, т.</description>
     </item>
     
     <item>
@@ -548,7 +624,8 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       
       <guid>http://gliush.github.io/devzen_note/0154/</guid>
       <description>If your software should be cross platform and accessible, forget about Qt https://blind.guru/qta11y.html
-“Ограниченные возможности” - What toolkit to choose to create a UI on most platform? - Java/Swing (Win, Linux, Mac) - C++? Qt. 10yr ago it didn’t work (4.x on Linux). Everybody hates Qt on Win - Email to QT -&amp;gt; answer “Works everywhere, if you find problem - we’ll fix it” - Проблема: основной (платный) продукт для чтения текста с экрана не видит текст в “text entry widgets” -&amp;gt; bug in Qt tracker - Answer (in a year): Will be fixed after rewrite, that has no deadline.</description>
+“Ограниченные возможности”
+ What toolkit to choose to create a UI on most platform?  Java/Swing (Win, Linux, Mac) C++? Qt. 10yr ago it didn’t work (4.x on Linux). Everybody hates Qt on Win   Email to QT -&amp;gt; answer “Works everywhere, if you find problem - we’ll fix it” Проблема: основной (платный) продукт для чтения текста с экрана не видит текст в “text entry widgets” -&amp;gt; bug in Qt tracker Answer (in a year): Will be fixed after rewrite, that has no deadline.</description>
     </item>
     
     <item>
@@ -569,7 +646,7 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       
       <guid>http://gliush.github.io/devzen_note/0145/</guid>
       <description>Raid controllers and SSDs https://momjian.us/main/blogs/pgblog/2017.html#May_15_2017
- Disk array controllers are popular because of:  Hardware RAID support Large read/write cache write reordering instant durable storage of writes using a BBU (backup battery)  With SSD (with BBUs), the usefulness of RAID controllers is unclear:  CPU are fast and can do RAID in software servers have tons of RAM write reordering is unnecessary for SSDs (good random write perf) BBUs on SSDs make RAID BBUs redundant   While raid controllers introduce problems on their own: * High failure rates * complex configuration * slowness Ссылки на переписку в postgresql mailing list</description>
+ Disk array controllers are popular because of:  Hardware RAID support Large read/write cache write reordering instant durable storage of writes using a BBU (backup battery)   With SSD (with BBUs), the usefulness of RAID controllers is unclear:  CPU are fast and can do RAID in software servers have tons of RAM write reordering is unnecessary for SSDs (good random write perf) BBUs on SSDs make RAID BBUs redundant    While raid controllers introduce problems on their own:</description>
     </item>
     
     <item>
@@ -598,7 +675,7 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       <pubDate>Sun, 16 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0138/</guid>
-      <description> 2017 Настачку https://nastachku.ru/
+      <description>2017 Настачку https://nastachku.ru/
  Алексей Палажченко (golangshow) “Профилирование и оптимизация программ на Go” Олег Бартунов “Postgres - как NoSQL база данных” Иван Евтухович “Ключевые DevOps практики” Константин Назаров (hangops+devops deflope) “Быстрые микросервисы на flask+gevent” Говорят, было интересно на Valentin Bartenev (core developer NGINX) “Недостатки Linux API с точки зрения разработчика высокопроизводительного веб-сервера” Наклейки  </description>
     </item>
     
@@ -609,7 +686,7 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       
       <guid>http://gliush.github.io/devzen_note/0137/</guid>
       <description>Kubernetes-1.6 http://blog.kubernetes.io/2017/03/kubernetes-1.6-multi-user-multi-workloads-at-scale.html
- Focus: scale + automation. 5K nodes cluster is supported (150K pods) etcd v3 Federation for more nodes &amp;amp; multi-cluster (kubefed - becomes beta) RBAC is beta (is used by default). Allows to give users/service accounts access to specific resourses on a per-namespace basis kubeadm tool - is beta (create a secure cluster, RBAC is supported) Node affinity/anti-affinity is in beta (assign to nodes based on node labels).</description>
+ Focus: scale + automation. 5K nodes cluster is supported (150K pods) etcd v3 Federation for more nodes &amp;amp; multi-cluster (kubefed - becomes beta) RBAC is beta (is used by default). Allows to give users/service accounts access to specific resourses on a per-namespace basis kubeadm tool - is beta (create a secure cluster, RBAC is supported) Node affinity/anti-affinity is in beta (assign to nodes based on node labels). Taints and tolerations is in beta (exclude pods from particular nodes).</description>
     </item>
     
     <item>
@@ -640,7 +717,8 @@ On Disk IO, Part 1: Flavours of IO https://medium.com/@ifesdjeen/on-disk-io-par
       
       <guid>http://gliush.github.io/devzen_note/0130/</guid>
       <description>Book &amp;ldquo;Software Engineering at Google&amp;rdquo; https://arxiv.org/pdf/1702.01715.pdf
-The most important chapters according to the content - 2.1 Source Repository - dev in “Head” of repo - automated systems run tests frequently - code ownership - 2.2 Build system - build results are cached in the cloud - incremental rebuilds are fast - 2.3 CR - all changes to main source code MUST be reviewed at least by 1 eng - CR discussions are automatically copied to a mailing list - 2.</description>
+The most important chapters according to the content
+ 2.1 Source Repository dev in “Head” of repo automated systems run tests frequently code ownership 2.2 Build system build results are cached in the cloud incremental rebuilds are fast 2.3 CR all changes to main source code MUST be reviewed at least by 1 eng CR discussions are automatically copied to a mailing list 2.4 Testing 2.</description>
     </item>
     
     <item>
@@ -669,7 +747,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 22 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0126/</guid>
-      <description> Announcing Rust Language Server Alpha Release http://www.jonathanturner.org/2017/01/rls-alpha-release.html
+      <description>Announcing Rust Language Server Alpha Release http://www.jonathanturner.org/2017/01/rls-alpha-release.html
  RLS = racer + Rust compiler racer: quick but not accurate rust compiler - slower, accurate, async (will say when ready)  Rust for NTPSec https://www.opennet.ru/opennews/art.shtml?num=45832 (+links)
  цель уйти с си - увеличить безопасность (выходы за границы массива, подвисшие указатели, и т.д.) Автор решил написать проект: simple IRC сервер (I can do it in my sleep) За 4 дня - 67 строк “wrapping code for the server” За 4 дня на Го - изучил язык, написал сервер и тесты No ‘select/poll/epoll_wait’ in Rust рассуждения про crate и систему  </description>
     </item>
@@ -691,7 +769,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 11 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0122/</guid>
-      <description> Amazon interview http://shivankaul.com/blog/2016/12/07/clean-your-desk-yet-another-amazon-interview-experience.html
+      <description>Amazon interview http://shivankaul.com/blog/2016/12/07/clean-your-desk-yet-another-amazon-interview-experience.html
  почистите стол не должно быть ручек и листочков телефон положите, чтобы было видно установите приложение подождите, идет log off  Python-3.6 https://docs.python.org/3.6/whatsnew/3.6.html
  PEP 495: Local Time Disambiguation: перевод часов назад на час - создается fold (извилина, загиб) PEP 529: Change Windows filesystem encoding to UTF-8 PEP 528: Change Windows console encoding to UTF-8 PEP 526: Syntax for variable annotations New dict implementation (memory usage is 20-25% smaller) PYTHONMALLOC environment variable (memory allocator + hooks) ‘secrets’ module for crypto-strong pseudo-random valules asyncio - fast  </description>
     </item>
@@ -702,9 +780,9 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 04 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0121/</guid>
-      <description> AWS Aurora + Postgresql https://aws.amazon.com/blogs/aws/amazon-aurora-update-postgresql-compatibility/ + comments https://news.ycombinator.com/item?id=13072861
+      <description>AWS Aurora + Postgresql https://aws.amazon.com/blogs/aws/amazon-aurora-update-postgresql-compatibility/ + comments https://news.ycombinator.com/item?id=13072861
  RDS replicates to a standby instance + EBS. Aurora replicates to a special storage engine  FPGA on AWS https://aws.amazon.com/blogs/aws/developer-preview-ec2-instances-f1-with-programmable-hardware/
- with Intel Broadwell processors, up to 976GB of memory, 4TB SSD, 1-8 FPGA several FPGA share the same memory address space (up to 12GB/sec in each direction) VHDL or Verilog + tools High Level Synthesis tools, including OpenCL to program FPGA -  </description>
+ with Intel Broadwell processors, up to 976GB of memory, 4TB SSD, 1-8 FPGA several FPGA share the same memory address space (up to 12GB/sec in each direction) VHDL or Verilog + tools High Level Synthesis tools, including OpenCL to program FPGA   </description>
     </item>
     
     <item>
@@ -734,7 +812,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0118/</guid>
       <description>USB-C + Thunderbolt-3 http://blog.fosketts.net/2016/10/29/total-nightmare-usb-c-thunderbolt-3
- Спецификация на 24-pin штекер + кабель Разные сигналы (протоколы):  USB 2.0 USB 3.1 gen 1 -&amp;gt; 5Gbps, Apple 12” MacBook USB 3.1 gen 2 -&amp;gt; 10Gbps Alternate Mode (non-USB protocols): DisplayPort, MHL, HDMI, Thunderbolt. not every device supports every Alternate Mode protocol Power Delivery (up to 100Watts). 2 different specifications Audio Accessory Mode (Analogue Audio)  Problems:  Not every USB-C cable, port, device, and power supply will be compatible USB-C HDMI adapter: over USB3.</description>
+ Спецификация на 24-pin штекер + кабель Разные сигналы (протоколы):  USB 2.0 USB 3.1 gen 1 -&amp;gt; 5Gbps, Apple 12” MacBook USB 3.1 gen 2 -&amp;gt; 10Gbps Alternate Mode (non-USB protocols): DisplayPort, MHL, HDMI, Thunderbolt. not every device supports every Alternate Mode protocol Power Delivery (up to 100Watts). 2 different specifications Audio Accessory Mode (Analogue Audio)   Problems:  Not every USB-C cable, port, device, and power supply will be compatible USB-C HDMI adapter: over USB3.</description>
     </item>
     
     <item>
@@ -743,7 +821,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 30 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0116/</guid>
-      <description> Ansible-2.2 http://www.opennet.ru/opennews/art.shtml?num=45411  2 security fixes (command injection by fact variables + key check) docker_network listen feature for modules (easily notify multiple servers) performance improvements binary modules ec2vpc* modules f5 bigip_device  </description>
+      <description>Ansible-2.2 http://www.opennet.ru/opennews/art.shtml?num=45411  2 security fixes (command injection by fact variables + key check) docker_network listen feature for modules (easily notify multiple servers) performance improvements binary modules ec2_vpc_* modules f5 bigip_device  </description>
     </item>
     
     <item>
@@ -762,8 +840,8 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 02 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0112/</guid>
-      <description> Kubernetes-1.4 http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html
- Cluster creation with two commands (kubeadm command)  limitations: AWS integration won’t work (ELB) single master, kubectl logs won’t work (use docker logs instead) no easy way to generate kubeconfig (copy from master)  simplified installation (4 packages with all the deps in all major linux distributions) expanded stateful application support  ScheduledJob = cron init-containers (start 1+ containers before starting the main application) Dynamic PVC Provisioning moved to Beta - expose multiple storage provisioners + users select them using Storage Class API ojbect Stable Kubernetes Helm charts: Jenkins, MariaDB, MySQL  Cluster Federation  Federated Replica Sets Beta (total federated replicas, relative weight / replica count in each region/cloud Federated Services -&amp;gt; Beta (secrets, events and namespaces are added) Federated Ingress -&amp;gt; Alpha for GCP (L7 globally load balanced)  Container security support (Pod Security Policy) Infra enhancements  inter-pod affinity and anti-affinity  Kubernetes Dashboard UI   </description>
+      <description>Kubernetes-1.4 http://blog.kubernetes.io/2016/09/kubernetes-1.4-making-it-easy-to-run-on-kuberentes-anywhere.html
+ Cluster creation with two commands (kubeadm command)  limitations: AWS integration won’t work (ELB) single master, kubectl logs won’t work (use docker logs instead) no easy way to generate kubeconfig (copy from master)   simplified installation (4 packages with all the deps in all major linux distributions) expanded stateful application support  ScheduledJob = cron init-containers (start 1+ containers before starting the main application) Dynamic PVC Provisioning moved to Beta - expose multiple storage provisioners + users select them using Storage Class API ojbect Stable Kubernetes Helm charts: Jenkins, MariaDB, MySQL   Cluster Federation  Federated Replica Sets Beta (total federated replicas, relative weight / replica count in each region/cloud Federated Services -&amp;gt; Beta (secrets, events and namespaces are added) Federated Ingress -&amp;gt; Alpha for GCP (L7 globally load balanced)   Container security support (Pod Security Policy) Infra enhancements  inter-pod affinity and anti-affinity   Kubernetes Dashboard UI   </description>
     </item>
     
     <item>
@@ -772,7 +850,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 11 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0109/</guid>
-      <description> The Myth of Ram - part I http://www.ilikebigbits.com/blog/2014/4/21/the-myth-of-ram-part-i
+      <description>The Myth of Ram - part I http://www.ilikebigbits.com/blog/2014/4/21/the-myth-of-ram-part-i
  O(sqrt(N)) instead of O(1) for accessing RAM =&amp;gt; O(N*sqrt(N)) for going through linked list simple program accessing linked list. Accessing element is not O(1) (plot) (1ns -&amp;gt; 1 microsec) several levels of caching -&amp;gt; O(sqrt(N))  </description>
     </item>
     
@@ -783,7 +861,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0108/</guid>
       <description>Wisdom about Erlang BEAM and VM http://beam-wisdoms.clau.se/
- Explain like I&amp;rsquo;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
+ Explain like I&#39;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
  TP-Link + Lenovo X200 Распознавание напечатанного по анализу сигнала wifi Значение - результат трех эффектов: затухание, multi-paths and Doppler shift Три сложности:  распознать начало и окончание нажатия (алгоритм предложили для приблизительного выяснения) выделение свойств каждого сигнала для того, чтобы распознавать 37 знаков (10 цифр, 26 букв и пробел).</description>
     </item>
     
@@ -794,7 +872,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0107/</guid>
       <description>TCP puzzlers http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/
- happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&amp;rsquo;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&amp;rsquo;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
+ happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&#39;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&#39;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
     </item>
     
     <item>
@@ -824,7 +902,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0098/</guid>
       <description>Docker-1.12 https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/
- built-in orchestration. One binary (git style?) docker swarm init - creates a Raft with one node. Adding nodes either worker (default) or managers PR: docker design is based on 4 principles resilience: restart container on another node if a node fails Security: TLS, certificate rotation 30min, Bundles: image + network + network of containers interaction gRPC for inter-node communication (HTTP/2 multiplexing and header compression) protobufs  Erlang-19.</description>
+ built-in orchestration. One binary (git style?) docker swarm init - creates a Raft with one node. Adding nodes either worker (default) or managers PR: docker design is based on 4 principles resilience: restart container on another node if a node fails Security: TLS, certificate rotation 30min, Bundles: image + network + network of containers interaction gRPC for inter-node communication (HTTP/2 multiplexing and header compression) protobufs  Erlang-19.0 http://erlang.</description>
     </item>
     
     <item>
@@ -833,7 +911,8 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 19 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0097/</guid>
-      <description>Bitsquatting https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf - Проблемы железа. Sun UltraSparc II CPU - во время изготовления получали примеси, которые являются эмиттером альфа частиц в SRAM. Кэш получал битовые ошибки - крэш сервера. Нет проверки корректности. - memtest86 не просто так добавляют на Ubuntu LiveCD - DRAM тоже очень подвержен - Температура - Радиация (высокоэнергичные частицы из космоса) - основной источник ошибок в DRAM. На высоте километра - в 5 раз выше, чем на уровне моря - Тесты DRAM: до 1 ошибки в 1.</description>
+      <description>Bitsquatting https://media.blackhat.com/bh-us-11/Dinaburg/BH_US_11_Dinaburg_Bitsquatting_WP.pdf
+ Проблемы железа. Sun UltraSparc II CPU - во время изготовления получали примеси, которые являются эмиттером альфа частиц в SRAM. Кэш получал битовые ошибки - крэш сервера. Нет проверки корректности. memtest86 не просто так добавляют на Ubuntu LiveCD - DRAM тоже очень подвержен Температура Радиация (высокоэнергичные частицы из космоса) - основной источник ошибок в DRAM. На высоте километра - в 5 раз выше, чем на уровне моря Тесты DRAM: до 1 ошибки в 1.</description>
     </item>
     
     <item>
@@ -843,7 +922,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0096/</guid>
       <description>On Being A Senior Engineer http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/
- senior - очень плавный вход. Не проснешься в один день, а ты уже senior поколение x/y - очень быстрый фидбек, хочется за 5 лет в senior, но надо больше. А что еще через 5 лет? автор предпочитает слово mature.  ищет конструктивную критику своего дизайна понимает (не-техническую область), как они воспринимаются окружающими не боятся давать какие-то оценки, и пытаются стать лучше в этом врожденное чувство предвидения понимают, что не все их проекты интересны растят окружающих показывают все trade-off, когда принимают решения эмпатичны не дают пустых жалоб (всегда подкреплены фактами)  рассказ про biases 10 заповедей разработчика без эго  Disadvantages of purely functional programming http://flyingfrogblog.</description>
+ senior - очень плавный вход. Не проснешься в один день, а ты уже senior поколение x/y - очень быстрый фидбек, хочется за 5 лет в senior, но надо больше. А что еще через 5 лет? автор предпочитает слово mature.  ищет конструктивную критику своего дизайна понимает (не-техническую область), как они воспринимаются окружающими не боятся давать какие-то оценки, и пытаются стать лучше в этом врожденное чувство предвидения понимают, что не все их проекты интересны растят окружающих показывают все trade-off, когда принимают решения эмпатичны не дают пустых жалоб (всегда подкреплены фактами)   рассказ про biases 10 заповедей разработчика без эго  Disadvantages of purely functional programming http://flyingfrogblog.</description>
     </item>
     
     <item>
@@ -873,7 +952,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sun, 22 May 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0093/</guid>
-      <description> YTrace: End-to-end Performance Diagnosis in Large Content Providers: http://arxiv.org/abs/1602.03273
+      <description>YTrace: End-to-end Performance Diagnosis in Large Content Providers: http://arxiv.org/abs/1602.03273
  Примерно то же дано, что и в MysteryMachine: большое приложение, много слоев, сложно разбираться в проблемах Решение должно быть легко интегрируемым, и иметь маленькие false positive and false negative  </description>
     </item>
     
@@ -884,7 +963,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0092/</guid>
       <description>Visualization of a Paxos-based distributed state machine http://rystsov.info/2016/05/01/paxos.html
- “Paxos made simple” paper (2001) - algorithm how to transform any FSM into a fault-tolerant distributed system:  Build linearizable distributed write-once register (based on his Sinod protocol) Build linearizable distributed append-only log (sequence of write-once regs) Use distributed append-only log to store the sequence of all events leading a system to the current state instead of storing the state itself  logs - is natural, but need GC or snapshots.</description>
+ “Paxos made simple” paper (2001) - algorithm how to transform any FSM into a fault-tolerant distributed system:  Build linearizable distributed write-once register (based on his Sinod protocol) Build linearizable distributed append-only log (sequence of write-once regs) Use distributed append-only log to store the sequence of all events leading a system to the current state instead of storing the state itself   logs - is natural, but need GC or snapshots.</description>
     </item>
     
     <item>
@@ -903,7 +982,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sat, 16 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0088/</guid>
-      <description> Docker-1.11 https://github.com/docker/docker/releases
+      <description>Docker-1.11 https://github.com/docker/docker/releases
  millions of “fixes a bug/race/problem” (it’s very stable! :) ) DNS round robin LB Yubikey hardware image signing experimental support for the MacVlan and IPVlan now it resumes download images (after network error/timeout) client user agent is passed to the registry on pull, build, push, login and search SOCKS proxy docker cli is now able to build on OpenBSD (skip) docker + systemd correctly works with cgroups fixed a panic when pulling an image with 0 layers  </description>
     </item>
     
@@ -914,7 +993,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/devzen_note/0087/</guid>
       <description>Containers are not VMs https://blog.docker.com/2016/03/containers-are-not-vms/
- containers - квартиры vms - полноценные дома Все понимают, а потом начинают спрашивать вопросы:  как мне бэкапить приложения а где они на самом деле работают (какой Host) patch management strategy (upgrading application inside the container)  на самом деле, контейнеры - это способ доставки сервисов, которые составляют приложение сервисы проще обновлять поотдельности, декларативно определяя, как они составляют приложения  Erlang 19.0 GC https://www.</description>
+ containers - квартиры vms - полноценные дома Все понимают, а потом начинают спрашивать вопросы:  как мне бэкапить приложения а где они на самом деле работают (какой Host) patch management strategy (upgrading application inside the container)   на самом деле, контейнеры - это способ доставки сервисов, которые составляют приложение сервисы проще обновлять поотдельности, декларативно определяя, как они составляют приложения  Erlang 19.0 GC https://www.</description>
     </item>
     
     <item>
@@ -933,7 +1012,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sat, 26 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0085/</guid>
-      <description> Erlang/OTP 18.3 http://www.erlang.org/news/101
+      <description>Erlang/OTP 18.3 http://www.erlang.org/news/101
  пофиксили баги и race (exit and timeout signals) исправления ошибок в связи с поддержкой новых времен Add validation callback for heart  Ubuntu 16.04 https://wiki.ubuntu.com/XenialXerus/ReleaseNotes
  Python 3 by default?  Docker for Mac and Windows Beta https://blog.docker.com/2016/03/docker-for-mac-windows-beta/
  Alpine Linux xhyve Virtual Machine for MacOS, Hyper-V VM for Windows OS X sandbox security записался на бету, меня добавили в список  </description>
@@ -987,7 +1066,7 @@ The most important chapters according to the content - 2.1 Source Repository - d
       <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
       
       <guid>http://gliush.github.io/devzen_note/0078/</guid>
-      <description> Google and Red Hat integrate OpenShift Dedicated and Google Cloud Platform to make adopting containers easier http://googlecloudplatform.blogspot.co.uk/2016/01/google-and-red-hat-integrate-openshift-dedicated.html
+      <description>Google and Red Hat integrate OpenShift Dedicated and Google Cloud Platform to make adopting containers easier http://googlecloudplatform.blogspot.co.uk/2016/01/google-and-red-hat-integrate-openshift-dedicated.html
  Red Hat будет предлагать OpenShift Dedicated на Google Cloud Platform. Странно, что они до этого такой возможности не предоставляли, это их очевидный шаг. Хотя, я не очень понимаю тех людей, которые покупают Dedicated. $48k в год за поддержку 4 год. https://www.openshift.com/dedicated/  </description>
     </item>
     
@@ -1030,9 +1109,9 @@ The most important chapters according to the content - 2.1 Source Repository - d
       
       <guid>http://gliush.github.io/about/</guid>
       <description>Hi there!
-It&amp;rsquo;s not a blog, it&amp;rsquo;s a notes for myself that I decided to share for some reason. Most likely, to send them as a links to my friends, but I&amp;rsquo;m not sure.
-Here you&amp;rsquo;ll find notes to my podcast &amp;ldquo;DevZen&amp;rdquo;, in addition to my personal notes about books, articles or movies.
-Don&amp;rsquo;t expect updates too often, I don&amp;rsquo;t have a lot of free time.
+It&#39;s not a blog, it&#39;s a notes for myself that I decided to share for some reason. Most likely, to send them as a links to my friends, but I&#39;m not sure.
+Here you&#39;ll find notes to my podcast &amp;ldquo;DevZen&amp;rdquo;, in addition to my personal notes about books, articles or movies.
+Don&#39;t expect updates too often, I don&#39;t have a lot of free time.
 Sincerely yours, Ivan Glushkov.</description>
     </item>
     
