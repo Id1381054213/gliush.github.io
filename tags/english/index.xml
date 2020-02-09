@@ -6,10 +6,20 @@
     <description>Recent content in english on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2020 15:55:47 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2020 18:25:00 +0000</lastBuildDate>
     
 	<atom:link href="https://gliush.github.io/tags/english/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0275</title>
+      <link>https://gliush.github.io/devzen_note/0275/</link>
+      <pubDate>Sat, 08 Feb 2020 18:25:00 +0000</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0275/</guid>
+      <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
+ INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
+    </item>
     
     <item>
       <title>Notes for episode-0274</title>
@@ -17,8 +27,8 @@
       <pubDate>Sat, 01 Feb 2020 15:55:47 +0000</pubDate>
       
       <guid>https://gliush.github.io/devzen_note/0274/</guid>
-      <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
- INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
+      <description>Language Bias in Accident Investigations http://lup.lub.lu.se/luur/download?func=downloadFile&amp;amp;recordOId=2971193&amp;amp;fileOId=2971195
+ The paper examined the language and content of the U.S. Forest Service&#39;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&#39;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
     </item>
     
     <item>

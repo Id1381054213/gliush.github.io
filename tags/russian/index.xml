@@ -6,10 +6,20 @@
     <description>Recent content in russian on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2019 22:51:16 +0400</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2020 18:25:00 +0000</lastBuildDate>
     
 	<atom:link href="https://gliush.github.io/tags/russian/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0275</title>
+      <link>https://gliush.github.io/devzen_note/0275/</link>
+      <pubDate>Sat, 08 Feb 2020 18:25:00 +0000</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0275/</guid>
+      <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
+ INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
+    </item>
     
     <item>
       <title>Notes for episode-0271</title>
@@ -41,6 +51,26 @@
       <guid>https://gliush.github.io/devzen_note/0262/</guid>
       <description>COZ: Finding Code that Counts with Causal Profiling https://arxiv.org/pdf/1608.03676v1.pdf
    </description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0259</title>
+      <link>https://gliush.github.io/devzen_note/0259/</link>
+      <pubDate>Sat, 21 Sep 2019 22:26:57 +0400</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0259/</guid>
+      <description>Исповедь docker-хейтера https://m.habr.com/ru/post/467607/
+ &amp;ldquo;docker &amp;amp; firewall&amp;rdquo; + &amp;ldquo;docker &amp;amp; network&amp;rdquo;. Непонятно, какой у автора случай - чего же он хочет добиться. Да, докер управляет сетью, в этом идея докера. Зачем ему делать iptables-save/restore. Похоже, есть несовпадение целей, или использование докера не по назначению. docker не про совместимоть (нет forward compatilibity). Т.е. образы, озданные на новых версиях docker не будут работать на старых версиях. Странно, если бы работало! И это было пару раз, и заранее предупреждали.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0254</title>
+      <link>https://gliush.github.io/devzen_note/0254/</link>
+      <pubDate>Sat, 17 Aug 2019 15:20:02 +0400</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0254/</guid>
+      <description>Partisan: Scaling the Distributed Actor Runtime https://www.usenix.org/system/files/atc19-meiklejohn.pdf
+ Developer can specify network overlay -&amp;gt; better scalability Default: unidirectional async messages between actors  independent queue multiplexing into single queue per node   Default doesn&#39;t fit all usecases Customization:  parallelism (increase the number of channels between nodes) named channels to separate different types of messages affinity scheduler to partition traffic across channels depending on source, destination and type   No changes to Erlang VM Contribution:  Design of Partisan Open Source implementation Ported Riak from Distributed Erlang to Partisan, analysis of the process Benchmarks    Key Negotiation of Bluetooth Attack: Breaking Bluetooth Security https://knobattack.</description>
     </item>
     
     <item>
