@@ -6,10 +6,20 @@
     <description>Recent content in russian on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Feb 2020 18:25:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Feb 2020 17:25:05 +0000</lastBuildDate>
     
 	<atom:link href="https://gliush.github.io/tags/russian/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0276</title>
+      <link>https://gliush.github.io/devzen_note/0276/</link>
+      <pubDate>Sat, 22 Feb 2020 17:25:05 +0000</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0276/</guid>
+      <description>Using Alpine can make Python Docker builds 50× slower https://pythonspeed.com/articles/alpine-docker-python/
+ Стандартная рекомендация по созданию docker-образов - использовать alpine linux. Размер маленький, более быстрая сборка  Ubuntu собирает gcc за 30сек, образ весит 150МБ Alpine собирает gcc за 15сек, образ весит 105МБ   Сборка Python образа (matplotlib, pandas):  Ubuntu 30sec -&amp;gt; 363MB Alpine linux не работает с предкомпилированными библиотеками из-за glibc -&amp;gt; собирать из исходников -&amp;gt; 1557сек, 851МБ. Один из комментаторов добился 470МБ за счет multi-stage build   Дополнительные проблемы во время работы  Alpine имеет меньший размер стэка для потоков.</description>
+    </item>
     
     <item>
       <title>Notes for episode-0275</title>
