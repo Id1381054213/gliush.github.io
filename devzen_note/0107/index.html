@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0107 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Notes for episode-0107" />
 <meta property="og:description" content="TCP puzzlers http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/
- happy path server power restart -&gt; client believes it listen the socket. Send -&gt; ECONNRESET. server power shut down -&gt; client listen the socket. Send -&gt; ok, in 5 min -&gt; ETIMEDOUT (no ack for 5 min) server doesn&#39;t send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&#39;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?" />
+ happy path server power restart -&gt; client believes it listen the socket. Send -&gt; ECONNRESET. server power shut down -&gt; client listen the socket. Send -&gt; ok, in 5 min -&gt; ETIMEDOUT (no ack for 5 min) server doesn&rsquo;t send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&rsquo;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gliush.github.io/devzen_note/0107/" />
 <meta property="article:published_time" content="2016-08-28T00:00:00+00:00" />
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Notes for episode-0107"/>
 <meta name="twitter:description" content="TCP puzzlers http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/
- happy path server power restart -&gt; client believes it listen the socket. Send -&gt; ECONNRESET. server power shut down -&gt; client listen the socket. Send -&gt; ok, in 5 min -&gt; ETIMEDOUT (no ack for 5 min) server doesn&#39;t send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&#39;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?"/>
+ happy path server power restart -&gt; client believes it listen the socket. Send -&gt; ECONNRESET. server power shut down -&gt; client listen the socket. Send -&gt; ok, in 5 min -&gt; ETIMEDOUT (no ack for 5 min) server doesn&rsquo;t send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&rsquo;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?"/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
@@ -64,7 +64,7 @@
 <li>happy path</li>
 <li>server power restart -&gt; client believes it listen the socket. Send -&gt; ECONNRESET.</li>
 <li>server power shut down -&gt; client listen the socket. Send -&gt; ok, in 5 min -&gt; ETIMEDOUT (no ack for 5 min)</li>
-<li>server doesn't send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn't close it</li>
+<li>server doesn&rsquo;t send &ldquo;FIN&rdquo; -&gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&rsquo;t close it</li>
 <li>Two separate state machines</li>
 <li>A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&gt; 60K висящих time_wait за минуту</li>
 <li>Упираемся в доступные порты достаточно быстро (20к по дефолту?)</li>

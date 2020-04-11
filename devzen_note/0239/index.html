@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0239 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Notes for episode-0239" />
 <meta property="og:description" content="TektonCD: A Kubernetes-native pipeline resource https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/
- Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline  Runs as a Pod in k8s cluster Each step in a separate container   TaskRun - (k8s resource) runs the Task  kubectl get taskruns/mytask -o yaml - to get results   PipelineResources - to define resources to be passed in/out of a task  types: git, image, cluster, storage all the resources are used in tasks   Pipeline - list of tasks to execute in order  previous results could be used as input for the next task   PipelineRun - to execute a Pipeline  PipelineRun will create TaskRun for the each Tasks     More features  Rich Auth capabilities DAG (directed acyclic graph) of execution   Roadmap  Notifications to Slack, email, Github PR, &hellip; Retries Triggers   IMHO  Good basement for a rich CD systems Can&#39;t be used by itself Jenkins X Pipelines uses Tekton    " />
+ Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline  Runs as a Pod in k8s cluster Each step in a separate container   TaskRun - (k8s resource) runs the Task  kubectl get taskruns/mytask -o yaml - to get results   PipelineResources - to define resources to be passed in/out of a task  types: git, image, cluster, storage all the resources are used in tasks   Pipeline - list of tasks to execute in order  previous results could be used as input for the next task   PipelineRun - to execute a Pipeline  PipelineRun will create TaskRun for the each Tasks     More features  Rich Auth capabilities DAG (directed acyclic graph) of execution   Roadmap  Notifications to Slack, email, Github PR, &hellip; Retries Triggers   IMHO  Good basement for a rich CD systems Can&rsquo;t be used by itself Jenkins X Pipelines uses Tekton    " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gliush.github.io/devzen_note/0239/" />
 <meta property="article:published_time" content="2019-04-27T20:32:19+04:00" />
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Notes for episode-0239"/>
 <meta name="twitter:description" content="TektonCD: A Kubernetes-native pipeline resource https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/
- Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline  Runs as a Pod in k8s cluster Each step in a separate container   TaskRun - (k8s resource) runs the Task  kubectl get taskruns/mytask -o yaml - to get results   PipelineResources - to define resources to be passed in/out of a task  types: git, image, cluster, storage all the resources are used in tasks   Pipeline - list of tasks to execute in order  previous results could be used as input for the next task   PipelineRun - to execute a Pipeline  PipelineRun will create TaskRun for the each Tasks     More features  Rich Auth capabilities DAG (directed acyclic graph) of execution   Roadmap  Notifications to Slack, email, Github PR, &hellip; Retries Triggers   IMHO  Good basement for a rich CD systems Can&#39;t be used by itself Jenkins X Pipelines uses Tekton    "/>
+ Part of CD foundation https://cd.foundation Golang Run on Kubernetes, k8s - first class citizen Apache-2.0 license Concepts:  Task - (k8s resource) work to be executed. Individually, or part of Pipeline  Runs as a Pod in k8s cluster Each step in a separate container   TaskRun - (k8s resource) runs the Task  kubectl get taskruns/mytask -o yaml - to get results   PipelineResources - to define resources to be passed in/out of a task  types: git, image, cluster, storage all the resources are used in tasks   Pipeline - list of tasks to execute in order  previous results could be used as input for the next task   PipelineRun - to execute a Pipeline  PipelineRun will create TaskRun for the each Tasks     More features  Rich Auth capabilities DAG (directed acyclic graph) of execution   Roadmap  Notifications to Slack, email, Github PR, &hellip; Retries Triggers   IMHO  Good basement for a rich CD systems Can&rsquo;t be used by itself Jenkins X Pipelines uses Tekton    "/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
@@ -61,7 +61,7 @@
 			<h1 id="tektoncd-a-kubernetes-native-pipeline-resource">TektonCD: A Kubernetes-native pipeline resource</h1>
 <p><a href="https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/">https://kurtmadel.com/posts/cicd-with-kubernetes/tekton-standardizing-native-kubernetes-cd/</a></p>
 <ul>
-<li>Part of CD foundation https://cd.foundation</li>
+<li>Part of CD foundation <a href="https://cd.foundation">https://cd.foundation</a></li>
 <li>Golang</li>
 <li>Run on Kubernetes, k8s - first class citizen</li>
 <li>Apache-2.0 license</li>
@@ -112,7 +112,7 @@
 <li>IMHO
 <ul>
 <li>Good basement for a rich CD systems</li>
-<li>Can't be used by itself</li>
+<li>Can&rsquo;t be used by itself</li>
 <li>Jenkins X Pipelines uses Tekton</li>
 </ul>
 </li>

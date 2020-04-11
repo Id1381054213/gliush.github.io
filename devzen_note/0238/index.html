@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0238 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Notes for episode-0238" />
 <meta property="og:description" content="Overload Control for Scaling WeChat Microservices https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf
- 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &ldquo;upstream microservices&rdquo; these &ldquo;upper microservices&rdquo; don&#39;t send request with low priorities   2." />
+ 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &ldquo;upstream microservices&rdquo; these &ldquo;upper microservices&rdquo; don&rsquo;t send request with low priorities   2." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gliush.github.io/devzen_note/0238/" />
 <meta property="article:published_time" content="2019-04-20T20:15:17+04:00" />
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Notes for episode-0238"/>
 <meta name="twitter:description" content="Overload Control for Scaling WeChat Microservices https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf
- 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &ldquo;upstream microservices&rdquo; these &ldquo;upper microservices&rdquo; don&#39;t send request with low priorities   2."/>
+ 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &ldquo;upstream microservices&rdquo; these &ldquo;upper microservices&rdquo; don&rsquo;t send request with low priorities   2."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
@@ -79,7 +79,7 @@ because of some service rejects request</li>
 <li>each microservice maintain its own priority thresholds</li>
 <li>during overload, the threshold is increased (to sched half of the load), and new
 threshold value is passed to the direct &ldquo;upstream microservices&rdquo;</li>
-<li>these &ldquo;upper microservices&rdquo; don't send request with low priorities</li>
+<li>these &ldquo;upper microservices&rdquo; don&rsquo;t send request with low priorities</li>
 </ul>
 </li>
 <li>2.WECHAT SERVICE ARCHITECTURE
@@ -107,7 +107,7 @@ threshold value is passed to the direct &ldquo;upstream microservices&rdquo;</li
 <li>Runs on each individual machine</li>
 <li>!! load status = queue time (time difference between the request arrival and processing being started)</li>
 <li>Response time is bad for leap services</li>
-<li>CPU is bad because high CPU doesn't mean it is overloaded.</li>
+<li>CPU is bad because high CPU doesn&rsquo;t mean it is overloaded.</li>
 <li>load is calculated every 2k requests or 1s (what is sooner)</li>
 <li>
 <blockquote>
@@ -136,14 +136,14 @@ by user hash (hash priority)</li>
 <li>Session Oriented Admission Control
 <ul>
 <li>User login session hash - for the same purpose as user oriented admission control.</li>
-<li>Users realized that relogin helps them (but doesn't help the system).</li>
+<li>Users realized that relogin helps them (but doesn&rsquo;t help the system).</li>
 <li>=&gt; Is not used</li>
 </ul>
 </li>
 <li>Adaptive Admission Control
 <ul>
 <li>Each business level has 128 user levels -&gt; ~10k total levels (B,U)</li>
-<li>O(N) - won't work, O(logN) - won't work =&gt; Histogram of all (B,U) requests</li>
+<li>O(N) - won&rsquo;t work, O(logN) - won&rsquo;t work =&gt; Histogram of all (B,U) requests</li>
 <li>Adjusting the load
 <ul>
 <li>during overload, reduce the number of handled requests by A (5%) percent</li>
@@ -161,9 +161,9 @@ by user hash (hash priority)</li>
 </li>
 <li>IMHO
 <ul>
-<li>It's the fist detailed overload handling system that works in production for several years.</li>
-<li>There're several interesting design solutions that are not intuitive</li>
-<li>It will not be widely used now, there're few companies that might need that.
+<li>It&rsquo;s the fist detailed overload handling system that works in production for several years.</li>
+<li>There&rsquo;re several interesting design solutions that are not intuitive</li>
+<li>It will not be widely used now, there&rsquo;re few companies that might need that.
 All of them have similar systems already</li>
 </ul>
 </li>

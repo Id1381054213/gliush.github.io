@@ -18,7 +18,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0275/</guid>
       <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
- INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
+ INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&amp;rsquo;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0274/</guid>
       <description>Language Bias in Accident Investigations http://lup.lub.lu.se/luur/download?func=downloadFile&amp;amp;recordOId=2971193&amp;amp;fileOId=2971195
- The paper examined the language and content of the U.S. Forest Service&#39;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&#39;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
+ The paper examined the language and content of the U.S. Forest Service&amp;rsquo;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&amp;rsquo;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
     </item>
     
     <item>
@@ -57,8 +57,8 @@
       <pubDate>Sat, 24 Aug 2019 19:45:15 +0300</pubDate>
       
       <guid>https://gliush.github.io/devzen_note/0255/</guid>
-      <description>&amp;ldquo;What We Know We Don&#39;t Know&amp;rdquo; or &amp;ldquo;Empirical Software Engineering&amp;rdquo; https://www.hillelwayne.com/talks/what-we-know-we-dont-know/
- Video from goto; conference + plenty of links Do you believe that &amp;ldquo;small functions are better then large functions&amp;rdquo;? Are you more confidence in that ^^ or in the &amp;ldquo;vaccine help against flu&amp;rdquo;? We don&#39;t have Empirical results for Software Engineering!!! Everything we know about SE is a believe! Empirical Software Engineering (ESE): test, observe, find out what is true, and what is just &amp;ldquo;feel good&amp;rdquo; Why?</description>
+      <description>&amp;ldquo;What We Know We Don&amp;rsquo;t Know&amp;rdquo; or &amp;ldquo;Empirical Software Engineering&amp;rdquo; https://www.hillelwayne.com/talks/what-we-know-we-dont-know/
+ Video from goto; conference + plenty of links Do you believe that &amp;ldquo;small functions are better then large functions&amp;rdquo;? Are you more confidence in that ^^ or in the &amp;ldquo;vaccine help against flu&amp;rdquo;? We don&amp;rsquo;t have Empirical results for Software Engineering!!! Everything we know about SE is a believe! Empirical Software Engineering (ESE): test, observe, find out what is true, and what is just &amp;ldquo;feel good&amp;rdquo; Why?</description>
     </item>
     
     <item>
@@ -88,7 +88,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0241/</guid>
       <description>Local-first software. You own your data, in spite of the cloud https://www.inkandswitch.com/local-first.html
- Cloud is convenient, but you don&#39;t have your data. Services dies - you loose your data They suggest a set of principles of &amp;ldquo;Local-first software&amp;rdquo;:  work offline work collaborative (gdoc, trello, etc) across multiple devices improve security, privacy user controls the data   PRINCIPLES  No spinners: your work at your fingertips. Should not require roundtrip to server    You work is not trapped to one device (sync to servers in background) The network is optional Seamless collaboration with your colleagues.</description>
+ Cloud is convenient, but you don&amp;rsquo;t have your data. Services dies - you loose your data They suggest a set of principles of &amp;ldquo;Local-first software&amp;rdquo;:  work offline work collaborative (gdoc, trello, etc) across multiple devices improve security, privacy user controls the data   PRINCIPLES  No spinners: your work at your fingertips. Should not require roundtrip to server    You work is not trapped to one device (sync to servers in background) The network is optional Seamless collaboration with your colleagues.</description>
     </item>
     
     <item>
@@ -306,7 +306,7 @@
       <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://gliush.github.io/devzen_note/0191/</guid>
-      <description>The Hitchhiker&#39;s Guide to the Unexpected https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html
+      <description>The Hitchhiker&amp;rsquo;s Guide to the Unexpected https://ferd.ca/the-hitchhiker-s-guide-to-the-unexpected.html
  He is system architect, and always explain system design in OTP terms (even if he’s talking not about Erlang/Elixir) Where bugs come from: ￼from “unknown”: spectre/meltdown, thundering herd.    Main target: move bugs from “unknown” to the “known” space. How?  Difficult: Increase knowledge of developers. Simple: Hire more seniors (temptation: send seniors alone to the difficult parts. They’ll leave some day).</description>
     </item>
     
@@ -760,7 +760,7 @@ The most important chapters according to the content
       
       <guid>https://gliush.github.io/devzen_note/0108/</guid>
       <description>Wisdom about Erlang BEAM and VM http://beam-wisdoms.clau.se/
- Explain like I&#39;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
+ Explain like I&amp;rsquo;m 5 (ELI5) More detailed material  Keystroke Recognition Using WiFi Signals https://www.sigmobile.org/mobicom/2015/papers/p90-aliA.pdf
  TP-Link + Lenovo X200 Распознавание напечатанного по анализу сигнала wifi Значение - результат трех эффектов: затухание, multi-paths and Doppler shift Три сложности:  распознать начало и окончание нажатия (алгоритм предложили для приблизительного выяснения) выделение свойств каждого сигнала для того, чтобы распознавать 37 знаков (10 цифр, 26 букв и пробел).</description>
     </item>
     
@@ -771,7 +771,7 @@ The most important chapters according to the content
       
       <guid>https://gliush.github.io/devzen_note/0107/</guid>
       <description>TCP puzzlers http://dtrace.org/blogs/dap/2016/08/18/tcp-puzzlers/
- happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&#39;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&#39;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
+ happy path server power restart -&amp;gt; client believes it listen the socket. Send -&amp;gt; ECONNRESET. server power shut down -&amp;gt; client listen the socket. Send -&amp;gt; ok, in 5 min -&amp;gt; ETIMEDOUT (no ack for 5 min) server doesn&amp;rsquo;t send &amp;ldquo;FIN&amp;rdquo; -&amp;gt; FIN_WAIT_2 hangs 1 min, CLOSE_WAIT hangs forever. One side closed connection, second side didn&amp;rsquo;t close it Two separate state machines A lot of time_wait (потому что сервер обрабатывает кучу запросов в секунду, и должен висеть 60 сек, прежде чем закроет коннекты из time_wait: 1000 rps -&amp;gt; 60K висящих time_wait за минуту Упираемся в доступные порты достаточно быстро (20к по дефолту?</description>
     </item>
     
     <item>

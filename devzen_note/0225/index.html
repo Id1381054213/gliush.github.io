@@ -94,11 +94,11 @@ end
 <li>When Kafka is online again, all logs from all the dev envs woke up and send logs -&gt; cpu spike</li>
 <li>High CPU spike of docker daemon -&gt; k8s nodes &ldquo;are unhealthy&rdquo;</li>
 <li>k8s scheduler moved load from &ldquo;unhealthy&rdquo; to healthy nodes</li>
-<li>some new nodes could withstand the load, but some couldn't -&gt; &ldquo;unhealthy&rdquo; -&gt; move load to the &ldquo;healthy&rdquo; -&gt; cycle</li>
+<li>some new nodes could withstand the load, but some couldn&rsquo;t -&gt; &ldquo;unhealthy&rdquo; -&gt; move load to the &ldquo;healthy&rdquo; -&gt; cycle</li>
 <li>new pods are up -&gt; consul agent registers in gossip -&gt; high consul load</li>
 <li>41k new k8s pods during this event -&gt; high Consul latency (gossip mesh + high cpu load)</li>
 <li>gossip mesh increased the cpu load on all the consul agent -&gt; higher cpu load</li>
-<li>Consul is &ldquo;down&rdquo; (too slow) -&gt; Vault couldn't work, TAP LB generation couldn't work</li>
+<li>Consul is &ldquo;down&rdquo; (too slow) -&gt; Vault couldn&rsquo;t work, TAP LB generation couldn&rsquo;t work</li>
 <li>After DAYS of research they fixed the Consul+Vault by &ldquo;gossip encryption&rdquo; -&gt; previous gossip messages were rejected</li>
 </ul>
 </li>
@@ -113,13 +113,13 @@ end
 <ul>
 <li>What is the &ldquo;gossip poisoning&rdquo;:
 <ul>
-<li>why after fixing k8s, when real nodes were not restarted it didn't calm down???</li>
+<li>why after fixing k8s, when real nodes were not restarted it didn&rsquo;t calm down???</li>
 </ul>
 </li>
 <li>Why loggers could overload the &ldquo;docker&rdquo; so that nodes became &ldquo;unhealthy&rdquo;? Incorrect configuration -&gt; cause of the outage, imho</li>
 <li>Good example of system that looked well-configured, but nevertheless had broken.</li>
 <li>When building such complex systems, try to predict the unknowns, though it is very difficult</li>
-<li>DaemonSets are better? They won't rise CPU load? In any case, sidecar shouldn't break the main container</li>
+<li>DaemonSets are better? They won&rsquo;t rise CPU load? In any case, sidecar shouldn&rsquo;t break the main container</li>
 </ul>
 
 		</div>

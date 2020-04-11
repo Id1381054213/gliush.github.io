@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0282 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Notes for episode-0282" />
+<meta property="og:description" content="etcd 3.4.3 &amp; Jepsen Test https://jepsen.io/analyses/etcd-3.4.3
+1.1 Consistency Documentation
+ etcd&rsquo;s documentation: &ldquo;API exhibit sequential consistency the strongest consistency guarantee available for distributed systems&rdquo; While the strongest is &ldquo;linearizability&rdquo; etcd has &ldquo;serializable isolation, the strongest isolation level available&rdquo; While &ldquo;strict serializability&rdquo; is the strongest.  Results   Incorrect documentation (index of the first record 0 or 1) Locks aren&rsquo;t real. Документация плохо объясняет, что такое Lock, как его использовать, какие гарантии консистентности он имеет." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gliush.github.io/devzen_note/0282/" />
+<meta property="article:published_time" content="2020-04-04T20:40:21+01:00" />
+<meta property="article:modified_time" content="2020-04-04T20:40:21+01:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Notes for episode-0282"/>
+<meta name="twitter:description" content="etcd 3.4.3 &amp; Jepsen Test https://jepsen.io/analyses/etcd-3.4.3
+1.1 Consistency Documentation
+ etcd&rsquo;s documentation: &ldquo;API exhibit sequential consistency the strongest consistency guarantee available for distributed systems&rdquo; While the strongest is &ldquo;linearizability&rdquo; etcd has &ldquo;serializable isolation, the strongest isolation level available&rdquo; While &ldquo;strict serializability&rdquo; is the strongest.  Results   Incorrect documentation (index of the first record 0 or 1) Locks aren&rsquo;t real. Документация плохо объясняет, что такое Lock, как его использовать, какие гарантии консистентности он имеет."/>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/main.css" /><link rel="stylesheet" type="text/css" href="https://gliush.github.io/css/dark.css" media="(prefers-color-scheme: dark)" />
+
+	
+	<script src="https://gliush.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper post">
+		<div class="header">
+	<h1 class="site-title"><a href="https://gliush.github.io/">Gliush Notebook</a></h1>
+	<div class="site-description"><h2>Notes about IT, work, and life</h2><nav class="nav social">
+			<ul class="flat"></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/tags/">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post-header">
+			<h1 class="title">Notes for episode-0282</h1>
+			<div class="meta">Posted at &mdash; Apr 4, 2020</div>
+		</div>
+
+		<div class="markdown">
+			<h1 id="etcd-343--jepsen-test">etcd 3.4.3 &amp; Jepsen Test</h1>
+<p><a href="https://jepsen.io/analyses/etcd-3.4.3">https://jepsen.io/analyses/etcd-3.4.3</a></p>
+<p>1.1 Consistency Documentation</p>
+<ul>
+<li>etcd&rsquo;s documentation: &ldquo;API exhibit sequential consistency
+the strongest consistency guarantee available for distributed systems&rdquo;
+While the strongest is &ldquo;linearizability&rdquo;</li>
+<li>etcd has &ldquo;serializable isolation, the strongest isolation level available&rdquo;
+While &ldquo;strict serializability&rdquo; is the strongest.</li>
+</ul>
+<ol start="3">
+<li>Results</li>
+</ol>
+<ul>
+<li>Incorrect documentation (index of the first record 0 or 1)</li>
+<li>Locks aren&rsquo;t real. Документация плохо объясняет, что такое Lock, как его
+использовать, какие гарантии консистентности он имеет.</li>
+<li>Один из проведенных тестов смог добиться,
+что два процесса взяли лок одновременно. Проблема часто
+проявляется на маленьких TTL: 1, 2, 3 секунды.</li>
+<li>Была найдена проблема в исходниках, но даже её исправление не поможет,
+потому что распределённый лок - это фундаментально-небезопасная концепция
+в асинхронной распределённой системе.</li>
+<li>Вкратце. Если процесс А взял лок и послал запрос в БД. Потом он погиб,
+и процесс B захватил лок. И послал сообщение в БД. При этом сообщение от
+А может прийти после сообщения от В. Асинхронность.</li>
+</ul>
+<ol start="4">
+<li>Результаты и обсуждения.</li>
+</ol>
+<ul>
+<li>Key-Value операции были на самом деле strict-serializable при записи, чтении
+и даже в multi-key транзакциях (учитывая падения, сдвигания времени,
+проблемы с сетью, изменениях в списке нод)</li>
+<li>Watch корректно работают с отдельными ключами</li>
+<li>etcd locks (как и все распределенные локи)
+не предоставляют взаимного исключения (mutual exclusion). Даже в здоровом
+кластере с идеально синхронизированными часами.</li>
+<li>etcd команда поправила проблемы в документации.</li>
+</ul>
+
+		</div>
+
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>tags:</li>
+                
+                <li><a href="/tags/russian">russian</a></li>
+                
+            </ul>
+    </nav>
+
+
+			
+		</div>
+		<div class="post-tags">
+			
+              
+    <nav class="nav tags">
+            <ul class="flat">
+                <li>categories:</li>
+                
+                <li><a href="/categories/devzen">devzen</a></li>
+                
+            </ul>
+    </nav>
+
+
+			
+		</div>
+		</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div> <a href="https://github.com/vividvilla/ezhil">Ezhil theme</a> | Built with <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+
+
+
+</body>
+</html>

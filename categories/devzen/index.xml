@@ -6,10 +6,41 @@
     <description>Recent content in devzen on Gliush Notebook</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 Feb 2020 17:25:05 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2020 19:19:11 +0100</lastBuildDate>
     
 	<atom:link href="https://gliush.github.io/categories/devzen/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Notes for episode-0283</title>
+      <link>https://gliush.github.io/devzen_note/0283/</link>
+      <pubDate>Sat, 11 Apr 2020 19:19:11 +0100</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0283/</guid>
+      <description>Privacy-Preserving Contact Tracing https://www.apple.com/covid19/contacttracing
+ Bluetooth specification  Будет изменяться, предупреждают в заголовке Используется BLE (Bluetooth low energy) для детектирования ближайших смартфонов Каждому устройству присваивается ID &amp;ldquo;Tracing ID&amp;rdquo; С помощью этого Tracing ID каждый день создается &amp;ldquo;Daily Tracing ID&amp;rdquo; (детерминированным образом) Proximity ID - создается каждые ~15мин ч помощью &amp;ldquo;Daily Tracing ID&amp;rdquo; Каждое устройство шлёт свой &amp;ldquo;Proximity ID&amp;rdquo; всем окружающим (200ms) Приватность обеспечивается:  Не включается location service, все используют только Bluetooth для определения ближайших устройств Proximity ID меняется каждые 15 минут, и без Daily Tracing ID нельзя его привязать к человеку Чужие Proximity ID обрабатываются локально на устройстве, и никуда не передаются.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0282</title>
+      <link>https://gliush.github.io/devzen_note/0282/</link>
+      <pubDate>Sat, 04 Apr 2020 20:40:21 +0100</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0282/</guid>
+      <description>etcd 3.4.3 &amp;amp; Jepsen Test https://jepsen.io/analyses/etcd-3.4.3
+1.1 Consistency Documentation
+ etcd&amp;rsquo;s documentation: &amp;ldquo;API exhibit sequential consistency the strongest consistency guarantee available for distributed systems&amp;rdquo; While the strongest is &amp;ldquo;linearizability&amp;rdquo; etcd has &amp;ldquo;serializable isolation, the strongest isolation level available&amp;rdquo; While &amp;ldquo;strict serializability&amp;rdquo; is the strongest.  Results   Incorrect documentation (index of the first record 0 or 1) Locks aren&amp;rsquo;t real. Документация плохо объясняет, что такое Lock, как его использовать, какие гарантии консистентности он имеет.</description>
+    </item>
+    
+    <item>
+      <title>Notes for episode-0279</title>
+      <link>https://gliush.github.io/devzen_note/0279/</link>
+      <pubDate>Sat, 14 Mar 2020 21:57:00 +0400</pubDate>
+      
+      <guid>https://gliush.github.io/devzen_note/0279/</guid>
+      <description>Из тем слушателей к 0278. Простота Го - не всегда хорошо. https://fasterthanli.me/blog/2020/i-want-off-mr-golangs-wild-ride/
+ Рекомендация автора статьи: не читайте, если вы пишете на го. Он будет делиться своей болью, и это может вам не понравится Пример - работа с ФС. Есть флаги ФС (директория, исполняемость, ссылка, пайп), которые есть в UNIX, но нет в Windows. Изменение флагов пройдет без ошибок в Windows, однако ничего в файле при этом не поменяется. Все пути - через string, лучше бы завести спец тип для работы с путями, чтобы корректно работать на UNIX/WINDOWS Автору не нравится интерфейс функции работы с метаданными файла (через бит флага), &amp;ldquo;в Rust лучше&amp;rdquo; (через вызов спец функции).</description>
+    </item>
     
     <item>
       <title>Notes for episode-0276</title>
@@ -28,7 +59,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0275/</guid>
       <description>The Influence of Organizational Structure on Software Quality: An Empirical Case Study https://www.cs.umd.edu/~basili/publications/proceedings/P125.pdf
- INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&#39;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
+ INTRODUCTION Software quality is obtain usually from:  code coverage code churn code complexity code dependencies   But not from &amp;ldquo;organizational structure&amp;rdquo; -&amp;gt; question they want to cover Conway&amp;rsquo;s Law: &amp;ldquo;organizations that design systems are constrained to produce systems which are copies of the communication structures of these organizations Mythical Man Month: &amp;ldquo;the product quality is strongly affected by org structure&amp;rdquo; RELATED WORK - great section about different papers about the topic ORGANIZATIONAL METRICS  Number of Engineers (NOE), who touched the binary and is still in the company Number of Ex-Engineer (NOEE) Edit Frequency (EF) Depth of Master Ownership (DMO): level of the team who owns 75% of edits Percentage of Org contributing to the development (PO) Level of Organizational Code Ownership (OCO) Overall Organization Ownership (OOW) Organization Intersection Factor (OIF)   CASE STUDY &amp;amp; RESULTS  Windows Vista bugs &amp;amp; code change information (from VCS) 3404 binaries, &amp;gt; 50M LOC       </description>
     </item>
     
     <item>
@@ -38,7 +69,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0274/</guid>
       <description>Language Bias in Accident Investigations http://lup.lub.lu.se/luur/download?func=downloadFile&amp;amp;recordOId=2971193&amp;amp;fileOId=2971195
- The paper examined the language and content of the U.S. Forest Service&#39;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&#39;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
+ The paper examined the language and content of the U.S. Forest Service&amp;rsquo;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&amp;rsquo;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
     </item>
     
   </channel>

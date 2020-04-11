@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0250 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Notes for episode-0250" />
 <meta property="og:description" content="CloudFlare outage (Jul 2nd) https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/
- Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&#34;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\&#43;)&#43;[)]*;?((?:\s|-|~|!|{}|\|\||\&#43;)*.*(?:.*=.*)))  Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&ldquo;attack variant&rdquo; dismissed) 14:02 proposed a &lsquo;global kill&rsquo; = mechanism to disable single component worldwide  =&gt; Access service will be down, can&#39;t authenticate to control panel =&gt; Security feature will disable credentials if anyone won&#39;t use it frequently =&gt; Can&#39;t access Jira or build system directly." />
+ Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&#34;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\&#43;)&#43;[)]*;?((?:\s|-|~|!|{}|\|\||\&#43;)*.*(?:.*=.*)))  Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&ldquo;attack variant&rdquo; dismissed) 14:02 proposed a &lsquo;global kill&rsquo; = mechanism to disable single component worldwide  =&gt; Access service will be down, can&rsquo;t authenticate to control panel =&gt; Security feature will disable credentials if anyone won&rsquo;t use it frequently =&gt; Can&rsquo;t access Jira or build system directly." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gliush.github.io/devzen_note/0250/" />
 <meta property="article:published_time" content="2019-07-13T21:11:17+03:00" />
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Notes for episode-0250"/>
 <meta name="twitter:description" content="CloudFlare outage (Jul 2nd) https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/
- Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&#34;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\&#43;)&#43;[)]*;?((?:\s|-|~|!|{}|\|\||\&#43;)*.*(?:.*=.*)))  Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&ldquo;attack variant&rdquo; dismissed) 14:02 proposed a &lsquo;global kill&rsquo; = mechanism to disable single component worldwide  =&gt; Access service will be down, can&#39;t authenticate to control panel =&gt; Security feature will disable credentials if anyone won&#39;t use it frequently =&gt; Can&#39;t access Jira or build system directly."/>
+ Transparency - is the best TLDR Deployed a new rule that caused CPU to become exhausted (https://blog.cloudflare.com/cloudflare-outage/) -&gt; 502 status (by front line servers that had CPU) Bad regular expression that created excessive backtracking  (?:(?:\&#34;|&#39;|\]|\}|\\|\d|(?:nan|infinity|true|false|null|undefined|symbol|math)|\`|\-|\&#43;)&#43;[)]*;?((?:\s|-|~|!|{}|\|\||\&#43;)*.*(?:.*=.*)))  Sequence of events 13:42 engineer deployed a minor change to the XSS detection rule 13:45 PagerDuty page with error in WAF Manager (synthetic test) 13:45 Many other tests failed 13:45 P0 incident, SRE teams started working, all other teams helped 14:00 WAF was identified as a component causing problems (&ldquo;attack variant&rdquo; dismissed) 14:02 proposed a &lsquo;global kill&rsquo; = mechanism to disable single component worldwide  =&gt; Access service will be down, can&rsquo;t authenticate to control panel =&gt; Security feature will disable credentials if anyone won&rsquo;t use it frequently =&gt; Can&rsquo;t access Jira or build system directly."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
@@ -77,9 +77,9 @@
 <li>14:00 WAF was identified as a component causing problems (&ldquo;attack variant&rdquo; dismissed)</li>
 <li>14:02 proposed a &lsquo;global kill&rsquo; = mechanism to disable single component worldwide
 <ul>
-<li>=&gt; Access service will be down, can't authenticate to control panel</li>
-<li>=&gt; Security feature will disable credentials if anyone won't use it frequently</li>
-<li>=&gt; Can't access Jira or build system directly. Need to use workaround that is used very seldom</li>
+<li>=&gt; Access service will be down, can&rsquo;t authenticate to control panel</li>
+<li>=&gt; Security feature will disable credentials if anyone won&rsquo;t use it frequently</li>
+<li>=&gt; Can&rsquo;t access Jira or build system directly. Need to use workaround that is used very seldom</li>
 </ul>
 </li>
 <li>14:07 executed &lsquo;global kill&rsquo;</li>
@@ -100,13 +100,13 @@
 <li>At 13:31 - the PR is merged</li>
 <li>At 13:37 - TeamCity turn on the green light (all tests passed)</li>
 <li>Tests: unit tests (positive and negative), but not for the CPU usage.</li>
-<li>Tests run time didn't increase</li>
+<li>Tests run time didn&rsquo;t increase</li>
 <li>TeamCity wrote changes in QuickSilver KV (p99: 2.29sec to write change to ~200cities world wide)</li>
 <li>Reasons of the problem:
 <ul>
 <li>Regular expression that could easily backtrack enormously</li>
 <li>Protection was removed weeks ago (to reduce CPU usage, lol)</li>
-<li>Tests didn't check CPU usage</li>
+<li>Tests didn&rsquo;t check CPU usage</li>
 <li>No staged rollout</li>
 <li>Rollback plan required WAF build twice, take too long</li>
 <li>The first alert took too long to fire</li>

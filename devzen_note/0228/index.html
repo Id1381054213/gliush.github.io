@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Notes for episode-0228 - Gliush Notebook</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Notes for episode-0228" />
 <meta property="og:description" content="Hex package registry vulnerability https://blog.voltone.net/post/22
- Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&#39;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases &#43; properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&#39;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&#39;t include package name." />
+ Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&rsquo;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases &#43; properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&rsquo;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&rsquo;t include package name." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gliush.github.io/devzen_note/0228/" />
 <meta property="article:published_time" content="2019-02-09T20:50:52+04:00" />
@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Notes for episode-0228"/>
 <meta name="twitter:description" content="Hex package registry vulnerability https://blog.voltone.net/post/22
- Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&#39;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases &#43; properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&#39;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&#39;t include package name."/>
+ Fixed in rebar3-3.8.0 and Hex-0.19.0 When you add a depp you should trust:  author of the code the source code repo package manager package manager&rsquo;s hosting and CDN package repository mirror   We should also trust their ability to protect their systems from attackers!! The simplest protection: checksum and digital signature Hex Package Registry:  For each package Hex maintain a registry with list of all releases &#43; properties SHA256 - one of the properties The registry is protected by a signature, generated with the Hex Server&rsquo;s private key   Hex Client check registry signature, package SHA256 checksum Problem:  Hex server signed any package, and didn&rsquo;t include package name."/>
 <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic,400italic|Raleway:200,300" rel="stylesheet">
 
 	<link rel="stylesheet" type="text/css" media="screen" href="https://gliush.github.io/css/normalize.css" />
@@ -67,7 +67,7 @@
 <li>author of the code</li>
 <li>the source code repo</li>
 <li>package manager</li>
-<li>package manager's hosting and CDN</li>
+<li>package manager&rsquo;s hosting and CDN</li>
 <li>package repository mirror</li>
 </ul>
 </li>
@@ -77,14 +77,14 @@
 <ul>
 <li>For each package Hex maintain a registry with list of all releases + properties</li>
 <li>SHA256 - one of the properties</li>
-<li>The registry is protected by a signature, generated with the Hex Server's private key</li>
+<li>The registry is protected by a signature, generated with the Hex Server&rsquo;s private key</li>
 </ul>
 </li>
 <li>Hex Client check registry signature, package SHA256 checksum</li>
 <li>Problem:
 <ul>
-<li>Hex server signed any package, and didn't include package name.</li>
-<li>Send malicious package (that'll execulte bad code during <code>mix compile</code>)</li>
+<li>Hex server signed any package, and didn&rsquo;t include package name.</li>
+<li>Send malicious package (that&rsquo;ll execulte bad code during <code>mix compile</code>)</li>
 <li>Substitute the package on mirror</li>
 </ul>
 </li>

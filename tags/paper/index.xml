@@ -18,7 +18,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0274/</guid>
       <description>Language Bias in Accident Investigations http://lup.lub.lu.se/luur/download?func=downloadFile&amp;amp;recordOId=2971193&amp;amp;fileOId=2971195
- The paper examined the language and content of the U.S. Forest Service&#39;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&#39;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
+ The paper examined the language and content of the U.S. Forest Service&amp;rsquo;s Serios Accident Investigation Guide (SAIG) Idea: check if it biased the accident analysis process (tl;dr - yes) The Influence of Philosophy on Accident Investigation  The influence is large. Today&amp;rsquo;s models are based on &amp;lsquo;cause-end-effect&amp;rsquo; reasoning They follow the need to create a logical pattern of &amp;lsquo;facts&amp;rsquo; and &amp;lsquo;conclusions&amp;rsquo; Even when the existence of a pattern is questionable   The evolution of Accident Models  Sequential accident model  WWI -&amp;gt; accidents in a munition factory.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@
       
       <guid>https://gliush.github.io/devzen_note/0238/</guid>
       <description>Overload Control for Scaling WeChat Microservices https://www.cs.columbia.edu/~ruigu/papers/socc18-final100.pdf
- 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &amp;ldquo;upstream microservices&amp;rdquo; these &amp;ldquo;upper microservices&amp;rdquo; don&#39;t send request with low priorities   2.</description>
+ 1.INTRODUCTION Overload control aims to mitigate problems during service overload For simple services, gateway monitors the load status and rejects client requests (load schedding) For complex SOA systems it is more difficult:  all services should be monitored independent load schedding is hard to implement with large number of services, high probability to not handle user request because of some service rejects request   introduce overload control scheme DAGOR:  each client request is assigned with business priority and user priority each microservice maintain its own priority thresholds during overload, the threshold is increased (to sched half of the load), and new threshold value is passed to the direct &amp;ldquo;upstream microservices&amp;rdquo; these &amp;ldquo;upper microservices&amp;rdquo; don&amp;rsquo;t send request with low priorities   2.</description>
     </item>
     
   </channel>

@@ -74,7 +74,7 @@
 <li>We need to change how distributed systems are architected
 <ul>
 <li>A transaction may abort at any time for any reason</li>
-<li>System shouldn't have freedom to abort transaction. Only logic within the transaction could abort</li>
+<li>System shouldn&rsquo;t have freedom to abort transaction. Only logic within the transaction could abort</li>
 </ul>
 </li>
 <li>Example:
@@ -97,9 +97,9 @@
 </li>
 <li>IMHO:
 <ul>
-<li>I don't understand, how concurrent transaction is handled ( Y-=1, the question above)</li>
-<li>We need some additional &ldquo;solver&rdquo; that'll change all the workers logic on the fly?</li>
-<li>What if remote worker is not available or high latency? (We'll solve it later? eventual consistency?)</li>
+<li>I don&rsquo;t understand, how concurrent transaction is handled ( Y-=1, the question above)</li>
+<li>We need some additional &ldquo;solver&rdquo; that&rsquo;ll change all the workers logic on the fly?</li>
+<li>What if remote worker is not available or high latency? (We&rsquo;ll solve it later? eventual consistency?)</li>
 <li>O(n^2), that author suggests solving by broadcasting all the values to all the workers -&gt; incoming queue -&gt; GC -&gt; HELL</li>
 </ul>
 </li>
